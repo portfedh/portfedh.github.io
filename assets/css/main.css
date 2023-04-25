@@ -3524,6 +3524,12 @@ input, select, textarea {
 		transform: translateY(-50%);
 	}
 
+	h3 {
+		font-weight: 400;
+		font-size: 1em;
+
+	}
+
 	/* This code is applied in media queries for smartphones
 	ul {
 		list-style-type: none;
