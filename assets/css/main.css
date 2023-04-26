@@ -278,7 +278,12 @@ input, select, textarea {
 				max-width: 100% !important;
 				width: 100% !important;
 			}
-			.noBullets { list-style-type: none;}
+			
+			/* Customization */
+			.skills { 
+				text-align: left;
+				margin-left: 10%;
+			}
 
 		}
 
@@ -3514,7 +3519,8 @@ input, select, textarea {
 
 	/* Extras */
 	.aboutMe {
-		margin: 0 0 1em 0;
+		margin: 0 1em 1em 1em;
+		text-align: justify;
 	}
 
 
@@ -3524,15 +3530,9 @@ input, select, textarea {
 		transform: translateY(-50%);
 	}
 
-	h3 {
+	.bold {
 		font-weight: 400;
 		font-size: 1em;
-
 	}
 
-	/* This code is applied in media queries for smartphones
-	ul {
-		list-style-type: none;
-	  } */
-
-
+	/* Check media queries */
