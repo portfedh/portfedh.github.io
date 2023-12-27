@@ -17,7 +17,7 @@
     <section id="header">
       <div class="inner">
         <div>
-          <img src="images/pic01.png" style="width: 20%" alt="This is me" />
+          <img id="hero-me" src="images/pic01.png" alt="This is me" />
         </div>
         <h1>
           Hi, I'm <strong>Pablo,</strong><br />
@@ -89,9 +89,10 @@
               <h2>Things I can do<br /></h2>
             </header>
             <p>
-              <strong> Business automations: </strong> Automating processes to
-              save time, reduce costs, and increase efficiency in business
-              operations.
+              <strong> Financial Modeling & planning: </strong> Helping
+              businesses & individuals make informed decisions and achieve their
+              financial goals by representing diverse financial scenarios for
+              analysis and decision-making.
             </p>
             <p>
               <strong> IoT automations:</strong> Automations to monitor
@@ -138,6 +139,7 @@
               <li><i class="fa-solid fa-microchip"></i> Esp32</li>
               <li><i class="fa-brands fa-raspberry-pi"></i> RaspberryPi</li>
               <li><i class="fa-solid fa-cube"></i> 3D Printing</li>
+              <li><i class="fa-solid fa-q"></i> Quickbooks</li>
             </ul>
           </div>
         </div>
@@ -286,5 +288,18 @@
       src="https://kit.fontawesome.com/1450436a40.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // Function to log the screen width
+      function logScreenWidth() {
+        // Get the width of the screen
+        var screenWidth = window.innerWidth;
+
+        // Log the width to the console
+        console.log("Screen Width: " + screenWidth + " pixels");
+      }
+
+      // Set up an interval to log the screen width every 0.5 seconds
+      setInterval(logScreenWidth, 500);
+    </script>
   </body>
 </html>

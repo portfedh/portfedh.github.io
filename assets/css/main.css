@@ -3346,6 +3346,9 @@ body.is-preload #header:after {
 /* XLarge */
 
 @media screen and (max-width: 1680px) {
+  #hero-me {
+    max-width: 20%;
+  }
   /* Basic */
 
   body,
@@ -3365,6 +3368,9 @@ body.is-preload #header:after {
 /* Large */
 
 @media screen and (max-width: 1140px) {
+  #hero-me {
+    max-width: 25%;
+  }
   /* Basic */
 
   body,
@@ -3427,6 +3433,9 @@ body.is-preload #header:after {
 /* Medium */
 
 @media screen and (max-width: 980px) {
+  #hero-me {
+    max-width: 25%;
+  }
   /* List */
 
   ul.major-icons li {
@@ -3474,6 +3483,9 @@ body.is-preload #header:after {
 
 @media screen and (max-width: 736px) {
   /* Basic */
+  #hero-me {
+    max-width: 30%;
+  }
 
   body,
   input,
@@ -3557,6 +3569,9 @@ body.is-preload #header:after {
 /* XSmall */
 
 @media screen and (max-width: 480px) {
+  #hero-me {
+    max-width: 50%;
+  }
   /* Button */
 
   input[type="submit"],
@@ -3607,6 +3622,9 @@ body.is-preload #header:after {
 /* XXSmall */
 
 @media screen and (max-width: 320px) {
+  #hero-me {
+    max-width: 50%;
+  }
   /* Basic */
 
   html,
