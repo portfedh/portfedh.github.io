@@ -3,6 +3,7 @@
   <head>
     <title>Pablo Cruz, Full-stack Developer</title>
     <meta charset="utf-8" />
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
@@ -13,7 +14,7 @@
     /></noscript>
   </head>
   <body class="is-preload">
-    <!-- Header -->
+    <!-- Header Start-->
     <section id="header">
       <div class="inner">
         <div>
@@ -28,13 +29,14 @@
           investing.
         </p>
         <ul class="actions special">
-          <li><a href="#four" class="button wide primary">Contact Me</a></li>
+          <li><a href="#contact" class="button wide primary">Contact Me</a></li>
           <li><a href="#three" class="button wide">Portfolio</a></li>
         </ul>
       </div>
     </section>
+    <!-- Header End-->
 
-    <!-- AboutMe -->
+    <!-- AboutMe Start-->
     <section id="one" class="main style1">
       <div class="container">
         <div class="row gtr-150">
@@ -71,7 +73,7 @@
           <div class="col-6 col-12-medium imp-medium">
             <span class="image fit mainImage"
               ><img
-                src="images/pablo-portrait.png"
+                src="images/pablo-portrait.jpeg"
                 alt=""
                 style="border: solid 1px #c7c7c7"
             /></span>
@@ -79,8 +81,9 @@
         </div>
       </div>
     </section>
+    <!-- AboutMe End-->
 
-    <!-- Skills -->
+    <!-- Skills Start -->
     <section id="two" class="main style2">
       <div class="container">
         <div class="row gtr-150">
@@ -145,8 +148,9 @@
         </div>
       </div>
     </section>
+    <!-- Skills End -->
 
-    <!-- Projects -->
+    <!-- Projects Start-->
     <section id="three" class="main style1 special">
       <div class="container">
         <header class="major">
@@ -210,9 +214,10 @@
         </div>
       </div>
     </section>
+    <!-- Projects End-->
 
-    <!-- Contact -->
-    <section id="four" class="main style2 special">
+    <!-- Contact Start-->
+    <section id="contact" class="main style2 special">
       <div class="container">
         <header class="major">
           <h2>Get in touch!</h2>
@@ -238,8 +243,9 @@
         </ul>
       </div>
     </section>
+    <!-- Contact End-->
 
-    <!-- Footer -->
+    <!-- Footer Start -->
     <section id="footer">
       <ul class="icons">
         <li>
@@ -276,6 +282,7 @@
         <li>&copy; 2024 Pablo Cruz.</li>
       </ul>
     </section>
+    <!-- Footer End -->
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -288,18 +295,14 @@
       src="https://kit.fontawesome.com/1450436a40.js"
       crossorigin="anonymous"
     ></script>
-    <script>
-      // Function to log the screen width
-      function logScreenWidth() {
-        // Get the width of the screen
-        var screenWidth = window.innerWidth;
 
-        // Log the width to the console
+    <!-- Temp function to log the screen width -->
+    <script>
+      function logScreenWidth() {
+        var screenWidth = window.innerWidth;
         console.log("Screen Width: " + screenWidth + " pixels");
       }
-
-      // Set up an interval to log the screen width every 0.5 seconds
-      setInterval(logScreenWidth, 500);
+      setInterval(logScreenWidth, 1000);
     </script>
   </body>
 </html>
