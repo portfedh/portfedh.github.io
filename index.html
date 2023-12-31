@@ -20,9 +20,24 @@
       style="
         width: 100%;
         margin: 0 auto;
-        background: url('images/test7.jpg') center/cover no-repeat;
+        background: url('images/test.jpg') center/cover no-repeat;
       "
     >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(
+            0,
+            0,
+            0,
+            0.35
+          ); /* Adjust the opacity by changing the last value (0.5 in this case) */
+        "
+      ></div>
       <div class="inner">
         <div>
           <img id="hero-me" src="images/pablo-headshot.png" alt="This is me" />
@@ -72,7 +87,7 @@
             <p class="aboutMe">
               Over the past few years I've been building my programming skills
               to include Python, JavaScript and several of the tools &
-              frameworks used in web development.
+              frameworks used in web applications.
             </p>
             <p class="aboutMe">
               I have also leant how to use micro-controllers, 3d Printers and
@@ -84,6 +99,7 @@
               programming and business skills, and I'm always eager to learn and
               collaborate on challenging projects.
             </p>
+            <br />
           </div>
           <!-- About Me Image -->
           <div class="col-6 col-12-medium imp-medium">
@@ -91,7 +107,12 @@
               ><img
                 src="images/pablo-portrait.jpeg"
                 alt=""
-                style="border: solid 1px #c7c7c7"
+                style="
+                  border: solid 1px #c7c7c7;
+                  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+                  width: 90%;
+                  margin: 0 auto;
+                "
             /></span>
           </div>
         </div>
@@ -119,8 +140,8 @@
               management, predictive maintenance or quality control.
             </p>
             <p>
-              <strong> Web development:</strong> Creating and maintaining
-              websites and web applications.
+              <strong> Web applications:</strong> Creating and maintaining
+              interactive websites with front and back end functionalities.
             </p>
           </div>
 
@@ -140,7 +161,6 @@
               <li><i class="fa-brands fa-hotjar"></i> Tailwind</li>
               <li><i class="fa-solid fa-database"></i> SQL</li>
               <li><i class="fa-brands fa-envira"></i> MongoDB</li>
-              <li><i class="fa-solid fa-globe"></i> InfluxDB</li>
             </ul>
           </div>
 
@@ -153,6 +173,7 @@
               <li><i class="fa-solid fa-circle-notch"></i> Jupyter Notebook</li>
               <li><i class="fa-solid fa-square-share-nodes"></i> Node-Red</li>
               <li><i class="fa-solid fa-spinner"></i> Grafana</li>
+              <li><i class="fa-solid fa-globe"></i> InfluxDB</li>
               <li><i class="fa-brands fa-ubuntu"></i> Linux</li>
               <li><i class="fa-solid fa-infinity"></i> Arduino</li>
               <li><i class="fa-solid fa-microchip"></i> Esp32</li>
@@ -183,48 +204,94 @@
               ><img
                 src="images/salsa-candela-cover.png"
                 alt="DanceStudio"
-                style="border: solid 1px #c7c7c7"
+                style="
+                  border: solid 1px #c7c7c7;
+                  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                "
             /></span>
             <h3 class="bold">Dance Studio Online Store</h3>
-            <p>
-              Online store and web application to manage a Dance Studio with
-              five branches.
+            <p>Online store and web application to manage a Dance Studio.</p>
+            <p class="bold" style="font-size: 0.85rem">
+              HTML, CSS, JavaScript, NodeJs, ExpressJs
             </p>
-            <p>HTML, CSS, Js, NodeJs, ExpressJs</p>
             <ul class="actions special small">
               <li>
-                <a href="#" class="button">Visit</a>
+                <a
+                  href="https://salsa-candela.cyclic.app/"
+                  class="button"
+                  style="margin: 5px"
+                  >Visit</a
+                ><a
+                  href="https://github.com/portfedh/SalsaCandela"
+                  class="button"
+                  style="margin: 5px"
+                  >GitHub</a
+                >
               </li>
             </ul>
           </div>
           <!-- Project 2 -->
           <div class="col-4 col-12-medium">
             <span class="image fit"
-              ><img src="images/energy-monitor.png" alt=""
+              ><img
+                src="images/energy-monitor.png"
+                alt="Energy Monitor"
+                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)"
             /></span>
             <h3 class="bold">IoT Energy Monitor</h3>
             <p>
               IoT sensor and computer to monitor the energy consumption of a
               home.
             </p>
-            <p>Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB</p>
-            <ul class="actions special">
-              <li><a href="#" class="button">More</a></li>
+            <p class="bold" style="font-size: 0.85rem">
+              Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB
+            </p>
+            <ul class="actions special small">
+              <li>
+                <a
+                  href="https://pablocruz.io/iot-energy-monitor/"
+                  class="button"
+                  style="margin: 5px"
+                  >Visit</a
+                ><a
+                  href="https://github.com/portfedh/CurrentSensorsMQTT"
+                  class="button"
+                  style="margin: 5px"
+                  >GitHub</a
+                >
+              </li>
             </ul>
           </div>
           <!-- Project 3 -->
           <div class="col-4 col-12-medium">
             <span class="image fit"
-              ><img src="images/financial-report.jpg" alt=""
+              ><img
+                src="images/financial-report.jpg"
+                alt="Financial Report"
+                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)"
             /></span>
             <h3 class="bold">Automated Financial Report PDF</h3>
             <p>
               One click report generation for displaying financial metrics of a
               public company in PDF version.
             </p>
-            <p>Python, Pandas, Plotly, FMP, FPDF2</p>
-            <ul class="actions special">
-              <li><a href="#" class="button">More</a></li>
+            <p class="bold" style="font-size: 0.85rem">
+              Python, Pandas, Plotly, FMP, FPDF2
+            </p>
+            <ul class="actions special small">
+              <li>
+                <a
+                  href="https://pablocruz.io/python-financial-report-pdf/"
+                  class="button"
+                  style="margin: 5px"
+                  >Visit</a
+                ><a
+                  href="https://github.com/portfedh/fundamental_analysis_report"
+                  class="button"
+                  style="margin: 5px"
+                  >GitHub</a
+                >
+              </li>
             </ul>
           </div>
         </div>
@@ -239,7 +306,7 @@
           <h2>Get in touch!</h2>
         </header>
         <p>
-          Im currently open for both freelance and full-time positions.
+          Im currently open to work id be happy to chat.
           <br />
           <br />
           Feel free to reach out if you are interested in what I can bring to
