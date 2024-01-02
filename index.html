@@ -3,54 +3,26 @@
   <head>
     <title>Pablo Cruz, Full-stack Developer</title>
     <meta charset="utf-8" />
-    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
   </head>
   <body class="is-preload">
     <!-- Header Start-->
-    <section
-      id="header"
-      style="
-        width: 100%;
-        margin: 0 auto;
-        background: url('images/test.jpg') center/cover no-repeat;
-      "
-    >
-      <div
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(
-            0,
-            0,
-            0,
-            0.35
-          ); /* Adjust the opacity by changing the last value (0.5 in this case) */
-        "
-      ></div>
+    <section id="header">
+      <div class="header-shadow"></div>
       <div class="inner">
         <div>
           <img id="hero-me" src="images/pablo-headshot.png" alt="This is me" />
         </div>
-        <div
-          style="
-            /* background: rgba(0, 0, 0, 0.2); */
-            border-radius: 8px;
-            padding: 20px;
-            max-width: fit-content;
-            margin: 0 auto;
-          "
-        >
+        <div>
           <h1>
             Hi, I'm <strong>Pablo,</strong><br />
             a full-stack software developer.
@@ -59,9 +31,11 @@
         </div>
         <ul class="actions special">
           <li>
-            <a href="#contact" class="button wide primary">Contact Me</a>
+            <a href="#contact-section" class="button wide primary"
+              >Contact Me</a
+            >
           </li>
-          <li><a href="#three" class="button wide">Portfolio</a></li>
+          <li><a href="#projects-section" class="button wide">Portfolio</a></li>
         </ul>
       </div>
     </section>
@@ -105,14 +79,9 @@
           <div class="col-6 col-12-medium imp-medium">
             <span class="image fit mainImage"
               ><img
+                class="aboutMe-image"
                 src="images/pablo-portrait.jpeg"
-                alt=""
-                style="
-                  border: solid 1px #c7c7c7;
-                  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-                  width: 90%;
-                  margin: 0 auto;
-                "
+                alt="This is me"
             /></span>
           </div>
         </div>
@@ -129,19 +98,22 @@
               <h2>Things I can do<br /></h2>
             </header>
             <p>
+              <strong> Web applications:</strong> Creating and maintaining
+              interactive web apps with complex front and back end
+              functionalities.
+            </p>
+
+            <p>
               <strong> Financial Modeling & planning: </strong> Helping
               businesses & individuals make informed decisions and achieve their
               financial goals by representing diverse financial scenarios for
               analysis and decision-making.
             </p>
+
             <p>
               <strong> IoT automations:</strong> Automations to monitor
               equipment and optimize processes, such as: energy use, inventory
               management, predictive maintenance or quality control.
-            </p>
-            <p>
-              <strong> Web applications:</strong> Creating and maintaining
-              interactive websites with front and back end functionalities.
             </p>
           </div>
 
@@ -188,7 +160,7 @@
     <!-- Skills End -->
 
     <!-- Projects Start-->
-    <section id="three" class="main style1 special">
+    <section id="projects-section" class="main style1 special">
       <div class="container">
         <header class="major">
           <h2>Projects</h2>
@@ -202,15 +174,12 @@
           <div class="col-4 col-12-medium">
             <span class="image fit"
               ><img
+                class="project1-image"
                 src="images/salsa-candela-cover.png"
                 alt="DanceStudio"
-                style="
-                  border: solid 1px #c7c7c7;
-                  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-                "
             /></span>
             <h3 class="bold">Dance Studio Online Store</h3>
-            <p>Online store and web application to manage a Dance Studio.</p>
+            <p>Online store and web application to manage 5 Dance Studios.</p>
             <p class="bold" style="font-size: 0.85rem">
               HTML, CSS, JavaScript, NodeJs, ExpressJs
             </p>
@@ -236,7 +205,7 @@
               ><img
                 src="images/energy-monitor.png"
                 alt="Energy Monitor"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)"
+                class="project2-image"
             /></span>
             <h3 class="bold">IoT Energy Monitor</h3>
             <p>
@@ -268,7 +237,7 @@
               ><img
                 src="images/financial-report.jpg"
                 alt="Financial Report"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)"
+                class="project3-image"
             /></span>
             <h3 class="bold">Automated Financial Report PDF</h3>
             <p>
@@ -300,7 +269,7 @@
     <!-- Projects End-->
 
     <!-- Contact Start-->
-    <section id="contact" class="main style2 special">
+    <section id="contact-section" class="main style2 special">
       <div class="container">
         <header class="major">
           <h2>Get in touch!</h2>
@@ -359,7 +328,6 @@
             ><span class="label">Email</span></a
           >
         </li>
-        <!-- <li><a href="#" class="icon solid alt fa-file"><span class="label">Resume</span></a></li> -->
       </ul>
       <ul class="copyright">
         <li>&copy; 2024 Pablo Cruz.</li>
@@ -378,7 +346,6 @@
       src="https://kit.fontawesome.com/1450436a40.js"
       crossorigin="anonymous"
     ></script>
-
     <!-- Temp function to log the screen width -->
     <script>
       function logScreenWidth() {
@@ -387,5 +354,6 @@
       }
       setInterval(logScreenWidth, 1000);
     </script>
+    <!-- Temp function to log the screen width -->
   </body>
 </html>

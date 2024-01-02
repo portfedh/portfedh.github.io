@@ -3350,7 +3350,7 @@ body.is-preload #header:after {
 
 @media screen and (max-width: 1680px) {
   #hero-me {
-    max-width: 20%;
+    max-width: 15%;
   }
   /* Basic */
 
@@ -3634,41 +3634,4 @@ body.is-preload #header:after {
   body {
     min-width: 320px;
   }
-
-  /* Main */
-
-  .main {
-    padding: 2em 1em 0.1em 1em;
-  }
-
-  /* Header */
-
-  #header {
-    padding: 3em 1em 3em 1em;
-  }
-
-  /* Footer */
-
-  #footer {
-    padding: 2em 1em 2em 1em;
-  }
 }
-
-/* Extras */
-.aboutMe {
-  margin: 0 1em 1em 1em;
-  text-align: justify;
-}
-
-.mainImage {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.bold {
-  font-weight: 400;
-  font-size: 1em;
-}
-
-/* Check media queries */

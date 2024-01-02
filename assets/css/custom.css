@@ -1,0 +1,67 @@
+/* Images of Me */
+
+#hero-me {
+  max-width: 15%;
+}
+
+.aboutMe-image {
+  border: solid 1px #c7c7c7;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Main */
+
+.main {
+  padding: 2em 1em 0.1em 1em;
+}
+
+/* Header */
+
+#header {
+  padding: 3em 1em 3em 1em;
+  width: 100%;
+  margin: 0 auto;
+  background: url("../../images/test.jpg") center/cover no-repeat;
+}
+
+.header-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* Shadow Opacity */
+}
+
+/* Footer */
+
+#footer {
+  padding: 2em 1em 2em 1em;
+}
+
+/* Projects */
+.project1-image,
+.project2-image,
+.project3-image {
+  border: solid 1px #c7c7c7;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Extras */
+.aboutMe {
+  margin: 0 1em 1em 1em;
+  text-align: justify;
+}
+
+.mainImage {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bold {
+  font-weight: 400;
+  font-size: 1em;
+}
