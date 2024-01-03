@@ -3439,6 +3439,10 @@ body.is-preload #header:after {
   #hero-me {
     max-width: 25%;
   }
+
+  .aboutMe-image {
+    max-width: 80%;
+  }
   /* List */
 
   ul.major-icons li {
@@ -3488,6 +3492,10 @@ body.is-preload #header:after {
   /* Basic */
   #hero-me {
     max-width: 30%;
+  }
+
+  .aboutMe-image {
+    max-width: 80%;
   }
 
   body,
@@ -3575,6 +3583,10 @@ body.is-preload #header:after {
   #hero-me {
     max-width: 50%;
   }
+
+  .aboutMe-image {
+    max-width: 80%;
+  }
   /* Button */
 
   input[type="submit"],
@@ -3627,6 +3639,10 @@ body.is-preload #header:after {
 @media screen and (max-width: 320px) {
   #hero-me {
     max-width: 50%;
+  }
+
+  .aboutMe-image {
+    max-width: 80%;
   }
   /* Basic */
 
