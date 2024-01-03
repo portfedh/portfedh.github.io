@@ -27,7 +27,16 @@
   padding: 3em 1em 3em 1em;
   width: 100%;
   margin: 0 auto;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url("../../images/test.jpg") center/cover no-repeat;
+  z-index: -1;
 }
 
 .header-shadow {
@@ -36,7 +45,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35); /* Shadow Opacity */
+  background: rgba(0, 0, 0, 0.35);
 }
 
 /* Footer */
