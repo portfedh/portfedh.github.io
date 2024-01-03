@@ -6,7 +6,7 @@
 
 .aboutMe-image {
   border: solid 1px #c7c7c7;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
   width: 90%;
   margin: 0 auto;
 }
@@ -15,6 +15,10 @@
 
 .main {
   padding: 2em 1em 0.1em 1em;
+}
+
+.technologies {
+  font-size: 0.85rem;
 }
 
 /* Header */
