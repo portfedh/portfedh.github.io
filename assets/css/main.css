@@ -373,12 +373,6 @@ pre code {
 }
 
 /* Customization */
-.skills,
-.skills-other {
-  text-align: left;
-  margin-left: 10%;
-  display: inline-block;
-}
 
 @media screen and (max-width: 980px) {
   .container {
@@ -3440,9 +3434,13 @@ body.is-preload #header:after {
     max-width: 25%;
   }
 
-  .aboutMe-image {
+  .aboutMe-image,
+  .project1-image,
+  .project2-image,
+  .project3-image {
     max-width: 80%;
   }
+
   /* List */
 
   ul.major-icons li {
@@ -3493,9 +3491,17 @@ body.is-preload #header:after {
   #hero-me {
     max-width: 30%;
   }
-
-  .aboutMe-image {
+  .aboutMe-image,
+  .project1-image,
+  .project2-image,
+  .project3-image {
     max-width: 80%;
+  }
+  .technologies {
+    font-size: 0.8rem;
+  }
+  .project-heading {
+    font-size: 1.15em;
   }
 
   body,
@@ -3583,9 +3589,17 @@ body.is-preload #header:after {
   #hero-me {
     max-width: 50%;
   }
-
-  .aboutMe-image {
+  .aboutMe-image,
+  .project1-image,
+  .project2-image,
+  .project3-image {
     max-width: 80%;
+  }
+  .technologies {
+    font-size: 0.8rem;
+  }
+  .project-heading {
+    font-size: 1.15em;
   }
   /* Button */
 
@@ -3641,9 +3655,20 @@ body.is-preload #header:after {
     max-width: 50%;
   }
 
-  .aboutMe-image {
+  .aboutMe-image,
+  .project1-image,
+  .project2-image,
+  .project3-image {
     max-width: 80%;
   }
+  .technologies {
+    font-size: 0.8rem;
+    color: #2b797e;
+  }
+  .project-heading {
+    font-size: 1.15em;
+  }
+
   /* Basic */
 
   html,

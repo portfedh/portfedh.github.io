@@ -1,10 +1,13 @@
 /* Images of Me */
-
 #hero-me {
   max-width: 15%;
 }
 
-.aboutMe-image {
+/* Secondary images */
+.aboutMe-image,
+.project1-image,
+.project2-image,
+.project3-image {
   border: solid 1px #c7c7c7;
   box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
   width: 90%;
@@ -18,7 +21,9 @@
 }
 
 .technologies {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  color: #2b797e;
+  font-weight: 400;
 }
 
 /* Header */
@@ -54,18 +59,31 @@
   padding: 2em 1em 2em 1em;
 }
 
-/* Projects */
+/* Projects
 .project1-image,
 .project2-image,
 .project3-image {
   border: solid 1px #c7c7c7;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+} */
+
+.animation-float {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
 }
 
 /* Extras */
 .aboutMe {
   margin: 0 1em 1em 1em;
   text-align: justify;
+}
+
+.skills,
+.skills-other {
+  text-align: justify;
+  margin-left: 10%;
+  display: inline-block;
 }
 
 .mainImage {
