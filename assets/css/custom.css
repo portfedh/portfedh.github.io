@@ -15,6 +15,9 @@
 }
 
 /* Animations */
+/* *********** */
+
+/* fade-in in 5 seconds start */
 .fade-in {
   animation: fadeIn 5s;
 }
@@ -26,6 +29,23 @@
     opacity: 1;
   }
 }
+/* fade-in in 5 seconds end */
+
+/* Fade out on scroll start */
+.fade-out {
+  animation: fade-out linear;
+  animation-timeline: view();
+  animation-range: exit -100px;
+}
+@keyframes fade-out {
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* Fade out on scroll end */
+
 .brighten {
   filter: brightness(70%);
   transition: all 1s ease;
@@ -34,16 +54,16 @@
   filter: brightness(100%);
 }
 
-/* CSS Button animation start*/
+/* CSS float animation start*/
 .animation-float {
   transition-duration: 0.3s;
   transition-property: transform;
   transition-timing-function: ease-out;
 }
 .animation-float:hover {
-  transform: translateY(-2rem);
+  transform: translateY(-0.3rem);
 }
-/* CSS Button animation end*/
+/* CSS float animation end*/
 
 /* Main */
 
