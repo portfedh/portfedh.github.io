@@ -34,6 +34,17 @@
   filter: brightness(100%);
 }
 
+/* CSS Button animation start*/
+.animation-float {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+.animation-float:hover {
+  transform: translateY(-2rem);
+}
+/* CSS Button animation end*/
+
 /* Main */
 
 .main {
