@@ -1,3 +1,22 @@
+/* Testing: fadeIn on scroll start */
+.fade-in-scroll {
+  scale: 1;
+  opacity: 0;
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range: entry;
+}
+
+@keyframes fade-in {
+  from {
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+/* Testing: fadeIn on scroll end */
+
 /* Images of Me */
 #hero-me {
   max-width: 15%;
@@ -46,6 +65,7 @@
 }
 /* Fade out on scroll end */
 
+/* Brighten project images on hover start */
 .brighten {
   filter: brightness(70%);
   transition: all 1s ease;
@@ -53,8 +73,9 @@
 .brighten:hover {
   filter: brightness(100%);
 }
+/* Brighten project images on hover end */
 
-/* CSS float animation start*/
+/* Float image on hover start */
 .animation-float {
   transition-duration: 0.3s;
   transition-property: transform;
@@ -63,7 +84,7 @@
 .animation-float:hover {
   transform: translateY(-0.3rem);
 }
-/* CSS float animation end*/
+/* Float image on hover end */
 
 /* Main */
 
