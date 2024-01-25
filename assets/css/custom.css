@@ -66,12 +66,12 @@
 /* Fade out on scroll end */
 
 /* Brighten project images on hover start */
-.brighten {
-  filter: brightness(70%);
+.darken {
+  filter: brightness(100%);
   transition: all 1s ease;
 }
-.brighten:hover {
-  filter: brightness(100%);
+.darken:hover {
+  filter: brightness(70%);
 }
 /* Brighten project images on hover end */
 
