@@ -1156,9 +1156,9 @@ pre code {
     align-items: flex-end;
   }
 
-  .row > .imp-medium {
+  /* .row > .imp-medium {
     order: -1;
-  }
+  } */
 
   .row > .col-1-medium {
     width: 8.33333%;
