@@ -179,3 +179,13 @@
 .button-margin {
   margin: 5px;
 }
+
+.video-intro {
+  width: 94%;
+  margin-left: 1.1rem;
+}
+
+.professional-summary {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: aliceblue;
+}

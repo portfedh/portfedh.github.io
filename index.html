@@ -44,7 +44,22 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
   </head>
+
   <body class="is-preload">
     <!-- Header Start-->
     <header id="header">
@@ -62,15 +77,20 @@
         <div>
           <h1>
             Hi, I'm <strong>Pablo,</strong><br />
-            a full-stack software developer.
+            Full-stack software developer.
           </h1>
-          <p>With experience is in real estate, finance, and investing.</p>
+          <p class="professional-summary">
+            I specialize in building scalable web applications with a strong
+            foundation in real estate, finance, and investing.
+          </p>
         </div>
         <nav>
           <ul class="actions special">
             <li>
-              <a href="#contact-section" class="button wide primary"
-                >Contact Me</a
+              <a
+                href="Pablo_Cruz_Resume_Portfolio_2024.pdf"
+                class="button wide primary fade-out"
+                >Resume</a
               >
             </li>
             <li>
@@ -93,31 +113,37 @@
                   <h2>About Me <br /></h2>
                 </header>
                 <p class="aboutMe fade-out">
-                  I currently work as an investment manager in a Single Family
-                  Office in Mexico City. I've worked there for the past 9 years
-                  and have had many different roles related to finance and
-                  investing.
+                  I am an experienced investment manager and full-stack
+                  developer, passionate about leveraging technology to solve
+                  real-world problems. With over 9 years of experience as an
+                  investment manager at a Single Family Office in Mexico City, I
+                  bring a blend of financial acumen and technical expertise to
+                  the table.
                 </p>
                 <p class="aboutMe fade-out">
-                  I started learning programming as a way to automate tasks and
-                  streamline processes at work.
+                  I've successfully developed web applications with complex
+                  front and back-end functionalities, financial modeling tools
+                  for informed decision-making and IoT automations for process
+                  optimization and monitoring.
                 </p>
                 <p class="aboutMe fade-out">
-                  Over the past few years I've been building my programming
-                  skills to include Python, JavaScript and several of the tools
-                  & frameworks used in web applications.
+                  I'm excited about opportunities where I can leverage both my
+                  programming and business skills to create impactful solutions.
                 </p>
                 <p class="aboutMe fade-out">
-                  I have also leant how to use micro-controllers, 3d Printers
-                  and worked in several IoT projects to collect, store and
-                  visualize sensor data from different devices.
+                  <strong
+                    >Check out a 5-minute video where I introduce myself and
+                    showcase one of my projects:</strong
+                  >
                 </p>
-                <p class="aboutMe fade-out">
-                  I enjoy working on projects where I can leverage both my
-                  programming and business skills, and I'm always eager to learn
-                  and collaborate on challenging projects.
-                </p>
-                <br />
+                <!-- Intro video -->
+                <a
+                  href="https://www.loom.com/share/22ed97328346495dbe1b9957bff5842c?sid=545fb4f9-9513-43da-b7f0-faf70a8e4a37"
+                  class="button button-margin fade-out video-intro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Intro Video</a
+                >
               </div>
               <!-- About Me Image -->
               <div class="col-6 col-12-medium imp-medium">
@@ -301,6 +327,13 @@
                       rel="noopener noreferrer"
                       >GitHub</a
                     >
+                    <a
+                      href="https://www.loom.com/share/22ed97328346495dbe1b9957bff5842c?sid=545fb4f9-9513-43da-b7f0-faf70a8e4a37"
+                      class="button button-margin fade-out"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Video(5min)</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -343,7 +376,46 @@
                 </ul>
               </div>
               <!-- Project 2 End -->
+
               <!-- Project 3 Start -->
+              <div class="col-4 col-12-medium fade-in animation-float darken">
+                <span class="image fit"
+                  ><img
+                    class="project1-image"
+                    src="images/financial-dashboad.png"
+                    alt="Portfolio Financial Dashboard"
+                    loading="lazy"
+                /></span>
+                <h3 class="bold project-heading fade-out">
+                  Portfolio Financial Dashboard
+                </h3>
+                <p class="fade-out">
+                  Portfolio visualizer to track an investment portfolio.
+                </p>
+                <p class="technologies fade-out">
+                  Python, Pandas, Grafana, MySQL, Docker
+                </p>
+                <ul class="actions special small">
+                  <li>
+                    <a
+                      href="https://salsa-candela.com"
+                      class="button button-margin fade-out"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >Visit</a
+                    ><a
+                      href="https://github.com/portfedh/portafolio_grafana_2024"
+                      class="button button-margin fade-out"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- Project 3 End -->
+
+              <!-- Project 4 Start -->
               <div class="col-4 col-12-medium fade-in animation-float darken">
                 <span class="image fit"
                   ><img
@@ -380,8 +452,9 @@
                   </li>
                 </ul>
               </div>
-              <!-- Project 3 End -->
-              <!-- Project 4 Start -->
+              <!-- Project 4 End -->
+
+              <!-- Project 5 Start -->
               <div class="col-4 col-12-medium fade-in animation-float darken">
                 <span class="image fit"
                   ><img
@@ -418,8 +491,9 @@
                   </li>
                 </ul>
               </div>
-              <!-- Project 4 End -->
-              <!-- Project 5 Start -->
+              <!-- Project 5 End -->
+
+              <!-- Project 6 Start -->
               <div class="col-4 col-12-medium fade-in animation-float darken">
                 <span class="image fit"
                   ><img
@@ -457,7 +531,7 @@
                   </li>
                 </ul>
               </div>
-              <!-- Project 5 End -->
+              <!-- Project 6 End -->
             </div>
           </article>
         </div>
@@ -478,9 +552,6 @@
               to your project or team.
             </p>
             <ul class="actions special">
-              <!-- <li>
-            <a href="#" class="button wide">Resume</a>
-          </li> -->
               <li>
                 <a
                   href="mailto:pablo.cruz.lemini@gmail.com"
