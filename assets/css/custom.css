@@ -1,115 +1,7 @@
-/* Fade in on scroll start */
-.fade-in-scroll {
-  scale: 1;
-  opacity: 0;
-  animation: fade-in linear forwards;
-  animation-timeline: view();
-  animation-range: entry;
-}
+/* General Styles */
+/* ************** */
 
-@keyframes fade-in {
-  from {
-  }
-  to {
-    scale: 1;
-    opacity: 1;
-  }
-}
-/* Fade in on scroll end */
-
-/* Images of me  start */
-#hero-me {
-  max-width: 15%;
-}
-
-/* Secondary images */
-.aboutMe-image,
-.project1-image,
-.project2-image,
-.project3-image {
-  border: solid 1px #c7c7c7;
-  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
-  width: 90%;
-  margin: 0 auto;
-}
-/* Images of me  end */
-
-/* Animations */
-/* *********** */
-
-/* fade-in in 5 seconds start */
-.fade-in {
-  animation: fadeIn 5s;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/* fade-in in 5 seconds end */
-
-/* Fade out on scroll start */
-.fade-out {
-  animation: fade-out linear;
-  animation-timeline: view();
-  animation-range: exit -100px;
-}
-@keyframes fade-out {
-  from {
-  }
-  to {
-    opacity: 0;
-  }
-}
-/* Fade out on scroll end */
-
-/* Brighten project images on hover start */
-.darken {
-  filter: brightness(80%);
-  transition: all 1s ease;
-}
-.darken:hover {
-  filter: brightness(100%);
-}
-/* Brighten project images on hover end */
-
-/* Float image on hover start */
-.animation-float {
-  transition-duration: 0.3s;
-  transition-property: transform;
-  transition-timing-function: ease-out;
-}
-.animation-float:hover {
-  transform: translateY(-0.1rem);
-}
-/* Float image on hover end */
-
-/* Animated project images start */
-.animated-gif {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-
-.gif-container:hover .animated-gif {
-  opacity: 1;
-  transition: opacity 2s ease;
-}
-
-.gif-container:hover .static-gif {
-  opacity: 0;
-}
-/* Animated project images end */
-
-/* Main */
-
+/* Main container styles */
 .main {
   padding: 2em 1em 0.1em 1em;
 }
@@ -120,8 +12,7 @@
   font-weight: 400;
 }
 
-/* Header */
-
+/* Header styles */
 #header {
   padding: 3em 1em 3em 1em;
   width: 100%;
@@ -148,45 +39,40 @@
   background: rgba(0, 0, 0, 0.35);
 }
 
-/* Footer */
-
+/* Footer styles */
 #footer {
   padding: 2em 1em 2em 1em;
 }
 
-/* Projects
+/* Image Styles */
+/* ************ */
+
+/* Hero image */
+#hero-me {
+  max-width: 15%;
+}
+
+/* Secondary images */
+.aboutMe-image,
 .project1-image,
 .project2-image,
 .project3-image {
   border: solid 1px #c7c7c7;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-} */
-
-.animation-float {
-  transition-duration: 0.3s;
-  transition-property: transform;
-  transition-timing-function: ease-out;
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
+  width: 90%;
+  margin: 0 auto;
 }
 
-/* Extras */
-.aboutMe {
-  margin: 0 1em 1em 1em;
-  text-align: justify;
-}
-
-.skills,
-.skills-other {
-  text-align: justify;
-  margin-left: 10%;
-  display: inline-block;
-}
-
+/* Main image */
 .mainImage {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   padding-bottom: 2rem;
 }
+
+/* Text Styles */
+/* *********** */
 
 .bold {
   font-weight: 400;
@@ -209,4 +95,108 @@
 .professional-summary {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   color: aliceblue;
+}
+
+/* About Me Section */
+.aboutMe {
+  margin: 0 1em 1em 1em;
+  text-align: justify;
+}
+
+.skills,
+.skills-other {
+  text-align: justify;
+  margin-left: 10%;
+  display: inline-block;
+}
+
+/* Animations */
+/* ********** */
+
+/* Fade in on scroll */
+.fade-in-scroll {
+  scale: 1;
+  opacity: 0;
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range: entry;
+}
+
+@keyframes fade-in {
+  from {
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+/* Fade in over 5 seconds */
+.fade-in {
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Fade out on scroll */
+.fade-out {
+  animation: fade-out linear;
+  animation-timeline: view();
+  animation-range: exit -100px;
+}
+
+@keyframes fade-out {
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Brighten project images on hover */
+.darken {
+  filter: brightness(80%);
+  transition: all 1s ease;
+}
+
+.darken:hover {
+  filter: brightness(100%);
+}
+
+/* Float image on hover */
+.animation-float {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+
+.animation-float:hover {
+  transform: translateY(-0.1rem);
+}
+
+/* Animated project images */
+.animated-gif {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.gif-container:hover .animated-gif {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.gif-container:hover .static-gif {
+  opacity: 0;
 }
