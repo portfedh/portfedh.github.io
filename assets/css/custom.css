@@ -200,3 +200,76 @@
 .gif-container:hover .static-gif {
   opacity: 0;
 }
+
+/* GitHub Contributions Section */
+/* **************************** */
+
+#github-contributions {
+  background-color: #f8f9fa;
+}
+
+.github-chart-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.github-contributions-chart {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 1rem;
+}
+
+.github-stats {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.github-stat-card {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Skills section mobile adjustments */
+@media screen and (max-width: 736px) {
+  #two .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  #two .row.gtr-150 {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  
+  #two .col-6-small {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* GitHub responsive adjustments */
+@media screen and (max-width: 736px) {
+  .github-contributions-chart {
+    padding: 0.5rem;
+    margin: 0 auto;
+  }
+  
+  .github-stat-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .github-chart-container {
+    margin: 1rem 0;
+  }
+}
+
