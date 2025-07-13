@@ -21,4 +21,39 @@
 
   // Scrolly.
   $(".scrolly").scrolly();
+
+  // Skeleton Loading for Images
+  function initSkeletonLoading() {
+    const images = document.querySelectorAll('.lazy-image');
+    
+    images.forEach(img => {
+      const wrapper = img.closest('.image-wrapper');
+      if (!wrapper) return;
+      
+      const skeleton = wrapper.querySelector('.image-skeleton');
+      
+      if (img.complete && img.naturalHeight !== 0) {
+        // Image is already loaded
+        img.classList.add('loaded');
+        if (skeleton) skeleton.classList.add('hidden');
+      } else {
+        // Image is still loading
+        img.addEventListener('load', function() {
+          img.classList.add('loaded');
+          if (skeleton) skeleton.classList.add('hidden');
+        });
+        
+        img.addEventListener('error', function() {
+          // Handle error case - still hide skeleton
+          img.classList.add('loaded');
+          if (skeleton) skeleton.classList.add('hidden');
+        });
+      }
+    });
+  }
+
+  // Initialize skeleton loading when DOM is ready
+  $(document).ready(function() {
+    initSkeletonLoading();
+  });
 })(jQuery);

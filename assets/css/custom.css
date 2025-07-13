@@ -273,3 +273,95 @@
   }
 }
 
+/* Skeleton Loading Styles */
+/* ********************** */
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Image wrapper for skeleton loading */
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.image-skeleton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.image-skeleton.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Specific skeleton styles for different image types */
+.hero-skeleton {
+  width: 15%;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.about-skeleton {
+  width: 90%;
+  height: 400px;
+  margin: 0 auto;
+  border: solid 1px #c7c7c7;
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
+}
+
+.project-skeleton {
+  width: 100%;
+  height: 200px;
+  border: solid 1px #c7c7c7;
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
+}
+
+.github-skeleton {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  margin: 2rem auto;
+}
+
+.github-stats-skeleton {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  margin: 1rem auto;
+}
+
+/* Hide images initially */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
