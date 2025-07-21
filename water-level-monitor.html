@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>How to make an IoT water level monitor | Pablo Cruz</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="How to make an IoT water level monitor"
+    />
+    <meta
+      property="og:description"
+      content="This post explains how I made an IoT water level monitor using a raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/water-level-monitor.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="How to make an IoT water level monitor"
+    />
+    <meta
+      name="twitter:description"
+      content="This post explains how I made an IoT water level monitor using a raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.png"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/water-level-monitor/water_level_featured.png"
+    />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">← Back to Portfolio</a>
+        </div>
+        <div class="blog-title-container">
+          <h1>How to make an IoT water level monitor</h1>
+          <p class="blog-meta">
+            Published: November 13, 2022 | Last updated: August 20, 2024
+          </p>
+          <p class="blog-description">
+            This post explains how I made an IoT water level monitor using a
+            raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-featured-image">
+              <img
+                src="images/water-level-monitor/water_level_featured.png"
+                alt="Summary of the water IoT water level monitor setup"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h3>Table of Contents</h3>
+              <ul class="toc">
+                <li>
+                  <a href="#why-monitor">Why make a water level monitor</a>
+                </li>
+                <li>
+                  <a href="#how-works">How the water level sensor works</a>
+                </li>
+                <li>
+                  <a href="#components">Components of the water level sensor</a>
+                </li>
+                <li>
+                  <a href="#build-sensor"
+                    >How to build the water level sensor</a
+                  >
+                </li>
+                <li>
+                  <a href="#reading-data"
+                    >Reading the water level sensor data</a
+                  >
+                </li>
+                <li>
+                  <a href="#saving-data">Saving the values to a database</a>
+                </li>
+                <li><a href="#visualizing">Visualizing the data</a></li>
+                <li><a href="#using-data">How to use the sensor data</a></li>
+                <li><a href="#resources">More resources</a></li>
+                <li><a href="#code">Code</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                In this post, I'll explain how to make a water level sensor with
+                a JSN-SR04T ultrasonic sensor, an ESP32 micro controller and a
+                Raspberry Pi.
+              </p>
+              <p>
+                If you want to jump to the GitHub repository,
+                <a
+                  href="https://github.com/portfedh/WaterLevelSensorMQTT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >click here</a
+                >. You can also find a copy of the code at the end of the post.
+              </p>
+            </div>
+
+            <!-- Why make a water level monitor -->
+            <div class="blog-section" id="why-monitor">
+              <h2>Why make a water level monitor</h2>
+              <p>
+                In Mexico City, as well as other Latin American countries, water
+                is usually collected in a water tank at ground level and then
+                pumped to another water tank at the top of the building with a
+                water pump. Water pressure at the home or business is obtained
+                by the height of the water tank, instead of using a compression
+                tank.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_tank_diagram2.jpg"
+                  alt="Diagram showing a typical setup for a house in Mexico City"
+                  class="image fit"
+                  style="width: 100%;"
+                />
+                <p class="image-caption">
+                  Diagram showing a typical setup for a house in Mexico City
+                </p>
+              </div>
+
+              <p>
+                The top water tank can sometimes be hard to reach and If there's
+                a leak or a water shortage, by the time its noticed the water
+                tanks may already be empty and need immediate attention.
+              </p>
+              <p>
+                To help with this problem we can place a water level sensor in
+                the top water tank and set an alert if the water level falls
+                below 50%.
+              </p>
+              <p>
+                With this setup we can monitor the tank remotely, check the
+                amount of water I use and get an alert if there's a problem
+                before it's an emergency.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- How the water level sensor works -->
+            <div class="blog-section" id="how-works">
+              <h2>How the water level sensor works</h2>
+              <p>
+                The JSN-SR04T is a waterproof ultrasonic sensor placed in the
+                lid of the water tank. It takes measurements every 5 minutes and
+                calculates the distance from the lid to the water level inside
+                the tank. It then transmits that information to an ESP32 micro
+                controller.
+              </p>
+              <p>
+                Using Wi-Fi, the ESP32 then sends the measurement to a
+                Raspberry-Pi computer in the same network using the MQTT
+                protocol.
+              </p>
+              <p>
+                The Raspberry Pi then calculates the volume of water in the tank
+                and saves it to an Influx DB database.
+              </p>
+              <p>
+                Also in the Raspberry Pi, Grafana, an open-source visualization
+                software is used to read the database and display the
+                information.
+              </p>
+              <p>
+                Finally, an alarm is set up in Grafana, so if the water level
+                goes below a threshold value, an alarm is triggered, and a
+                Telegram message is sent to alert users of the problem.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/Water_level_sensor_setup_002.png"
+                  alt="Flow diagram of the water level monitor"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Flow diagram of the water level monitor
+                </p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Components -->
+            <div class="blog-section" id="components">
+              <h2>Components of the water level sensor</h2>
+              <p>To build the water level sensor the following is needed:</p>
+
+              <h3>Hardware:</h3>
+              <ul>
+                <li>1 ESP32 micro controller or 1 ESP8266 micro controller</li>
+                <li>1 Raspberry Pi computer</li>
+                <li>
+                  1
+                  <a
+                    href="https://geeksvalley.com/wp-content/uploads/2021/06/Waterproof-Ultrasonic-Sensor-Module.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >JSN-SR04T</a
+                  >
+                  ultrasonic sensor
+                </li>
+                <li>A power outlet for the micro controller and sensor</li>
+                <li>Electrical PVC conduit (optional)</li>
+                <li>
+                  <a
+                    href="https://www.printables.com/model/67422-jsn-sr04t-water-level-sensor-case"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >3D printed sensor fitting (optional)</a
+                  >
+                </li>
+              </ul>
+
+              <h3>Software:</h3>
+              <ul>
+                <li>A WiFi connection</li>
+                <li>
+                  <a
+                    href="https://randomnerdtutorials.com/how-to-install-esp8266-board-arduino-ide/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ESP8266 board</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.arduino.cc/reference/en/libraries/espmqttclient/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >EspMQTTClient.h Arduino library</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://nodered.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Node-RED</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://mosquitto.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Mosquitto MQTT</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.influxdata.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >InfluxDB</a
+                  >
+                </li>
+              </ul>
+
+              <div class="component-images">
+                <div class="row gtr-150">
+                  <div class="col-4 col-12-medium">
+                    <div class="image-container">
+                      <img
+                        src="images/water-level-monitor/water_level_JSN-SR04T.png"
+                        alt="The JSN-SR4T Waterproof ultrasonic sensor"
+                        class="image fit"
+                      />
+                      <p class="image-caption">
+                        JSN-SR04T Waterproof ultrasonic sensor
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="image-container">
+                      <img
+                        src="images/water-level-monitor/water_level_ESP3222_002.png"
+                        alt="An ESP32 micro controller"
+                        class="image fit"
+                      />
+                      <p class="image-caption">ESP32 micro controller</p>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="image-container">
+                      <img
+                        src="images/water-level-monitor/water_level_raspbery_pi_002.png"
+                        alt="A Raspberry Pi computer"
+                        class="image fit"
+                      />
+                      <p class="image-caption">Raspberry Pi computer</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                I chose the JSN-SR04T sensor because it's waterproof and can
+                provide an accurate range up to 4 meters. It requires 3V to work
+                so it can be powered directly by the ESP32 micro controller.
+              </p>
+              <p>
+                For the setup to work, the ESP32 must be in range of your Wi-Fi
+                network. This way it can send the data from the sensor to the
+                Raspberry-Pi. Also, both the ESP32 and the Raspberry Pi need to
+                be in the same local area network.
+              </p>
+              <p>
+                You can use either an ESP32 or an ESP8266 micro controller. Both
+                will work and both are set up in exactly the same way.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- How to build -->
+            <div class="blog-section" id="build-sensor">
+              <h2>How to build the water level sensor</h2>
+
+              <h3>Connections</h3>
+              <p>
+                To set up the sensor simply connect the wires following the
+                electrical diagram below:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_diagram_002.png"
+                  alt="Electrical connections diagram"
+                  class="image fit"
+                />
+                <p class="image-caption">Electrical connections diagram</p>
+              </div>
+
+              <h3>Outdoor housing</h3>
+              <p>
+                Since this is an outdoor setup, place the cables inside an
+                electrical conduit to protect them from the rain and the sun.
+              </p>
+              <p>
+                You will also need to make sure to place an electrical outlet
+                nearby to power the ESP32 and the sensor.
+              </p>
+              <p>
+                To protect the ESP32, part of the ultrasonic sensor and the
+                power outlet, house everything inside a waterproof electrical
+                box attached to a wall.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_electrical_box_label.png"
+                  alt="Waterproof electrical box"
+                  class="image fit"
+                />
+                <p class="image-caption">Waterproof electrical box setup</p>
+              </div>
+
+              <p>
+                Inside the electrical box, fix the ESP32 and part of the sensor
+                using Din rails to keep it in place.
+              </p>
+              <p>
+                To make an exact adapter, you can buy Din rail mounts or get the
+                3D printed files and make your own from
+                <a
+                  href="https://www.thingiverse.com/thing:4754669"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >.
+              </p>
+              <p>
+                To set up the sensor, drill a hole at the top of the water tank.
+                The sensor has silicone pressure fittings that should keep it
+                fixed in place.
+              </p>
+              <p>
+                You can make a
+                <a
+                  href="https://www.printables.com/model/67422-jsn-sr04t-water-level-sensor-case"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >3d printed water tank adapter</a
+                >
+                to make sure the sensor cable is protected from the elements.
+              </p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_3D_printed_sensor_fitting.png"
+                      alt="3D Printed sensor fitting"
+                      class="image fit"
+                    />
+                    <p class="image-caption">3D Printed sensor fitting</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_detail.png"
+                      alt="Sensor attached to lid with 3D printed fitting"
+                      class="image fit"
+                    />
+                    <p class="image-caption">Sensor installation detail</p>
+                  </div>
+                </div>
+              </div>
+
+              <h3>Measurements used</h3>
+              <p>
+                Now we must take the measurements of the water tank to calculate
+                its maximum water volume.
+              </p>
+              <p>
+                This particular water tank can be separated into two different
+                shapes: A cylinder and a cone with its top cut off (called a
+                frustum cone).
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_tank_measurements.png"
+                  alt="Water tank measurements"
+                  class="image fit"
+                />
+                <p class="image-caption">Water tank measurements</p>
+              </div>
+
+              <p>The formulas to calculate the volume of both shapes are:</p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_cylinder_formula.png"
+                      alt="Formula for calculating cylinder volume"
+                      class="image fit"
+                    />
+                    <p class="image-caption">Cylinder volume formula</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_frustum_formula-e1668063602234.jpg"
+                      alt="Formula for calculating frustum volume"
+                      class="image fit"
+                    />
+                    <p class="image-caption">Frustum volume formula</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                Using both formulas, we can calculate the volume for the water
+                tank in the following way:
+              </p>
+              <ul>
+                <li>Cylinder volume: 998 Liters</li>
+                <li>Frustum volume: 119 Liters</li>
+                <li>Total volume: 1,117 Liters</li>
+              </ul>
+              <p>
+                In this case, there were two identical water tanks, so we
+                doubled the amount to get the maximum total water volume.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Reading data -->
+            <div class="blog-section" id="reading-data">
+              <h2>Reading the water level sensor data</h2>
+              <p>
+                After taking the measurements of the water tank and calculating
+                its volume, we can use the sensor to calculate the height from
+                the top of the water tank to the water line and then subtract
+                that height from the frustum and cylinder formulas.
+              </p>
+              <p>
+                To calculate the distance from the sensor to the water line we
+                used this code and uploaded it to the ESP32.
+              </p>
+              <p>
+                The code reads the JSN-SR04T sensor data and sends it through
+                MQTT to the Raspberry Pi.
+              </p>
+              <p>
+                Once uploaded, open the Arduino serial monitor to make sure it
+                was working correctly.
+              </p>
+              <p>
+                Connect the Raspberry Pi and confirm that the Mosquitto MQTT
+                Broker is receiving the values that the ESP32 is reporting.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_setup3.png"
+                  alt="Image of the water level monitor"
+                  class="image fit"
+                />
+                <p class="image-caption">Complete water level monitor setup</p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Saving data -->
+            <div class="blog-section" id="saving-data">
+              <h2>Saving the values to a database</h2>
+              <p>
+                After confirming that MQTT is working correctly, we need to
+                configure Node-RED to read the MQTT data, save it as as JSON
+                object and then write it to a Influx DB database which was
+                previously set up.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_NodeRed.png"
+                  alt="Node-RED setup in Raspberry Pi"
+                  class="image fit"
+                />
+                <p class="image-caption">Node-RED setup in Raspberry Pi</p>
+              </div>
+
+              <ul>
+                <li>The 'Water Level' node reads the MQTT message.</li>
+                <li>
+                  The 'Water Level Calculation' node calculates the water volume
+                  taking into account the distance to the waterline.
+                </li>
+                <li>
+                  The 'Database Storage' reads the volume variable every 5
+                  minutes.
+                </li>
+                <li>
+                  The 'Prepare InfluxDB Payload' node adds the date and time,
+                  and saves the output as a JSON object.
+                </li>
+                <li>
+                  The 'NivelTinaco_Agua' node saves the information to Influx DB
+                  in a database with the same name.
+                </li>
+                <li>Green nodes are used for debugging and testing.</li>
+              </ul>
+
+              <p>
+                The rest of the nodes are configured through the node menu in
+                Node-RED and don't need any code.
+              </p>
+              <p>
+                To check that the data was accessible, log into the Influx DB
+                database using the terminal and take a look at the values.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_influxdb.png"
+                  alt="InfluxDB database display"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  InfluxDB database showing stored data
+                </p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Visualizing data -->
+            <div class="blog-section" id="visualizing">
+              <h2>Visualizing the data</h2>
+              <p>
+                After making sure that the information is getting written into
+                the influx DB database correctly, lets configure Grafana to
+                visualize the data.
+              </p>
+              <p>
+                Grafana is a great tool for data visualization because its open
+                source, easy to use, and produces great dynamic charts.
+              </p>
+              <p>
+                You can make a dashboard with a Gauge reading for the current
+                water level and also a time series to display the water values
+                over a 24-hour period.
+              </p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_gauge_002.png"
+                      alt="Gauge to display current water amount"
+                      class="image fit"
+                    />
+                    <p class="image-caption">Current water level gauge</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/water-level-monitor/water_level_time_series_002.png"
+                      alt="Time series showing water tank level"
+                      class="image fit"
+                    />
+                    <p class="image-caption">24-hour water level time series</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                In the graph you can see how the water level falls periodically
+                (morning showers, washing clothes at midday) and is gradually
+                restored over time.
+              </p>
+              <p>
+                Water levels don't seem to fall below the 1,000L mark, but an
+                alarm is set to send a telegram message if the water level falls
+                below this threshold value.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Using data -->
+            <div class="blog-section" id="using-data">
+              <h2>How to use the sensor data</h2>
+              <p>
+                The sensor data is useful because it checks the water level
+                every 5 minutes and sends an alarm if the level is too low.
+              </p>
+              <p>
+                It lets us know if there's a problem, which gives us time to fix
+                it with enough water available for essential tasks.
+              </p>
+              <p>
+                It is also a useful sensor because it allows us to check the
+                daily water consumption and how that trend changes over time.
+              </p>
+              <p>
+                Measuring is the first step towards efficiency and a more
+                sustainable future.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- More resources -->
+            <div class="blog-section" id="resources">
+              <h2>More resources</h2>
+              <p>
+                I hope you found this post interesting. Building the water
+                sensor was a fun and rewarding project, and I've found it to be
+                a very useful project.
+              </p>
+              <p>
+                If you decide to build a similar water level monitoring setup, I
+                encourage you to get creative and see how you can customize it
+                to fit your specific needs. There are many possible variations
+                and improvements you could make, like integrating it with smart
+                home systems or expanding the sensor network to multiple tanks.
+                The key is to start small, experiment, and don't be afraid to
+                troubleshoot when things don't work as expected.
+              </p>
+              <p>
+                Feel free to contact me if you decide to build one and you need
+                any help.
+              </p>
+              <p>Pablo.</p>
+              <p>
+                You can browse other projects I've done
+                <a href="index.html#projects-section">here</a>.
+              </p>
+              <p>
+                I also made IoT Energy Monitor. You can find the post about that
+                <a
+                  href="https://blog.pablocruz.io/iot-energy-monitor/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >here</a
+                >.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <!-- Code section -->
+            <div class="blog-section" id="code">
+              <h2>Code</h2>
+
+              <h3>Arduino code uploaded to the ESP32:</h3>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>C++ (Arduino)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-cpp">// Code to measure water level in a water tank
+
+// Mills Function 
+const unsigned long event_interval = 300000; // 5 minute interval, 300 second
+//const unsigned long event_interval = 2000; // 2 second interval. For testing
+unsigned long previous_time = 0; 
+
+// MQTT Library
+#include "EspMQTTClient.h" 
+
+#define WIFI_SSID        "&lt;Wifi_Username_here&gt;"                          // WiFi Username
+#define WIFI_PASS        "&lt;Wifi_Password_here&gt;"                          // Wifi Password
+
+#define BROKER_IP        "&lt;MQTT_ip_here&gt;"                                // IP adress of MQTT broker
+#define BROKER_USERNAME  "&lt;broker_username_here&gt;"                        // Broker username
+#define BROKER_PASSWORD  "&lt;broker_password_here&gt;"                        // Broker password
+#define CLIENT_NAME      "&lt;device_name_here&gt;"                            // MQTT client name to identify the device
+#define BROKER_PORT      &lt;mqtt_port_here&gt;                                // MQTT Port. No "" needed
+#define lastwill_topic   "&lt;lastwill_topic_here&gt;"                         // MQTT topic to report lastwill and testament.
+#define lastwill_text    "&lt;lastwill_message_here&gt;"                       // MQTT memssage to report lastwill and testament.
+
+String  client_name       = CLIENT_NAME;                                 // MQTT Topic to report initial value
+String  startup_topic     = "&lt;startup_topic_here&gt;";                      // MQTT Topic to report startup
+String  water_level_topic = "&lt;reporting_values_topic_here&gt;";             // MQTT topic to report values
+
+// Function to connect to MQTT 
+EspMQTTClient client(
+                  WIFI_SSID,
+                  WIFI_PASS,
+                  BROKER_IP,
+                  BROKER_USERNAME,
+                  BROKER_PASSWORD,
+                  CLIENT_NAME,
+                  BROKER_PORT
+                  );
+
+// Water Sensor pins
+#define TRIG 14 //GPIO Number 14, D5
+#define ECHO 12 //GPIO Number 12, D6
+
+void setup() { 
+  
+  Serial.begin(115200); // Serial monitoring 
+  
+  // Enable  debugging messages sent to serial output
+  client.enableDebuggingMessages(); 
+
+  // Enable the web updater.
+  client.enableHTTPWebUpdater();     
+  
+  // MQTT Last Will & Testament
+  client.enableLastWillMessage( lastwill_topic , lastwill_text);
+  
+  // Water level sensor Pin Setup
+  pinMode(TRIG, OUTPUT);       // Initializing Trigger Output
+  pinMode(ECHO, INPUT_PULLUP); // Initializing Echo Input
+  } 
+
+// MQTT Innitial Connection
+void onConnectionEstablished() {
+  client.publish(startup_topic, String(client_name + " is now online."));
+  }
+  
+  void loop() { 
+
+    // MQTT Loop: Must be called once per loop.
+    client.loop(); 
+
+    // Mills Loop
+    unsigned long current_time = millis();
+
+    // Mills if Statement
+    if(current_time - previous_time &gt;= event_interval) {
+      // Set the trigger pin to low for 2uS 
+      digitalWrite(TRIG, LOW); 
+      delayMicroseconds(2); 
+
+      // Send a 20uS high to trigger ranging
+      digitalWrite(TRIG, HIGH);  
+      delayMicroseconds(20); 
+
+      // Send pin low again
+      digitalWrite(TRIG, LOW);  
+
+      // Read pulse times
+      int distance = pulseIn(ECHO, HIGH,26000);  
+
+      //Convert the pulse duration to distance
+      distance= distance/58; 
+
+      //Print Result in serial monitor
+      Serial.print("Distance ");
+      Serial.print(distance);
+      Serial.println("cm");
+
+      // MQTT Client Publisher
+      client.publish(water_level_topic, String(distance));
+
+      // Mills Update timing for next time
+      previous_time = current_time;
+    }
+    
+}</code></pre>
+
+              <h3>Node-RED Code used:</h3>
+
+              <h4>Water Level Calculation node:</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript (Node-RED)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Code to calculate the available water in the water tank.
+// Used in node: 'Water Level Calculation'
+
+// Get sensor distance in meters
+msg.payload = Number(msg.payload)/100;
+sensor_distance = msg.payload;
+
+// Constants
+var pi = 3.141592;
+var Liters = 0;
+var VolumeFullCylinder = 998;
+
+// Function to calculate water in Frustum
+function FrustumVolume(x) {
+    height = 0.35 - x
+    FrustumWaterVolume = (pi/3)*height*(0.55**2 + 0.275**2 + 0.55*0.275)
+    return FrustumWaterVolume*1000
+  }
+
+// Function to calculate water in Cylinder
+function CylinderVolume(x) {
+    height = 1.05 - x + 0.35
+    CylinderWaterVolume = pi * 0.55**2 * height
+    return CylinderWaterVolume*1000
+  }
+
+// Test to check total water volume
+if (sensor_distance &lt; 0.20) {
+    Message = "Error: Value is too low. Check Sensor";
+    Liters = 0;
+    msg.payload = Liters
+
+  } else if (sensor_distance &gt;= 0.20 &amp;&amp; sensor_distance &lt;= 0.35) {
+    Message = "Water is in Frustum.";
+    Liters = FrustumVolume(sensor_distance)+ VolumeFullCylinder;
+    Liters = Math.round(Liters*2) // Multiply x 2 because there are 2 water tanks
+    msg.payload = Liters
+
+  } else if (sensor_distance &gt; 0.35 &amp;&amp; sensor_distance &lt;= 1.40) {
+    Message = "Water is in the cylinder section.";
+    Liters = CylinderVolume(sensor_distance);
+    Liters = Math.round(Liters*2) // Multiply x 2 because there are 2 water tanks
+    msg.payload = Liters
+
+  } else {
+    Message = "Error: Value is to high. Check Sensor";
+    Liters = 9999;
+    msg.payload = Liters
+  }
+
+// Prepare node to send information
+msg.payload = Number(msg.payload); 
+flow.set("water_in_tank",msg.payload);
+flow.set("water_level_sensor","ESP32");
+return {payload: msg.payload};</code></pre>
+
+              <h4>Prepare InfluxDB Payload node:</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript (Node-RED)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Code to prepare water level data to save it into InfluxDB
+// Used in node: 'Prepare InfluxDB Payload'
+
+var today = new Date();
+
+var date = today.getFullYear()+
+            '-'+ (today.getMonth()+1)+
+            '-'+ today.getDate() + 
+            ' ' + today.getHours() + 
+            ":" + today.getMinutes() + 
+            ":" + today.getSeconds();
+
+msg.payload = { 
+    Timestamp:date, 
+    Device:flow.get("water_level_sensor"), 
+    Water_Level_In_Tank:flow.get("water_in_tank"),
+}
+
+return msg;</code></pre>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button">← Back to Portfolio</a>
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://github.com/portfedh/WaterLevelSensorMQTT"
+                    class="button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            class="icon brands alt fa-twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter Profile"
+            ><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            class="icon brands alt fa-linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            ><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            class="icon brands alt fa-github"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            ><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            class="icon solid alt fa-envelope"
+            aria-label="Email link"
+            ><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Copy code functionality -->
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.closest(".code-block").querySelector("code");
+        const text = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            const originalText = button.textContent;
+            button.textContent = "Copied!";
+            button.classList.add("copied");
+
+            setTimeout(function () {
+              button.textContent = originalText;
+              button.classList.remove("copied");
+            }, 2000);
+          })
+          .catch(function (err) {
+            console.error("Failed to copy: ", err);
+            button.textContent = "Failed";
+            setTimeout(function () {
+              button.textContent = "Copy";
+            }, 2000);
+          });
+      }
+    </script>
+  </body>
+</html>

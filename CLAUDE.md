@@ -16,6 +16,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ## Project Structure
 
 ### Key Files
+
 - `index.html` - Main portfolio page (single-page application)
 - `extras.html` - Style guide and component reference
 - `assets/sass/main.scss` - Main stylesheet source
@@ -26,6 +27,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `Pablo_Cruz_Resume_Portfolio_2024.pdf` / `Pablo_Cruz_Resume_Portfolio_2025.pdf` - Resume files
 
 ### Directory Structure
+
 ```
 /
 ├── index.html                 # Main portfolio page
@@ -49,27 +51,31 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ## Architecture & Design Patterns
 
 ### Single-Page Application
+
 - The portfolio is contained entirely in `index.html`
 - Sections are divided into semantic HTML5 elements with specific IDs
 - Navigation uses smooth scrolling via jQuery scrolly plugin
 
 ### Responsive Design
+
 - Mobile-first approach with SCSS breakpoints
 - Breakpoints defined in `assets/sass/libs/_breakpoints.scss`:
   - xxsmall: ≤320px
-  - xsmall: 321px-480px  
+  - xsmall: 321px-480px
   - small: 481px-736px
   - medium: 737px-980px
   - large: 981px-1140px
   - xlarge: 1141px-1680px
 
 ### Image Management
+
 - Static images in `/images/` directory
 - Animated GIFs with hover states for project demonstrations
 - Responsive image sizing with lazy loading
 - Background images for hero sections
 
 ### CSS Architecture
+
 - SCSS with modular approach using `@import`
 - Variables and mixins defined in `libs/` directory
 - Custom CSS overrides in `assets/css/custom.css`
@@ -80,7 +86,9 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 **Note**: This is a static site with no build process. Changes are made directly to source files.
 
 ### SCSS Compilation
+
 If you need to modify SCSS files, you'll need to compile them manually:
+
 ```bash
 # Install SCSS compiler if not available
 npm install -g sass
@@ -90,7 +98,9 @@ sass assets/sass/main.scss assets/css/main.css
 ```
 
 ### Local Development
+
 Since this is a static site, you can serve it locally with any HTTP server:
+
 ```bash
 # Python 3
 python3 -m http.server 8000
@@ -104,6 +114,7 @@ npx http-server
 ## Content Structure
 
 ### Main Sections (index.html)
+
 1. **Header** (`#header`) - Hero section with name, title, and CTA buttons
 2. **About Me** (`#one`) - Personal introduction and video introduction
 3. **Skills** (`#two`) - Technical skills in three columns
@@ -112,7 +123,9 @@ npx http-server
 6. **Footer** (`#footer`) - Social links and copyright
 
 ### Project Showcase Format
+
 Each project includes:
+
 - Static and animated (GIF) images with hover states
 - Project title and description
 - Technology stack used
@@ -133,12 +146,14 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 ## Animation and Interactions
 
 ### Custom CSS Animations
+
 - Fade-in animations on scroll using CSS `animation-timeline: view()`
 - Hover effects on project images (brightness and float animations)
 - GIF animations on hover for project demonstrations
 - Scroll-based fade-out effects
 
 ### JavaScript Features
+
 - jQuery-based smooth scrolling
 - Responsive breakpoint handling
 - Page load animation management
@@ -150,3 +165,4 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 - **Image Optimization**: Ensure images are web-optimized before adding
 - **Mobile-First**: Always test responsive design on mobile devices
 - **SEO Friendly**: Maintain semantic HTML and meta tags when making changes
+- Never use !important in CSS
