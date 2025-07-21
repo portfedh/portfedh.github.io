@@ -47,7 +47,7 @@
 }
 
 .blog-title-container h1 {
-  color: white;
+  color: black;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -92,7 +92,7 @@
 }
 
 #blog-content .blog-section h2 {
-  color: #2b797e;
+  color: black;
   font-size: 2.2rem;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -118,7 +118,7 @@
 }
 
 #blog-content .blog-section h3 {
-  color: #3a8a8f;
+  color: black;
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -126,7 +126,7 @@
 }
 
 #blog-content .blog-section h4 {
-  color: #4a9a9f;
+  color: black;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -199,7 +199,7 @@
   background: linear-gradient(90deg, #2b797e, #f39c12, #e74c3c);
 }
 
-.blog-post .toc-container h3 {
+.blog-post .toc-container h2 {
   color: #333333;
   font-size: 1.5rem;
   font-weight: 600;
@@ -209,7 +209,7 @@
   align-items: center;
 }
 
-.toc-container h3::before {
+.toc-container h2::before {
   content: '📋';
   margin-right: 0.5rem;
   font-size: 1.2rem;
@@ -228,11 +228,11 @@
 }
 
 .toc li::before {
-  content: '▶';
+  content: '•';
   position: absolute;
   left: 0;
   color: #2b797e;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   top: 0.1rem;
 }
 
@@ -254,6 +254,26 @@
   box-shadow: 0 2px 8px rgba(43, 121, 126, 0.2);
 }
 
+/* Disabled CSS smooth scrolling to avoid conflicts with JavaScript */
+/* html {
+  scroll-behavior: smooth;
+} */
+
+/* Section separators */
+.section-separator {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2b797e, transparent);
+  margin: 3rem 0;
+  border: none;
+}
+
+/* Ensure all images have minimum padding */
+.blog-post img {
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 /* Featured image */
 .blog-featured-image {
   text-align: center;
@@ -261,6 +281,10 @@
   padding: 2rem;
   background: #f8f9fa;
   border-radius: 12px;
+}
+
+.blog-featured-image img {
+  padding: 0; /* Reset padding for featured images since container has padding */
 }
 
 .blog-featured-image .image.fit {
@@ -298,12 +322,15 @@
 }
 
 .image-container img {
+  width: 100%;
   max-width: 100%;
   height: auto;
+  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   border: 2px solid white;
   transition: transform 0.3s ease;
+  padding: 0; /* Reset padding since container provides it */
 }
 
 .image-container img:hover {
@@ -312,8 +339,8 @@
 
 /* Ensure images maintain aspect ratio */
 .image-container .image.fit {
-  width: auto;
-  max-width: 115%;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
@@ -555,6 +582,14 @@
   box-shadow: 0 6px 20px rgba(43, 121, 126, 0.4);
 }
 
+.white-text {
+  color: white;
+}
+
+.white-text:hover {
+  color: white;
+}
+
 /* Back to top buttons */
 .back-to-top {
   display: inline-flex;
@@ -583,6 +618,7 @@
 .back-to-top::before {
   content: '↑';
   font-weight: bold;
+  color: white;
 }
 
 /* Special sections styling */
@@ -673,6 +709,11 @@
   .component-images {
     padding: 1.5rem;
   }
+  
+  .code-header {
+    font-size: 0.7rem;
+    padding: 0.6rem 1rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -713,5 +754,10 @@
   .code-block {
     padding: 1rem;
     font-size: 0.8rem;
+  }
+  
+  .code-header {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.8rem;
   }
 }

@@ -165,4 +165,4 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 - **Image Optimization**: Ensure images are web-optimized before adding
 - **Mobile-First**: Always test responsive design on mobile devices
 - **SEO Friendly**: Maintain semantic HTML and meta tags when making changes
-- Never use !important in CSS
+- Never use !important in CSS. If you see it in any css file remove it.
