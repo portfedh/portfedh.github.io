@@ -117,7 +117,6 @@
     <main>
       <!-- AboutMe Start-->
       <section id="one" class="main style1">
-        <canvas id="particles-canvas-about" class="particles-canvas"></canvas>
         <div class="container">
           <article>
             <div class="row gtr-150">
@@ -342,7 +341,6 @@
       <!-- GitHub Contributions End -->
       <!-- Projects Start-->
       <section id="projects-section" class="main style1 special">
-        <canvas id="particles-canvas-projects" class="particles-canvas"></canvas>
         <div class="container">
           <article>
             <header class="major fade-out">
@@ -943,26 +941,11 @@
       
       // Initialize particle systems when page loads
       document.addEventListener('DOMContentLoaded', function() {
-        // Initialize particles for About Me section
-        new ParticleSystem('particles-canvas-about', {
-          particleCount: window.innerWidth < 768 ? 25 : 40,
-          color: 'rgba(43, 121, 126, 0.5)',
-          connectionDistance: 120
-        });
-        
-        // Initialize particles for GitHub section
+        // Initialize particles for GitHub section only
         new ParticleSystem('particles-canvas-github', {
           particleCount: window.innerWidth < 768 ? 20 : 35,
           color: 'rgba(43, 121, 126, 0.4)',
           connectionDistance: 100
-        });
-        
-        // Initialize particles for Projects section
-        new ParticleSystem('particles-canvas-projects', {
-          particleCount: window.innerWidth < 768 ? 35 : 60,
-          color: 'rgba(43, 121, 126, 0.3)',
-          connectionDistance: 130,
-          speed: { min: 0.3, max: 1.0 }
         });
       });
     </script>
