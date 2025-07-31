@@ -168,8 +168,11 @@
                   href="https://github.com/portfedh/WaterLevelSensorMQTT"
                   target="_blank"
                   rel="noopener noreferrer"
+                  class="blog-link"
                   >click here</a
-                >. You can also find a copy of the code at the end of the post.
+                >. You can also find a copy of the
+                <a href="#code" class="blog-link">code</a> at the end of the
+                post.
               </p>
             </div>
 
@@ -187,23 +190,24 @@
                 tank.
               </p>
 
+              <p>
+                The top water tank can sometimes be hard to reach and If there's
+                a leak or a water shortage, by the time its noticed the water
+                tanks may already be empty and need immediate attention.
+              </p>
+
               <div class="image-container">
                 <img
                   src="images/water-level-monitor/water_level_tank_diagram2.jpg"
                   alt="Diagram showing a typical setup for a house in Mexico City"
                   class="image fit"
-                  style="width: 100%;"
+                  style="width: 100%"
                 />
                 <p class="image-caption">
                   Diagram showing a typical setup for a house in Mexico City
                 </p>
               </div>
 
-              <p>
-                The top water tank can sometimes be hard to reach and If there's
-                a leak or a water shortage, by the time its noticed the water
-                tanks may already be empty and need immediate attention.
-              </p>
               <p>
                 To help with this problem we can place a water level sensor in
                 the top water tank and set an alert if the water level falls
@@ -235,15 +239,46 @@
                 the tank. It then transmits that information to an ESP32 micro
                 controller.
               </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_JSN-SR04T.png"
+                  alt="The JSN-SR4T Waterproof ultrasonic sensor"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  JSN-SR04T Waterproof ultrasonic sensor
+                </p>
+              </div>
               <p>
                 Using Wi-Fi, the ESP32 then sends the measurement to a
                 Raspberry-Pi computer in the same network using the MQTT
                 protocol.
               </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_ESP3222_002.png"
+                  alt="An ESP32 micro controller"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  ESP32 micro controller. You can also use an ESP8266.
+                </p>
+              </div>
               <p>
                 The Raspberry Pi then calculates the volume of water in the tank
                 and saves it to an Influx DB database.
               </p>
+
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_raspbery_pi_002.png"
+                  alt="A Raspberry Pi computer"
+                  class="image fit"
+                />
+                <p class="image-caption">Raspberry Pi computer</p>
+              </div>
               <p>
                 Also in the Raspberry Pi, Grafana, an open-source visualization
                 software is used to read the database and display the
@@ -307,6 +342,15 @@
                 </li>
               </ul>
 
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_3D_printed_sensor_fitting.png"
+                  alt="3D Printed sensor fitting"
+                  class="image fit"
+                />
+                <p class="image-caption">3D Printed sensor fitting</p>
+              </div>
+
               <h4>Software:</h4>
               <ul>
                 <li>A WiFi connection</li>
@@ -352,43 +396,6 @@
                 </li>
               </ul>
 
-              <div class="component-images">
-                <div class="row gtr-150">
-                  <div class="col-4 col-12-medium">
-                    <div class="image-container">
-                      <img
-                        src="images/water-level-monitor/water_level_JSN-SR04T.png"
-                        alt="The JSN-SR4T Waterproof ultrasonic sensor"
-                        class="image fit"
-                      />
-                      <p class="image-caption">
-                        JSN-SR04T Waterproof ultrasonic sensor
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-4 col-12-medium">
-                    <div class="image-container">
-                      <img
-                        src="images/water-level-monitor/water_level_ESP3222_002.png"
-                        alt="An ESP32 micro controller"
-                        class="image fit"
-                      />
-                      <p class="image-caption">ESP32 micro controller</p>
-                    </div>
-                  </div>
-                  <div class="col-4 col-12-medium">
-                    <div class="image-container">
-                      <img
-                        src="images/water-level-monitor/water_level_raspbery_pi_002.png"
-                        alt="A Raspberry Pi computer"
-                        class="image fit"
-                      />
-                      <p class="image-caption">Raspberry Pi computer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <p>
                 I chose the JSN-SR04T sensor because it's waterproof and can
                 provide an accurate range up to 4 meters. It requires 3V to work
@@ -430,7 +437,7 @@
                   src="images/water-level-monitor/water_level_diagram_002.png"
                   alt="Electrical connections diagram"
                   class="image fit"
-                  style="padding: 1rem;"
+                  style="padding: 1rem"
                 />
                 <p class="image-caption">Electrical connections diagram</p>
               </div>
@@ -489,27 +496,13 @@
                 to make sure the sensor cable is protected from the elements.
               </p>
 
-              <div class="row gtr-150">
-                <div class="col-6 col-12-medium">
-                  <div class="image-container">
-                    <img
-                      src="images/water-level-monitor/water_level_3D_printed_sensor_fitting.png"
-                      alt="3D Printed sensor fitting"
-                      class="image fit"
-                    />
-                    <p class="image-caption">3D Printed sensor fitting</p>
-                  </div>
-                </div>
-                <div class="col-6 col-12-medium">
-                  <div class="image-container">
-                    <img
-                      src="images/water-level-monitor/water_level_detail.png"
-                      alt="Sensor attached to lid with 3D printed fitting"
-                      class="image fit"
-                    />
-                    <p class="image-caption">Sensor installation detail</p>
-                  </div>
-                </div>
+              <div class="image-container">
+                <img
+                  src="images/water-level-monitor/water_level_detail.png"
+                  alt="Sensor attached to lid with 3D printed fitting"
+                  class="image fit"
+                />
+                <p class="image-caption">Sensor installation detail</p>
               </div>
 
               <h4>Measurements used</h4>
@@ -592,7 +585,8 @@
               </p>
               <p>
                 To calculate the distance from the sensor to the water line we
-                used this code and uploaded it to the ESP32.
+                used this <a href="#code" class="blog-link">code</a> and
+                uploaded it to the ESP32.
               </p>
               <p>
                 The code reads the JSN-SR04T sensor data and sends it through
@@ -809,8 +803,6 @@
                 Feel free to contact me if you decide to build one and you need
                 any help.
               </p>
-              <p>Pablo.</p>
-
               <p>
                 I also made IoT Energy Monitor. You can find the post about that
                 <a
@@ -820,6 +812,39 @@
                   >here</a
                 >.
               </p>
+
+              <p>
+                Finally, here are some additional resources that I used to make this project possible:
+              </p>
+
+              <div class="video-resources">
+                <div class="row gtr-150">
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=h6321UBATps" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/h6321UBATps/maxresdefault.jpg" alt="YouTube Video Thumbnail" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=KawRd5evHyY" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/KawRd5evHyY/maxresdefault.jpg" alt="YouTube Video Thumbnail" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=7M8MHa6W9w0" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/7M8MHa6W9w0/maxresdefault.jpg" alt="YouTube Video Thumbnail" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div style="text-align: center">
                 <a
@@ -855,13 +880,13 @@ unsigned long previous_time = 0;
 #define WIFI_SSID        "&lt;Wifi_Username_here&gt;"                          // WiFi Username
 #define WIFI_PASS        "&lt;Wifi_Password_here&gt;"                          // Wifi Password
 
-#define BROKER_IP        "&lt;MQTT_ip_here&gt;"                                // IP adress of MQTT broker
+#define BROKER_IP        "&lt;MQTT_ip_here&gt;"                                // IP address of MQTT broker
 #define BROKER_USERNAME  "&lt;broker_username_here&gt;"                        // Broker username
 #define BROKER_PASSWORD  "&lt;broker_password_here&gt;"                        // Broker password
 #define CLIENT_NAME      "&lt;device_name_here&gt;"                            // MQTT client name to identify the device
 #define BROKER_PORT      &lt;mqtt_port_here&gt;                                // MQTT Port. No "" needed
-#define lastwill_topic   "&lt;lastwill_topic_here&gt;"                         // MQTT topic to report lastwill and testament.
-#define lastwill_text    "&lt;lastwill_message_here&gt;"                       // MQTT memssage to report lastwill and testament.
+#define lastwill_topic   "&lt;lastwill_topic_here&gt;"                         // MQTT topic to report last-will and testament.
+#define lastwill_text    "&lt;lastwill_message_here&gt;"                       // MQTT message to report last-will and testament.
 
 String  client_name       = CLIENT_NAME;                                 // MQTT Topic to report initial value
 String  startup_topic     = "&lt;startup_topic_here&gt;";                      // MQTT Topic to report startup
@@ -900,7 +925,7 @@ void setup() {
   pinMode(ECHO, INPUT_PULLUP); // Initializing Echo Input
   } 
 
-// MQTT Innitial Connection
+// MQTT Initial Connection
 void onConnectionEstablished() {
   client.publish(startup_topic, String(client_name + " is now online."));
   }
@@ -1055,7 +1080,9 @@ return msg;</code></pre>
             <div class="blog-navigation">
               <div class="nav-links">
                 <div class="nav-left">
-                  <a href="index.html" class="button white-text">← Back to Portfolio</a>
+                  <a href="index.html" class="button white-text"
+                    >← Back to Portfolio</a
+                  >
                 </div>
                 <div class="nav-right">
                   <a
@@ -1072,6 +1099,34 @@ return msg;</code></pre>
           </article>
         </div>
       </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>Get in touch!</h2>
+            </header>
+            <p class="fade-out">
+              I'm currently open to work and I'd be happy to chat.
+              <br />
+              <br />
+              Feel free to reach out if you are interested in what I can bring
+              to your project or team.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Email me</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
     </main>
     <!-- Main Content End -->
 
@@ -1145,68 +1200,7 @@ return msg;</code></pre>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
-    <!-- Copy code functionality -->
-    <script>
-      function copyCode(button) {
-        const codeBlock = button.closest(".code-block").querySelector("code");
-        const text = codeBlock.textContent;
-
-        navigator.clipboard
-          .writeText(text)
-          .then(function () {
-            const originalText = button.textContent;
-            button.textContent = "Copied!";
-            button.classList.add("copied");
-
-            setTimeout(function () {
-              button.textContent = originalText;
-              button.classList.remove("copied");
-            }, 2000);
-          })
-          .catch(function (err) {
-            console.error("Failed to copy: ", err);
-            button.textContent = "Failed";
-            setTimeout(function () {
-              button.textContent = "Copy";
-            }, 2000);
-          });
-      }
-
-      // Custom smooth scrolling for table of contents
-      document.addEventListener('DOMContentLoaded', function() {
-        // Wait for jQuery and scrolly to load
-        setTimeout(() => {
-          const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
-          
-          tocLinks.forEach(link => {
-            // Remove any existing scrolly behavior
-            if (window.jQuery) {
-              jQuery(link).off('click.scrolly');
-            }
-            
-            link.addEventListener('click', function(e) {
-              e.preventDefault();
-              e.stopPropagation();
-              
-              const targetId = this.getAttribute('href').substring(1);
-              const targetElement = document.getElementById(targetId);
-              
-              console.log('Clicking link to:', targetId);
-              console.log('Target element found:', targetElement);
-              
-              if (targetElement) {
-                const targetPosition = targetElement.offsetTop - 80;
-                console.log('Scrolling to position:', targetPosition);
-                
-                window.scrollTo({
-                  top: targetPosition,
-                  behavior: 'smooth'
-                });
-              }
-            });
-          });
-        }, 100);
-      });
-    </script>
+    <!-- Blog functionality -->
+    <script src="assets/js/blog.js"></script>
   </body>
 </html>

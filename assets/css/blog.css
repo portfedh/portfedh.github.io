@@ -86,6 +86,16 @@
   z-index: 10;
 }
 
+/* Override all link styles in blog post to prevent white color and underlines */
+.blog-post a {
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: none;
+  color: #1a5b5f;
+}
+
 .blog-section {
   margin-bottom: 4rem;
   line-height: 1.8;
@@ -107,7 +117,7 @@
 }
 
 .blog-section h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -134,14 +144,15 @@
 }
 
 .blog-section p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   text-align: justify;
   font-size: 1.1rem;
   color: #495057;
   line-height: 1.8;
 }
 
-.blog-section ul, .blog-section ol {
+.blog-section ul,
+.blog-section ol {
   margin-bottom: 2rem;
   padding-left: 2.5rem;
   font-size: 1.1rem;
@@ -164,6 +175,24 @@
 .blog-section a:hover {
   color: #1a5b5f;
   border-bottom-color: #2b797e;
+  text-decoration: none;
+}
+
+/* Blog link class to override main.css styles with higher specificity */
+.blog-post .blog-section .blog-link,
+.blog-post .blog-link {
+  color: #2b797e;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.blog-post .blog-section .blog-link:hover,
+.blog-post .blog-link:hover {
+  color: #1a5b5f;
+  text-decoration: none;
+  border-bottom-color: #2b797e;
 }
 
 /* TOC specific overrides for blog-section */
@@ -182,15 +211,17 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border: 1px solid #dee2e6;
   border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 4rem;
+  padding: 1.5rem;
+  margin: 0 auto 4rem auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .toc-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -203,14 +234,14 @@
   color: #333333;
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   margin-top: 0;
   display: flex;
   align-items: center;
 }
 
 .toc-container h2::before {
-  content: '📋';
+  content: "📋";
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
@@ -222,13 +253,13 @@
 }
 
 .toc li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.5rem;
 }
 
 .toc li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: #2b797e;
@@ -240,7 +271,7 @@
   color: #212529;
   text-decoration: none;
   font-weight: 500;
-  padding: 0.5rem 0.8rem;
+  padding: 0.3rem 0.6rem;
   display: block;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -272,6 +303,11 @@
 .blog-post img {
   padding: 1rem;
   box-sizing: border-box;
+}
+
+/* Override main.css margin-bottom for image.fit */
+.blog-post .image.fit {
+  margin-bottom: 0;
 }
 
 /* Featured image */
@@ -346,13 +382,15 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .image-caption {
   font-style: italic;
   color: #6c757d;
-  font-size: 1rem;
-  margin-top: 1rem;
+  font-size: 0.9rem;
+  margin-top: 0;
   margin-bottom: 0;
   font-weight: 500;
   background: white;
@@ -398,11 +436,11 @@
 }
 
 /* Diagram images should be medium sized */
-.image-container img[alt*="diagram"], 
+.image-container img[alt*="diagram"],
 .image-container img[alt*="Diagram"],
 .image-container img[alt*="Flow"],
 .image-container img[alt*="setup"] {
-  max-height: 400px;
+  max-height: 600px;
 }
 
 /* Component images should be smaller */
@@ -429,7 +467,8 @@
   padding: 0;
   margin: 2.5rem 0;
   overflow: hidden;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family: "JetBrains Mono", "Fira Code", "Monaco", "Menlo", "Ubuntu Mono",
+    monospace;
   font-size: 0.5rem;
   line-height: 1.4;
   position: relative;
@@ -437,7 +476,7 @@
 }
 
 .code-block::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -495,7 +534,8 @@
 }
 
 /* Override Prism.js font size with higher specificity */
-.code-block code[class*="language-"], .code-block pre[class*="language-"] {
+.code-block code[class*="language-"],
+.code-block pre[class*="language-"] {
   font-size: 0.75rem;
 }
 
@@ -537,7 +577,7 @@
 
 /* Blog navigation */
 .blog-navigation {
-  margin-top: 4rem;
+  margin-top: 0.5rem;
   padding: 2rem;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 12px;
@@ -553,7 +593,8 @@
   gap: 1.5rem;
 }
 
-.nav-left, .nav-right {
+.nav-left,
+.nav-right {
   flex: 1;
 }
 
@@ -590,6 +631,63 @@
   color: white;
 }
 
+/* Video resources styling */
+.video-resources {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.video-container {
+  position: relative;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.video-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.video-container:hover .video-thumbnail {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.video-container:hover .play-button {
+  background: rgba(255, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
 /* Back to top buttons */
 .back-to-top {
   display: inline-flex;
@@ -597,16 +695,18 @@
   justify-content: center;
   background: #3a8a8f;
   color: white;
-  width: 35px;
+  width: auto;
   height: 35px;
+  padding: 0 1rem;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   transition: all 0.3s ease;
   border: none;
   margin: 2rem auto 0 auto;
   position: relative;
+  gap: 0.5rem;
 }
 
 .back-to-top:hover {
@@ -616,7 +716,7 @@
 }
 
 .back-to-top::before {
-  content: '↑';
+  content: "↑ Back to top";
   font-weight: bold;
   color: white;
 }
@@ -633,7 +733,7 @@
 }
 
 #blog-content::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2rem;
   left: 50%;
@@ -650,66 +750,66 @@
     padding: 2rem 1rem;
     margin-top: -1rem;
   }
-  
+
   .blog-header {
     padding: 2.5rem 1rem 2rem 1rem;
   }
-  
+
   .blog-title-container h1 {
     font-size: 2rem;
   }
-  
+
   .blog-description {
     font-size: 1.1rem;
   }
-  
+
   .image-container {
     max-width: 100%;
   }
-  
+
   .component-images .image-container {
     max-width: 100%;
   }
-  
+
   .blog-section {
     margin-bottom: 3rem;
   }
-  
+
   .blog-section h2 {
     font-size: 1.8rem;
   }
-  
+
   .toc-container {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
-  
+
   .code-block {
     padding: 1.5rem;
     font-size: 0.85rem;
   }
-  
+
   .nav-links {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .nav-right {
     text-align: center;
   }
-  
+
   .blog-navigation {
     margin-bottom: 2rem;
   }
-  
+
   .image-container {
     padding: 1rem;
     margin: 2rem 0;
   }
-  
+
   .component-images {
     padding: 1.5rem;
   }
-  
+
   .code-header {
     font-size: 0.7rem;
     padding: 0.6rem 1rem;
@@ -720,42 +820,44 @@
   .blog-header {
     padding: 2rem 0.5rem 1.5rem 0.5rem;
   }
-  
+
   .blog-title-container h1 {
     font-size: 1.8rem;
   }
-  
+
   .blog-post {
     padding: 1.5rem 0.8rem;
     border-radius: 8px;
   }
-  
+
   .blog-section h2 {
     font-size: 1.6rem;
   }
-  
-  .blog-section p, .blog-section ul, .blog-section ol {
+
+  .blog-section p,
+  .blog-section ul,
+  .blog-section ol {
     font-size: 1rem;
   }
-  
+
   .image-container {
     margin: 1.5rem 0;
     padding: 0.8rem;
   }
-  
+
   .component-images .col-4 {
     margin-bottom: 1.5rem;
   }
-  
+
   .toc-container {
-    padding: 1rem;
+    padding: 0.8rem;
   }
-  
+
   .code-block {
     padding: 1rem;
     font-size: 0.8rem;
   }
-  
+
   .code-header {
     font-size: 0.7rem;
     padding: 0.5rem 0.8rem;

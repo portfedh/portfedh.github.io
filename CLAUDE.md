@@ -166,3 +166,4 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 - **Mobile-First**: Always test responsive design on mobile devices
 - **SEO Friendly**: Maintain semantic HTML and meta tags when making changes
 - Never use !important in CSS. If you see it in any css file remove it.
+- For CSS changes, never write in the main.css file, always use the more specific css file to add specificity
