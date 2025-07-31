@@ -1,26 +1,35 @@
-(function ($) {
-  var $window = $(window),
-    $body = $("body");
+// Main JavaScript functionality - Vanilla JS (no jQuery)
+(function () {
 
-  // Breakpoints.
-  breakpoints({
-    xlarge: ["1141px", "1680px"],
-    large: ["981px", "1140px"],
-    medium: ["737px", "980px"],
-    small: ["481px", "736px"],
-    xsmall: ["321px", "480px"],
-    xxsmall: [null, "320px"],
-  });
-
-  // Play initial animations on page load.
-  $window.on("load", function () {
-    window.setTimeout(function () {
-      $body.removeClass("is-preload");
+  // Play initial animations on page load
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      document.body.classList.remove("is-preload");
     }, 100);
   });
 
-  // Scrolly.
-  $(".scrolly").scrolly();
+  // Smooth scrolling for internal links
+  function initSmoothScrolling() {
+    // Handle all internal anchor links (href="#something")
+    const internalLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+    
+    internalLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        const targetId = href.substring(1); // Remove the #
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          e.preventDefault();
+          // Smooth scroll to target
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  }
 
   // Skeleton Loading for Images
   function initSkeletonLoading() {
@@ -52,8 +61,9 @@
     });
   }
 
-  // Initialize skeleton loading when DOM is ready
-  $(document).ready(function() {
+  // Initialize everything when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    initSmoothScrolling();
     initSkeletonLoading();
   });
-})(jQuery);
+})();
