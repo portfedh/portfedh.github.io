@@ -63,6 +63,12 @@
   margin: 0 auto;
 }
 
+/* Fix for GIF transparency overlay issues */
+.project2-image.animated-gif[src*="energy-monitor-gif"],
+.project3-image.animated-gif[src*="water-level-gif"] {
+  background-color: #ffffff;
+}
+
 /* Main image */
 .mainImage {
   position: relative;
