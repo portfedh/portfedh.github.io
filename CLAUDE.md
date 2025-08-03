@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+*Last updated: August 3, 2025*
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
@@ -9,7 +11,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ## Technology Stack
 
 - **Frontend**: Pure HTML5, CSS3, JavaScript (no frameworks)
-- **Styling**: SCSS (compiled to CSS), FontAwesome icons
+- **Styling**: SCSS (compiled to CSS), FontAwesome icons via CDN
 - **Hosting**: GitHub Pages (static site)
 - **Domain**: Custom domain (pablocruz.io) via CNAME file
 
@@ -20,7 +22,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `index.html` - Main portfolio page (single-page application)
 - `extras.html` - Style guide and component reference
 - `assets/sass/main.scss` - Main stylesheet source
-- `assets/css/` - Compiled CSS and custom styles
+- `assets/css/` - Compiled CSS and custom styles (no local FontAwesome)
 - `assets/js/main.js` - JavaScript functionality
 - `CNAME` - GitHub Pages custom domain configuration
 - `robots.txt` - SEO configuration
@@ -35,11 +37,11 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ├── assets/
 │   ├── css/
 │   │   ├── main.css          # Compiled SCSS
-│   │   ├── custom.css        # Custom overrides
-│   │   └── fontawesome-all.min.css
+│   │   └── custom.css        # Custom overrides
 │   ├── js/
-│   │   ├── main.js           # Primary JavaScript
-│   │   └── [jQuery libraries]
+│   │   ├── main.js           # Primary JavaScript (vanilla JS)
+│   │   ├── blog.js           # Blog-specific functionality
+│   │   └── particles.js      # Particle effects
 │   ├── sass/
 │   │   ├── main.scss         # Main SCSS entry point
 │   │   └── libs/             # SCSS partials and mixins
@@ -54,7 +56,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 
 - The portfolio is contained entirely in `index.html`
 - Sections are divided into semantic HTML5 elements with specific IDs
-- Navigation uses smooth scrolling via jQuery scrolly plugin
+- Navigation uses smooth scrolling via vanilla JavaScript scrollIntoView API
 
 ### Responsive Design
 
@@ -79,7 +81,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - SCSS with modular approach using `@import`
 - Variables and mixins defined in `libs/` directory
 - Custom CSS overrides in `assets/css/custom.css`
-- FontAwesome icons integrated throughout
+- FontAwesome icons loaded via CDN (no local files)
 
 ## Development Commands
 
@@ -138,6 +140,7 @@ Each project includes:
 - Google Analytics integration (G-LDNFBEYMLD)
 - Custom favicon (terminal icon)
 - Structured meta descriptions and titles
+- FontAwesome loaded via CDN kit (1450436a40)
 
 ## Deployment
 
@@ -154,9 +157,9 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 
 ### JavaScript Features
 
-- jQuery-based smooth scrolling
-- Responsive breakpoint handling
-- Page load animation management
+- Vanilla JavaScript smooth scrolling using scrollIntoView API
+- Skeleton loading for images with lazy loading support
+- Page load animation management with preload class removal
 
 ## Important Notes
 
