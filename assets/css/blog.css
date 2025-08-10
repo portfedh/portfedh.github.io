@@ -159,6 +159,11 @@
   color: #495057;
 }
 
+.blog-section li ul,
+.blog-section li ol {
+  margin-bottom: 0.2rem;
+}
+
 .blog-section li {
   margin-bottom: 0.8rem;
   line-height: 1.7;
@@ -253,9 +258,13 @@
 }
 
 .toc li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   position: relative;
   padding-left: 1.5rem;
+}
+
+.toc li ul {
+  margin-bottom: 0.2rem;
 }
 
 .toc li::before {
@@ -384,6 +393,34 @@
   margin-right: auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+/* Make script index image fill container horizontally */
+.image-container img[src*="financial_report_script_index_002.png"] {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Make API key configuration image fill container horizontally */
+.image-container img[src*="financial_report_api_key_input_002.png"] {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Make FPDF2 library logo image fill container horizontally */
+.image-container img[src*="financial_report_pyhon_fpdf2_library_logo_002.png"] {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Make file structure image fill container horizontally */
+.image-container img[src*="financial_report_code_file_structure-300x208.png"] {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 .image-caption {
@@ -843,6 +880,31 @@
   .image-container {
     margin: 1.5rem 0;
     padding: 0.8rem;
+  }
+
+  /* Reduce padding for featured image on mobile */
+  .blog-featured-image {
+    padding: 0.5rem;
+  }
+
+  /* Make script index image container full width on mobile */
+  .image-container[style*="max-width: 40%"] {
+    max-width: 100% !important;
+  }
+
+  /* Make API key configuration image container full width on mobile */
+  .image-container[style*="max-width: 60%"] {
+    max-width: 100% !important;
+  }
+
+  /* Make FPDF2 library logo image container full width on mobile */
+  .image-container[style*="max-width: 20%"] {
+    max-width: 100% !important;
+  }
+
+  /* Make file structure image container full width on mobile */
+  .image-container[style*="max-width: 30%"] {
+    max-width: 100% !important;
   }
 
   .component-images .col-4 {
