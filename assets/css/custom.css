@@ -44,6 +44,16 @@
   padding: 2em 1em 2em 1em;
 }
 
+/* Footer icon sizing for FontAwesome 6 */
+ul.icons li i {
+  font-size: 1.5em;
+}
+
+/* Hide icon labels (accessibility text) */
+ul.icons li .label {
+  display: none;
+}
+
 /* Image Styles */
 /* ************ */
 
