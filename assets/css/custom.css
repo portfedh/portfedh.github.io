@@ -278,11 +278,6 @@ ul.icons li .label {
     margin-left: 0;
     display: block;
   }
-
-  /* Smaller headings for Languages & Frameworks and Tools & Technologies on mobile */
-  h2.skills-heading {
-    font-size: 1.5rem;
-  }
 }
 
 /* GitHub responsive adjustments */
