@@ -261,22 +261,27 @@ ul.icons li .label {
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  
+
   #two .row.gtr-150 {
     margin-left: -0.5rem;
     margin-right: -0.5rem;
   }
-  
+
   #two .col-6-small {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  
+
   /* Center text in My Expertise section on mobile */
   #two .col-4.col-12-medium:first-child .skills {
     text-align: center;
     margin-left: 0;
     display: block;
+  }
+
+  /* Smaller headings for Languages & Frameworks and Tools & Technologies on mobile */
+  h2.skills-heading {
+    font-size: 1.5rem;
   }
 }
 
