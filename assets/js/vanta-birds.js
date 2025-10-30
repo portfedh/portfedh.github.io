@@ -1,9 +1,9 @@
-// Vanta.js Birds Effect for About Me section
+// Vanta.js Birds Effect for Get in Touch section
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize Vanta Birds effect
   VANTA.BIRDS({
     // DOM element selector where the effect will be applied
-    el: "#about-me-birds",
+    el: "#contact-birds",
 
     // INTERACTION CONTROLS
     mouseControls: true, // Enable mouse interaction with birds (they react to cursor movement)

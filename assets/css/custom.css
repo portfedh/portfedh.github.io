@@ -437,12 +437,12 @@ ul.icons li .label {
   pointer-events: none;
 }
 
-/* Ensure About Me content stays above the birds effect */
-#one {
+/* Ensure Contact section content stays above the birds effect */
+#contact-section {
   position: relative;
 }
 
-#one .container {
+#contact-section .container {
   position: relative;
   z-index: 2;
 }
