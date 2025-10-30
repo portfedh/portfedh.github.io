@@ -286,11 +286,11 @@ ul.icons li .label {
     padding: 0.5rem;
     margin: 0 auto;
   }
-  
+
   .github-stat-card {
     margin-bottom: 1.5rem;
   }
-  
+
   .github-chart-container {
     margin: 1rem 0;
   }
@@ -421,5 +421,41 @@ ul.icons li .label {
 @media screen and (max-width: 320px) {
   .particles-canvas {
     opacity: 0.5;
+  }
+}
+
+/* Vanta Birds Background Styles */
+/* *************************** */
+
+.vanta-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure About Me content stays above the birds effect */
+#one {
+  position: relative;
+}
+
+#one .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive adjustments for Vanta birds */
+@media screen and (max-width: 736px) {
+  .vanta-background {
+    opacity: 0.8;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .vanta-background {
+    opacity: 0.6;
   }
 }
