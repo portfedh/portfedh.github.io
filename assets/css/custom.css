@@ -278,6 +278,20 @@ ul.icons li .label {
     margin-left: 0;
     display: block;
   }
+
+  /* Stack Languages & Frameworks and Tools & Technologies vertically on mobile */
+  #two .col-4.col-6-small {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  /* Center align and remove left margin for skills lists on mobile */
+  .skills,
+  .skills-other {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 2rem;
+  }
 }
 
 /* GitHub responsive adjustments */
