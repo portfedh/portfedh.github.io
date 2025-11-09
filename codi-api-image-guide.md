@@ -32,6 +32,7 @@ Create this folder structure in your project:
 **Dimensions:** ~400-500px width, 4:3 or 16:9 aspect ratio
 **Purpose:** Static thumbnail shown in portfolio grid
 **Design:** Blue gradient (#0089D1) with:
+
 - "CoDi API" text
 - "API RESTful para Pagos Digitales en México" subtitle
 - Mexican flag or Banxico reference
@@ -41,6 +42,7 @@ Create this folder structure in your project:
 **Dimensions:** Same as cover image
 **Purpose:** Animated thumbnail shown on hover
 **Design:** Could be:
+
 - Animated gradient effect
 - QR code generation animation
 - Payment flow animation
@@ -48,13 +50,14 @@ Create this folder structure in your project:
 
 ---
 
-### 2. Hero/Featured Image
+### 2. Hero/Featured Image - Done
 
 **File:** `images/codi-api/codi-api-featured.png`
 **Dimensions:** Full width (~1200-1600px wide, 600-800px tall)
 **Purpose:** Main hero image at top of blog post
 **Source:** Screenshot from https://docs.bite-size.mx/
 **Recommendation:**
+
 - Full-width screenshot of the documentation landing page
 - Should show the hero section with "API CoDi® para Pagos Digitales en México"
 - Include the three value propositions if possible
@@ -67,6 +70,7 @@ Create this folder structure in your project:
 **Purpose:** Show documentation site landing page
 **Source:** Screenshot from https://docs.bite-size.mx/
 **What to capture:**
+
 - Hero section with tagline
 - Three key benefits (Sin Comisiones, Dinero al Instante, Trazabilidad Total)
 - Main characteristics section
@@ -77,6 +81,7 @@ Create this folder structure in your project:
 **Purpose:** Show interactive API playground
 **Source:** Screenshot from playground page
 **What to capture:**
+
 - Tab navigation (Generar QR, Push Notification, etc.)
 - Form fields for testing
 - "Generar Código QR" button
@@ -86,6 +91,7 @@ Create this folder structure in your project:
 **Purpose:** Show development tools page
 **Source:** Screenshot from tools page
 **What to capture:**
+
 - "Herramientas de Desarrollo" heading
 - Code generator interface
 - Language selector (cURL, JavaScript, Python)
@@ -99,6 +105,7 @@ Create this folder structure in your project:
 **Purpose:** Show complete Swagger API documentation
 **Source:** Screenshot from https://api.bite-size.mx/api-docs
 **What to capture:**
+
 - Full Swagger UI interface
 - Title and version badges
 - All 4 sections visible:
@@ -113,6 +120,7 @@ Create this folder structure in your project:
 **Purpose:** Show QR code endpoint detail
 **Source:** Screenshot from Swagger docs with /v2/codi/qr expanded
 **What to capture:**
+
 - Endpoint path and description
 - Request body schema
 - Response examples
@@ -122,12 +130,14 @@ Create this folder structure in your project:
 **Purpose:** Show push notification endpoint detail
 **Source:** Screenshot from Swagger docs with /v2/codi/push expanded
 **What to capture:**
+
 - Same as QR endpoint but for push notifications
 
 **File:** `images/codi-api/swagger-all-endpoints.png`
 **Purpose:** Overview of all API endpoints
 **Source:** Screenshot from Swagger docs showing all endpoints collapsed
 **What to capture:**
+
 - Clean view of all 5 endpoints
 - Organized by category
 - HTTP methods color-coded
@@ -141,6 +151,7 @@ Create this folder structure in your project:
 **File:** `images/codi-api/codi-workflow.png`
 **Purpose:** Illustrate 3-step payment process
 **How to create:**
+
 - Use a tool like Figma, Canva, or Draw.io
 - Show: 1) Generate request → 2) Customer authorizes → 3) Instant confirmation
 - Use blue color theme (#0089D1)
@@ -149,6 +160,7 @@ Create this folder structure in your project:
 **File:** `images/codi-api/architecture-diagram.png`
 **Purpose:** Show technical architecture
 **How to create:**
+
 - Diagram showing flow from Client App → CoDi API → Banxico → Bank
 - Include authentication layer, database, webhooks
 - Use boxes and arrows
@@ -161,6 +173,7 @@ Create this folder structure in your project:
 ### From Live Sites:
 
 1. **Documentation Site:** https://docs.bite-size.mx/
+
    - Use browser dev tools to set viewport to ~1400px wide
    - Take full-page screenshots or section-by-section
    - Ensure blue gradient and branding are visible
@@ -191,10 +204,12 @@ The HTML files reference these image paths. Until you add the actual images, you
 ### Priority Order:
 
 1. **High Priority** (visible on portfolio):
+
    - `codi-api-cover.png` - Portfolio thumbnail
    - `codi-api-gif.gif` - Animated thumbnail
 
 2. **Medium Priority** (visible on blog post):
+
    - `codi-api-featured.png` - Hero image
    - `docs-index.png` - Documentation screenshot
    - `swagger-docs.png` - API documentation
