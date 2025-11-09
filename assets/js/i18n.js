@@ -18,10 +18,9 @@ class I18n {
     // Load translation files
     await this.loadTranslations();
 
-    // Determine which language to use
+    // Determine which language to use - default to English unless user has saved preference
     const savedLang = localStorage.getItem('preferred-language');
-    const browserLang = this.getBrowserLanguage();
-    const initialLang = savedLang || browserLang || this.defaultLang;
+    const initialLang = savedLang || this.defaultLang;
 
     // Set the language
     await this.setLanguage(initialLang);
@@ -55,18 +54,6 @@ class I18n {
       // Fallback to English if loading fails
       this.currentLang = 'en';
     }
-  }
-
-  /**
-   * Get browser's preferred language
-   */
-  getBrowserLanguage() {
-    const browserLang = navigator.language || navigator.userLanguage;
-    // Extract language code (e.g., 'es' from 'es-MX')
-    const langCode = browserLang.split('-')[0];
-
-    // Return if supported, otherwise default
-    return this.supportedLangs.includes(langCode) ? langCode : this.defaultLang;
   }
 
   /**
