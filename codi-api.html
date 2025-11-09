@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CoDi API - RESTful API for Digital Payments in Mexico | Pablo Cruz</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="CoDi API - RESTful API for Digital Payments in Mexico"
+    />
+    <meta
+      property="og:description"
+      content="Production-ready Node.js REST API for commission-free digital payments in Mexico. Integrates with Banxico's official CoDi system using RSA digital signatures."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/codi-api/codi-api-cover.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/codi-api.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="CoDi API - RESTful API for Digital Payments in Mexico"
+    />
+    <meta
+      name="twitter:description"
+      content="Production-ready Node.js REST API for commission-free digital payments in Mexico. Integrates with Banxico's official CoDi system using RSA digital signatures."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/codi-api/codi-api-cover.png"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/codi-api/codi-api-featured.png"
+    />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">← Back to Portfolio</a>
+        </div>
+        <div class="blog-title-container">
+          <h1>CoDi API - RESTful API for Digital Payments in Mexico</h1>
+          <p class="blog-meta">
+            Published: November 8, 2025 | Status: <span style="color: #22c55e; font-weight: bold;">Production</span> | License: Apache 2.0
+          </p>
+          <p class="blog-description">
+            An open-source Node.js/Express production-ready REST API that enables Mexican businesses to generate digital payment requests through Mexico's Central Bank (Banxico) CoDi system. Zero transaction fees, bank-level security, and comprehensive documentation.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-featured-image">
+              <img
+                src="images/codi-api/codi-api-featured.png"
+                alt="CoDi API Documentation Site Landing Page"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Table of Contents</h2>
+              <ul class="toc">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#what-is-codi">What is CoDi?</a></li>
+                <li><a href="#architecture">Technical Architecture</a></li>
+                <li><a href="#features">Key Features</a>
+                  <ul>
+                    <li><a href="#qr-payments">QR Code Payments</a></li>
+                    <li><a href="#push-payments">Push Notifications</a></li>
+                    <li><a href="#payment-queries">Payment Status Queries</a></li>
+                    <li><a href="#webhooks">Webhook Integration</a></li>
+                    <li><a href="#security">Security Architecture</a></li>
+                    <li><a href="#documentation">Interactive Documentation</a></li>
+                  </ul>
+                </li>
+                <li><a href="#developer-experience">Developer Experience</a></li>
+                <li><a href="#tech-stack">Tech Stack Deep Dive</a></li>
+                <li><a href="#database">Database Architecture</a></li>
+                <li><a href="#security-deep-dive">Security Features</a></li>
+                <li><a href="#api-endpoints">API Endpoints Reference</a></li>
+                <li><a href="#code-examples">Code Examples</a></li>
+                <li><a href="#testing">Testing & Quality Assurance</a></li>
+                <li><a href="#deployment">Deployment & Production</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#open-source">Open Source & Community</a></li>
+                <li><a href="#links">Project Links & Resources</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                In this post, I'll explain how I built a production-ready REST API that enables businesses in Mexico to accept digital payments with zero transaction fees. The API integrates with the Bank of Mexico's (Banxico) official CoDi payment system and is fully open source under the Apache 2.0 license.
+              </p>
+              <p>
+                If you want to jump directly to the code, you can visit the
+                <a
+                  href="https://github.com/portfedh/codi-api"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >GitHub repository</a
+                >. You can also explore the <a href="https://docs.bite-size.mx/" target="_blank" rel="noopener noreferrer" class="blog-link">live documentation site</a> or try the <a href="https://api.bite-size.mx/api-docs" target="_blank" rel="noopener noreferrer" class="blog-link">interactive API playground</a>.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Project Overview -->
+            <div class="blog-section" id="overview">
+              <h3>Project Overview</h3>
+              <p>
+                CoDi API is a production REST API that solves a critical problem for Mexican businesses: accepting digital payments without paying high transaction fees. Traditional payment processors charge 2-4% per transaction, which can significantly impact profit margins, especially for small businesses.
+              </p>
+              <p>
+                By integrating directly with Banxico's CoDi system, this API enables businesses to accept payments from any Mexican bank account through QR codes or push notifications to mobile banking apps, with zero transaction fees.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/docs-index.png"
+                  alt="CoDi API Documentation Site Landing Page"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  CoDi API Documentation Site - Comprehensive guides and interactive tools for developers
+                </p>
+              </div>
+
+              <h4>Key Project Highlights</h4>
+              <ul>
+                <li><strong>Production-Ready:</strong> Live API actively processing real payments</li>
+                <li><strong>Government Integration:</strong> Official Banxico CoDi system integration</li>
+                <li><strong>Zero Fees:</strong> No transaction commissions, ever</li>
+                <li><strong>Bank-Level Security:</strong> RSA digital signatures and certificate authentication</li>
+                <li><strong>Open Source:</strong> Apache 2.0 license, fully transparent</li>
+                <li><strong>Comprehensive Docs:</strong> Interactive playground, code generators, and detailed guides</li>
+                <li><strong>Mexican Market:</strong> Built specifically for Mexico's payment infrastructure</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- What is CoDi -->
+            <div class="blog-section" id="what-is-codi">
+              <h3>What is CoDi?</h3>
+              <p>
+                CoDi (Cobro Digital) is Mexico's Central Bank official digital payment system, launched in 2019 to promote financial inclusion and provide a modern alternative to cash and card payments.
+              </p>
+
+              <h4>How CoDi Works</h4>
+              <p>
+                Unlike traditional payment processors, CoDi operates directly through the banking system. When a customer makes a CoDi payment, the money transfers instantly from their bank account to the merchant's bank account, with no intermediaries taking a cut.
+              </p>
+
+              <p>The system supports two payment methods:</p>
+              <ul>
+                <li><strong>QR Code Payments:</strong> Customer scans a QR code with their banking app to authorize the payment</li>
+                <li><strong>Push Notifications:</strong> Payment request is sent directly to the customer's mobile banking app</li>
+              </ul>
+
+              <h4>Key Benefits of CoDi</h4>
+              <ul>
+                <li><strong>Zero Transaction Fees:</strong> No commissions charged to merchants or customers</li>
+                <li><strong>Instant Money Transfer:</strong> Funds available immediately</li>
+                <li><strong>Full Traceability:</strong> Complete audit trail of all transactions</li>
+                <li><strong>Bank-Level Security:</strong> Protected by the same security measures as online banking</li>
+                <li><strong>Universal Compatibility:</strong> Works with all Mexican banks</li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/codi-workflow.png"
+                  alt="CoDi Payment Workflow Diagram"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  3-Step CoDi Payment Process: Generate payment request, customer authorizes, instant confirmation
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Technical Architecture -->
+            <div class="blog-section" id="architecture">
+              <h3>Technical Architecture</h3>
+              <p>
+                The CoDi API is built as a Node.js/Express middleware layer that handles the complex authentication and communication with Banxico's payment infrastructure, exposing a simple REST API to client applications.
+              </p>
+
+              <h4>Architecture Components</h4>
+              <p>The system consists of several key layers:</p>
+
+              <ol>
+                <li><strong>REST API Layer (Express.js):</strong> Handles incoming requests, validation, and responses</li>
+                <li><strong>Authentication Layer:</strong> Manages RSA digital signatures and certificate validation</li>
+                <li><strong>Banxico Integration Layer:</strong> Communicates with Banxico's CoDi endpoints</li>
+                <li><strong>Fallback Architecture:</strong> Multiple endpoint support with automatic retry logic</li>
+                <li><strong>Data Persistence (Supabase):</strong> Stores API keys, payment records, and audit logs</li>
+                <li><strong>Webhook System:</strong> Delivers real-time payment confirmations to client applications</li>
+              </ol>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/architecture-diagram.png"
+                  alt="CoDi API Technical Architecture Diagram"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  High-level architecture showing data flow from client application through CoDi API to Banxico
+                </p>
+              </div>
+
+              <h4>Request Flow</h4>
+              <p>Here's what happens when a client application requests a payment:</p>
+              <ol>
+                <li>Client sends POST request with payment details (amount, description, etc.)</li>
+                <li>API validates request and authenticates using API key</li>
+                <li>Payment data is signed with RSA certificate</li>
+                <li>Signed request is sent to Banxico CoDi system</li>
+                <li>Banxico generates QR code or sends push notification</li>
+                <li>API stores transaction record in Supabase</li>
+                <li>Response is returned to client with QR code or confirmation</li>
+                <li>When customer pays, webhook notification is sent to client's callback URL</li>
+              </ol>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Key Features -->
+            <div class="blog-section" id="features">
+              <h3>Key Features</h3>
+              <p>
+                The CoDi API provides six major features, each designed to make digital payment integration as simple as possible while maintaining enterprise-grade security and reliability.
+              </p>
+
+              <!-- QR Code Payments -->
+              <h4 id="qr-payments">1. QR Code Payment Generation</h4>
+              <p>
+                Generate CoDi-compliant QR codes that customers can scan with any Mexican banking app. The QR codes are dynamic, meaning they contain all the payment information and expire after a specified time.
+              </p>
+              <ul>
+                <li>Payment range: $1 - $12,500 MXN per transaction</li>
+                <li>Customizable expiration (default: 5 minutes)</li>
+                <li>Include custom reference numbers and descriptions</li>
+                <li>Base64-encoded QR code returned in API response</li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/swagger-qr-endpoint.png"
+                  alt="Swagger documentation showing QR code generation endpoint"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Swagger documentation for the /v2/codi/qr endpoint
+                </p>
+              </div>
+
+              <!-- Push Notifications -->
+              <h4 id="push-payments">2. Push Payment Notifications</h4>
+              <p>
+                Send payment requests directly to a customer's mobile banking app using their phone number. The customer receives a notification and can authorize the payment with a single tap.
+              </p>
+              <ul>
+                <li>Instant delivery to customer's banking app</li>
+                <li>No QR code scanning required</li>
+                <li>Perfect for remote payments</li>
+                <li>Real-time payment status updates</li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/swagger-push-endpoint.png"
+                  alt="Swagger documentation showing push notification endpoint"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Swagger documentation for the /v2/codi/push endpoint
+                </p>
+              </div>
+
+              <!-- Payment Status Queries -->
+              <h4 id="payment-queries">3. Payment Status Queries</h4>
+              <p>
+                Check the status of any payment using its unique folioCoDi reference number. This enables real-time payment verification and transaction history tracking.
+              </p>
+              <ul>
+                <li>Real-time payment verification</li>
+                <li>Transaction history lookup</li>
+                <li>Audit trail capabilities</li>
+                <li>Detailed payment information</li>
+              </ul>
+
+              <!-- Webhooks -->
+              <h4 id="webhooks">4. Webhook Integration</h4>
+              <p>
+                Receive automatic notifications when payments are completed. Configure a callback URL, and the API will POST payment confirmation data to your server when a customer pays.
+              </p>
+              <ul>
+                <li>Automatic payment confirmations</li>
+                <li>Configurable callback URLs</li>
+                <li>Secure webhook signing</li>
+                <li>Retry logic for failed deliveries</li>
+              </ul>
+
+              <!-- Security -->
+              <h4 id="security">5. Security Architecture</h4>
+              <p>
+                Enterprise-grade security features protect both the API and your payment data. Every request to Banxico is digitally signed with RSA certificates, and all communications are encrypted.
+              </p>
+              <ul>
+                <li>RSA digital signatures (2048-bit minimum)</li>
+                <li>Certificate-based authentication with Banxico</li>
+                <li>API key management via Supabase</li>
+                <li>Request/response logging for audit trails</li>
+                <li>CORS protection with IP whitelisting</li>
+                <li>Rate limiting (200 requests per 15 minutes)</li>
+                <li>Helmet.js security headers</li>
+              </ul>
+
+              <!-- Documentation -->
+              <h4 id="documentation">6. Interactive Documentation</h4>
+              <p>
+                Comprehensive documentation with interactive tools makes integration straightforward, even for developers new to payment processing.
+              </p>
+              <ul>
+                <li>Swagger/OpenAPI 3.0 specification</li>
+                <li>Try-it-out functionality for all endpoints</li>
+                <li>Step-by-step integration guides in Spanish</li>
+                <li>Code generators for multiple languages</li>
+                <li>Interactive API playground</li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/swagger-docs.png"
+                  alt="Interactive Swagger API Documentation"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Interactive Swagger documentation with try-it-out functionality
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Developer Experience -->
+            <div class="blog-section" id="developer-experience">
+              <h3>Developer Experience</h3>
+              <p>
+                A great API needs great documentation and tools. The CoDi API includes a comprehensive documentation site with interactive features that make integration faster and debugging easier.
+              </p>
+
+              <h4>Interactive API Playground</h4>
+              <p>
+                Test all API endpoints directly from your browser without writing any code. The playground includes pre-filled examples and validates your requests in real-time.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/docs-playground.png"
+                  alt="Interactive API Playground Interface"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Live API playground for testing QR generation, push notifications, and payment queries
+                </p>
+              </div>
+
+              <h4>Code Generators</h4>
+              <p>
+                Generate ready-to-use integration code in multiple programming languages. Simply select your endpoint and language, and get production-ready code examples.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/docs-tools.png"
+                  alt="Code Generator Tool showing cURL, JavaScript, and Python examples"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Code generator supporting cURL, JavaScript (Fetch), and Python (requests)
+                </p>
+              </div>
+
+              <h4>Additional Developer Tools</h4>
+              <ul>
+                <li><strong>Service Status Monitor:</strong> Real-time API availability dashboard</li>
+                <li><strong>Institution Code Lookup:</strong> Financial institution reference database</li>
+                <li><strong>Integration Guides:</strong> Step-by-step walkthroughs in Spanish</li>
+                <li><strong>Error Code Reference:</strong> Detailed explanations of all error responses</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Tech Stack Deep Dive -->
+            <div class="blog-section" id="tech-stack">
+              <h3>Tech Stack Deep Dive</h3>
+              <p>
+                The CoDi API is built with modern, battle-tested technologies chosen for their reliability, performance, and security capabilities.
+              </p>
+
+              <h4>Backend Technologies</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Backend Stack</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Core Technologies
+Runtime:    Node.js 18.x+
+Framework:  Express.js
+Language:   JavaScript (ES6+)
+Database:   Supabase (PostgreSQL)
+Testing:    Jest with coverage reporting
+Process:    PM2 for production
+Docs:       Swagger/OpenAPI 3.0</code></pre>
+
+              <h4>Security Stack</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Security Technologies</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Security Components
+Authentication:     RSA certificates (2048-bit minimum)
+API Keys:           128-character hexadecimal
+Middleware:         Helmet.js, CORS, Rate Limiting
+Validation:         Custom sanitization layer
+Digital Signatures: All Banxico requests signed</code></pre>
+
+              <h4>Key Integrations</h4>
+              <ul>
+                <li><strong>Banxico API:</strong> Official CoDi payment system endpoints</li>
+                <li><strong>Supabase:</strong> Database, API key storage, request/response logging</li>
+                <li><strong>QR Code Generation:</strong> Dynamic payment QR codes</li>
+                <li><strong>Webhooks:</strong> Asynchronous payment notifications</li>
+              </ul>
+
+              <h4>Development & DevOps</h4>
+              <ul>
+                <li><strong>Version Control:</strong> Git/GitHub</li>
+                <li><strong>CI/CD:</strong> GitHub Actions deployment workflow</li>
+                <li><strong>Environment Management:</strong> dotenv for configuration</li>
+                <li><strong>License Compliance:</strong> Automated license checking and reporting</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Database Architecture -->
+            <div class="blog-section" id="database">
+              <h3>Database Architecture</h3>
+              <p>
+                The API uses Supabase (PostgreSQL) for data persistence, with a carefully designed schema that supports multiple customers, comprehensive audit logging, and payment tracking.
+              </p>
+
+              <h4>Database Schema</h4>
+              <p>The database consists of 5 core tables:</p>
+
+              <ol>
+                <li>
+                  <strong>customers:</strong> Stores client information and account details
+                  <ul>
+                    <li>Customer ID, name, contact information</li>
+                    <li>Account creation and status</li>
+                    <li>Environment designation (Beta/Production)</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>api_keys:</strong> Manages authentication credentials and Banxico integration
+                  <ul>
+                    <li>128-character hexadecimal API keys</li>
+                    <li>RSA certificate storage</li>
+                    <li>Environment-specific configurations</li>
+                    <li>Rate limiting metadata</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>folios_codi:</strong> Tracks all payment transactions
+                  <ul>
+                    <li>Unique folioCoDi reference numbers</li>
+                    <li>Payment amount, status, and timestamps</li>
+                    <li>Customer and merchant information</li>
+                    <li>QR code data and expiration</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>requests:</strong> Complete audit log of all API requests
+                  <ul>
+                    <li>Request timestamps and endpoints</li>
+                    <li>Request body and headers</li>
+                    <li>Customer ID and API key used</li>
+                    <li>Digital signature verification data</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>responses:</strong> Complete audit log of all API responses
+                  <ul>
+                    <li>Response timestamps and status codes</li>
+                    <li>Response body and headers</li>
+                    <li>Banxico response data</li>
+                    <li>Error information if applicable</li>
+                  </ul>
+                </li>
+              </ol>
+
+              <h4>Data Integrity Features</h4>
+              <ul>
+                <li>Foreign key constraints ensure referential integrity</li>
+                <li>Timestamp columns track creation and updates</li>
+                <li>Environment segregation prevents test/production data mixing</li>
+                <li>Indexed queries for fast payment lookups</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Security Features Deep Dive -->
+            <div class="blog-section" id="security-deep-dive">
+              <h3>Security Features Deep Dive</h3>
+              <p>
+                Security is paramount when handling financial transactions. The CoDi API implements multiple layers of security to protect sensitive payment data and ensure compliance with banking regulations.
+              </p>
+
+              <h4>Digital Signature Authentication</h4>
+              <p>
+                Every request to Banxico is digitally signed using RSA certificates. This ensures that Banxico can verify the request originated from an authorized CoDi API instance and hasn't been tampered with.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript - Digital Signature Generation</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Example of RSA signature generation
+const crypto = require('crypto');
+const fs = require('fs');
+
+function generateDigitalSignature(payload, privateKeyPath) {
+  // Load RSA private key
+  const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+
+  // Create signature using SHA256 with RSA
+  const sign = crypto.createSign('SHA256');
+  sign.update(JSON.stringify(payload));
+  sign.end();
+
+  // Generate signature in base64 format
+  const signature = sign.sign(privateKey, 'base64');
+
+  return signature;
+}</code></pre>
+
+              <h4>Certificate Validation</h4>
+              <p>
+                The API validates RSA certificates by comparing serial numbers and verifying certificate authenticity before accepting any requests. This prevents unauthorized access even if someone obtains a valid API key.
+              </p>
+
+              <h4>API Key Management</h4>
+              <p>
+                API keys are 128-character hexadecimal strings stored securely in Supabase. Each key is linked to a specific customer and environment (Beta or Production), with individual rate limits and permissions.
+              </p>
+
+              <h4>Request Sanitization</h4>
+              <p>
+                All incoming requests are sanitized to prevent SQL injection, XSS attacks, and other common vulnerabilities. Input validation ensures only properly formatted data reaches the Banxico integration layer.
+              </p>
+
+              <h4>Rate Limiting</h4>
+              <p>
+                The API implements rate limiting to prevent abuse and ensure fair resource allocation. The default limit is 200 requests per 15-minute window per API key.
+              </p>
+
+              <h4>Security Headers</h4>
+              <p>
+                Helmet.js adds security headers to all responses, protecting against common web vulnerabilities like clickjacking, XSS, and content type sniffing.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- API Endpoints Reference -->
+            <div class="blog-section" id="api-endpoints">
+              <h3>API Endpoints Reference</h3>
+              <p>
+                The CoDi API exposes 5 main endpoints for managing digital payments. All endpoints require API key authentication via the <code>x-api-key</code> header.
+              </p>
+
+              <h4>Endpoint Overview</h4>
+              <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+                <thead>
+                  <tr style="background-color: #0089D1; color: white;">
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Endpoint</th>
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Method</th>
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding: 1rem; border: 1px solid #ddd;"><code>/v2/health</code></td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">GET</td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">System health check and status</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 1rem; border: 1px solid #ddd;"><code>/v2/codi/qr</code></td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">POST</td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">Generate QR code payment request</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 1rem; border: 1px solid #ddd;"><code>/v2/codi/push</code></td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">POST</td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">Send push notification payment request</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 1rem; border: 1px solid #ddd;"><code>/v2/codi/consulta</code></td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">POST</td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">Query payment status by folioCoDi</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 1rem; border: 1px solid #ddd;"><code>/v2/resultadoOperaciones</code></td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">POST</td>
+                    <td style="padding: 1rem; border: 1px solid #ddd;">Webhook endpoint for payment callbacks</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="image-container">
+                <img
+                  src="images/codi-api/swagger-all-endpoints.png"
+                  alt="Complete Swagger API Documentation showing all endpoints"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Complete Swagger documentation showing all API endpoints organized by category
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Code Examples -->
+            <div class="blog-section" id="code-examples">
+              <h3>Code Examples</h3>
+              <p>
+                Here are real-world examples of how to integrate the CoDi API into your application. All examples assume you have a valid API key stored in an environment variable.
+              </p>
+
+              <h4>Example 1: Generate QR Code Payment</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript (Fetch API)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Generate a QR code for a 99.99 MXN payment
+const generateQRPayment = async () => {
+  try {
+    const response = await fetch('https://api.bite-size.mx/v2/codi/qr', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.CODI_API_KEY
+      },
+      body: JSON.stringify({
+        monto: 99.99,
+        concepto: 'Product purchase - Order #1234',
+        referencia: '1234567'
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log('QR Code generated successfully');
+      console.log('Folio CoDi:', data.folioCoDi);
+      console.log('QR Code (Base64):', data.qrCode);
+
+      // Display QR code in HTML
+      const img = document.createElement('img');
+      img.src = `data:image/png;base64,${data.qrCode}`;
+      document.body.appendChild(img);
+    } else {
+      console.error('Error generating QR code:', data.message);
+    }
+  } catch (error) {
+    console.error('Request failed:', error);
+  }
+};</code></pre>
+
+              <h4>Example 2: Send Push Notification Payment</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript (Fetch API)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Send a push notification to customer's phone
+const sendPushPayment = async () => {
+  try {
+    const response = await fetch('https://api.bite-size.mx/v2/codi/push', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.CODI_API_KEY
+      },
+      body: JSON.stringify({
+        monto: 150.00,
+        concepto: 'Service payment - Invoice #5678',
+        referencia: '5678901',
+        telefonoCliente: '5551234567' // Customer's phone number
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log('Push notification sent successfully');
+      console.log('Folio CoDi:', data.folioCoDi);
+      console.log('Status:', data.status);
+    } else {
+      console.error('Error sending push notification:', data.message);
+    }
+  } catch (error) {
+    console.error('Request failed:', error);
+  }
+};</code></pre>
+
+              <h4>Example 3: Check Payment Status</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>JavaScript (Fetch API)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-javascript">// Query the status of a payment using its folioCoDi
+const checkPaymentStatus = async (folioCoDi) => {
+  try {
+    const response = await fetch('https://api.bite-size.mx/v2/codi/consulta', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.CODI_API_KEY
+      },
+      body: JSON.stringify({
+        folioCoDi: folioCoDi
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      console.log('Payment Status:', data.status);
+      console.log('Amount:', data.monto);
+      console.log('Paid:', data.pagado);
+      console.log('Payment Date:', data.fechaPago);
+
+      return data;
+    } else {
+      console.error('Error checking payment status:', data.message);
+    }
+  } catch (error) {
+    console.error('Request failed:', error);
+  }
+};
+
+// Example usage
+checkPaymentStatus('ABC123DEF456');</code></pre>
+
+              <h4>Example 4: Python Implementation</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Python (requests library)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-python">import requests
+import os
+
+# Generate QR code payment using Python
+def generate_qr_payment(amount, description, reference):
+    url = 'https://api.bite-size.mx/v2/codi/qr'
+    headers = {
+        'Content-Type': 'application/json',
+        'x-api-key': os.environ.get('CODI_API_KEY')
+    }
+    payload = {
+        'monto': amount,
+        'concepto': description,
+        'referencia': reference
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+    data = response.json()
+
+    if data.get('success'):
+        print(f"QR Code generated successfully")
+        print(f"Folio CoDi: {data['folioCoDi']}")
+        return data
+    else:
+        print(f"Error: {data.get('message')}")
+        return None
+
+# Example usage
+payment = generate_qr_payment(99.99, 'Product purchase', '1234567')</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Testing & Quality Assurance -->
+            <div class="blog-section" id="testing">
+              <h3>Testing & Quality Assurance</h3>
+              <p>
+                The CoDi API includes a comprehensive Jest test suite with over 35 utility functions tested to ensure reliability and catch bugs before they reach production.
+              </p>
+
+              <h4>Test Coverage Areas</h4>
+              <ul>
+                <li><strong>Certificate Verification:</strong> RSA certificate validation and serial number comparison</li>
+                <li><strong>Digital Signature Generation:</strong> Signature creation and verification</li>
+                <li><strong>Request Validation:</strong> Input sanitization and schema validation</li>
+                <li><strong>Error Handling:</strong> Edge cases and failure scenarios</li>
+                <li><strong>Data Formatting:</strong> Currency formatting, date parsing, and data transformation</li>
+                <li><strong>API Key Authentication:</strong> Valid and invalid key scenarios</li>
+                <li><strong>Rate Limiting:</strong> Request throttling and quota management</li>
+              </ul>
+
+              <h4>Test Execution</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Bash - Running Tests</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-bash"># Run all tests
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run tests in watch mode for development
+npm run test:watch</code></pre>
+
+              <h4>Quality Metrics</h4>
+              <ul>
+                <li>Test coverage: High coverage across critical functions</li>
+                <li>Automated testing in CI/CD pipeline</li>
+                <li>License compliance checking</li>
+                <li>Code linting with ESLint</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Deployment & Production -->
+            <div class="blog-section" id="deployment">
+              <h3>Deployment & Production</h3>
+              <p>
+                The CoDi API is designed for production deployment with PM2 process management, environment variable configuration, and robust error handling.
+              </p>
+
+              <h4>Production Deployment Checklist</h4>
+              <ol>
+                <li><strong>Environment Variables:</strong> Configure all required environment variables
+                  <ul>
+                    <li>API keys and certificates</li>
+                    <li>Database connection strings</li>
+                    <li>Banxico endpoint URLs</li>
+                    <li>CORS allowed origins</li>
+                  </ul>
+                </li>
+                <li><strong>SSL/HTTPS:</strong> Ensure all communications are encrypted
+                  <ul>
+                    <li>Valid SSL certificate installed</li>
+                    <li>HTTP to HTTPS redirects configured</li>
+                    <li>HSTS headers enabled</li>
+                  </ul>
+                </li>
+                <li><strong>Process Management:</strong> Use PM2 for production
+                  <ul>
+                    <li>Automatic restarts on crashes</li>
+                    <li>Load balancing across CPU cores</li>
+                    <li>Log management and rotation</li>
+                  </ul>
+                </li>
+                <li><strong>Monitoring:</strong> Set up logging and monitoring
+                  <ul>
+                    <li>Application logs to file system</li>
+                    <li>Error tracking and alerting</li>
+                    <li>Performance metrics collection</li>
+                  </ul>
+                </li>
+              </ol>
+
+              <h4>PM2 Configuration</h4>
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Bash - PM2 Commands</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-bash"># Start the application with PM2
+pm2 start app.js --name codi-api
+
+# Enable auto-restart on system reboot
+pm2 startup
+pm2 save
+
+# Monitor application status
+pm2 status
+
+# View logs
+pm2 logs codi-api
+
+# Restart application
+pm2 restart codi-api
+
+# Stop application
+pm2 stop codi-api</code></pre>
+
+              <h4>Performance Considerations</h4>
+              <ul>
+                <li>Request/response caching for frequently accessed data</li>
+                <li>Database connection pooling</li>
+                <li>Gzip compression for API responses</li>
+                <li>CDN for documentation site assets</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Use Cases -->
+            <div class="blog-section" id="use-cases">
+              <h3>Use Cases</h3>
+              <p>
+                The CoDi API is versatile and can be integrated into a wide variety of business applications. Here are the most common use cases:
+              </p>
+
+              <h4>1. E-commerce Platforms</h4>
+              <p>
+                Online stores can integrate CoDi as a payment option at checkout, offering customers a commission-free alternative to credit cards.
+              </p>
+              <ul>
+                <li>Shopping cart integration</li>
+                <li>Order confirmation workflows</li>
+                <li>Automatic inventory updates on payment</li>
+                <li>Email receipts and invoices</li>
+              </ul>
+
+              <h4>2. Point of Sale Systems</h4>
+              <p>
+                Physical retail locations can use CoDi for in-person payments, displaying QR codes at the counter or sending push notifications.
+              </p>
+              <ul>
+                <li>Restaurant payment systems</li>
+                <li>Retail checkout counters</li>
+                <li>Service desks and kiosks</li>
+                <li>Mobile POS terminals</li>
+              </ul>
+
+              <h4>3. Service Providers</h4>
+              <p>
+                Service-based businesses can request payments remotely via push notifications, perfect for recurring billing or on-demand services.
+              </p>
+              <ul>
+                <li>Utility payments and bills</li>
+                <li>Subscription services</li>
+                <li>Professional services (consultants, freelancers)</li>
+                <li>Maintenance and repair services</li>
+              </ul>
+
+              <h4>4. Marketplaces</h4>
+              <p>
+                Multi-vendor platforms can use CoDi to handle peer-to-peer transactions between buyers and sellers.
+              </p>
+              <ul>
+                <li>Peer-to-peer transaction platforms</li>
+                <li>Classified ads and listings</li>
+                <li>Freelance marketplaces</li>
+                <li>Commission-based platforms</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Open Source & Community -->
+            <div class="blog-section" id="open-source">
+              <h3>Open Source & Community</h3>
+              <p>
+                The CoDi API is open source under the Apache 2.0 license, which means you can use it commercially, modify it, distribute it, and even patent it, with minimal restrictions.
+              </p>
+
+              <h4>Apache 2.0 License Benefits</h4>
+              <ul>
+                <li><strong>Commercial Use:</strong> Use the API in commercial products without fees</li>
+                <li><strong>Modification:</strong> Customize the code to fit your specific needs</li>
+                <li><strong>Distribution:</strong> Distribute modified or unmodified versions</li>
+                <li><strong>Patent Grant:</strong> Protection from patent lawsuits</li>
+                <li><strong>No Warranty:</strong> Provided "as is" without liability</li>
+              </ul>
+
+              <h4>Contributing to the Project</h4>
+              <p>
+                Contributions are welcome! Whether you're fixing bugs, adding features, improving documentation, or reporting issues, your help makes the project better for everyone.
+              </p>
+
+              <h4>How to Contribute</h4>
+              <ol>
+                <li>Fork the repository on GitHub</li>
+                <li>Create a feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+                <li>Commit your changes (<code>git commit -m 'Add amazing feature'</code>)</li>
+                <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+                <li>Open a Pull Request</li>
+              </ol>
+
+              <h4>Community Resources</h4>
+              <ul>
+                <li><strong>GitHub Issues:</strong> Report bugs and request features</li>
+                <li><strong>GitHub Discussions:</strong> Ask questions and share ideas</li>
+                <li><strong>Documentation:</strong> Comprehensive guides and API reference</li>
+                <li><strong>Code Examples:</strong> Real-world integration examples</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Project Links & Resources -->
+            <div class="blog-section" id="links">
+              <h3>Project Links & Resources</h3>
+
+              <h4>Live Services</h4>
+              <ul>
+                <li><a href="https://api.bite-size.mx/" target="_blank" rel="noopener noreferrer" class="blog-link">API Endpoint</a> - Production API base URL</li>
+                <li><a href="https://docs.bite-size.mx/" target="_blank" rel="noopener noreferrer" class="blog-link">Documentation Site</a> - Comprehensive guides and tutorials</li>
+                <li><a href="https://docs.bite-size.mx/playground" target="_blank" rel="noopener noreferrer" class="blog-link">API Playground</a> - Interactive testing environment</li>
+                <li><a href="https://api.bite-size.mx/api-docs" target="_blank" rel="noopener noreferrer" class="blog-link">Swagger Documentation</a> - Complete API reference</li>
+              </ul>
+
+              <h4>Code & Community</h4>
+              <ul>
+                <li><a href="https://github.com/portfedh/codi-api" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub Repository</a> - Source code and README</li>
+                <li><a href="https://github.com/portfedh/codi-api/issues" target="_blank" rel="noopener noreferrer" class="blog-link">Issues</a> - Bug reports and feature requests</li>
+                <li><a href="https://github.com/portfedh/codi-api/discussions" target="_blank" rel="noopener noreferrer" class="blog-link">Discussions</a> - Community questions and ideas</li>
+              </ul>
+
+              <h4>External Resources</h4>
+              <ul>
+                <li><a href="https://www.banxico.org.mx/codi/" target="_blank" rel="noopener noreferrer" class="blog-link">Banxico CoDi Official</a> - Bank of Mexico CoDi information</li>
+                <li><a href="https://supabase.com/docs" target="_blank" rel="noopener noreferrer" class="blog-link">Supabase Documentation</a> - Database platform docs</li>
+                <li><a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="blog-link">Express.js</a> - Web framework documentation</li>
+                <li><a href="https://swagger.io/docs/specification/about/" target="_blank" rel="noopener noreferrer" class="blog-link">OpenAPI/Swagger Specification</a> - API documentation standard</li>
+              </ul>
+
+              <h4>Project Metadata</h4>
+              <ul>
+                <li><strong>License:</strong> Apache 2.0 (Open Source)</li>
+                <li><strong>Created by:</strong> Pablo Cruz Lemini</li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/portfedh" target="_blank" rel="noopener noreferrer" class="blog-link">@portfedh</a></li>
+                <li><strong>Status:</strong> Production, Actively Maintained</li>
+                <li><strong>Version:</strong> 2.0.0</li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button white-text"
+                    >← Back to Portfolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://github.com/portfedh/codi-api"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                  <a
+                    href="https://docs.bite-size.mx/"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-book"></i> Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>Get in touch!</h2>
+            </header>
+            <p class="fade-out">
+              I'm currently open to work and I'd be happy to chat.
+              <br />
+              <br />
+              Feel free to reach out if you are interested in what I can bring
+              to your project or team.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Email me</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter Profile"
+            ><i class="fa-brands fa-twitter"></i><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            ><i class="fa-brands fa-linkedin"></i><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            ><i class="fa-brands fa-github"></i><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            aria-label="Email link"
+            ><i class="fa-solid fa-envelope"></i><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Blog functionality -->
+    <script src="assets/js/blog.js"></script>
+  </body>
+</html>
