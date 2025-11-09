@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Pablo Cruz, Desarrollador Full-stack | Bienes Raíces | Finanzas | Inversiones",
+    "description": "Desarrollador full-stack con experiencia en bienes raíces, finanzas e inversiones. Explora mis proyectos y habilidades. Contáctame para oportunidades de colaboración.",
+    "ogTitle": "Pablo Cruz Lemini",
+    "twitterTitle": "Pablo Cruz Lemini"
+  },
+  "header": {
+    "greeting": "Hola, soy <strong>Pablo,</strong>",
+    "title": "Desarrollador de software full-stack.",
+    "summary": "Construyendo aplicaciones web escalables, con una sólida base en bienes raíces, finanzas e inversiones.",
+    "resumeButton": "Currículum",
+    "portfolioButton": "Portafolio"
+  },
+  "aboutMe": {
+    "heading": "Sobre Mí",
+    "paragraph1": "Soy un desarrollador full-stack con experiencia, apasionado por aprovechar la tecnología para resolver problemas del mundo real. Con más de 9 años de experiencia como gestor de inversiones en una Family Office en la Ciudad de México, aporto una combinación de experiencia financiera y técnica.",
+    "paragraph2": "He desarrollado con éxito aplicaciones web con funcionalidades complejas de front-end y back-end, herramientas de modelado financiero para la toma de decisiones informadas y automatizaciones IoT para la optimización de procesos y monitoreo.",
+    "paragraph3": "Me entusiasman las oportunidades donde pueda aprovechar tanto mis habilidades de programación como de negocios para crear soluciones de impacto.",
+    "videoText": "<strong>Mira un video de 5 minutos donde me presento y muestro uno de mis proyectos:</strong>",
+    "videoButton": "Video de Introducción"
+  },
+  "skills": {
+    "expertiseHeading": "Mi Experiencia",
+    "expertise1Title": "Aplicaciones Web/Móviles:",
+    "expertise1Description": "Aplicaciones web y móviles interactivas con funcionalidades complejas de front-end y back-end.",
+    "expertise2Title": "Modelado y planificación financiera:",
+    "expertise2Description": "Representar diversos escenarios financieros para análisis y toma de decisiones.",
+    "expertise3Title": "Automatizaciones IoT:",
+    "expertise3Description": "Automatizaciones para monitorear equipos, optimizar procesos y aumentar el control de calidad.",
+    "languagesHeading": "Lenguajes y Frameworks",
+    "toolsHeading": "Herramientas y Tecnologías"
+  },
+  "github": {
+    "heading": "Actividad en GitHub",
+    "description": "Mi actividad de programación y contribuciones durante el último año."
+  },
+  "projects": {
+    "heading": "Proyectos",
+    "intro": "Aquí hay algunos de mis proyectos. Puedes ver otras cosas que he hecho en mi",
+    "blogLink": "blog",
+    "project1Title": "Sistema Administrativo Salsa-Candela",
+    "project1Description": "Sistema de control de acceso y reportes.",
+    "project1Tech": "HTML, CSS, JS, NodeJs, ExpressJs, MongoDB, Stripe API",
+    "project2Title": "Sitio Web Empresarial Salsa-Candela",
+    "project2Description": "Sitio web estático y tienda en línea para una academia de baile.",
+    "project2Tech": "HTML, CSS, JS, NodeJs, ExpressJs, Stripe API",
+    "project3Title": "Aplicación Web Bar Salsa-Candela",
+    "project3Description": "Pedidos de bebidas móviles con recogida por código QR.",
+    "project3Tech": "React, NodeJs, ExpressJs, Stripe API",
+    "project4Title": "Dashboard Financiero de Portafolio",
+    "project4Description": "Visualizador de portafolio para rastrear una cartera de inversión.",
+    "project4Tech": "Python, Pandas, Grafana, MySQL, Docker",
+    "project5Title": "Monitor de Energía IoT",
+    "project5Description": "Sensor IoT y computadora para monitorear el consumo de energía de una casa.",
+    "project5Tech": "Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB",
+    "project6Title": "Reporte Financiero PDF Automatizado",
+    "project6Description": "Ingresa el símbolo de una empresa y genera un reporte PDF con las métricas financieras más importantes de la compañía.",
+    "project6Tech": "Python, Pandas, Plotly, FMP, FPDF2",
+    "project7Title": "Sistema de Monitoreo de Agua Inteligente",
+    "project7Description": "Sensor de nivel de agua automatizado con ESP32, Raspberry Pi y Grafana.",
+    "project7Tech": "Sensor ultrasónico JSN-SR04T, Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB",
+    "visitButton": "Visitar",
+    "videoButton": "Video",
+    "githubButton": "GitHub",
+    "blogButton": "Blog"
+  },
+  "contact": {
+    "heading": "¡Ponte en contacto!",
+    "description": "Actualmente estoy abierto a trabajar y estaría encantado de conversar.",
+    "callToAction": "No dudes en contactarme si estás interesado en lo que puedo aportar a tu proyecto o equipo.",
+    "emailButton": "Envíame un email"
+  },
+  "footer": {
+    "copyright": "Pablo Cruz."
+  }
+}
