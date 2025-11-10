@@ -487,7 +487,7 @@ ul.icons li .label {
   gap: 0.25rem;
   background: rgba(0, 0, 0, 0.3);
   padding: 0.25rem;
-  border-radius: 6px;
+  border-radius: 20px;
   backdrop-filter: blur(5px);
 }
 
@@ -499,9 +499,13 @@ ul.icons li .label {
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: 15px;
+  transition: all 0.3s ease;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
 }
 
 .lang-btn:hover {
@@ -513,6 +517,7 @@ ul.icons li .label {
   background: rgba(255, 255, 255, 0.95);
   color: #1a1a1a;
   font-weight: 600;
+  text-shadow: none;
 }
 
 .lang-separator {
@@ -524,11 +529,14 @@ ul.icons li .label {
   .language-switcher {
     top: 1rem;
     right: 1rem;
+    border-radius: 18px;
   }
 
   .lang-btn {
     padding: 0.3rem 0.65rem;
     font-size: 0.813rem;
+    border-radius: 14px;
+    min-height: 30px;
   }
 }
 
@@ -537,10 +545,13 @@ ul.icons li .label {
     top: 0.75rem;
     right: 0.75rem;
     padding: 0.2rem;
+    border-radius: 16px;
   }
 
   .lang-btn {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
+    border-radius: 12px;
+    min-height: 28px;
   }
 }
