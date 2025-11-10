@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "API CoDi - Sistema de Pagos Digitales Gratuito del Banco de México | Pablo Cruz",
+    "ogTitle": "API CoDi - Sistema de Pagos Digitales Gratuito del Banco de México",
+    "description": "API REST Node.js lista para producción para pagos digitales sin comisiones en México. Se integra con el sistema CoDi oficial de Banxico utilizando firmas digitales RSA."
+  },
+  "header": {
+    "backButton": "← Volver al Portafolio",
+    "title": "API CoDi del Banco de México",
+    "description": "API de código abierto que permite a empresas mexicanas generar solicitudes de pago a través del sistema CoDi del Banco Central de México. Cero comisiones por transacción, depósitos inmediatos, seguridad de nivel bancario y documentación completa."
+  },
+  "toc": {
+    "heading": "Tabla de Contenidos",
+    "overview": "Descripción del Proyecto",
+    "whatIsCodi": "¿Qué es CoDi?",
+    "architecture": "Arquitectura Técnica",
+    "features": "Características Principales",
+    "qrPayments": "Pagos con Código QR",
+    "pushPayments": "Notificaciones Push",
+    "paymentQueries": "Consultas de Estado de Pago",
+    "webhooks": "Integración de Webhooks",
+    "security": "Arquitectura de Seguridad",
+    "documentation": "Documentación Interactiva",
+    "techStack": "Stack Tecnológico y Decisiones de Diseño",
+    "deployment": "Despliegue e Infraestructura",
+    "testing": "Estrategia de Pruebas",
+    "challenges": "Desafíos y Soluciones",
+    "futureWork": "Mejoras Futuras",
+    "conclusion": "Conclusión"
+  },
+  "navigation": {
+    "githubRepo": "Ver Repositorio en GitHub",
+    "liveDemo": "Ver Documentación en Vivo",
+    "backToTop": "Volver Arriba"
+  },
+  "contact": {
+    "heading": "¿Interesado en Este Proyecto?",
+    "description": "Estaría encantado de discutir este proyecto, responder preguntas o explorar oportunidades de colaboración.",
+    "emailButton": "Contáctame"
+  }
+}

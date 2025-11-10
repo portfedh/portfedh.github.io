@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "CoDi API - Bank of Mexico Free Digital Payment System | Pablo Cruz",
+    "ogTitle": "CoDi API - Bank of Mexico Free Digital Payment System",
+    "description": "Production-ready Node.js REST API for commission-free digital payments in Mexico. Integrates with Banxico's official CoDi system using RSA digital signatures."
+  },
+  "header": {
+    "backButton": "← Back to Portfolio",
+    "title": "Bank of Mexico CoDi API",
+    "description": "Open-source API that enables Mexican businesses to generate payment requests through Mexico's Central Bank CoDi system. Zero transaction fees, immediate deposits, bank-level security, and comprehensive documentation."
+  },
+  "toc": {
+    "heading": "Table of Contents",
+    "overview": "Project Overview",
+    "whatIsCodi": "What is CoDi?",
+    "architecture": "Technical Architecture",
+    "features": "Key Features",
+    "qrPayments": "QR Code Payments",
+    "pushPayments": "Push Notifications",
+    "paymentQueries": "Payment Status Queries",
+    "webhooks": "Webhook Integration",
+    "security": "Security Architecture",
+    "documentation": "Interactive Documentation",
+    "techStack": "Technology Stack & Design Decisions",
+    "deployment": "Deployment & Infrastructure",
+    "testing": "Testing Strategy",
+    "challenges": "Challenges & Solutions",
+    "futureWork": "Future Enhancements",
+    "conclusion": "Conclusion"
+  },
+  "navigation": {
+    "githubRepo": "View GitHub Repository",
+    "liveDemo": "View Live Documentation",
+    "backToTop": "Back to Top"
+  },
+  "contact": {
+    "heading": "Interested in This Project?",
+    "description": "I'd be happy to discuss this project, answer questions, or explore collaboration opportunities.",
+    "emailButton": "Get in Touch"
+  }
+}
