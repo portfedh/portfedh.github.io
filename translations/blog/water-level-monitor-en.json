@@ -7,7 +7,6 @@
   "header": {
     "backButton": "← Back to Portfolio",
     "title": "How to make an IoT water level monitor",
-    "meta": "Published: November 13, 2022 | Last updated: August 20, 2024",
     "description": "This post explains how I made an IoT water level monitor using a raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor."
   },
   "toc": {

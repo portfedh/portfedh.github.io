@@ -7,7 +7,6 @@
   "header": {
     "backButton": "← Back to Portfolio",
     "title": "How to make a financial report with Python",
-    "meta": "Published: October 15, 2023 | Last updated: December 1, 2024",
     "description": "Learn how to create automated financial reports using Python, APIs, and PDF generation. This tutorial covers data extraction, analysis, visualization, and professional report creation."
   },
   "toc": {

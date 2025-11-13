@@ -557,3 +557,141 @@ ul.icons li .label {
     min-height: 28px;
   }
 }
+
+/* CoDi API Project Placeholder */
+/* *************************** */
+
+.codi-api-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0089D1 0%, #0066a1 50%, #004d7a 100%);
+  border: solid 1px #c7c7c7;
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.codi-api-placeholder::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.placeholder-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 1.5rem;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-icon i {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  animation: float-icon 3s ease-in-out infinite;
+}
+
+.placeholder-icon i:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+@keyframes float-icon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.placeholder-content h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+}
+
+.placeholder-content h4.codi-title {
+  color: #ffffff;
+}
+
+.codi-logo {
+  max-width: 180px;
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+.placeholder-content p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  opacity: 0.95;
+  font-weight: 400;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  line-height: 1.4;
+}
+
+/* Responsive adjustments for placeholder */
+@media screen and (max-width: 736px) {
+  .placeholder-icon {
+    font-size: 2.5rem;
+  }
+
+  .codi-logo {
+    max-width: 150px;
+  }
+
+  .placeholder-content h4 {
+    font-size: 1.5rem;
+  }
+
+  .placeholder-content p {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .placeholder-icon {
+    font-size: 2rem;
+  }
+
+  .codi-logo {
+    max-width: 120px;
+  }
+
+  .placeholder-content h4 {
+    font-size: 1.3rem;
+  }
+
+  .placeholder-content p {
+    font-size: 0.8rem;
+  }
+}
