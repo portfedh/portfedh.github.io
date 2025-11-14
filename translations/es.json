@@ -7,16 +7,16 @@
   },
   "header": {
     "greeting": "Hola, soy <strong>Pablo,</strong>",
-    "title": "Desarrollador de software full-stack.",
-    "summary": "Construyendo aplicaciones web escalables, con una sólida base en bienes raíces, finanzas e inversiones.",
+    "title": "Desarrollador full-stack.",
+    "summary": "Creo aplicaciones web escalables, combinando mi experiencia en tecnología con conocimientos en bienes raíces, finanzas e inversiones.",
     "resumeButton": "Currículum",
     "portfolioButton": "Portafolio"
   },
   "aboutMe": {
     "heading": "Sobre Mí",
-    "paragraph1": "Soy un desarrollador full-stack con experiencia, apasionado por aprovechar la tecnología para resolver problemas del mundo real. Con más de 9 años de experiencia como gestor de inversiones en una Family Office en la Ciudad de México, aporto una combinación de experiencia financiera y técnica.",
-    "paragraph2": "He desarrollado con éxito aplicaciones web con funcionalidades complejas de front-end y back-end, herramientas de modelado financiero para la toma de decisiones informadas y automatizaciones IoT para la optimización de procesos y monitoreo.",
-    "paragraph3": "Me entusiasman las oportunidades donde pueda aprovechar tanto mis habilidades de programación como de negocios para crear soluciones de impacto.",
+    "paragraph1": "Soy un desarrollador full-stack apasionado por usar la tecnología para resolver problemas reales. Con más de 9 años de experiencia como gestor de inversiones en una Family Office en la Ciudad de México, combino conocimientos financieros y habilidades técnicas.",
+    "paragraph2": "He desarrollado aplicaciones web con funcionalidades complejas de front-end y back-end, herramientas de modelado financiero para la toma de decisiones y automatizaciones IoT para optimizar procesos y monitoreo.",
+    "paragraph3": "Me apasionan las oportunidades donde pueda utilizar tanto mis habilidades de programación como mi experiencia en negocios para crear soluciones con impacto real.",
     "videoText": "<strong>Mira un video de 5 minutos donde me presento y muestro uno de mis proyectos:</strong>",
     "videoButton": "Video de Introducción"
   },
@@ -25,9 +25,9 @@
     "expertise1Title": "Aplicaciones Web/Móviles:",
     "expertise1Description": "Aplicaciones web y móviles interactivas con funcionalidades complejas de front-end y back-end.",
     "expertise2Title": "Modelado y planificación financiera:",
-    "expertise2Description": "Representar diversos escenarios financieros para análisis y toma de decisiones.",
+    "expertise2Description": "Modelar diversos escenarios financieros para análisis y toma de decisiones.",
     "expertise3Title": "Automatizaciones IoT:",
-    "expertise3Description": "Automatizaciones para monitorear equipos, optimizar procesos y aumentar el control de calidad.",
+    "expertise3Description": "Automatizaciones para monitorear equipos, optimizar procesos y mejorar el control de calidad.",
     "languagesHeading": "Lenguajes y Frameworks",
     "toolsHeading": "Herramientas y Tecnologías"
   },
@@ -37,7 +37,7 @@
   },
   "projects": {
     "heading": "Proyectos",
-    "intro": "Aquí hay algunos de mis proyectos. Puedes ver otras cosas que he hecho en mi",
+    "intro": "Aquí están algunos de mis proyectos. Puedes ver más cosas que he hecho en mi",
     "blogLink": "blog",
     "project1Title": "API CoDi del Banco de México",
     "project1Description": "API de pagos digitales sin comisiones utilizando el sistema CoDi del Banco de México.",
@@ -49,16 +49,16 @@
     "project3Description": "Sitio web estático y tienda en línea para una academia de baile.",
     "project3Tech": "HTML, CSS, JS, NodeJs, ExpressJs, Stripe API",
     "project4Title": "Aplicación Web Bar Salsa-Candela",
-    "project4Description": "Pedidos de bebidas móviles con recogida por código QR.",
+    "project4Description": "Pedidos de bebidas móviles con retiro por código QR.",
     "project4Tech": "React, NodeJs, ExpressJs, Stripe API",
     "project5Title": "Dashboard Financiero de Portafolio",
-    "project5Description": "Visualizador de portafolio para rastrear una cartera de inversión.",
+    "project5Description": "Panel de control para monitorear y dar seguimiento a una cartera de inversiones.",
     "project5Tech": "Python, Pandas, Grafana, MySQL, Docker",
     "project6Title": "Monitor de Energía IoT",
-    "project6Description": "Sensor IoT y computadora para monitorear el consumo de energía de una casa.",
+    "project6Description": "Sensor IoT para monitorear el consumo de energía en tiempo real.",
     "project6Tech": "Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB",
     "project7Title": "Reporte Financiero PDF Automatizado",
-    "project7Description": "Ingresa el símbolo de una empresa y genera un reporte PDF con las métricas financieras más importantes de la compañía.",
+    "project7Description": "Genera reportes PDF con las métricas financieras más importantes de cualquier empresa.",
     "project7Tech": "Python, Pandas, Plotly, FMP, FPDF2",
     "project8Title": "Sistema de Monitoreo de Agua Inteligente",
     "project8Description": "Sensor de nivel de agua automatizado con ESP32, Raspberry Pi y Grafana.",
@@ -70,9 +70,9 @@
     "docsButton": "Docs"
   },
   "contact": {
-    "heading": "¡Ponte en contacto!",
-    "description": "Actualmente estoy abierto a trabajar y estaría encantado de conversar.",
-    "callToAction": "No dudes en contactarme si estás interesado en lo que puedo aportar a tu proyecto o equipo.",
+    "heading": "¡Pongámonos en contacto!",
+    "description": "Actualmente estoy disponible para trabajar y me encantaría conversar contigo.",
+    "callToAction": "Contáctame si te interesa lo que puedo aportar a tu proyecto o equipo.",
     "emailButton": "Envíame un email"
   },
   "footer": {
