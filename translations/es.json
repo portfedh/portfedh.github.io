@@ -37,7 +37,7 @@
   },
   "projects": {
     "heading": "Proyectos",
-    "intro": "Aquí están algunos de mis proyectos.",
+    "intro": "Aquí puedes ver algunos de mis proyectos.",
     "project1Title": "API CoDi del Banco de México",
     "project1Description": "API de pagos digitales sin comisiones utilizando el sistema CoDi del Banco de México.",
     "project1Tech": "Node.js, Express, PostgresSQL, Jest, PM2, OpenAPI",
@@ -69,9 +69,9 @@
     "docsButton": "Docs"
   },
   "contact": {
-    "heading": "¡Pongámonos en contacto!",
-    "description": "Actualmente estoy disponible para trabajar y me encantaría conversar.",
-    "callToAction": "Contáctame si te interesa lo que puedo aportar a tu proyecto o equipo.",
+    "heading": "¡Contacto!",
+    "description": "Actualmente estoy disponible para nuevos proyectos.",
+    "callToAction": "¿Tienes un proyecto en mente? Me encantaría saber cómo puedo ayudarte.",
     "emailButton": "Email"
   },
   "footer": {

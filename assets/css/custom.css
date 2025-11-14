@@ -272,9 +272,9 @@ ul.icons li .label {
     padding-right: 0.5rem;
   }
 
-  /* Center text in My Expertise section on mobile */
+  /* Left align text in My Expertise section on mobile */
   #two .col-4.col-12-medium:first-child .skills {
-    text-align: center;
+    text-align: left;
     margin-left: 0;
     display: block;
   }
