@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "How to make a financial report with Python | Pablo Cruz",
+    "ogTitle": "How to make a financial report with Python",
+    "description": "Learn how to create automated financial reports using Python, APIs, and PDF generation. Includes data visualization and financial analysis techniques."
+  },
+  "header": {
+    "backButton": "← Back to Portfolio",
+    "title": "How to make a financial report with Python",
+    "description": "Learn how to create automated financial reports using Python, APIs, and PDF generation. This tutorial covers data extraction, analysis, visualization, and professional report creation."
+  },
+  "toc": {
+    "heading": "Table of Contents"
+  },
+  "navigation": {
+    "githubRepo": "View GitHub Repository",
+    "backToTop": "Back to Top"
+  },
+  "contact": {
+    "heading": "Interested in This Project?",
+    "description": "I'd be happy to discuss this project, answer questions, or explore collaboration opportunities.",
+    "emailButton": "Get in Touch"
+  }
+}

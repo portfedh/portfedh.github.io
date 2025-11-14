@@ -82,9 +82,15 @@
   <body class="is-preload">
     <!-- Header Start-->
     <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+        <span class="lang-separator">|</span>
+        <button class="lang-btn" data-lang="es" aria-label="Cambiar a Español">ES</button>
+      </div>
       <div class="inner">
         <div class="blog-nav">
-          <a href="index.html" class="button">← Back to Portfolio</a>
+          <a href="index.html" class="button" data-i18n="header.backButton">← Back to Portfolio</a>
         </div>
         <div class="blog-title-container">
           <img
@@ -92,8 +98,8 @@
             alt="CoDi Logo"
             class="codi-logo"
           />
-          <h1>Bank of Mexico CoDi API</h1>
-          <p class="blog-description">
+          <h1 data-i18n="header.title">Bank of Mexico CoDi API</h1>
+          <p class="blog-description" data-i18n="header.description">
             Open-source API that enables Mexican businesses to generate payment
             requests through Mexico's Central Bank CoDi system. Zero transaction
             fees, immediate deposits, bank-level security, and comprehensive
@@ -127,23 +133,23 @@
           <article class="blog-post">
             <!-- Table of Contents -->
             <div class="toc-container">
-              <h2>Table of Contents</h2>
+              <h2 data-i18n="toc.heading">Table of Contents</h2>
               <ul class="toc">
-                <li><a href="#overview">Project Overview</a></li>
-                <li><a href="#what-is-codi">What is CoDi?</a></li>
-                <li><a href="#architecture">Technical Architecture</a></li>
+                <li><a href="#overview" data-i18n="toc.overview">Project Overview</a></li>
+                <li><a href="#what-is-codi" data-i18n="toc.whatIsCodi">What is CoDi?</a></li>
+                <li><a href="#architecture" data-i18n="toc.architecture">Technical Architecture</a></li>
                 <li>
-                  <a href="#features">Key Features</a>
+                  <a href="#features" data-i18n="toc.features">Key Features</a>
                   <ul>
-                    <li><a href="#qr-payments">QR Code Payments</a></li>
-                    <li><a href="#push-payments">Push Notifications</a></li>
+                    <li><a href="#qr-payments" data-i18n="toc.qrPayments">QR Code Payments</a></li>
+                    <li><a href="#push-payments" data-i18n="toc.pushPayments">Push Notifications</a></li>
                     <li>
-                      <a href="#payment-queries">Payment Status Queries</a>
+                      <a href="#payment-queries" data-i18n="toc.paymentQueries">Payment Status Queries</a>
                     </li>
-                    <li><a href="#webhooks">Webhook Integration</a></li>
-                    <li><a href="#security">Security Architecture</a></li>
+                    <li><a href="#webhooks" data-i18n="toc.webhooks">Webhook Integration</a></li>
+                    <li><a href="#security" data-i18n="toc.security">Security Architecture</a></li>
                     <li>
-                      <a href="#documentation">Interactive Documentation</a>
+                      <a href="#documentation" data-i18n="toc.documentation">Interactive Documentation</a>
                     </li>
                   </ul>
                 </li>
@@ -1368,6 +1374,12 @@ function generateDigitalSignature(payload, privateKeyPath) {
     <!-- Footer End -->
 
     <!-- Scripts -->
+    <script src="assets/js/blog-i18n.js"></script>
+    <script>
+      // Initialize blog translation system
+      const blogI18n = new BlogI18n('codi-api');
+      blogI18n.init();
+    </script>
     <script src="assets/js/main.js"></script>
     <script
       src="https://kit.fontawesome.com/1450436a40.js"

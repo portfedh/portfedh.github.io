@@ -83,13 +83,19 @@
   <body class="is-preload">
     <!-- Header Start-->
     <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+        <span class="lang-separator">|</span>
+        <button class="lang-btn" data-lang="es" aria-label="Cambiar a Español">ES</button>
+      </div>
       <div class="inner">
         <div class="blog-nav">
-          <a href="index.html" class="button">← Back to Portfolio</a>
+          <a href="index.html" class="button" data-i18n="header.backButton">← Back to Portfolio</a>
         </div>
         <div class="blog-title-container">
-          <h1>How to make a financial report with Python</h1>
-          <p class="blog-description">
+          <h1 data-i18n="header.title">How to make a financial report with Python</h1>
+          <p class="blog-description" data-i18n="header.description">
             Learn how to create automated financial reports using Python, APIs, and PDF generation. This tutorial covers data extraction, analysis, visualization, and professional report creation.
           </p>
         </div>
@@ -829,6 +835,12 @@ print(f"Financial report generated: {report_path}")</code></pre>
     <!-- Footer End -->
 
     <!-- Scripts -->
+    <script src="assets/js/blog-i18n.js"></script>
+    <script>
+      // Initialize blog translation system
+      const blogI18n = new BlogI18n('financial-report-pdf');
+      blogI18n.init();
+    </script>
     <script src="assets/js/main.js"></script>
     <script
       src="https://kit.fontawesome.com/1450436a40.js"

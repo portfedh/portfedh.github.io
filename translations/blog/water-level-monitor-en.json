@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "How to make an IoT water level monitor | Pablo Cruz",
+    "ogTitle": "How to make an IoT water level monitor",
+    "description": "This post explains how I made an IoT water level monitor using a raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor."
+  },
+  "header": {
+    "backButton": "← Back to Portfolio",
+    "title": "How to make an IoT water level monitor",
+    "description": "This post explains how I made an IoT water level monitor using a raspberry pi, an ESP32 or ESP8266 and an ultrasonic sensor."
+  },
+  "toc": {
+    "heading": "Table of Contents"
+  },
+  "navigation": {
+    "githubRepo": "View GitHub Repository",
+    "backToTop": "Back to Top"
+  },
+  "contact": {
+    "heading": "Interested in This Project?",
+    "description": "I'd be happy to discuss this project, answer questions, or explore collaboration opportunities.",
+    "emailButton": "Get in Touch"
+  }
+}

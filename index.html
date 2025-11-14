@@ -73,6 +73,12 @@
     <header id="header">
       <div class="header-background"></div>
       <div class="header-shadow"></div>
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn" data-lang="en" aria-label="Switch to English">EN</button>
+        <span class="lang-separator">|</span>
+        <button class="lang-btn" data-lang="es" aria-label="Cambiar a Español">ES</button>
+      </div>
       <div class="inner">
         <div>
           <div class="image-wrapper">
@@ -88,10 +94,10 @@
         </div>
         <div>
           <h1>
-            Hi, I'm <strong>Pablo,</strong><br />
-            Full-stack software developer.
+            <span data-i18n="header.greeting" data-i18n-html="true">Hi, I'm <strong>Pablo,</strong></span><br />
+            <span data-i18n="header.title">Full-stack software developer.</span>
           </h1>
-          <p class="professional-summary">
+          <p class="professional-summary" data-i18n="header.summary">
             Building scalable web applications, with a strong foundation in real
             estate, finance, and investing.
           </p>
@@ -102,11 +108,12 @@
               <a
                 href="Pablo_Cruz_Resume_Portfolio_2025.pdf"
                 class="button wide primary fade-out"
+                data-i18n="header.resumeButton"
                 >Resume</a
               >
             </li>
             <li>
-              <a href="#projects-section" class="button wide">Portfolio</a>
+              <a href="#projects-section" class="button wide" data-i18n="header.portfolioButton">Portfolio</a>
             </li>
           </ul>
         </nav>
@@ -122,26 +129,26 @@
             <div class="row gtr-150">
               <div class="col-6 col-12-medium">
                 <header class="major fade-out">
-                  <h2>About Me <br /></h2>
+                  <h2 data-i18n="aboutMe.heading">About Me</h2>
                 </header>
-                <p class="aboutMe fade-out">
+                <p class="aboutMe fade-out" data-i18n="aboutMe.paragraph1">
                   I'm an experienced full-stack developer, passionate about
                   leveraging technology to solve real-world problems. With over
                   9 years of experience as an investment manager at a Single
                   Family Office in Mexico City, I bring a blend of financial
                   acumen and technical expertise to the table.
                 </p>
-                <p class="aboutMe fade-out">
+                <p class="aboutMe fade-out" data-i18n="aboutMe.paragraph2">
                   I've successfully developed web applications with complex
                   front and back-end functionalities, financial modeling tools
                   for informed decision-making and IoT automations for process
                   optimization and monitoring.
                 </p>
-                <p class="aboutMe fade-out">
+                <p class="aboutMe fade-out" data-i18n="aboutMe.paragraph3">
                   I'm excited about opportunities where I can leverage both my
                   programming and business skills to create impactful solutions.
                 </p>
-                <p class="aboutMe fade-out">
+                <p class="aboutMe fade-out" data-i18n="aboutMe.videoText" data-i18n-html="true">
                   <strong
                     >Check out a 5-minute video where I introduce myself and
                     showcase one of my projects:</strong
@@ -153,6 +160,7 @@
                   class="button button-margin fade-out video-intro"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-i18n="aboutMe.videoButton"
                   >Intro Video</a
                 >
               </div>
@@ -183,23 +191,23 @@
               <article>
                 <header class="major fade-out">
                   <!-- Skills Text -->
-                  <h2>My Expertise<br /></h2>
+                  <h2 data-i18n="skills.expertiseHeading">My Expertise</h2>
                 </header>
                 <p class="skills fade-out">
-                  <strong> Web/Mobile apps:</strong> <br />Interactive web &
-                  mobile apps with complex front and back end functionalities.
+                  <strong data-i18n="skills.expertise1Title"> Web/Mobile apps:</strong> <br /><span data-i18n="skills.expertise1Description">Interactive web &
+                  mobile apps with complex front and back end functionalities.</span>
                 </p>
 
                 <p class="skills fade-out">
-                  <strong> Financial modeling & planning: </strong>
-                  <br />Represent diverse financial scenarios for analysis and
-                  decision-making.
+                  <strong data-i18n="skills.expertise2Title"> Financial modeling & planning: </strong>
+                  <br /><span data-i18n="skills.expertise2Description">Represent diverse financial scenarios for analysis and
+                  decision-making.</span>
                 </p>
 
                 <p class="skills fade-out">
-                  <strong> IoT automations:</strong> <br />Automations to
+                  <strong data-i18n="skills.expertise3Title"> IoT automations:</strong> <br /><span data-i18n="skills.expertise3Description">Automations to
                   monitor equipment, optimize processes & increase quality
-                  control.
+                  control.</span>
                 </p>
               </article>
             </div>
@@ -208,7 +216,7 @@
               <article>
                 <header class="major fade-out">
                   <!-- Main Skills -->
-                  <h2>Languages & Frameworks<br /></h2>
+                  <h2 data-i18n="skills.languagesHeading">Languages & Frameworks</h2>
                 </header>
                 <ul class="skills">
                   <li class="fade-out">
@@ -256,7 +264,7 @@
               <article>
                 <header class="major fade-out">
                   <!-- Other Skills -->
-                  <h2>Tools & Technologies<br /></h2>
+                  <h2 data-i18n="skills.toolsHeading">Tools & Technologies</h2>
                 </header>
                 <ul class="skills-other">
                   <li class="fade-out">
@@ -304,9 +312,9 @@
         <div class="container">
           <article>
             <header class="major fade-out">
-              <h2>GitHub Activity</h2>
+              <h2 data-i18n="github.heading">GitHub Activity</h2>
             </header>
-            <p class="fade-out">
+            <p class="fade-out" data-i18n="github.description">
               My coding activity and contributions over the past year.
             </p>
             <div class="github-chart-container fade-in">
@@ -344,12 +352,11 @@
         <div class="container">
           <article>
             <header class="major fade-out">
-              <h2>Projects</h2>
+              <h2 data-i18n="projects.heading">Projects</h2>
             </header>
             <p class="fade-out">
-              Here are some of my projects. You can see other things I've made
-              on my
-              <a href="https://blog.pablocruz.io/" target="_blank">blog</a>.
+              <span data-i18n="projects.intro">Here are some of my projects. You can see other things I've made on my</span>
+              <a href="https://blog.pablocruz.io/" target="_blank" data-i18n="projects.blogLink">blog</a>.
             </p>
             <div class="row gtr-150">
               <!-- Project 1 Start -->
@@ -384,14 +391,14 @@
                     -->
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project1Title">
                   Bank of Mexico CoDi API
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project1Description">
                   Commission-free digital payments API using the Bank of Mexico
                   CoDi system.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project1Tech">
                   Node.js, Express, PostgresSQL, Jest, PM2, OpenAPI
                 </p>
                 <ul class="actions special small">
@@ -402,6 +409,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Read detailed blog post about CoDi API project"
+                      data-i18n="projects.blogButton"
                       >Blog</a
                     ><a
                       href="https://docs.bite-size.mx/"
@@ -409,6 +417,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View CoDi API documentation site"
+                      data-i18n="projects.docsButton"
                       >Docs</a
                     ><a
                       href="https://github.com/portfedh/codi-api"
@@ -416,6 +425,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of CoDi API on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -444,11 +454,11 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project2Title">
                   Salsa-Candela Administrative System
                 </h3>
-                <p class="fade-out">Access control, and reporting system.</p>
-                <p class="technologies fade-out">
+                <p class="fade-out" data-i18n="projects.project2Description">Access control, and reporting system.</p>
+                <p class="technologies fade-out" data-i18n="projects.project2Tech">
                   HTML, CSS, JS, NodeJs, ExpressJs, MongoDB, Stripe API
                 </p>
                 <ul class="actions special small">
@@ -459,6 +469,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Visit Salsa-Candela Administrative System website"
+                      data-i18n="projects.visitButton"
                       >Visit</a
                     >
                     <a
@@ -467,6 +478,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Watch video demonstration of Salsa-Candela Administrative System project"
+                      data-i18n="projects.videoButton"
                       >Video</a
                     >
                   </li>
@@ -495,13 +507,13 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project3Title">
                   Salsa-Candela Business Website
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project3Description">
                   Static website & online store for a dance academy.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project3Tech">
                   HTML, CSS, JS, NodeJs, ExpressJs, Stripe API
                 </p>
                 <ul class="actions special small">
@@ -512,6 +524,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Visit Salsa-Candela Business Website"
+                      data-i18n="projects.visitButton"
                       >Visit</a
                     ><a
                       href="https://github.com/portfedh/SalsaCandela"
@@ -519,6 +532,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of Salsa-Candela Business Website on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -547,11 +561,11 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project4Title">
                   Salsa-Candela Bar WebApp
                 </h3>
-                <p class="fade-out">Mobile Drink Ordering with QR Pickup .</p>
-                <p class="technologies fade-out">
+                <p class="fade-out" data-i18n="projects.project4Description">Mobile Drink Ordering with QR Pickup.</p>
+                <p class="technologies fade-out" data-i18n="projects.project4Tech">
                   React, NodeJs, ExpressJs, Stripe API
                 </p>
                 <ul class="actions special small">
@@ -562,6 +576,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Visit Salsa-Candela Bar WebApp"
+                      data-i18n="projects.visitButton"
                       >Visit</a
                     ><a
                       href="https://www.loom.com/share/824e01d9cf60465b8003e4c23919b458?sid=19eb8af4-4bb9-4f24-abdf-c8cd22e6d1ec"
@@ -569,6 +584,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Watch video demonstration of Salsa-Candela Bar WebApp project"
+                      data-i18n="projects.videoButton"
                       >Video</a
                     >
                   </li>
@@ -597,13 +613,13 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project5Title">
                   Portfolio Financial Dashboard
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project5Description">
                   Portfolio visualizer to track an investment portfolio.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project5Tech">
                   Python, Pandas, Grafana, MySQL, Docker
                 </p>
                 <ul class="actions special small">
@@ -614,6 +630,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Watch video demonstration of Portfolio Financial Dashboard project"
+                      data-i18n="projects.videoButton"
                       >Video</a
                     >
                     <a
@@ -622,6 +639,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of Portfolio Financial Dashboard on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -650,14 +668,14 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project6Title">
                   IoT Energy Monitor
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project6Description">
                   IoT sensor and computer to monitor the energy consumption of a
                   home.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project6Tech">
                   Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB
                 </p>
                 <ul class="actions special small">
@@ -668,6 +686,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Read blog post about IoT Energy Monitor project"
+                      data-i18n="projects.blogButton"
                       >Blog</a
                     ><a
                       href="https://github.com/portfedh/CurrentSensorsMQTT"
@@ -675,6 +694,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of IoT Energy Monitor on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -703,14 +723,14 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project7Title">
                   Automated Financial Report PDF
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project7Description">
                   Input a company ticker and generate a PDF report with most
                   important financial metrics for the company.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project7Tech">
                   Python, Pandas, Plotly, FMP, FPDF2
                 </p>
                 <ul class="actions special small">
@@ -721,6 +741,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Read blog post about Automated Financial Report PDF project"
+                      data-i18n="projects.blogButton"
                       >Blog</a
                     ><a
                       href="https://github.com/portfedh/fundamental_analysis_report"
@@ -728,6 +749,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of Automated Financial Report PDF on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -756,14 +778,14 @@
                     />
                   </div>
                 </span>
-                <h3 class="bold project-heading fade-out">
+                <h3 class="bold project-heading fade-out" data-i18n="projects.project8Title">
                   Smart Water Monitoring System
                 </h3>
-                <p class="fade-out">
+                <p class="fade-out" data-i18n="projects.project8Description">
                   Automated Water Level Sensor with ESP32, Raspberry Pi, and
                   Grafana.
                 </p>
-                <p class="technologies fade-out">
+                <p class="technologies fade-out" data-i18n="projects.project8Tech">
                   JSN-SR04T ultrasonic sensor, Esp32, RaspberryPi, MQTT,
                   Node-Red, Grafana, InfluxDB
                 </p>
@@ -775,6 +797,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Read blog post about Smart Water Monitoring System project"
+                      data-i18n="projects.blogButton"
                       >Blog</a
                     ><a
                       href="https://github.com/portfedh/WaterLevelSensorMQTT"
@@ -782,6 +805,7 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View source code of Smart Water Monitoring System on GitHub"
+                      data-i18n="projects.githubButton"
                       >GitHub</a
                     >
                   </li>
@@ -799,20 +823,21 @@
         <div class="container">
           <article>
             <header class="major fade-out">
-              <h2>Get in touch!</h2>
+              <h2 data-i18n="contact.heading">Get in touch!</h2>
             </header>
             <p class="fade-out">
-              I'm currently open to work and I'd be happy to chat.
+              <span data-i18n="contact.description">I'm currently open to work and I'd be happy to chat.</span>
               <br />
               <br />
-              Feel free to reach out if you are interested in what I can bring
-              to your project or team.
+              <span data-i18n="contact.callToAction">Feel free to reach out if you are interested in what I can bring
+              to your project or team.</span>
             </p>
             <ul class="actions special">
               <li>
                 <a
                   href="mailto:pablo.cruz.lemini@gmail.com"
                   class="button wide primary fade-out"
+                  data-i18n="contact.emailButton"
                   >Email me</a
                 >
               </li>
@@ -875,6 +900,7 @@
     </footer>
     <!-- Footer End -->
     <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
     <script
       src="https://kit.fontawesome.com/1450436a40.js"
