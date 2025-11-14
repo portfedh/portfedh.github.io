@@ -37,8 +37,7 @@
   },
   "projects": {
     "heading": "Projects",
-    "intro": "Here are some of my projects. You can see other things I've made on my",
-    "blogLink": "blog",
+    "intro": "Here are some of my projects.",
     "project1Title": "Bank of Mexico CoDi API",
     "project1Description": "Commission-free digital payments API using the Bank of Mexico CoDi system.",
     "project1Tech": "Node.js, Express, PostgresSQL, Jest, PM2, OpenAPI",
