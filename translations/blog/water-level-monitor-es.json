@@ -2,12 +2,12 @@
   "meta": {
     "title": "Cómo crear un monitor de nivel de agua IoT | Pablo Cruz",
     "ogTitle": "Cómo crear un monitor de nivel de agua IoT",
-    "description": "Este artículo explica cómo hice un monitor de nivel de agua IoT usando una raspberry pi, un ESP32 o ESP8266 y un sensor ultrasónico."
+    "description": "Este artículo explica cómo construí un monitor de nivel de agua IoT usando una Raspberry Pi, un ESP32 o ESP8266 y un sensor ultrasónico."
   },
   "header": {
     "backButton": "← Volver al Portafolio",
     "title": "Cómo crear un monitor de nivel de agua IoT",
-    "description": "Este artículo explica cómo hice un monitor de nivel de agua IoT usando una raspberry pi, un ESP32 o ESP8266 y un sensor ultrasónico."
+    "description": "Este artículo explica cómo construí un monitor de nivel de agua IoT usando una Raspberry Pi, un ESP32 o ESP8266 y un sensor ultrasónico."
   },
   "toc": {
     "heading": "Tabla de Contenidos"
@@ -18,7 +18,7 @@
   },
   "contact": {
     "heading": "¿Interesado en Este Proyecto?",
-    "description": "Estaría encantado de discutir este proyecto, responder preguntas o explorar oportunidades de colaboración.",
+    "description": "Me encantaría platicar sobre este proyecto, responder tus preguntas o explorar oportunidades de colaboración.",
     "emailButton": "Contáctame"
   }
 }
