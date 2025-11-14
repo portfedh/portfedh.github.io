@@ -226,6 +226,7 @@
   padding: 1rem;
   text-align: left;
   font-weight: 600;
+  color: #ffffff;
   border-bottom: 2px solid #1a5b5f;
 }
 
@@ -824,7 +825,12 @@
 }
 
 .back-to-top::before {
-  content: "↑ Back to top";
+  content: "↑ ";
+  font-weight: bold;
+  color: white;
+}
+
+.back-to-top span {
   font-weight: bold;
   color: white;
 }

@@ -103,6 +103,16 @@ class BlogI18n {
         }
       }
     });
+
+    // Handle title attributes
+    const titleElements = document.querySelectorAll('[data-i18n-title]');
+    titleElements.forEach(element => {
+      const key = element.getAttribute('data-i18n-title');
+      const translation = this.getTranslation(key);
+      if (translation) {
+        element.setAttribute('title', translation);
+      }
+    });
   }
 
   /**
