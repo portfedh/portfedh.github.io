@@ -10,15 +10,169 @@
     "description": "Este artículo explica cómo construí un monitor de nivel de agua IoT usando una Raspberry Pi, un ESP32 o ESP8266 y un sensor ultrasónico."
   },
   "toc": {
-    "heading": "Tabla de Contenidos"
+    "heading": "Tabla de Contenidos",
+    "whyMonitor": "Por qué hacer un monitor de nivel de agua",
+    "howWorks": "Cómo funciona el sensor de nivel de agua",
+    "components": "Componentes del sensor de nivel de agua",
+    "buildSensor": "Cómo construir el sensor de nivel de agua",
+    "readingData": "Leyendo los datos del sensor de nivel de agua",
+    "savingData": "Guardando los valores en una base de datos",
+    "visualizing": "Visualizando los datos",
+    "usingData": "Cómo usar los datos del sensor",
+    "resources": "Más recursos",
+    "code": "Código"
+  },
+  "intro": {
+    "paragraph1": "En este artículo, explicaré cómo hacer un sensor de nivel de agua con un sensor ultrasónico JSN-SR04T, un microcontrolador ESP32 y una Raspberry Pi.",
+    "paragraph2": "Si quieres ir directo al repositorio de GitHub,",
+    "clickHere": "haz clic aquí",
+    "paragraph3": ". También puedes encontrar una copia del",
+    "codeLink": "código",
+    "paragraph4": "al final del artículo."
+  },
+  "whyMonitor": {
+    "heading": "Por qué hacer un monitor de nivel de agua",
+    "paragraph1": "En la Ciudad de México, así como en otros países latinoamericanos, el agua generalmente se recolecta en un tanque de agua a nivel del suelo y luego se bombea a otro tanque de agua en la parte superior del edificio con una bomba de agua. La presión del agua en el hogar o negocio se obtiene por la altura del tanque de agua, en lugar de usar un tanque de compresión.",
+    "paragraph2": "El tanque de agua superior a veces puede ser difícil de alcanzar y si hay una fuga o escasez de agua, para cuando se nota, los tanques de agua pueden estar ya vacíos y necesitar atención inmediata.",
+    "imageCaption": "Diagrama que muestra una configuración típica para una casa en la Ciudad de México",
+    "paragraph3": "Para ayudar con este problema, podemos colocar un sensor de nivel de agua en el tanque de agua superior y configurar una alerta si el nivel de agua cae por debajo del 50%.",
+    "paragraph4": "Con esta configuración podemos monitorear el tanque de forma remota, verificar la cantidad de agua que uso y recibir una alerta si hay un problema antes de que sea una emergencia."
+  },
+  "howWorks": {
+    "heading": "Cómo funciona el sensor de nivel de agua",
+    "paragraph1": "El JSN-SR04T es un sensor ultrasónico impermeable colocado en la tapa del tanque de agua. Toma mediciones cada 5 minutos y calcula la distancia desde la tapa hasta el nivel de agua dentro del tanque. Luego transmite esa información a un microcontrolador ESP32.",
+    "imageCaption1": "Sensor ultrasónico impermeable JSN-SR04T",
+    "paragraph2": "Usando Wi-Fi, el ESP32 luego envía la medición a una computadora Raspberry Pi en la misma red usando el protocolo MQTT.",
+    "imageCaption2": "Microcontrolador ESP32. También puedes usar un ESP8266.",
+    "paragraph3": "La Raspberry Pi luego calcula el volumen de agua en el tanque y lo guarda en una base de datos Influx DB.",
+    "imageCaption3": "Computadora Raspberry Pi",
+    "paragraph4": "También en la Raspberry Pi, Grafana, un software de visualización de código abierto se usa para leer la base de datos y mostrar la información.",
+    "paragraph5": "Finalmente, se configura una alarma en Grafana, de modo que si el nivel de agua cae por debajo de un valor umbral, se activa una alarma y se envía un mensaje de Telegram para alertar a los usuarios del problema.",
+    "imageCaption4": "Diagrama de flujo del monitor de nivel de agua"
+  },
+  "components": {
+    "heading": "Componentes del sensor de nivel de agua",
+    "intro": "Para construir el sensor de nivel de agua se necesita lo siguiente:",
+    "hardwareHeading": "Hardware:",
+    "hardware1": "1 microcontrolador ESP32 o 1 microcontrolador ESP8266",
+    "hardware2": "1 computadora Raspberry Pi",
+    "hardware3": "sensor ultrasónico",
+    "hardware4": "Un tomacorriente para el microcontrolador y el sensor",
+    "hardware5": "Conducto eléctrico de PVC (opcional)",
+    "hardware6": "Adaptador de sensor impreso en 3D (opcional)",
+    "imageCaption": "Adaptador de sensor impreso en 3D",
+    "softwareHeading": "Software:",
+    "software1": "Una conexión WiFi",
+    "software2": "Placa ESP8266",
+    "software3": "Biblioteca Arduino EspMQTTClient.h",
+    "software4": "Node-RED",
+    "software5": "Mosquitto MQTT",
+    "software6": "InfluxDB",
+    "paragraph1": "Elegí el sensor JSN-SR04T porque es impermeable y puede proporcionar un rango preciso de hasta 4 metros. Requiere 3V para funcionar, por lo que puede ser alimentado directamente por el microcontrolador ESP32.",
+    "paragraph2": "Para que la configuración funcione, el ESP32 debe estar dentro del alcance de tu red Wi-Fi. De esta manera puede enviar los datos del sensor a la Raspberry Pi. Además, tanto el ESP32 como la Raspberry Pi deben estar en la misma red de área local.",
+    "paragraph3": "Puedes usar un microcontrolador ESP32 o un ESP8266. Ambos funcionarán y ambos se configuran exactamente de la misma manera."
+  },
+  "buildSensor": {
+    "heading": "Cómo construir el sensor de nivel de agua",
+    "connectionsHeading": "Conexiones",
+    "paragraph1": "Para configurar el sensor, simplemente conecta los cables siguiendo el diagrama eléctrico a continuación:",
+    "imageCaption1": "Diagrama de conexiones eléctricas",
+    "outdoorHeading": "Caja exterior",
+    "paragraph2": "Como esta es una configuración exterior, coloca los cables dentro de un conducto eléctrico para protegerlos de la lluvia y el sol.",
+    "paragraph3": "También necesitarás asegurarte de colocar un tomacorriente cerca para alimentar el ESP32 y el sensor.",
+    "paragraph4": "Para proteger el ESP32, parte del sensor ultrasónico y el tomacorriente, coloca todo dentro de una caja eléctrica impermeable fijada a una pared.",
+    "imageCaption2": "Configuración de caja eléctrica impermeable",
+    "paragraph5": "Dentro de la caja eléctrica, fija el ESP32 y parte del sensor usando rieles Din para mantenerlo en su lugar.",
+    "paragraph6": "Para hacer un adaptador exacto, puedes comprar soportes de riel Din u obtener los archivos impresos en 3D y hacer el tuyo propio desde",
+    "here": "aquí",
+    "paragraph7": "Para configurar el sensor, perfora un agujero en la parte superior del tanque de agua. El sensor tiene accesorios de presión de silicona que deberían mantenerlo fijo en su lugar.",
+    "paragraph8": "Puedes hacer un",
+    "link3dPrinted": "adaptador de tanque de agua impreso en 3D",
+    "paragraph9": "para asegurarte de que el cable del sensor esté protegido de los elementos.",
+    "imageCaption3": "Detalle de instalación del sensor",
+    "measurementsHeading": "Mediciones utilizadas",
+    "paragraph10": "Ahora debemos tomar las medidas del tanque de agua para calcular su volumen máximo de agua.",
+    "paragraph11": "Este tanque de agua en particular se puede separar en dos formas diferentes: un cilindro y un cono con la parte superior cortada (llamado cono truncado).",
+    "imageCaption4": "Medidas del tanque de agua",
+    "paragraph12": "Las fórmulas para calcular el volumen de ambas formas son:",
+    "imageCaption5": "Fórmula del volumen del cilindro",
+    "imageCaption6": "Fórmula del volumen del cono truncado",
+    "paragraph13": "Usando ambas fórmulas, podemos calcular el volumen del tanque de agua de la siguiente manera:",
+    "volume1": "Volumen del cilindro: 998 Litros",
+    "volume2": "Volumen del cono truncado: 119 Litros",
+    "volume3": "Volumen total: 1,117 Litros",
+    "paragraph14": "En este caso, había dos tanques de agua idénticos, así que duplicamos la cantidad para obtener el volumen total máximo de agua."
+  },
+  "readingData": {
+    "heading": "Leyendo los datos del sensor de nivel de agua",
+    "paragraph1": "Después de tomar las medidas del tanque de agua y calcular su volumen, podemos usar el sensor para calcular la altura desde la parte superior del tanque de agua hasta la línea de agua y luego restar esa altura de las fórmulas del cono truncado y del cilindro.",
+    "paragraph2": "Para calcular la distancia del sensor a la línea de agua usamos este",
+    "codeLink": "código",
+    "paragraph3": "y lo cargamos al ESP32.",
+    "paragraph4": "El código lee los datos del sensor JSN-SR04T y los envía a través de MQTT a la Raspberry Pi.",
+    "paragraph5": "Una vez cargado, abre el monitor serial de Arduino para asegurarte de que estaba funcionando correctamente.",
+    "paragraph6": "Conecta la Raspberry Pi y confirma que el Broker MQTT Mosquitto esté recibiendo los valores que el ESP32 está reportando.",
+    "imageCaption": "Configuración completa del monitor de nivel de agua"
+  },
+  "savingData": {
+    "heading": "Guardando los valores en una base de datos",
+    "paragraph1": "Después de confirmar que MQTT está funcionando correctamente, necesitamos configurar Node-RED para leer los datos MQTT, guardarlos como un objeto JSON y luego escribirlos en una base de datos Influx DB que se configuró previamente.",
+    "imageCaption": "Configuración de Node-RED en Raspberry Pi",
+    "bullet1": "El nodo 'Water Level' lee el mensaje MQTT.",
+    "bullet2": "El nodo 'Water Level Calculation' calcula el volumen de agua teniendo en cuenta la distancia a la línea de agua.",
+    "bullet3": "El 'Database Storage' lee la variable de volumen cada 5 minutos.",
+    "bullet4": "El nodo 'Prepare InfluxDB Payload' agrega la fecha y hora, y guarda la salida como un objeto JSON.",
+    "bullet5": "El nodo 'NivelTinaco_Agua' guarda la información en Influx DB en una base de datos con el mismo nombre.",
+    "bullet6": "Los nodos verdes se usan para depuración y pruebas.",
+    "paragraph2": "El resto de los nodos se configuran a través del menú de nodos en Node-RED y no necesitan ningún código.",
+    "paragraph3": "Para verificar que los datos fueran accesibles, inicia sesión en la base de datos Influx DB usando la terminal y echa un vistazo a los valores.",
+    "imageCaption2": "Base de datos InfluxDB mostrando datos almacenados"
+  },
+  "visualizing": {
+    "heading": "Visualizando los datos",
+    "paragraph1": "Después de asegurarnos de que la información se está escribiendo correctamente en la base de datos influx DB, configuremos Grafana para visualizar los datos.",
+    "paragraph2": "Grafana es una gran herramienta para la visualización de datos porque es de código abierto, fácil de usar y produce excelentes gráficos dinámicos.",
+    "paragraph3": "Puedes hacer un tablero con una lectura de Medidor para el nivel de agua actual y también una serie temporal para mostrar los valores de agua durante un período de 24 horas.",
+    "imageCaption1": "Medidor de nivel de agua actual",
+    "imageCaption2": "Serie temporal de nivel de agua de 24 horas",
+    "paragraph4": "En el gráfico puedes ver cómo el nivel de agua cae periódicamente (duchas matutinas, lavar ropa al mediodía) y se restaura gradualmente con el tiempo.",
+    "paragraph5": "Los niveles de agua no parecen caer por debajo de la marca de 1,000L, pero se configura una alarma para enviar un mensaje de Telegram si el nivel de agua cae por debajo de este valor umbral."
+  },
+  "usingData": {
+    "heading": "Cómo usar los datos del sensor",
+    "paragraph1": "Los datos del sensor son útiles porque verifica el nivel de agua cada 5 minutos y envía una alarma si el nivel es demasiado bajo.",
+    "paragraph2": "Nos permite saber si hay un problema, lo que nos da tiempo para solucionarlo con suficiente agua disponible para tareas esenciales.",
+    "paragraph3": "También es un sensor útil porque nos permite verificar el consumo diario de agua y cómo esa tendencia cambia con el tiempo.",
+    "paragraph4": "Medir es el primer paso hacia la eficiencia y un futuro más sostenible."
+  },
+  "resources": {
+    "heading": "Más recursos",
+    "paragraph1": "Espero que hayas encontrado este artículo interesante. Construir el sensor de agua fue un proyecto divertido y gratificante, y lo he encontrado muy útil.",
+    "paragraph2": "Si decides construir una configuración similar de monitoreo de nivel de agua, te animo a ser creativo y ver cómo puedes personalizarla para adaptarla a tus necesidades específicas. Hay muchas variaciones y mejoras posibles que podrías hacer, como integrarlo con sistemas de hogar inteligente o expandir la red de sensores a múltiples tanques. La clave es empezar poco a poco, experimentar y no tener miedo de solucionar problemas cuando las cosas no funcionen como se esperaba.",
+    "paragraph3": "No dudes en contactarme si decides construir uno y necesitas ayuda.",
+    "paragraph4": "También hice un Monitor de Energía IoT. Puedes encontrar el artículo sobre eso",
+    "here": "aquí",
+    "paragraph5": "Finalmente, aquí hay algunos recursos adicionales que usé para hacer posible este proyecto:"
+  },
+  "code": {
+    "heading": "Código",
+    "arduinoHeading": "Código Arduino cargado al ESP32:",
+    "nodeRedHeading": "Código Node-RED utilizado:",
+    "waterLevelCalc": "Nodo Water Level Calculation:",
+    "influxPayload": "Nodo Prepare InfluxDB Payload:",
+    "copyButton": "Copiar",
+    "cppLabel": "C++ (Arduino)",
+    "jsLabel": "JavaScript (Node-RED)"
   },
   "navigation": {
-    "githubRepo": "Ver Repositorio en GitHub",
-    "backToTop": "Volver Arriba"
+    "backToPortfolio": "← Volver al Portafolio",
+    "viewGithub": "Ver en GitHub",
+    "backToTop": "Volver a la tabla de contenidos"
   },
   "contact": {
-    "heading": "¿Interesado en Este Proyecto?",
-    "description": "Me encantaría platicar sobre este proyecto, responder tus preguntas o explorar oportunidades de colaboración.",
-    "emailButton": "Contáctame"
+    "heading": "¡Pongámonos en contacto!",
+    "paragraph1": "Actualmente estoy abierto a trabajar y me encantaría platicar.",
+    "paragraph2": "No dudes en contactarme si estás interesado en lo que puedo aportar a tu proyecto o equipo.",
+    "emailButton": "Envíame un correo"
   }
 }
