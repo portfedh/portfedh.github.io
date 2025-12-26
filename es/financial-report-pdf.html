@@ -137,43 +137,43 @@
               <h2>Tabla de Contenidos</h2>
               <ul class="toc">
                 <li>
-                  <a href="#goal">The goal of the financial report</a>
+                  <a href="#goal">El objetivo del reporte financiero</a>
                 </li>
                 <li>
-                  <a href="#what-script-does">What the python script does</a>
+                  <a href="#what-script-does">Qué hace el script de Python</a>
                 </li>
                 <li>
-                  <a href="#coding-report">Coding the report</a>
+                  <a href="#coding-report">Codificando el reporte</a>
                   <ul>
-                    <li><a href="#jupyter-vs-script">Jupyter notebook vs python script</a></li>
-                    <li><a href="#fetching-data">Fetching data from the API</a></li>
-                    <li><a href="#data-transformations">Data transformations with Pandas</a></li>
-                    <li><a href="#data-visualizations">Data visualizations using plotly</a></li>
-                    <li><a href="#creating-pdf">Creating the PDF report using FPDF2</a></li>
+                    <li><a href="#jupyter-vs-script">Jupyter notebook vs script de Python</a></li>
+                    <li><a href="#fetching-data">Obteniendo datos de la API</a></li>
+                    <li><a href="#data-transformations">Transformaciones de datos con Pandas</a></li>
+                    <li><a href="#data-visualizations">Visualizaciones de datos usando Plotly</a></li>
+                    <li><a href="#creating-pdf">Creando el reporte PDF usando FPDF2</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#running-script">Running the script to create a report</a>
+                  <a href="#running-script">Ejecutando el script para crear un reporte</a>
                   <ul>
-                    <li><a href="#installing-dependencies">Installing python dependencies</a></li>
-                    <li><a href="#selecting-ticker">Selecting the company ticker</a></li>
+                    <li><a href="#installing-dependencies">Instalando dependencias de Python</a></li>
+                    <li><a href="#selecting-ticker">Seleccionando el ticker de la compañía</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#example-reports">Some example financial reports</a>
+                  <a href="#example-reports">Algunos reportes financieros de ejemplo</a>
                 </li>
-                <li><a href="#improvements">Improvements to the financial report</a></li>
-                <li><a href="#final-thoughts">Final thoughts</a></li>
+                <li><a href="#improvements">Mejoras al reporte financiero</a></li>
+                <li><a href="#final-thoughts">Reflexiones finales</a></li>
               </ul>
             </div>
 
             <!-- Introduction -->
             <div class="blog-section">
               <p>
-                This post will explain how I built a python script that creates a financial report of a public company in a pdf format. It's purpose is to use it as part of a stock selection process for an investment portfolio.
+                Esta publicación explicará cómo construí un script de Python que crea un reporte financiero de una compañía pública en formato PDF. Su propósito es usarlo como parte de un proceso de selección de acciones para un portafolio de inversión.
               </p>
               <p>
-                It will explain in detail how the report works and how it was made. If you want to skip to the source code, you can jump to the GitHub repository <a
+                Explicaré en detalle cómo funciona el reporte y cómo fue creado. Si quieres ir directo al código fuente, puedes ir al repositorio de GitHub <a
                   href="https://github.com/portfedh/fundamental_analysis_report"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -182,7 +182,7 @@
                 >.
               </p>
               <p>
-                You can also see some <a href="#example-reports" class="blog-link">example reports</a> created with the script.
+                También puedes ver algunos <a href="#example-reports" class="blog-link">reportes de ejemplo</a> creados con el script.
               </p>
             </div>
 
@@ -190,18 +190,18 @@
 
             <!-- Goal of the financial report -->
             <div class="blog-section" id="goal">
-              <h3>The goal of the financial report</h3>
+              <h3>El objetivo del reporte financiero</h3>
               <p>
-                When investing in stocks, it's best to invest in profitable companies that will preserve investors capital and increase it over time.
+                Al invertir en acciones, es mejor invertir en compañías rentables que preserven el capital de los inversionistas y lo incrementen con el tiempo.
               </p>
               <p>
-                To do that, we must examine a company's financial position using financial statements and other financial metrics.
+                Para lograr eso, debemos examinar la posición financiera de una compañía usando estados financieros y otras métricas financieras.
               </p>
               <p>
-                Fortunately, public companies are required to report their financial information to the public periodically.
+                Afortunadamente, las compañías públicas están obligadas a reportar su información financiera al público periódicamente.
               </p>
               <p>
-                The goal of the project was to produce an automatic report with python that allows investors to analyze any public company quickly and make smarter investment decisions.
+                El objetivo del proyecto fue producir un reporte automático con Python que permita a los inversionistas analizar cualquier compañía pública rápidamente y tomar decisiones de inversión más inteligentes.
               </p>
 
               <div class="image-container">
@@ -211,12 +211,12 @@
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Diversification is the only way of reducing risk without lowering returns.
+                  La diversificación es la única manera de reducir el riesgo sin disminuir los rendimientos.
                 </p>
               </div>
 
               <p>
-                This automated approach saves hours of manual data collection and analysis, while ensuring consistency and accuracy in financial reporting.
+                Este enfoque automatizado ahorra horas de recopilación y análisis manual de datos, mientras garantiza consistencia y precisión en los reportes financieros.
               </p>
               <div style="text-align: center">
                 <a
@@ -231,32 +231,32 @@
 
             <!-- What the python script does -->
             <div class="blog-section" id="what-script-does">
-              <h3>What the python script does</h3>
+              <h3>Qué hace el script de Python</h3>
               <p>
-                The python script creates a pdf financial report showing 5 years of history of the company being analyzed.
+                El script de Python crea un reporte financiero en PDF mostrando 5 años de historial de la compañía analizada.
               </p>
               <p>
-                Here is a summary of the contents of the report:
+                Aquí hay un resumen del contenido del reporte:
               </p>
               <ul>
-                <li>Description of the company</li>
-                <li>Financial statements for the last 5 years:
+                <li>Descripción de la compañía</li>
+                <li>Estados financieros de los últimos 5 años:
                   <ul>
-                    <li>Income statement</li>
-                    <li>Balance sheet statement</li>
-                    <li>Cash flow statement</li>
+                    <li>Estado de resultados</li>
+                    <li>Balance general</li>
+                    <li>Estado de flujos de efectivo</li>
                   </ul>
                 </li>
-                <li>Important financial metrics:
+                <li>Métricas financieras importantes:
                   <ul>
-                    <li>Debt ratios</li>
-                    <li>Profit ratios</li>
-                    <li>Efficiency ratios</li>
-                    <li>Market ratios</li>
-                    <li>Other key metrics</li>
+                    <li>Ratios de deuda</li>
+                    <li>Ratios de rentabilidad</li>
+                    <li>Ratios de eficiencia</li>
+                    <li>Ratios de mercado</li>
+                    <li>Otras métricas clave</li>
                   </ul>
                 </li>
-                <li class="">Charts:
+                <li class="">Gráficas:
                 <ul class="wp-block-list">
                 <li class="">Income statement</li>
 
@@ -270,7 +270,7 @@
 
 
 
-                <li class="">Equity uses</li>
+                <li class="">Usos del capital</li>
                 </ul>
                 </li>
               </ul>
@@ -289,7 +289,7 @@
                       alt="Financial data table with nominal values"
                       class="image fit"
                     />
-                    <p class="image-caption">An example of an income statement expressed in millions of USD</p>
+                    <p class="image-caption">Un ejemplo de un estado de resultados expresado en millones de USD</p>
                   </div>
                 </div>
                 <div class="col-6 col-12-medium">
@@ -299,7 +299,7 @@
                       alt="Financial data table with percentages"
                       class="image fit"
                     />
-                    <p class="image-caption">An example of the same income statement expressed as a percentage of revenue</p>
+                    <p class="image-caption">Un ejemplo del mismo estado de resultados expresado como porcentaje de ingresos</p>
                   </div>
                 </div>
               </div>
@@ -317,15 +317,15 @@
 
             <!-- Coding the report -->
             <div class="blog-section" id="coding-report">
-              <h3>Coding the report</h3>
+              <h3>Codificando el reporte</h3>
               
               <p>
-                The financial report is executed by running a file named '<a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Fundamental_analysis.ipynb" target="_blank" rel="noopener noreferrer" class="blog-link">fundamental_analysis.ipynb</a>'. Ipynb files are jupyter notebook files that can run python scripts and are very popular in data science.
+                El reporte financiero se ejecuta corriendo un archivo llamado '<a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Fundamental_analysis.ipynb" target="_blank" rel="noopener noreferrer" class="blog-link">fundamental_analysis.ipynb</a>'. Los archivos ipynb son archivos de Jupyter notebook que pueden ejecutar scripts de Python y son muy populares en ciencia de datos.
               </p>
 
-              <h4 id="jupyter-vs-script">Jupyter notebook vs python script</h4>
+              <h4 id="jupyter-vs-script">Jupyter notebook vs script de Python</h4>
               <p>
-                I chose a Jupyter notebook instead of a python script to run the python code of the report because of its flexibility. Notebooks allow running parts of the code and can display the information as its executed, so it works well as a debugger.
+                Elegí un Jupyter notebook en lugar de un script de Python para ejecutar el código del reporte por su flexibilidad. Los notebooks permiten ejecutar partes del código y pueden mostrar la información mientras se ejecuta, por lo que funciona bien como depurador.
               </p>
 
               <div class="image-container">
@@ -335,21 +335,21 @@
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Here you can see how the data frame can be explored, showing at a glance the available data.
+                  Aquí puedes ver cómo se puede explorar el data frame, mostrando de un vistazo los datos disponibles.
                 </p>
               </div>
 
               <p>
-                I found that some of the financial data from the API still needs to be cleaned and occasionally produces errors.
+                Encontré que algunos de los datos financieros de la API aún necesitan ser limpiados y ocasionalmente producen errores.
               </p>
               <p>
-                With the notebook, I can go over that specific section without having to call the API several times (which is limited in the free version).
+                Con el notebook, puedo revisar esa sección específica sin tener que llamar a la API varias veces (que está limitada en la versión gratuita).
               </p>
               <p>
-                The notebook also contains an index at the top in markdown, which I use to navigate the script.
+                El notebook también contiene un índice en la parte superior en markdown, que uso para navegar el script.
               </p>
               <p>
-                Each section heading contains an asterisk symbol '*' which links back to the index if you click on it.
+                Cada encabezado de sección contiene un símbolo de asterisco '*' que enlaza de regreso al índice si haces clic en él.
               </p>
 
               <div class="image-container" style="max-width: 40%; margin: 0 auto;">
@@ -359,23 +359,23 @@
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Image of the index of the Jupyter Notebook file
+                  Imagen del índice del archivo de Jupyter Notebook
                 </p>
               </div>
 
-              <h4 id="fetching-data">Fetching data from the API</h4>
+              <h4 id="fetching-data">Obteniendo datos de la API</h4>
               <p>
-                To run the financial report script, I first had to get an API token from <a href="https://site.financialmodelingprep.com/" target="_blank" rel="noopener noreferrer" class="blog-link">Financial Modeling Prep</a>.
+                Para ejecutar el script del reporte financiero, primero tuve que obtener un token de API de <a href="https://site.financialmodelingprep.com/" target="_blank" rel="noopener noreferrer" class="blog-link">Financial Modeling Prep</a>.
               </p>
               <p>
-                Financial Modeling prep is a stock data provider, that covers the NYSE, NASDAQ, AMEX, EURONEX, TSX, INDEXES, ETFs, MUTUAL FUNDS, FOREX and CRYPTO markets. If you are interested in stock investing or stock trading you should take a look.
+                Financial Modeling Prep es un proveedor de datos de acciones, que cubre los mercados NYSE, NASDAQ, AMEX, EURONEX, TSX, ÍNDICES, ETFs, FONDOS MUTUOS, FOREX y CRYPTO. Si estás interesado en inversión en acciones o trading deberías echarle un vistazo.
               </p>
 
               <p>
-                They have a free version, which allows for 250 requests per day and covers all US markets, while a paid subscription gives coverage to the rest of international stocks and an unlimited number of requests.
+                Tienen una versión gratuita, que permite 250 solicitudes por día y cubre todos los mercados estadounidenses, mientras que una suscripción de pago da cobertura al resto de las acciones internacionales y un número ilimitado de solicitudes.
               </p>
               <p>
-                You can add the API key directly in your script in the following section, but saving it as an environment variable is recommended for increased security. This is especially important if you plan to upload your code to a public repository.
+                Puedes agregar la clave de API directamente en tu script en la siguiente sección, pero se recomienda guardarla como una variable de entorno para mayor seguridad. Esto es especialmente importante si planeas subir tu código a un repositorio público.
               </p>
 
               <div class="image-container" style="max-width: 60%; margin: 0 auto;">
@@ -385,26 +385,26 @@
                   class="image fit"
                 />
                 <p class="image-caption">
-                  API key setup for accessing financial data
+                  Configuración de clave API para acceder a datos financieros
                 </p>
               </div>
 
               <p>
-                To call the API, I used a python library called <a href="https://pypi.org/project/requests/" target="_blank" rel="noopener noreferrer" class="blog-link">requests</a>, which fetches the data and saves the information as a JSON object.
+                Para llamar a la API, usé una librería de Python llamada <a href="https://pypi.org/project/requests/" target="_blank" rel="noopener noreferrer" class="blog-link">requests</a>, que obtiene los datos y guarda la información como un objeto JSON.
               </p>
 
-              <h4 id="data-transformations">Data transformations with Pandas</h4>
+              <h4 id="data-transformations">Transformaciones de datos con Pandas</h4>
               <p>
-                To transform the JSON object with financial data I used <a href="https://pypi.org/project/pandas/" target="_blank" rel="noopener noreferrer" class="blog-link">Pandas</a>, an open source python library made for data analysis.
+                Para transformar el objeto JSON con datos financieros usé <a href="https://pypi.org/project/pandas/" target="_blank" rel="noopener noreferrer" class="blog-link">Pandas</a>, una librería de Python de código abierto hecha para análisis de datos.
               </p>
               <p>
-                Some of the transformations I made were:
+                Algunas de las transformaciones que hice fueron:
               </p>
               <ul>
-                <li>Filtering only the necessary information for each financial table.</li>
-                <li>Displaying the data in millions of USD to show numbers that are easier to understand.</li>
-                <li>Transposing the data to show it in the same way financial statements are normally presented.</li>
-                <li>Dividing the data and expressing it as ratios.</li>
+                <li>Filtrar solo la información necesaria para cada tabla financiera.</li>
+                <li>Mostrar los datos en millones de USD para mostrar números que son más fáciles de entender.</li>
+                <li>Transponer los datos para mostrarlos de la misma manera en que normalmente se presentan los estados financieros.</li>
+                <li>Dividir los datos y expresarlos como ratios.</li>
               </ul>
 
               <div class="row gtr-150">
@@ -415,7 +415,7 @@
                       alt="Efficiency ratios table"
                       class="image fit"
                     />
-                    <p class="image-caption">An example data frame showing market ratios for a company</p>
+                    <p class="image-caption">Un ejemplo de data frame mostrando ratios de mercado para una compañía</p>
                   </div>
                 </div>
                 <div class="col-6 col-12-medium">
@@ -425,21 +425,21 @@
                       alt="Market ratios table"
                       class="image fit"
                     />
-                    <p class="image-caption">An example data frame table showing efficiency ratios for a company</p>
+                    <p class="image-caption">Un ejemplo de tabla de data frame mostrando ratios de eficiencia para una compañía</p>
                   </div>
                 </div>
               </div>
 
               <p>
-                Once the data was in the right format, I used a library called dataframe_image to save the tables as PNG files.
+                Una vez que los datos estaban en el formato correcto, usé una librería llamada dataframe_image para guardar las tablas como archivos PNG.
               </p>
 
-              <h4 id="data-visualizations">Data visualizations using plotly</h4>
+              <h4 id="data-visualizations">Visualizaciones de datos usando Plotly</h4>
               <p>
-                I used the <a href="https://pypi.org/project/plotly/" target="_blank" rel="noopener noreferrer" class="blog-link">Plotly</a> library to create charts that can show a clear picture of the company's health at a glance.
+                Usé la <a href="https://pypi.org/project/plotly/" target="_blank" rel="noopener noreferrer" class="blog-link">Plotly</a> librería para crear gráficas que pueden mostrar una imagen clara de la salud de la compañía de un vistazo.
               </p>
               <p>
-                The free tier from Financial modeling prep returns 5 years of data, which can be useful to spot trends in companies as you can see below.
+                El nivel gratuito de Financial Modeling Prep devuelve 5 años de datos, lo cual puede ser útil para detectar tendencias en las compañías como puedes ver a continuación.
               </p>
 
               <div class="row gtr-150">
@@ -450,7 +450,7 @@
                       alt="Income statement visualization"
                       class="image fit"
                     />
-                    <p class="image-caption">A graph showing sales, profits and interest expense of a company for the last 5 years</p>
+                    <p class="image-caption">Una gráfica mostrando ventas, ganancias y gastos de interés de una compañía de los últimos 5 años</p>
                   </div>
                 </div>
                 <div class="col-6 col-12-medium">
@@ -460,24 +460,24 @@
                       alt="Balance sheet visualization"
                       class="image fit"
                     />
-                    <p class="image-caption">Another graph showing the assets, debts, and capital of a company for the last 5 years</p>
+                    <p class="image-caption">Otra gráfica mostrando los activos, deudas y capital de una compañía de los últimos 5 años</p>
                   </div>
                 </div>
               </div>
 
-              <h4 id="creating-pdf">Creating the PDF report using FPDF2</h4>
+              <h4 id="creating-pdf">Creando el reporte PDF usando FPDF2</h4>
               <p>
-                To create the report, I decided to go with a PDF file instead of a web-based format.
+                Para crear el reporte, decidí usar un archivo PDF en lugar de un formato basado en web.
               </p>
               <p>
-                PDFs display the same content independent of the operating system, device or software, are convenient to share and are easy to protect. They are also the most common way of sharing data in a business environment.
+                Los PDFs muestran el mismo contenido independientemente del sistema operativo, dispositivo o software, son convenientes para compartir y son fáciles de proteger. También son la forma más común de compartir datos en un ambiente de negocios.
               </p>
               <p>
-                I used the FPDF2 library, an open source python library that allows creating custom PDFs.
+                Usé la FPDF2 library, an open source python library that allows creating custom PDFs.
               </p>
 
               <p>
-                The library is easy to understand, very easy to customize and great for this kind of situation.
+                La librería es fácil de entender, muy fácil de personalizar y excelente para este tipo de situación.
               </p>
 
               <div class="image-container" style="max-width: 20%; margin: 0 auto;">
@@ -501,24 +501,24 @@
 
             <!-- Running the script -->
             <div class="blog-section" id="running-script">
-              <h3>Running the script to create a report</h3>
+              <h3>Ejecutando el script para crear un reporte</h3>
               
               <p>
-                After getting the API token, to create a report, I set up the file structure and installed the necessary python libraries.
+                Después de obtener el token de API, para crear un reporte, configuré la estructura de archivos e instalé las librerías de Python necesarias.
               </p>
 
-              <p>Instructions to set up the file structure:</p>
+              <p>Instrucciones para configurar la estructura de archivos:</p>
 
               <ul>
-                <li>Download the script.</li>
-                <li>Download the required dependencies.</li>
-                <li>In the same folder as the script add a folder named 'images'.</li>
-                <li>Inside the folder 'images' add two folders named 'input' and 'output'.</li>
-                <li>Inside the 'input' folder, add your logo.
+                <li>Descarga el script.</li>
+                <li>Descarga las dependencias requeridas.</li>
+                <li>En la misma carpeta que el script, agrega una carpeta llamada 'images'.</li>
+                <li>Dentro de la carpeta 'images' agrega dos carpetas llamadas 'input' y 'output'.</li>
+                <li>Dentro de la carpeta 'input', agrega tu logo.
                   <ul>
-                    <li>The current logo is named BS-Logo.png.</li>
-                    <li>Current logo is: width 306 pixels, height 188 pixels.</li>
-                    <li>When you substitute, make sure to update the filename inside the script or name your file BS-Logo.png</li>
+                    <li>El logo actual se llama BS-Logo.png.</li>
+                    <li>El logo actual es: ancho 306 píxeles, alto 188 píxeles.</li>
+                    <li>Cuando sustituyas, asegúrate de actualizar el nombre del archivo dentro del script o nombra tu archivo BS-Logo.png</li>
                   </ul>
                 </li>
               </ul>
@@ -530,14 +530,14 @@
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Image of the file structure
+                  Imagen de la estructura de archivos
                 </p>
               </div>
 
-              <h4 id="installing-dependencies">Installing python dependencies</h4>
+              <h4 id="installing-dependencies">Instalando dependencias de Python</h4>
               
               <p>
-                Below is a list of the dependencies required by the script:
+                A continuación hay una lista de las dependencias requeridas por el script:
               </p>
 
               <ul>
@@ -551,56 +551,56 @@
               </ul>
 
               <p>
-                All modules are available from anaconda and pip.
+                Todos los módulos están disponibles en anaconda y pip.
               </p>
 
               <p>
-                I had some issues using the <a href="https://pypi.org/project/fpdf2/" target="_blank" rel="noopener noreferrer" class="blog-link">FPDF2</a> module from anaconda, so I ended up installing everything from <a href="https://pypi.org/project/pip/" target="_blank" rel="noopener noreferrer" class="blog-link">pip</a>.
+                Tuve algunos problemas usando el <a href="https://pypi.org/project/fpdf2/" target="_blank" rel="noopener noreferrer" class="blog-link">FPDF2</a> módulo de anaconda, así que terminé instalando todo desde <a href="https://pypi.org/project/pip/" target="_blank" rel="noopener noreferrer" class="blog-link">pip</a>.
               </p>
 
               <p>
-                I had some issues running Kaleido from a virtual environment, so I installed the libraries in the main python environment.
+                Tuve algunos problemas ejecutando Kaleido desde un entorno virtual, así que instalé las librerías en el entorno principal de Python.
               </p>
 
-              <h4 id="selecting-ticker">Selecting the company ticker</h4>
+              <h4 id="selecting-ticker">Seleccionando el ticker de la compañía</h4>
               
               <p>
-                To run the report, simply change the company ticker and run all cells.
+                Para ejecutar el reporte, simplemente cambia el ticker de la compañía y ejecuta todas las celdas.
               </p>
 
               <div class="image-container" style="max-width: 60%; margin: 0 auto;">
                 <img
                   src="../images/financial-report-pdf/financial_report_selecting_company_ticker_section.png"
-                  alt="Section of the Jupyter Notebook where the company ticker is selected"
+                  alt="Sección del Jupyter Notebook donde se selecciona el ticker de la compañía"
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Simply change the company ticker and run all cells
+                  Simplemente cambia el ticker de la compañía y ejecuta todas las celdas
                 </p>
               </div>
 
               <p>
-                Occasionally, the script will display an error message while executing.
+                Ocasionalmente, el script mostrará un mensaje de error durante la ejecución.
               </p>
 
               <p>
-                Some common problems I found are:
+                Algunos problemas comunes que encontré son:
               </p>
 
               <ul>
-                <li>Choosing the wrong ticker (non us companies are only available in paid version).</li>
-                <li>Incomplete information (sometimes data is missing for a year).</li>
-                <li>Missing values sometimes reported as NA values, zero values, or another number.</li>
-                <li>Sometimes company images are missing.</li>
-                <li>Sometimes a metric is missing (e.g. name of the CEO)</li>
+                <li>Elegir el ticker incorrecto (las compañías no estadounidenses solo están disponibles en la versión de pago).</li>
+                <li>Información incompleta (a veces faltan datos de un año).</li>
+                <li>Valores faltantes a veces reportados como valores NA, valores cero, u otro número.</li>
+                <li>A veces faltan imágenes de la compañía.</li>
+                <li>A veces falta una métrica (ej. nombre del CEO)</li>
               </ul>
 
               <p>
-                If you get an error, explore the data to see if you can correct it. If not you can always comment out that section and get the rest of the report.
+                Si obtienes un error, explora los datos para ver si puedes corregirlo. Si no puedes, siempre puedes comentar esa sección y obtener el resto del reporte.
               </p>
 
               <p>
-                Once you have the code set up, running the script is straightforward:
+                Una vez que tengas el código configurado, ejecutar el script es sencillo:
               </p>
 
               <pre class="code-block">
@@ -639,10 +639,10 @@ print(f"Financial report generated: {report_path}")</code></pre>
 
             <!-- Example reports -->
             <div class="blog-section" id="example-reports">
-              <h3>Some example financial reports</h3>
+              <h3>Algunos reportes financieros de ejemplo</h3>
               
               <p>
-                Below are some links to company reports I made with the script.
+                A continuación hay algunos enlaces a reportes de compañías que hice con el script.
               </p>
 
               <ul>
@@ -665,30 +665,30 @@ print(f"Financial report generated: {report_path}")</code></pre>
 
             <!-- Improvements -->
             <div class="blog-section" id="improvements">
-              <h3>Improvements to the financial report</h3>
+              <h3>Mejoras al reporte financiero</h3>
               
               <p>
-                There are many ways this report could be improved.
+                Hay muchas maneras en que este reporte podría mejorarse.
               </p>
 
-              <p>Here are a few ideas:</p>
+              <p>Aquí hay algunas ideas:</p>
 
               <ul>
-                <li>Output an excel file along with the PDF.</li>
-                <li>Analyze quarters instead of full years.</li>
-                <li>Analyze rolling years.</li>
-                <li>Analyze more years at a time.</li>
-                <li>Graph historical PE ratios.</li>
-                <li>Improve the report presentation.</li>
-                <li>Compare the company vs. its sector.</li>
+                <li>Generar un archivo de Excel junto con el PDF.</li>
+                <li>Analizar trimestres en lugar de años completos.</li>
+                <li>Analizar años móviles.</li>
+                <li>Analizar más años a la vez.</li>
+                <li>Graficar ratios PE históricos.</li>
+                <li>Mejorar la presentación del reporte.</li>
+                <li>Comparar la compañía vs. su sector.</li>
               </ul>
 
               <p>
-                This list is not comprehensive, rather just a starting point.
+                Esta lista no es exhaustiva, más bien es solo un punto de partida.
               </p>
 
               <p>
-                If you are planning on using the report for investment purposes, remember that fundamental analysis is only part of a stock selection process. Other metrics, both qualitative and quantitative, need to taken into account before investing in a company.
+                Si planeas usar el reporte para propósitos de inversión, recuerda que el análisis fundamental es solo parte de un proceso de selección de acciones. Otras métricas, tanto cualitativas como cuantitativas, necesitan ser tomadas en cuenta antes de invertir en una compañía.
               </p>
 
               <div style="text-align: center">
@@ -704,14 +704,14 @@ print(f"Financial report generated: {report_path}")</code></pre>
 
             <!-- Final thoughts -->
             <div class="blog-section" id="final-thoughts">
-              <h3>Final thoughts</h3>
+              <h3>Reflexiones finales</h3>
               
               <p>
-                I hope you enjoyed the post and found it useful.
+                Espero que hayas disfrutado la publicación y que te haya sido útil.
               </p>
 
               <p>
-                If you decide to try it out, feel free to contact me if you have any problems or suggestions.
+                Si decides probarlo, no dudes en contactarme si tienes algún problema o sugerencia.
               </p>
 
               <p>
