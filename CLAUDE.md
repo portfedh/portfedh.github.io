@@ -349,3 +349,4 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
   - Optimize images specifically for blog content
   - Ensure "back to portfolio" links point to correct language version
 - **FontAwesome**: Icons are loaded via CDN with local webfont backup for reliability
+- **Git Commits**: Do not add "Generated with Claude Code", "Co-Authored-By: Claude", or similar attribution lines to commit messages
