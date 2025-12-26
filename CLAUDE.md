@@ -189,6 +189,80 @@ Each project includes:
 - Structured meta descriptions and titles
 - FontAwesome loaded via CDN kit (1450436a40)
 
+## Google Analytics Implementation
+
+The portfolio uses **Google Analytics 4 (GA4)** with measurement ID `G-LDNFBEYMLD`.
+
+### Setup & Configuration
+
+The tracking code is placed in the `<head>` section of all HTML pages:
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "G-LDNFBEYMLD");
+</script>
+```
+
+**Pages with tracking:**
+- `index.html` - Main portfolio page
+- `water-level-monitor.html` - Blog post
+- `financial-report-pdf.html` - Blog post
+- `codi-api.html` - Blog post
+
+### What's Tracked
+
+#### Automatic Tracking:
+- Page views
+- User sessions
+- Traffic sources
+- Geographic location
+- Device/browser information
+- Bounce rate and engagement
+
+#### Custom Event Tracking:
+
+All custom events on `index.html` use this format:
+```javascript
+gtag('event', 'click', {
+  'event_category': 'Category Name',
+  'event_label': 'Specific Action'
+})
+```
+
+**Event Categories:**
+- `Header` - Top navigation actions (Resume button at `index.html:112`)
+- `About Me` - About section interactions (Intro video at `index.html:161`)
+- `Project` - All project-related clicks:
+  - CoDi API: Blog, Docs, GitHub (`index.html:407,416,425`)
+  - Salsa-Candela Admin: Visit, Video (`index.html:470,480`)
+  - Salsa-Candela Business: Visit, GitHub (`index.html:527,536`)
+  - Salsa-Candela Bar: Visit, Video (`index.html:581,590`)
+  - Portfolio Dashboard: Video, GitHub (`index.html:637,647`)
+  - IoT Energy Monitor: Blog, GitHub (`index.html:695,704`)
+  - Financial Report PDF: Blog, GitHub (`index.html:752,761`)
+  - Water Monitoring System: Blog, GitHub (`index.html:810,819`)
+- `Contact` - Contact form/email interactions (Email button at `index.html:852`)
+
+**Note:** Blog posts only track page views, not custom events.
+
+### Viewing Analytics Data
+
+To view this data in Google Analytics:
+
+1. Go to [analytics.google.com](https://analytics.google.com)
+2. Select the property with ID `G-LDNFBEYMLD`
+3. Navigate to different reports:
+   - **Reports > Engagement > Events** - View all custom click events
+   - **Reports > Engagement > Pages and screens** - See page views and most visited pages
+   - **Reports > Acquisition > Traffic acquisition** - See where visitors come from
+   - **Reports > User attributes > Overview** - View demographics and device data
+   - **Explore** - Create custom reports filtering by event categories and labels
+
 ## Deployment
 
 The site automatically deploys to GitHub Pages when changes are pushed to the main branch. The custom domain (pablocruz.io) is configured via the CNAME file.
