@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-*Last updated: December 25, 2025*
+*Last updated: December 26, 2025*
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -323,6 +323,108 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 - Copy-to-clipboard functionality for code blocks
 - Back-to-top navigation buttons
 - Prism.js integration for syntax highlighting
+
+## Working with Multilingual Pages
+
+### Translation Workflow
+
+When translating pages or fixing translation issues:
+
+1. **Check Git History First**: Always check git history for original translation files before creating new translations
+   ```bash
+   # Find translation JSON files in git history
+   git log --all --full-history --oneline -- translations/blog/page-name-es.json
+
+   # Extract original HTML with data-i18n attributes
+   git show COMMIT_HASH:page-name.html > /tmp/original.html
+
+   # Extract translation JSON
+   git show COMMIT_HASH:translations/blog/page-name-es.json > /tmp/translations.json
+   ```
+
+2. **Apply Translations Systematically**: Use Python scripts to apply translations from JSON files to ensure consistency
+
+3. **Verify HTML Structure**: Common issues to check:
+   - Properly closed tags (`</a>`, `</div>`, etc.)
+   - Missing or incorrect closing tags
+   - Language switcher links (should be `<a>` tags, not `<button>` tags)
+   - Asset paths (Spanish pages use `../assets/` and `../images/`)
+   - Navigation links pointing to correct language version
+
+4. **Clean Up**: Remove all `data-i18n` attributes and old i18n script references
+
+### Common HTML Errors in Translated Pages
+
+Watch for these common errors when working with translated pages:
+
+1. **Missing Closing Tags**:
+   ```html
+   <!-- WRONG -->
+   <a href="mailto:email@example.com" class="button">Email me</li>
+
+   <!-- CORRECT -->
+   <a href="mailto:email@example.com" class="button">Email me</a>
+   ```
+
+2. **Incorrect Closing Tags**:
+   ```html
+   <!-- WRONG -->
+   <a href="index.html" class="button">Back to Portfolio</div>
+
+   <!-- CORRECT -->
+   <a href="index.html" class="button">Back to Portfolio</a>
+   ```
+
+3. **Language Switcher Using Buttons Instead of Links**:
+   ```html
+   <!-- WRONG -->
+   <button class="lang-btn" data-lang="en">EN</button>
+   <button class="lang-btn" data-lang="es">ES</button>
+
+   <!-- CORRECT -->
+   <a href="page.html" class="lang-btn active">EN</a>
+   <a href="es/page.html" class="lang-btn">ES</a>
+   ```
+
+4. **Leftover i18n Script References**:
+   ```html
+   <!-- WRONG - Remove these from translated pages -->
+   <script src="assets/js/blog-i18n.js"></script>
+   <script>
+     const blogI18n = new BlogI18n('page-name');
+     blogI18n.init();
+   </script>
+   ```
+
+5. **Remaining data-i18n Attributes**:
+   ```html
+   <!-- WRONG -->
+   <h2 data-i18n="header.title">Translated Title</h2>
+
+   <!-- CORRECT -->
+   <h2>Translated Title</h2>
+   ```
+
+### Multilingual Page Checklist
+
+When creating or updating multilingual pages:
+
+- [ ] English version exists in root directory
+- [ ] Spanish version exists in `/es/` directory
+- [ ] Both versions have correct `lang` attribute (`en` or `es`)
+- [ ] Meta tags (title, description, og:title, og:description, twitter:title, twitter:description) are translated
+- [ ] All body content is translated (headings, paragraphs, buttons, captions, etc.)
+- [ ] Asset paths in Spanish version use `../` prefix (`../assets/`, `../images/`)
+- [ ] Language switcher uses static links (not JavaScript buttons)
+- [ ] Language switcher has correct `active` class on current language
+- [ ] Navigation links point to correct language version (Spanish blog → Spanish portfolio)
+- [ ] Hreflang tags are present and correct on both versions
+- [ ] All `data-i18n` attributes are removed
+- [ ] No `blog-i18n.js` or i18n initialization scripts
+- [ ] All HTML tags are properly closed
+- [ ] "Back to Portfolio" links work correctly
+- [ ] Contact section HTML is valid
+- [ ] Footer is complete and valid
 
 ## Important Notes
 
