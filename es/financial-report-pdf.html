@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>
-      Cómo crear un reporte financiero con Python | Pablo Cruz
-    </title>
+    <title>How to make a financial report with Python | Pablo Cruz</title>
     <!-- Primary Meta Tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,11 +12,11 @@
     <!-- Open Graph Tags -->
     <meta
       property="og:title"
-      content="Cómo crear un reporte financiero con Python"
+      content="How to make a financial report with Python"
     />
     <meta
       property="og:description"
-      content="Aprende a crear reportes financieros automatizados usando Python, APIs y generación de PDF. Incluye visualización de datos y técnicas de análisis financiero."
+      content="Learn how to create automated financial reports using Python, APIs, and PDF generation. Includes data visualization and financial analysis techniques."
     />
     <meta
       property="og:image"
@@ -34,11 +32,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Cómo crear un reporte financiero con Python"
+      content="How to make a financial report with Python"
     />
     <meta
       name="twitter:description"
-      content="Aprende a crear reportes financieros automatizados usando Python, APIs y generación de PDF. Incluye visualización de datos y técnicas de análisis financiero."
+      content="Learn how to create automated financial reports using Python, APIs, and PDF generation. Includes data visualization and financial analysis techniques."
     />
     <meta
       name="twitter:image"
@@ -64,19 +62,794 @@
     />
     <noscript
       ><link rel="stylesheet" href="../assets/css/noscript.css"
-    /></noscript>    <!-- Hreflang tags for SEO -->
+    /></noscript>
+
+    <!-- Hreflang tags for SEO -->
     <link rel="alternate" hreflang="en" href="https://pablocruz.io/financial-report-pdf.html" />
     <link rel="alternate" hreflang="es" href="https://pablocruz.io/es/financial-report-pdf.html" />
     <link rel="alternate" hreflang="x-default" href="https://pablocruz.io/financial-report-pdf.html" />
-
-
 
     <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
     ></script>
-<script src="../assets/js/main.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <a href="../financial-report-pdf.html" class="lang-btn" aria-label="Switch to English">EN</a>
+        <span class="lang-separator">|</span>
+        <a href="financial-report-pdf.html" class="lang-btn active" aria-label="Cambiar a Español">ES</a>
+      </div>
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="../es/index.html" class="button">← Back to Portfolio</a>
+        </div>
+        <div class="blog-title-container">
+          <h1>How to make a financial report with Python</h1>
+          <p class="blog-meta">
+            Published: October 15, 2023 | Last updated: December 1, 2024
+          </p>
+          <p class="blog-description">
+            Learn how to create automated financial reports using Python, APIs, and PDF generation. This tutorial covers data extraction, analysis, visualization, and professional report creation.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-featured-image">
+              <img
+                src="../images/financial-report-pdf/financial_report_script.gif"
+                alt="Python financial report generation in action"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Table of Contents</h2>
+              <ul class="toc">
+                <li>
+                  <a href="#goal">The goal of the financial report</a>
+                </li>
+                <li>
+                  <a href="#what-script-does">What the python script does</a>
+                </li>
+                <li>
+                  <a href="#coding-report">Coding the report</a>
+                  <ul>
+                    <li><a href="#jupyter-vs-script">Jupyter notebook vs python script</a></li>
+                    <li><a href="#fetching-data">Fetching data from the API</a></li>
+                    <li><a href="#data-transformations">Data transformations with Pandas</a></li>
+                    <li><a href="#data-visualizations">Data visualizations using plotly</a></li>
+                    <li><a href="#creating-pdf">Creating the PDF report using FPDF2</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#running-script">Running the script to create a report</a>
+                  <ul>
+                    <li><a href="#installing-dependencies">Installing python dependencies</a></li>
+                    <li><a href="#selecting-ticker">Selecting the company ticker</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#example-reports">Some example financial reports</a>
+                </li>
+                <li><a href="#improvements">Improvements to the financial report</a></li>
+                <li><a href="#final-thoughts">Final thoughts</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                This post will explain how I built a python script that creates a financial report of a public company in a pdf format. It's purpose is to use it as part of a stock selection process for an investment portfolio.
+              </p>
+              <p>
+                It will explain in detail how the report works and how it was made. If you want to skip to the source code, you can jump to the GitHub repository <a
+                  href="https://github.com/portfedh/fundamental_analysis_report"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >here</a
+                >.
+              </p>
+              <p>
+                You can also see some <a href="#example-reports" class="blog-link">example reports</a> created with the script.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Goal of the financial report -->
+            <div class="blog-section" id="goal">
+              <h3>The goal of the financial report</h3>
+              <p>
+                When investing in stocks, it's best to invest in profitable companies that will preserve investors capital and increase it over time.
+              </p>
+              <p>
+                To do that, we must examine a company's financial position using financial statements and other financial metrics.
+              </p>
+              <p>
+                Fortunately, public companies are required to report their financial information to the public periodically.
+              </p>
+              <p>
+                The goal of the project was to produce an automatic report with python that allows investors to analyze any public company quickly and make smarter investment decisions.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/financial-report-pdf/financial_report_diversified_portfolio_pie.jpg"
+                  alt="Diversification illustration with pie chart and investor"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Diversification is the only way of reducing risk without lowering returns.
+                </p>
+              </div>
+
+              <p>
+                This automated approach saves hours of manual data collection and analysis, while ensuring consistency and accuracy in financial reporting.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- What the python script does -->
+            <div class="blog-section" id="what-script-does">
+              <h3>What the python script does</h3>
+              <p>
+                The python script creates a pdf financial report showing 5 years of history of the company being analyzed.
+              </p>
+              <p>
+                Here is a summary of the contents of the report:
+              </p>
+              <ul>
+                <li>Description of the company</li>
+                <li>Financial statements for the last 5 years:
+                  <ul>
+                    <li>Income statement</li>
+                    <li>Balance sheet statement</li>
+                    <li>Cash flow statement</li>
+                  </ul>
+                </li>
+                <li>Important financial metrics:
+                  <ul>
+                    <li>Debt ratios</li>
+                    <li>Profit ratios</li>
+                    <li>Efficiency ratios</li>
+                    <li>Market ratios</li>
+                    <li>Other key metrics</li>
+                  </ul>
+                </li>
+                <li class="">Charts:
+                <ul class="wp-block-list">
+                <li class="">Income statement</li>
+
+
+
+                <li class="">Balance sheet</li>
+
+
+
+                <li class="">Cash flow statement</li>
+
+
+
+                <li class="">Equity uses</li>
+                </ul>
+                </li>
+              </ul>
+
+
+
+              <p class="">The information is shown in both nominal terms ($), 
+              expressed in millions of USD, as a percentage of income, or as a 
+              percentage of assets (depending on the metric).</p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_dataframe_table_nominal.png"
+                      alt="Financial data table with nominal values"
+                      class="image fit"
+                    />
+                    <p class="image-caption">An example of an income statement expressed in millions of USD</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_dataframe_table_percent_002.png"
+                      alt="Financial data table with percentages"
+                      class="image fit"
+                    />
+                    <p class="image-caption">An example of the same income statement expressed as a percentage of revenue</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Coding the report -->
+            <div class="blog-section" id="coding-report">
+              <h3>Coding the report</h3>
+              
+              <p>
+                The financial report is executed by running a file named '<a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Fundamental_analysis.ipynb" target="_blank" rel="noopener noreferrer" class="blog-link">fundamental_analysis.ipynb</a>'. Ipynb files are jupyter notebook files that can run python scripts and are very popular in data science.
+              </p>
+
+              <h4 id="jupyter-vs-script">Jupyter notebook vs python script</h4>
+              <p>
+                I chose a Jupyter notebook instead of a python script to run the python code of the report because of its flexibility. Notebooks allow running parts of the code and can display the information as its executed, so it works well as a debugger.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/financial-report-pdf/financial_report_exploring_pandas_dataframe_jupyter_note_002.png"
+                  alt="A Jupyter Notebook displays a data frame, making data exploration easier"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Here you can see how the data frame can be explored, showing at a glance the available data.
+                </p>
+              </div>
+
+              <p>
+                I found that some of the financial data from the API still needs to be cleaned and occasionally produces errors.
+              </p>
+              <p>
+                With the notebook, I can go over that specific section without having to call the API several times (which is limited in the free version).
+              </p>
+              <p>
+                The notebook also contains an index at the top in markdown, which I use to navigate the script.
+              </p>
+              <p>
+                Each section heading contains an asterisk symbol '*' which links back to the index if you click on it.
+              </p>
+
+              <div class="image-container" style="max-width: 40%; margin: 0 auto;">
+                <img
+                  src="../images/financial-report-pdf/financial_report_script_index_002.png"
+                  alt="Script execution and output"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Image of the index of the Jupyter Notebook file
+                </p>
+              </div>
+
+              <h4 id="fetching-data">Fetching data from the API</h4>
+              <p>
+                To run the financial report script, I first had to get an API token from <a href="https://site.financialmodelingprep.com/" target="_blank" rel="noopener noreferrer" class="blog-link">Financial Modeling Prep</a>.
+              </p>
+              <p>
+                Financial Modeling prep is a stock data provider, that covers the NYSE, NASDAQ, AMEX, EURONEX, TSX, INDEXES, ETFs, MUTUAL FUNDS, FOREX and CRYPTO markets. If you are interested in stock investing or stock trading you should take a look.
+              </p>
+
+              <p>
+                They have a free version, which allows for 250 requests per day and covers all US markets, while a paid subscription gives coverage to the rest of international stocks and an unlimited number of requests.
+              </p>
+              <p>
+                You can add the API key directly in your script in the following section, but saving it as an environment variable is recommended for increased security. This is especially important if you plan to upload your code to a public repository.
+              </p>
+
+              <div class="image-container" style="max-width: 60%; margin: 0 auto;">
+                <img
+                  src="../images/financial-report-pdf/financial_report_api_key_input_002.png"
+                  alt="API key configuration"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  API key setup for accessing financial data
+                </p>
+              </div>
+
+              <p>
+                To call the API, I used a python library called <a href="https://pypi.org/project/requests/" target="_blank" rel="noopener noreferrer" class="blog-link">requests</a>, which fetches the data and saves the information as a JSON object.
+              </p>
+
+              <h4 id="data-transformations">Data transformations with Pandas</h4>
+              <p>
+                To transform the JSON object with financial data I used <a href="https://pypi.org/project/pandas/" target="_blank" rel="noopener noreferrer" class="blog-link">Pandas</a>, an open source python library made for data analysis.
+              </p>
+              <p>
+                Some of the transformations I made were:
+              </p>
+              <ul>
+                <li>Filtering only the necessary information for each financial table.</li>
+                <li>Displaying the data in millions of USD to show numbers that are easier to understand.</li>
+                <li>Transposing the data to show it in the same way financial statements are normally presented.</li>
+                <li>Dividing the data and expressing it as ratios.</li>
+              </ul>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_dataframeimage_table_efficiency_ratios_002.png"
+                      alt="Efficiency ratios table"
+                      class="image fit"
+                    />
+                    <p class="image-caption">An example data frame showing market ratios for a company</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_dataframeimage_table_market_ratios_002.png"
+                      alt="Market ratios table"
+                      class="image fit"
+                    />
+                    <p class="image-caption">An example data frame table showing efficiency ratios for a company</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                Once the data was in the right format, I used a library called dataframe_image to save the tables as PNG files.
+              </p>
+
+              <h4 id="data-visualizations">Data visualizations using plotly</h4>
+              <p>
+                I used the <a href="https://pypi.org/project/plotly/" target="_blank" rel="noopener noreferrer" class="blog-link">Plotly</a> library to create charts that can show a clear picture of the company's health at a glance.
+              </p>
+              <p>
+                The free tier from Financial modeling prep returns 5 years of data, which can be useful to spot trends in companies as you can see below.
+              </p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_plotly_graph_income_statement.png"
+                      alt="Income statement visualization"
+                      class="image fit"
+                    />
+                    <p class="image-caption">A graph showing sales, profits and interest expense of a company for the last 5 years</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="../images/financial-report-pdf/financial_report_plotly_graph_balance_sheet.png"
+                      alt="Balance sheet visualization"
+                      class="image fit"
+                    />
+                    <p class="image-caption">Another graph showing the assets, debts, and capital of a company for the last 5 years</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 id="creating-pdf">Creating the PDF report using FPDF2</h4>
+              <p>
+                To create the report, I decided to go with a PDF file instead of a web-based format.
+              </p>
+              <p>
+                PDFs display the same content independent of the operating system, device or software, are convenient to share and are easy to protect. They are also the most common way of sharing data in a business environment.
+              </p>
+              <p>
+                I used the FPDF2 library, an open source python library that allows creating custom PDFs.
+              </p>
+
+              <p>
+                The library is easy to understand, very easy to customize and great for this kind of situation.
+              </p>
+
+              <div class="image-container" style="max-width: 20%; margin: 0 auto;">
+                <img
+                  src="../images/financial-report-pdf/financial_report_pyhon_fpdf2_library_logo_002.png"
+                  alt="FPDF2 logo"
+                  class="image fit"
+                />
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Running the script -->
+            <div class="blog-section" id="running-script">
+              <h3>Running the script to create a report</h3>
+              
+              <p>
+                After getting the API token, to create a report, I set up the file structure and installed the necessary python libraries.
+              </p>
+
+              <p>Instructions to set up the file structure:</p>
+
+              <ul>
+                <li>Download the script.</li>
+                <li>Download the required dependencies.</li>
+                <li>In the same folder as the script add a folder named 'images'.</li>
+                <li>Inside the folder 'images' add two folders named 'input' and 'output'.</li>
+                <li>Inside the 'input' folder, add your logo.
+                  <ul>
+                    <li>The current logo is named BS-Logo.png.</li>
+                    <li>Current logo is: width 306 pixels, height 188 pixels.</li>
+                    <li>When you substitute, make sure to update the filename inside the script or name your file BS-Logo.png</li>
+                  </ul>
+                </li>
+              </ul>
+              
+              <div class="image-container" style="max-width: 30%; margin: 0 auto;">
+                <img
+                  src="../images/financial-report-pdf/financial_report_code_file_structure-300x208.png"
+                  alt="File structure for the financial report script"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Image of the file structure
+                </p>
+              </div>
+
+              <h4 id="installing-dependencies">Installing python dependencies</h4>
+              
+              <p>
+                Below is a list of the dependencies required by the script:
+              </p>
+
+              <ul>
+                <li><a href="https://pypi.org/project/requests/" target="_blank" rel="noopener noreferrer" class="blog-link">Requests</a></li>
+                <li><a href="https://pypi.org/project/pandas/" target="_blank" rel="noopener noreferrer" class="blog-link">Pandas</a></li>
+                <li><a href="https://pypi.org/project/plotly/" target="_blank" rel="noopener noreferrer" class="blog-link">Plotly</a></li>
+                <li><a href="https://pypi.org/project/dataframe-image/" target="_blank" rel="noopener noreferrer" class="blog-link">Dataframe_image</a></li>
+                <li><a href="https://pypi.org/project/fpdf2/" target="_blank" rel="noopener noreferrer" class="blog-link">FPDF2</a></li>
+                <li><a href="https://pypi.org/project/Pillow/" target="_blank" rel="noopener noreferrer" class="blog-link">Pillow</a></li>
+                <li><a href="https://pypi.org/project/kaleido/" target="_blank" rel="noopener noreferrer" class="blog-link">Kaleido</a></li>
+              </ul>
+
+              <p>
+                All modules are available from anaconda and pip.
+              </p>
+
+              <p>
+                I had some issues using the <a href="https://pypi.org/project/fpdf2/" target="_blank" rel="noopener noreferrer" class="blog-link">FPDF2</a> module from anaconda, so I ended up installing everything from <a href="https://pypi.org/project/pip/" target="_blank" rel="noopener noreferrer" class="blog-link">pip</a>.
+              </p>
+
+              <p>
+                I had some issues running Kaleido from a virtual environment, so I installed the libraries in the main python environment.
+              </p>
+
+              <h4 id="selecting-ticker">Selecting the company ticker</h4>
+              
+              <p>
+                To run the report, simply change the company ticker and run all cells.
+              </p>
+
+              <div class="image-container" style="max-width: 60%; margin: 0 auto;">
+                <img
+                  src="../images/financial-report-pdf/financial_report_selecting_company_ticker_section.png"
+                  alt="Section of the Jupyter Notebook where the company ticker is selected"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Simply change the company ticker and run all cells
+                </p>
+              </div>
+
+              <p>
+                Occasionally, the script will display an error message while executing.
+              </p>
+
+              <p>
+                Some common problems I found are:
+              </p>
+
+              <ul>
+                <li>Choosing the wrong ticker (non us companies are only available in paid version).</li>
+                <li>Incomplete information (sometimes data is missing for a year).</li>
+                <li>Missing values sometimes reported as NA values, zero values, or another number.</li>
+                <li>Sometimes company images are missing.</li>
+                <li>Sometimes a metric is missing (e.g. name of the CEO)</li>
+              </ul>
+
+              <p>
+                If you get an error, explore the data to see if you can correct it. If not you can always comment out that section and get the rest of the report.
+              </p>
+
+              <p>
+                Once you have the code set up, running the script is straightforward:
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Python</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-python"># Initialize the report generator
+generator = FinancialReportGenerator(api_key='your_api_key_here')
+
+# Fetch data for a company (e.g., Apple)
+ticker = 'AAPL'
+company_data = generator.fetch_company_data(ticker)
+
+# Calculate financial metrics
+metrics = generator.calculate_financial_metrics(company_data)
+
+# Create visualizations
+charts = generator.create_visualizations(company_data, metrics)
+
+# Generate PDF report
+report_path = generator.generate_pdf_report(ticker, company_data, metrics, [charts])
+
+print(f"Financial report generated: {report_path}")</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Example reports -->
+            <div class="blog-section" id="example-reports">
+              <h3>Some example financial reports</h3>
+              
+              <p>
+                Below are some links to company reports I made with the script.
+              </p>
+
+              <ul>
+                <li><a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Example_Report.pdf" target="_blank" rel="noopener noreferrer" class="blog-link">Microsoft</a></li>
+                <li><a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Example_Report2.pdf" target="_blank" rel="noopener noreferrer" class="blog-link">Starbucks</a></li>
+                <li><a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Example_Report3.pdf" target="_blank" rel="noopener noreferrer" class="blog-link">Lockheed Martin</a></li>
+                <li><a href="https://github.com/portfedh/fundamental_analysis_report/blob/main/Example_Report4.pdf" target="_blank" rel="noopener noreferrer" class="blog-link">Apple</a></li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Improvements -->
+            <div class="blog-section" id="improvements">
+              <h3>Improvements to the financial report</h3>
+              
+              <p>
+                There are many ways this report could be improved.
+              </p>
+
+              <p>Here are a few ideas:</p>
+
+              <ul>
+                <li>Output an excel file along with the PDF.</li>
+                <li>Analyze quarters instead of full years.</li>
+                <li>Analyze rolling years.</li>
+                <li>Analyze more years at a time.</li>
+                <li>Graph historical PE ratios.</li>
+                <li>Improve the report presentation.</li>
+                <li>Compare the company vs. its sector.</li>
+              </ul>
+
+              <p>
+                This list is not comprehensive, rather just a starting point.
+              </p>
+
+              <p>
+                If you are planning on using the report for investment purposes, remember that fundamental analysis is only part of a stock selection process. Other metrics, both qualitative and quantitative, need to taken into account before investing in a company.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Final thoughts -->
+            <div class="blog-section" id="final-thoughts">
+              <h3>Final thoughts</h3>
+              
+              <p>
+                I hope you enjoyed the post and found it useful.
+              </p>
+
+              <p>
+                If you decide to try it out, feel free to contact me if you have any problems or suggestions.
+              </p>
+
+              <p>
+                You can check out my other projects <a href="../es/index.html" class="blog-link">here</a>.
+              </p>
+
+              <p>
+                Pablo.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="../es/index.html" class="button white-text"
+                    >← Back to Portfolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://github.com/portfedh/fundamental_analysis_report"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>Get in touch!</h2>
+            </header>
+            <p class="fade-out">
+              I'm currently open to work and I'd be happy to chat.
+              <br />
+              <br />
+              Feel free to reach out if you are interested in what I can bring
+              to your project or team.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Email me</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter Profile"
+            ><i class="fa-brands fa-twitter"></i><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            ><i class="fa-brands fa-linkedin"></i><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            ><i class="fa-brands fa-github"></i><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            aria-label="Email link"
+            ><i class="fa-solid fa-envelope"></i><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="../assets/js/blog-i18n.js"></script>
+    <script>
+      // Initialize blog translation system
+      const blogI18n = new BlogI18n('financial-report-pdf');
+      blogI18n.init();
+    </script>
+    <script src="../assets/js/main.js"></script>
     <script
       src="https://kit.fontawesome.com/1450436a40.js"
       crossorigin="anonymous"
