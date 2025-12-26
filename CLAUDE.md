@@ -1,12 +1,14 @@
 # CLAUDE.md
 
-*Last updated: October 12, 2025*
+*Last updated: December 25, 2025*
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
 This is a **static portfolio website** for Pablo Cruz, a full-stack developer. The site is hosted on GitHub Pages and accessible at pablocruz.io. It's a professional portfolio showcasing projects, skills, and experience in web development, financial systems, and IoT automation. The site includes a main portfolio page and detailed blog posts about selected projects.
+
+**Multilingual Support**: The site is available in English (default) and Spanish. Spanish pages are located in the `/es/` directory. Each page includes hreflang tags for SEO and language switcher links for navigation between languages.
 
 ## Technology Stack
 
@@ -20,10 +22,20 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 
 ### Key Files
 
+**English Pages:**
 - `index.html` - Main portfolio page (single-page application)
-- `extras.html` - Style guide and component reference
+- `codi-api.html` - Blog post about CoDi API integration
 - `financial-report-pdf.html` - Blog post about creating financial reports with Python
 - `water-level-monitor.html` - Blog post about IoT water level monitoring
+- `extras.html` - Style guide and component reference
+
+**Spanish Pages (`/es/` directory):**
+- `es/index.html` - Spanish portfolio page
+- `es/codi-api.html` - CoDi API blog (Spanish)
+- `es/financial-report-pdf.html` - Financial reports blog (Spanish)
+- `es/water-level-monitor.html` - Water monitoring blog (Spanish)
+
+**Assets & Configuration:**
 - `assets/sass/main.scss` - Main stylesheet source
 - `assets/css/` - Compiled CSS and custom styles
 - `assets/js/main.js` - Primary JavaScript functionality
@@ -38,10 +50,11 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 
 ```
 /
-├── index.html                        # Main portfolio page
+├── index.html                        # Main portfolio page (English)
+├── codi-api.html                     # Blog: CoDi API (English)
+├── financial-report-pdf.html         # Blog: Financial reports (English)
+├── water-level-monitor.html          # Blog: Water monitoring (English)
 ├── extras.html                       # Component reference
-├── financial-report-pdf.html         # Blog: Financial reports with Python
-├── water-level-monitor.html          # Blog: IoT water level monitoring
 ├── Pablo_Cruz_Resume_Portfolio_2024.pdf
 ├── Pablo_Cruz_Resume_Portfolio_2025.pdf
 ├── PORTFOLIO_IMPROVEMENT_SUGGESTIONS.md
@@ -49,6 +62,11 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ├── robots.txt                        # SEO configuration
 ├── .claude/                          # Claude Code configuration
 │   └── settings.local.json
+├── es/                               # Spanish language pages
+│   ├── index.html                    # Portfolio (Spanish)
+│   ├── codi-api.html                 # Blog: CoDi API (Spanish)
+│   ├── financial-report-pdf.html     # Blog: Financial reports (Spanish)
+│   └── water-level-monitor.html      # Blog: Water monitoring (Spanish)
 ├── assets/
 │   ├── css/
 │   │   ├── main.css                  # Compiled SCSS
@@ -83,8 +101,21 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - Main portfolio is contained in `index.html` as a single-page application
 - Sections are divided into semantic HTML5 elements with specific IDs
 - Navigation uses smooth scrolling via vanilla JavaScript scrollIntoView API
-- Separate HTML pages for detailed blog posts (`financial-report-pdf.html`, `water-level-monitor.html`)
+- Separate HTML pages for detailed blog posts (`codi-api.html`, `financial-report-pdf.html`, `water-level-monitor.html`)
 - Blog posts include table of contents, code snippets with syntax highlighting, and back-to-top navigation
+
+### Multilingual Structure
+
+- **Directory-based language separation**: English pages in root (`/`), Spanish pages in `/es/` directory
+- **Language switcher**: Simple navigation links (not JavaScript-based) for switching between languages
+- **Hreflang tags**: All pages include hreflang tags for SEO:
+  ```html
+  <link rel="alternate" hreflang="en" href="https://pablocruz.io/page.html" />
+  <link rel="alternate" hreflang="es" href="https://pablocruz.io/es/page.html" />
+  <link rel="alternate" hreflang="x-default" href="https://pablocruz.io/page.html" />
+  ```
+- **Relative asset paths**: Spanish pages use `../assets/` and `../images/` for shared resources
+- **Language consistency**: Internal navigation maintains language (Spanish blog links to Spanish portfolio, etc.)
 
 ### Responsive Design
 
@@ -187,6 +218,7 @@ Each project includes:
 - Google Analytics integration (G-LDNFBEYMLD)
 - Custom favicon (terminal icon)
 - Structured meta descriptions and titles
+- **Hreflang tags** for multilingual SEO (English and Spanish versions)
 - FontAwesome loaded via CDN kit (1450436a40)
 
 ## Google Analytics Implementation
@@ -209,10 +241,14 @@ The tracking code is placed in the `<head>` section of all HTML pages:
 ```
 
 **Pages with tracking:**
-- `index.html` - Main portfolio page
-- `water-level-monitor.html` - Blog post
-- `financial-report-pdf.html` - Blog post
-- `codi-api.html` - Blog post
+- `index.html` - Main portfolio page (English)
+- `codi-api.html` - Blog post (English)
+- `financial-report-pdf.html` - Blog post (English)
+- `water-level-monitor.html` - Blog post (English)
+- `es/index.html` - Main portfolio page (Spanish)
+- `es/codi-api.html` - Blog post (Spanish)
+- `es/financial-report-pdf.html` - Blog post (Spanish)
+- `es/water-level-monitor.html` - Blog post (Spanish)
 
 ### What's Tracked
 
@@ -295,6 +331,13 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
 - **Image Optimization**: Ensure images are web-optimized before adding
 - **Mobile-First**: Always test responsive design on mobile devices
 - **SEO Friendly**: Maintain semantic HTML and meta tags when making changes
+- **Multilingual Pages**:
+  - English pages are in the root directory (`/`)
+  - Spanish pages are in the `/es/` directory
+  - All pages share the same assets (CSS, JS, images) using relative paths
+  - When updating content, update BOTH English and Spanish versions
+  - Maintain hreflang tags on all pages for SEO
+  - Language switcher uses simple navigation links (not JavaScript)
 - **CSS Best Practices**:
   - Never use !important in CSS. If you see it in any CSS file, remove it
   - For CSS changes, never write in the main.css file, always use custom.css or blog.css for specificity
@@ -304,4 +347,5 @@ The site automatically deploys to GitHub Pages when changes are pushed to the ma
   - Include Prism.js for syntax highlighting in code blocks
   - Maintain consistent structure with table of contents and back-to-top navigation
   - Optimize images specifically for blog content
+  - Ensure "back to portfolio" links point to correct language version
 - **FontAwesome**: Icons are loaded via CDN with local webfont backup for reliability
