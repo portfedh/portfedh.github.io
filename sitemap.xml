@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- English Portfolio -->
+  <url>
+    <loc>https://pablocruz.io/</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/" />
+  </url>
+
+  <!-- Spanish Portfolio -->
+  <url>
+    <loc>https://pablocruz.io/es/</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/" />
+  </url>
+
+  <!-- English Blog: CoDi API -->
+  <url>
+    <loc>https://pablocruz.io/codi-api.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/codi-api.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/codi-api.html" />
+  </url>
+
+  <!-- Spanish Blog: CoDi API -->
+  <url>
+    <loc>https://pablocruz.io/es/codi-api.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/codi-api.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/codi-api.html" />
+  </url>
+
+  <!-- English Blog: Financial Report PDF -->
+  <url>
+    <loc>https://pablocruz.io/financial-report-pdf.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/financial-report-pdf.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/financial-report-pdf.html" />
+  </url>
+
+  <!-- Spanish Blog: Financial Report PDF -->
+  <url>
+    <loc>https://pablocruz.io/es/financial-report-pdf.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/financial-report-pdf.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/financial-report-pdf.html" />
+  </url>
+
+  <!-- English Blog: Water Level Monitor -->
+  <url>
+    <loc>https://pablocruz.io/water-level-monitor.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/water-level-monitor.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/water-level-monitor.html" />
+  </url>
+
+  <!-- Spanish Blog: Water Level Monitor -->
+  <url>
+    <loc>https://pablocruz.io/es/water-level-monitor.html</loc>
+    <lastmod>2025-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pablocruz.io/water-level-monitor.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pablocruz.io/es/water-level-monitor.html" />
+  </url>
+
+</urlset>

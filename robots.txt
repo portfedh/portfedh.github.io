@@ -1,4 +1,10 @@
 User-agent: *
-Disallow: /
-Allow: /index.html
-Allow: /Pablo_Cruz_Resume_Portfolio_2025.pdf
+Allow: /
+
+# Disallow development and temporary directories
+Disallow: /temp/
+Disallow: /tests/
+Disallow: /.claude/
+
+# Sitemap
+Sitemap: https://pablocruz.io/sitemap.xml
