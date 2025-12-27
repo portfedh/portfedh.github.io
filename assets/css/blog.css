@@ -614,6 +614,64 @@
   height: auto !important;
 }
 
+/* IoT Energy Monitor Blog - Larger image sizes for desktop */
+/* Make all energy monitor images larger on desktop (min 700px wide on desktop) */
+.blog-post .image-container img[src*="iot-energy-monitor"] {
+  min-width: 700px;
+  width: 100% !important;
+  max-width: 850px !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Diagrams and technical drawings should be very large */
+.blog-post .image-container img[src*="energy_monitor_diagram"],
+.blog-post .image-container img[src*="CurrentSensorPCB"] {
+  min-width: 750px;
+  max-width: 900px !important;
+}
+
+/* Calibration GIF should be large */
+.blog-post .image-container img[src*="energy_monitor_sensor_calibration"] {
+  min-width: 700px;
+  max-width: 850px !important;
+}
+
+/* Charts and graphs should be large for readability */
+.blog-post .image-container img[src*="energy_monitor_grafana_chart"],
+.blog-post .image-container img[src*="Current_Influxdb"],
+.blog-post .image-container img[src*="energy_monitor_node_red_setup"] {
+  min-width: 750px;
+  max-width: 900px !important;
+}
+
+/* Screenshot images should be large */
+.blog-post .image-container img[src*="energy_monitor_serial_monitor"],
+.blog-post .image-container img[src*="energy_monitor_mosquitto"] {
+  min-width: 700px;
+  max-width: 850px !important;
+}
+
+/* Responsive: Remove min-width constraints on tablets and mobile */
+@media screen and (max-width: 1024px) {
+  .blog-post .image-container img[src*="iot-energy-monitor"] {
+    min-width: unset;
+    max-width: 100% !important;
+  }
+
+  .blog-post .image-container img[src*="energy_monitor_diagram"],
+  .blog-post .image-container img[src*="CurrentSensorPCB"],
+  .blog-post .image-container img[src*="energy_monitor_sensor_calibration"],
+  .blog-post .image-container img[src*="energy_monitor_grafana_chart"],
+  .blog-post .image-container img[src*="Current_Influxdb"],
+  .blog-post .image-container img[src*="energy_monitor_node_red_setup"],
+  .blog-post .image-container img[src*="energy_monitor_serial_monitor"],
+  .blog-post .image-container img[src*="energy_monitor_mosquitto"] {
+    min-width: unset;
+    max-width: 100% !important;
+  }
+}
+
 /* Code blocks */
 .code-block {
   background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
