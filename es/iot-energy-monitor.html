@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Cómo hacer un monitor de energía IoT | Pablo Cruz</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Cómo hacer un monitor de energía IoT"
+    />
+    <meta
+      property="og:description"
+      content="Este post explica cómo hice un monitor de energía IoT usando un raspberry pi, un ESP32 y algunos sensores de corriente SCT-013."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/iot-energy-monitor/energy_monitor_finished.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/es/iot-energy-monitor.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Cómo hacer un monitor de energía IoT"
+    />
+    <meta
+      name="twitter:description"
+      content="Este post explica cómo hice un monitor de energía IoT usando un raspberry pi, un ESP32 y algunos sensores de corriente SCT-013."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/iot-energy-monitor/energy_monitor_finished.png"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/blog.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/iot-energy-monitor/energy_monitor_finished.png"
+    />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Hreflang tags for SEO -->
+    <link rel="alternate" hreflang="en" href="https://pablocruz.io/iot-energy-monitor.html" />
+    <link rel="alternate" hreflang="es" href="https://pablocruz.io/es/iot-energy-monitor.html" />
+    <link rel="alternate" hreflang="x-default" href="https://pablocruz.io/iot-energy-monitor.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <a href="../iot-energy-monitor.html" class="lang-btn" aria-label="Switch to English">EN</a>
+        <span class="lang-separator">|</span>
+        <a href="iot-energy-monitor.html" class="lang-btn active" aria-label="Cambiar a Español">ES</a>
+      </div>
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">← Volver al Portafolio</a>
+        </div>
+        <div class="blog-title-container">
+          <h1>Cómo hacer un monitor de energía IoT</h1>
+          <p class="blog-meta">
+            Publicado: 29 de agosto de 2022 | Última actualización: 20 de agosto de 2024
+          </p>
+          <p class="blog-description">
+            Este post explica cómo hice un monitor de energía IoT usando un raspberry pi, un ESP32 y algunos sensores de corriente SCT-013.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-featured-image">
+              <img
+                src="../images/iot-energy-monitor/energy_monitor_finished.png"
+                alt="Monitor de energía terminado con la carcasa abierta y leyendo corriente eléctrica"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Tabla de Contenidos</h2>
+              <ul class="toc">
+                <li>
+                  <a href="#why-monitor">Por qué hacer un monitor de energía</a>
+                </li>
+                <li>
+                  <a href="#how-works">Cómo funciona el monitor de energía</a>
+                  <ul>
+                    <li><a href="#theory">La teoría</a></li>
+                    <li><a href="#how-built">Cómo construirlo</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#components">Componentes del monitor de energía</a>
+                </li>
+                <li>
+                  <a href="#build-monitor">Cómo construir el monitor</a>
+                  <ul>
+                    <li><a href="#electrical-diagram">Diagrama eléctrico</a></li>
+                    <li><a href="#wiring-diagram">Diseñando el diagrama de cableado</a></li>
+                    <li><a href="#making-pcb">Fabricando el PCB</a></li>
+                    <li><a href="#connecting-components">Conectando los componentes</a></li>
+                    <li><a href="#adding-software">Agregando el software</a></li>
+                    <li><a href="#calibrating-sensors">Calibrando los sensores</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#reading-data">Leyendo los datos del sensor</a>
+                </li>
+                <li>
+                  <a href="#saving-data">Guardando los valores en una base de datos</a>
+                </li>
+                <li>
+                  <a href="#visualizing">Visualizando los datos</a>
+                </li>
+                <li>
+                  <a href="#using-data">Usando los datos del sensor</a>
+                </li>
+                <li><a href="#resources">Más recursos</a></li>
+                <li><a href="#code">Código Completo</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                En este post, explicaré cómo hacer un monitor de energía IoT usando un sensor de corriente, un ESP32 y un raspberry pi. Aquí está el enlace al
+                <a
+                  href="https://github.com/portfedh/CurrentSensorsMQTT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >repositorio de github</a
+                >.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Why make an energy monitor -->
+            <div class="blog-section" id="why-monitor">
+              <h3>Por qué hacer un monitor de energía</h3>
+              <p>
+                Puedes hacer un monitor de energía IoT para verificar el consumo de electricidad de un negocio o casa.
+              </p>
+
+              <p>
+                En este caso, la idea surgió como una forma de ayudarnos en otro proyecto: Instalar paneles solares y medir sus efectos en el consumo de energía.
+              </p>
+
+              <p>
+                Los paneles solares son costosos y el retorno de la inversión puede tomar varios años, así que queríamos calcular cuántos se necesitaban para llevar los costos de electricidad a un mínimo. Todos los paneles tienen una clasificación nominal de producción de energía, pero como todos sabemos, es mejor verificar antes de hacer una inversión sustancial de cualquier tipo.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- How the energy monitor works -->
+            <div class="blog-section" id="how-works">
+              <h3>Cómo funciona el monitor de energía</h3>
+
+              <h4 id="theory">La teoría</h4>
+              <p>
+                La potencia eléctrica, medida en Watts, puede expresarse como:
+              </p>
+
+              <p>
+                Watts (W) = Corriente (I) x Voltaje (V)
+              </p>
+
+              <p>
+                En México el voltaje se proporciona a 120V. Otras partes del mundo usan 240V.
+              </p>
+
+              <p>
+                Si asumimos que 120V son constantes, al medir la corriente en nuestro circuito podemos calcular razonablemente bien el consumo de energía eléctrica en un momento dado.
+              </p>
+
+              <p>
+                Luego podemos registrar las mediciones en una base de datos y sumar el uso a lo largo del tiempo para obtener el consumo total de energía.
+              </p>
+
+              <p>
+                Como beneficio adicional, también podemos visualizar los datos y analizar la información de otras formas para obtener insights.
+              </p>
+
+              <h4 id="how-built">Cómo construirlo</h4>
+              <p>
+                Para medir la corriente, podemos usar un sensor de corriente no invasivo SCT-013.
+              </p>
+
+              <p>
+                Podemos conectarlo a un microcontrolador ESP32 para leer y enviar los datos a través de WiFi, usando el protocolo MQTT.
+              </p>
+
+              <p>
+                El ESP32 toma mediciones cada 5 minutos y transforma el valor del sensor en mA a una estimación en Amperes.
+              </p>
+
+              <p>
+                Los valores de voltaje están codificados a 120V, pero podrías sustituirlo con un sensor de voltaje si necesitas valores más precisos.
+              </p>
+
+              <p>
+                Las mediciones se envían luego a través de WiFi por el ESP32 a un broker MQTT instalado en un Raspberry Pi.
+              </p>
+
+              <p>
+                Usando un programa llamado Node-Red, el Raspberry escribe los valores MQTT en una base de datos InfluxDB para almacenamiento.
+              </p>
+
+              <p>
+                Finalmente, podemos usar un software de visualización de datos de código abierto llamado Grafana para mostrar los datos de una manera visualmente atractiva e interactiva.
+              </p>
+
+              <p>
+                De esta forma, podemos verificar el monitor de energía IoT desde un teléfono celular o computadora en cualquier momento siempre que estemos en la misma LAN.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Components -->
+            <div class="blog-section" id="components">
+              <h3>Componentes del monitor de energía</h3>
+              <p>
+                En este caso, tuvimos que medir 3 líneas eléctricas separadas, así que construimos el monitor de energía para recibir entradas de tres sensores.
+              </p>
+
+              <p>
+                Se necesita un microcontrolador ESP32 para la versión de 3 sensores, pero para una versión de 1 sensor, un ESP8266 también funcionará. (Ver la imagen del primer prototipo abajo).
+              </p>
+
+              <p><strong>Lista de componentes de hardware:</strong></p>
+              <ul>
+                <li>1 ESP32</li>
+                <li>3 sensores de corriente SCT-013</li>
+                <li>3 Capacitores de 10uF</li>
+                <li>9 Resistencias de 10k</li>
+                <li>3 Resistencias de 20k</li>
+                <li>Una conexión eléctrica para alimentar el ESP32</li>
+                <li>Un protoboard o PCB</li>
+                <li>Un Raspberry Pi</li>
+              </ul>
+
+              <p><strong>Software:</strong></p>
+              <ul>
+                <li>Librería de placas ESP8266, instalada desde el Administrador de Placas</li>
+                <li>Librería de Arduino: EspMQTTClient.h</li>
+                <li>Librería Emonlib (Parte del proyecto open energy monitor)</li>
+                <li>Mosquitto MQTT</li>
+              </ul>
+
+              <p><strong>Extras:</strong></p>
+              <p>
+                Diseñé una carcasa impresa en 3D para el proyecto para darle una mejor apariencia. Puedes encontrar el modelo 3D
+                <a
+                  href="https://www.prusaprinters.org/prints/36310-esp32-energy-monitor-case"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >aquí</a
+                >.
+              </p>
+
+              <p>
+                Para las conexiones de hardware, también hice mi propio PCB usando una máquina CNC mini. También puedes hacer que tu cableado se vea mejor encargando un PCB con una empresa profesional. Es muy barato, solo tienes que esperar un poco para que lleguen.
+              </p>
+
+              <p>
+                Para que el monitor funcione, debe estar en el alcance de tu red WiFi.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- How to build -->
+            <div class="blog-section" id="build-monitor">
+              <h3>Cómo construir el monitor</h3>
+
+              <h4 id="electrical-diagram">Diagrama eléctrico</h4>
+              <p>
+                Si quieres construir el sensor, simplemente puedes seguir el diagrama eléctrico a continuación. El circuito del primer sensor simplemente se duplica para los otros dos sensores:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_diagram.png"
+                  alt="Diagrama eléctrico del monitor de energía usando un ESP32 y tres sensores de corriente SCT-013"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  El diagrama eléctrico del monitor de energía. Usa un ESP32 y tres sensores de corriente SCT-013 con algunas resistencias y capacitores.
+                </p>
+              </div>
+
+              <h4 id="wiring-diagram">Diseñando el diagrama de cableado</h4>
+              <p>
+                Para crear el diagrama anterior, revisamos varios proyectos IoT que usan el sensor de corriente SCT-013, que enumero en la sección de
+                <a href="#resources" class="blog-link">recursos</a>
+                al final del post. Después fue un poco de experimentación y mucho ensayo y error.
+              </p>
+
+              <p>
+                Nuestro objetivo inicial era hacer que un solo sensor funcionara usando un protoboard y un ESP8266. Una vez que funcionó, creamos una versión impresa en 3D del diagrama para facilitar la comprensión y compartir el cableado:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/EnergyMonitorPrototype.jpg"
+                  alt="Prototipo de monitor de energía usando un ESP8266 y un solo sensor de corriente SCT-013"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  El primer prototipo del monitor de energía usando un ESP8266 y un solo sensor de corriente SCT-013. El diagrama está impreso en 3D.
+                </p>
+              </div>
+
+              <p>
+                Luego volvimos al protoboard y agregamos los circuitos para los otros dos sensores. Fue entonces cuando descubrimos que el ESP8266 solo tiene un pin de entrada analógica, y necesitábamos cambiar a un ESP32 para usar múltiples sensores.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_breadboard.jpg"
+                  alt="Prototipo de monitor de energía IoT usando un protoboard, ESP32 y tres sensores de corriente SCT-013"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  La siguiente versión del prototipo de monitor de energía IoT usando un protoboard, ESP32 y tres sensores de corriente SCT-013
+                </p>
+              </div>
+
+              <h4 id="making-pcb">Fabricando el PCB</h4>
+              <p>
+                La configuración estaba funcionando en el protoboard, era hora de mover el circuito a una configuración más permanente. Decidimos hacer el diseño del PCB y tallarlo.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/CurrentSensorPCB.png"
+                  alt="Diagrama PCB para el monitor de energía usando un ESP32 y tres sensores de corriente SCT-013"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Diagrama de cableado del PCB usando Autodesk Eagle
+                </p>
+              </div>
+
+              <p>
+                Inicialmente hice un diagrama de cableado usando
+                <a
+                  href="https://fritzing.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >Fritzing</a
+                >, un software de diseño electrónico simple, pero luego tuve muchas dificultades traduciendo el archivo de salida en instrucciones CNC, así que terminé cambiando a Autodesk Eagle, que tiene un plugin para hacer exactamente eso (PCB Gcode).
+                Si decides enviar tu diseño de PCB a un fabricante, Fritzing funcionará perfectamente.
+              </p>
+
+              <p>
+                Para probar todo, hice algunos prototipos usando cartón y luego fui por el real:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_milling.jpg"
+                  alt="Máquina CNC fresando un prototipo de PCB del monitor de energía DIY"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Máquina CNC fresando un prototipo de PCB del monitor de energía DIY
+                </p>
+              </div>
+
+              <p>
+                Cuando usas un router CNC, las conexiones de cobre que sustituyen los cables deben ser más gruesas que en un PCB normal. Las conexiones delgadas son un problema con el router CNC, ya que las brocas del router pueden cortar los conectores y romper la conexión. Se necesita bastante experimentación para hacerlo bien, pero aún creo que vale la pena para prototipado rápido. Aquí hay algunas imágenes de cómo salió el PCB:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_tests.jpg"
+                  alt="Pruebas de PCB de cartón y cobre usando la máquina CNC para el monitor de energía IoT"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Pruebas de PCB de cartón y cobre usando la máquina CNC para el monitor de energía
+                </p>
+              </div>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_finished.jpg"
+                  alt="PCB del monitor de energía terminado en una prensa listo para soldar"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  PCB del monitor de energía terminado en una prensa listo para soldar.
+                </p>
+              </div>
+
+              <h4 id="connecting-components">Conectando los componentes</h4>
+              <p>
+                Después de hacer el PCB, etiquetamos y soldamos todo en el otro lado:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_back_components.jpg"
+                  alt="Parte posterior del PCB del monitor de energía con componentes listos para soldar"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Parte posterior del PCB del monitor de energía con componentes listos para soldar
+                </p>
+              </div>
+
+              <p>
+                Para proteger el cobre de la corrosión, agregué esmalte transparente al frente.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_front_soldered.jpg"
+                  alt="PCB del monitor de energía junto al microcontrolador ESP32 soldado y conectado"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  PCB del monitor de energía junto al microcontrolador ESP32 soldado y conectado
+                </p>
+              </div>
+
+              <p>
+                Una vez que el PCB estuvo listo, conectamos todo y lo probamos.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_pcb_back_connected.jpg"
+                  alt="Vista posterior del PCB del monitor de energía con componentes conectados al ESP32 y los sensores SCT-013"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Vista posterior del PCB del monitor de energía con componentes conectados al ESP32 y los sensores SCT-013
+                </p>
+              </div>
+
+              <p>
+                Algunas piezas tuvieron que ser re-soldadas porque los cables del sensor se doblaron y seguían rompiéndose, pero al final todo funcionó.
+              </p>
+
+              <p>
+                Una vez que todo funcionó, metimos los componentes en la carcasa impresa en 3D y pegamos todo.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_finished_back.jpg"
+                  alt="Monitor de energía terminado con carcasa impresa en 3D: Vista posterior"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Monitor de energía terminado con carcasa impresa en 3D: Vista posterior
+                </p>
+              </div>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_finished_front_no_lid.jpg"
+                  alt="Monitor de energía terminado con carcasa impresa en 3D: Vista frontal sin tapa"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Monitor de energía terminado con carcasa impresa en 3D: Vista frontal sin tapa
+                </p>
+              </div>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_finished_front_with_lid.jpg"
+                  alt="Monitor de energía terminado con carcasa impresa en 3D: Vista frontal con tapa"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Monitor de energía terminado con carcasa impresa en 3D: Vista frontal con tapa
+                </p>
+              </div>
+
+              <h4 id="adding-software">Agregando el software</h4>
+              <p>
+                Después de configurar el sensor, cargamos el archivo de Arduino en el ESP32.
+              </p>
+
+              <p>
+                Este es el código para el sensor. También está disponible en el
+                <a
+                  href="https://github.com/portfedh/CurrentSensorsMQTT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >repositorio de github</a
+                >.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>C++ (Arduino)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copiar</button>
+                </div>
+                <code class="language-cpp">// Code to measure current using three SCT-013 and one ESP32
+// Board used: NODEMCU-32S
+
+// Import Emon Library from the open energy monitor project
+#include "EmonLib.h"
+
+// Mills Function
+const unsigned long event_interval = 300000; // 5 minute interval, 300 second
+unsigned long previous_time = 0;
+
+// Include MQTT Connection
+#include "EspMQTTClient.h"
+
+// Define input pins
+#define ADC_INPUT_1 34 // Sensor 1
+#define ADC_INPUT_2 32 // Sensor 2
+#define ADC_INPUT_3 35 // Sensor 3
+
+#define WIFI_SSID        "&lt;WiFi_username_here&gt;"
+#define WIFI_PASS        "&lt;WiFi_password_here&gt;"
+
+#define BROKER_IP        "&lt;local_ip_address&gt;"
+#define BROKER_USERNAME  "&lt;broker_username&gt;"
+#define BROKER_PASSWORD  "&lt;broker_password&gt;"
+#define CLIENT_NAME      "&lt;MQTT_name_to_identify_device&gt;"
+#define BROKER_PORT      1883
+#define lastwill_topic   "&lt;last_will_topic&gt;"
+#define lastwill_text    "Current sensor has gone offline unexpextedly."
+
+String  client_name                = CLIENT_NAME;
+String  startup_topic              = "&lt;startup_topic&gt;";
+String  medidor_corriente1_topic   = "&lt;topic_to_report_sensor_1&gt;";
+String  medidor_corriente2_topic   = "&lt;topic_to_report_sensor_2&gt;";
+String  medidor_corriente3_topic   = "&lt;topic_to_report_sensor_3&gt;";
+
+// Assumed Voltage
+float voltajeRed = 120.0;
+
+// Create 3 instances of EnergyMonitor
+EnergyMonitor energyMonitor1;
+EnergyMonitor energyMonitor2;
+EnergyMonitor energyMonitor3;
+
+// Function to connect to MQTT
+EspMQTTClient client(
+                  WIFI_SSID,
+                  WIFI_PASS,
+                  BROKER_IP,
+                  BROKER_USERNAME,
+                  BROKER_PASSWORD,
+                  CLIENT_NAME,      // Client name to uniquely identify your device
+                  BROKER_PORT
+);
+
+void setup()
+{
+  Serial.begin(115200);
+
+  // Enable debugging messages sent to serial output
+  client.enableDebuggingMessages();
+
+  // Enable the web updater.
+  client.enableHTTPWebUpdater();
+
+  // MQTT Last Will &amp; Testament
+  client.enableLastWillMessage( lastwill_topic , lastwill_text);
+
+  // Pin where sensors are connected
+  // Calibration value: Modify when calibrating
+  energyMonitor1.current(ADC_INPUT_1, 0.145);
+  energyMonitor2.current(ADC_INPUT_2, 0.145);
+  energyMonitor3.current(ADC_INPUT_3, 0.145);
+}
+
+//MQTT Innitial Connection
+void onConnectionEstablished()
+{
+  client.publish(startup_topic, String(client_name + " is now online."));
+}
+
+void loop()
+{
+  // MQTT Loop: Must be called once per loop.
+  client.loop();
+
+  // Mills Loop
+  unsigned long current_time = millis();
+
+  // Mills If Statment
+  if(current_time - previous_time &gt;= event_interval) {
+
+      // Number of samples to take
+      double Irms1 = energyMonitor1.calcIrms(1484);
+      // Calculate current
+      double potencia1 =  Irms1 * voltajeRed;
+
+      // Number of samples to take
+      double Irms2 = energyMonitor2.calcIrms(1484);
+      // Calculate current
+      double potencia2 =  Irms2 * voltajeRed;
+
+      // Number of samples to take
+      double Irms3 = energyMonitor3.calcIrms(1484);
+      // Calculate current
+      double potencia3 =  Irms3 * voltajeRed;
+
+      // Display info to serial monitor
+      Serial.print("Potencia 1 = ");
+      Serial.print(potencia1);
+      Serial.print("    Irms 1 = ");
+      Serial.println(Irms1);
+
+      // Display info to serial monitor
+      Serial.print("Potencia 2 = ");
+      Serial.print(potencia2);
+      Serial.print("    Irms 2 = ");
+      Serial.println(Irms2);
+
+     // Display info to serial monitor
+      Serial.print("Potencia 3 = ");
+      Serial.print(potencia3);
+      Serial.print("    Irms 3 = ");
+      Serial.println(Irms3);
+      Serial.print('\n');
+      Serial.print('\n');
+
+      // MQTT Client Publisher
+      client.publish(medidor_corriente1_topic, String(potencia1));
+      client.publish(medidor_corriente2_topic, String(potencia2));
+      client.publish(medidor_corriente3_topic, String(potencia3));
+      Serial.print('\n');
+
+      // Update timing for next time
+      previous_time = current_time;
+  }
+}</code></pre>
+
+              <h4 id="calibrating-sensors">Calibrando los sensores</h4>
+              <p>
+                Para calibrar los sensores, usamos el siguiente procedimiento:
+              </p>
+
+              <ul>
+                <li>Dividir un cable de extensión para que los cables de línea y neutro estuvieran separados.</li>
+                <li>Conectar el cable de extensión al tomacorriente eléctrico.</li>
+                <li>Conectar un calentador al cable de extensión.</li>
+                <li>Conectar los sensores a una de las líneas del cable de extensión.</li>
+                <li>Conectar un medidor de pinza a la misma línea del cable de extensión.</li>
+                <li>Encender el calentador y comparar los valores en los sensores con los valores en el medidor de pinza.</li>
+                <li>Ajustar el valor de calibración en el código e intentar de nuevo hasta que las lecturas coincidan.</li>
+              </ul>
+
+              <p>
+                También verificamos que las lecturas fueran consistentes en los diferentes rangos de calentamiento.
+              </p>
+
+              <p>
+                Las líneas de código para calibrar los sensores son:
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>C++ (Arduino)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copiar</button>
+                </div>
+                <code class="language-cpp">// Mills Function
+const unsigned long event_interval = 300000; // 5 minute interval, 300 second</code></pre>
+
+              <p>
+                Puedes modificar esta línea para hacer que el sensor reporte valores cada 5 segundos en lugar de cada 5 minutos para la prueba de calibración:
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>C++ (Arduino)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copiar</button>
+                </div>
+                <code class="language-cpp">  energyMonitor1.current(ADC_INPUT_1, 0.145);
+  energyMonitor2.current(ADC_INPUT_2, 0.145);
+  energyMonitor3.current(ADC_INPUT_3, 0.145);</code></pre>
+
+              <p>
+                Luego, para calibrar los valores, modifica el valor de 0.145 hasta que todas las lecturas sean consistentes.
+              </p>
+
+              <p>
+                Aquí hay un gif del procedimiento:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_sensor_calibration.gif"
+                  alt="Gif del proceso de calibración del sensor del monitor de energía"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Calibración del sensor del monitor de energía
+                </p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Reading data -->
+            <div class="blog-section" id="reading-data">
+              <h3>Leyendo los datos del sensor</h3>
+              <p>
+                Una vez que el sensor estaba calibrado y reportando valores, era hora de guardar los datos y visualizarlos.
+              </p>
+
+              <p>
+                Para hacer esto, habíamos instalado previamente Mosquitto MQTT, InfluxDB y Grafana en un Raspberry Pi 4. Explicar cómo hacer esto tomaría demasiado tiempo, pero seguimos las instrucciones explicadas
+                <a
+                  href="https://www.youtube.com/watch?v=ffg3_1AgtyA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >en este video</a
+                >.
+              </p>
+
+              <p>
+                Primero, verificamos que el sensor estuviera enviando datos correctamente. Abrimos el monitor serial de Arduino y obtuvimos el siguiente mensaje de confirmación:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_serial_monitor_output.png"
+                  alt="Monitor serial de Arduino después de cargar el código del monitor de energía al ESP32"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Monitor serial de Arduino después de cargar el código al ESP32
+                </p>
+              </div>
+
+              <p>
+                Luego usamos SSH para conectar mi computadora al Raspberry Pi y abrimos Mosquitto, el broker MQTT para monitorear los valores que el ESP32 reportaba en tiempo real.
+              </p>
+
+              <p>
+                En este ejemplo, nos suscribimos a un solo tema de sensor llamado "Cordilleras/medidor_corriente1", no a los tres sensores.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_mosquitto_output.png"
+                  alt="Salida de terminal, usando Mosquitto MQTT y suscrito al tema del sensor1"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Salida de terminal, usando Mosquitto MQTT y suscrito al tema del sensor1
+                </p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Saving data -->
+            <div class="blog-section" id="saving-data">
+              <h3>Guardando los valores en una base de datos</h3>
+              <p>
+                Después de verificar que MQTT estaba funcionando correctamente, abrimos Node-Red y configuramos algunos nodos para leer los datos MQTT de los tres sensores, los guardamos como objetos JSON y luego los escribimos en la base de datos InfluxDB que había configurado previamente.
+              </p>
+
+              <p>
+                Aquí hay una imagen de la configuración de Node-Red:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_node_red_setup.png"
+                  alt="Configuración de Node-Red del monitor de energía mostrando los nodos usados para guardar datos del sensor en la base de datos InfluxDB"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Configuración de Node-RED en Raspberry Pi
+                </p>
+              </div>
+
+              <p>
+                Los nodos morados leen la información MQTT. Los nodos de función naranjas guardan la información de cada sensor como una variable. Los nodos verdes son para depuración y pruebas. El nodo azul se ejecuta automáticamente cada 5 minutos. El nodo naranja guarda las tres variables como un solo payload. Finalmente, el nodo marrón guarda la información en InfluxDB.
+              </p>
+
+              <p>
+                Para verificar las lecturas en la base de datos, iniciamos sesión usando la línea de comandos para ver los valores:
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/Current_Influxdb.png"
+                  alt="Terminal mostrando la base de datos InfluxDB con marcas de tiempo y lecturas de energía"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Terminal mostrando la base de datos InfluxDB con marcas de tiempo y lecturas de energía
+                </p>
+              </div>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Visualizing data -->
+            <div class="blog-section" id="visualizing">
+              <h3>Visualizando los datos</h3>
+              <p>
+                Grafana es una gran herramienta para visualización de datos porque es de código abierto, fácil de usar, y tiene excelentes gráficas que pueden ajustarse para diferentes períodos de tiempo.
+              </p>
+
+              <p>
+                A continuación hay una imagen de cómo se ve la información al mostrar un período de 24 horas.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/iot-energy-monitor/energy_monitor_grafana_chart.png"
+                  alt="Gráfica del monitor de energía usando Grafana mostrando el uso de energía durante un período de 24 horas"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Gráfica del monitor de energía usando Grafana mostrando el uso de energía durante un período de 24 horas.
+                </p>
+              </div>
+
+              <p>
+                En la gráfica, puedes ver cómo la primera línea eléctrica (medidor 1) usa más electricidad que la segunda o la tercera línea.
+              </p>
+
+              <p>
+                También puedes ver picos periódicos de aproximadamente 5 amperes. Este es el motor del refrigerador encendiéndose. Finalmente, puedes ver algunos picos masivos a las 8am, 4pm y 8:30pm. Este es el microondas encendiéndose durante el desayuno, comida y cena.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Using data -->
+            <div class="blog-section" id="using-data">
+              <h3>Usando los datos del sensor</h3>
+              <p>
+                Al comparar el consumo de electricidad de las líneas 1, 2 y 3, es claro que las cargas están desbalanceadas, ya que la mayor parte del consumo eléctrico está en la línea 1.
+              </p>
+
+              <p>
+                Re-arreglamos las cargas eléctricas para que el microondas estuviera en una línea, el refrigerador en una línea separada y el resto de los tomacorrientes eléctricos en una tercera línea.
+              </p>
+
+              <p>
+                Durante la mayor parte del día, la carga eléctrica está por debajo de 5 Amperes, lo que significa que generar esa cantidad de energía sería suficiente para sustituir mi factura de energía durante las horas de luz solar.
+                <strong>Para responder la pregunta inicial que comenzó este proyecto:</strong>
+                Para reducir la electricidad durante todo el día, tendríamos que comprar suficientes paneles solares para generar 5 Amperes, o 600 Watts (5 amperes x 120 voltios) durante 24 horas (14,400W/h).
+              </p>
+
+              <p>
+                Los paneles promedio producen 270 Watts/hora durante un período de 5 horas por día (según la estimación de
+                <a
+                  href="https://solargis.com/maps-and-gis-data/download/mexico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >solargis</a
+                > para la Ciudad de México), o 1,350 Watts por día, necesitaríamos aproximadamente 11 paneles solares para compensar completamente todos los costos de electricidad con energía renovable.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- More resources -->
+            <div class="blog-section" id="resources">
+              <h3>Más recursos</h3>
+              <p>
+                Espero que hayas encontrado este post interesante.
+              </p>
+
+              <p>
+                Si decides construir un sensor de corriente, a continuación encontrarás algunos recursos adicionales que usamos para hacer posible este proyecto.
+              </p>
+
+              <p>
+                No dudes en contactarme si necesitas ayuda.
+              </p>
+
+              <p>
+                Pablo.
+              </p>
+
+              <div class="video-resources">
+                <div class="row gtr-150">
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=ffg3_1AgtyA" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/ffg3_1AgtyA/maxresdefault.jpg" alt="SuperHouse #41: Datalogging con MQTT, Node-RED, InfluxDB y Grafana" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=uZyJWVA_gyE" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/uZyJWVA_gyE/maxresdefault.jpg" alt="Hack Your Home Parte 3: Monitor de energía" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=ah3ezprtgmc" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/ah3ezprtgmc/maxresdefault.jpg" alt="Monitor de energía casero DIY y sensores CT explicados" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gtr-150" style="margin-top: 2rem;">
+                  <div class="col-6 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=Z3YSHhS39Bc" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/Z3YSHhS39Bc/maxresdefault.jpg" alt="Cómo configurar el sensor de corriente SCT-013" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-6 col-12-medium">
+                    <div class="video-container">
+                      <a href="https://www.youtube.com/watch?v=nWZBMuR3Obs" target="_blank" rel="noopener noreferrer">
+                        <img src="https://img.youtube.com/vi/nWZBMuR3Obs/maxresdefault.jpg" alt="Sensor de energía Arduino CT" class="video-thumbnail" />
+                        <div class="play-button">▶</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align: center; margin-top: 2rem;">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Code section -->
+            <div class="blog-section" id="code">
+              <h3>Código Completo</h3>
+
+              <p>
+                Aquí está el código usado en el microcontrolador ESP32. Para más información asegúrate de ir al
+                <a
+                  href="https://github.com/portfedh/CurrentSensorsMQTT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >repositorio de github</a
+                >.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>C++ (Arduino)</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copiar</button>
+                </div>
+                <code class="language-cpp">// Code to measure current using three SCT-013 and one ESP32
+// Board used: NODEMCU-32S
+
+// Import Emon Library from the open energy monitor project
+#include "EmonLib.h"
+
+// Mills Function
+const unsigned long event_interval = 300000; // 5 minute interval, 300 second
+unsigned long previous_time = 0;
+
+// Include MQTT Connection
+#include "EspMQTTClient.h"
+
+// Define input pins
+#define ADC_INPUT_1 34 // Sensor 1
+#define ADC_INPUT_2 32 // Sensor 2
+#define ADC_INPUT_3 35 // Sensor 3
+
+#define WIFI_SSID        "&lt;WiFi_username_here&gt;"
+#define WIFI_PASS        "&lt;WiFi_password_here&gt;"
+
+#define BROKER_IP        "&lt;local_ip_address&gt;"
+#define BROKER_USERNAME  "&lt;broker_username&gt;"
+#define BROKER_PASSWORD  "&lt;broker_password&gt;"
+#define CLIENT_NAME      "&lt;MQTT_name_to_identify_device&gt;"
+#define BROKER_PORT      1883
+#define lastwill_topic   "&lt;last_will_topic&gt;"
+#define lastwill_text    "Current sensor has gone offline unexpextedly."
+
+String  client_name                = CLIENT_NAME;
+String  startup_topic              = "&lt;startup_topic&gt;";
+String  medidor_corriente1_topic   = "&lt;topic_to_report_sensor_1&gt;";
+String  medidor_corriente2_topic   = "&lt;topic_to_report_sensor_2&gt;";
+String  medidor_corriente3_topic   = "&lt;topic_to_report_sensor_3&gt;";
+
+// Assumed Voltage
+float voltajeRed = 120.0;
+
+// Create 3 instances of EnergyMonitor
+EnergyMonitor energyMonitor1;
+EnergyMonitor energyMonitor2;
+EnergyMonitor energyMonitor3;
+
+// Function to connect to MQTT
+EspMQTTClient client(
+                  WIFI_SSID,
+                  WIFI_PASS,
+                  BROKER_IP,
+                  BROKER_USERNAME,
+                  BROKER_PASSWORD,
+                  CLIENT_NAME,      // Client name to uniquely identify your device
+                  BROKER_PORT
+);
+
+void setup()
+{
+  Serial.begin(115200);
+
+  // Enable debugging messages sent to serial output
+  client.enableDebuggingMessages();
+
+  // Enable the web updater.
+  client.enableHTTPWebUpdater();
+
+  // MQTT Last Will &amp; Testament
+  client.enableLastWillMessage( lastwill_topic , lastwill_text);
+
+  // Pin where sensors are connected
+  // Calibration value: Modify when calibrating
+  energyMonitor1.current(ADC_INPUT_1, 0.145);
+  energyMonitor2.current(ADC_INPUT_2, 0.145);
+  energyMonitor3.current(ADC_INPUT_3, 0.145);
+}
+
+//MQTT Innitial Connection
+void onConnectionEstablished()
+{
+  client.publish(startup_topic, String(client_name + " is now online."));
+}
+
+void loop()
+{
+  // MQTT Loop: Must be called once per loop.
+  client.loop();
+
+  // Mills Loop
+  unsigned long current_time = millis();
+
+  // Mills If Statment
+  if(current_time - previous_time &gt;= event_interval) {
+
+      // Number of samples to take
+      double Irms1 = energyMonitor1.calcIrms(1484);
+      // Calculate current
+      double potencia1 =  Irms1 * voltajeRed;
+
+      // Number of samples to take
+      double Irms2 = energyMonitor2.calcIrms(1484);
+      // Calculate current
+      double potencia2 =  Irms2 * voltajeRed;
+
+      // Number of samples to take
+      double Irms3 = energyMonitor3.calcIrms(1484);
+      // Calculate current
+      double potencia3 =  Irms3 * voltajeRed;
+
+      // Display info to serial monitor
+      Serial.print("Potencia 1 = ");
+      Serial.print(potencia1);
+      Serial.print("    Irms 1 = ");
+      Serial.println(Irms1);
+
+      // Display info to serial monitor
+      Serial.print("Potencia 2 = ");
+      Serial.print(potencia2);
+      Serial.print("    Irms 2 = ");
+      Serial.println(Irms2);
+
+     // Display info to serial monitor
+      Serial.print("Potencia 3 = ");
+      Serial.print(potencia3);
+      Serial.print("    Irms 3 = ");
+      Serial.println(Irms3);
+      Serial.print('\n');
+      Serial.print('\n');
+
+      // MQTT Client Publisher
+      client.publish(medidor_corriente1_topic, String(potencia1));
+      client.publish(medidor_corriente2_topic, String(potencia2));
+      client.publish(medidor_corriente3_topic, String(potencia3));
+      Serial.print('\n');
+
+      // Update timing for next time
+      previous_time = current_time;
+  }
+}</code></pre>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button white-text"
+                    >← Volver al Portafolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://github.com/portfedh/CurrentSensorsMQTT"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> <span>Ver en GitHub</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>¡Contáctame!</h2>
+            </header>
+            <p class="fade-out">
+              Actualmente estoy disponible para trabajar y estaría feliz de conversar.
+              <br />
+              <br />
+              No dudes en contactarme si estás interesado en lo que puedo aportar
+              a tu proyecto o equipo.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Envíame un correo</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de Twitter"
+            ><i class="fa-brands fa-twitter"></i><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de GitHub"
+            ><i class="fa-brands fa-github"></i><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            aria-label="Enlace de correo electrónico"
+            ><i class="fa-solid fa-envelope"></i><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Blog functionality -->
+    <script src="../assets/js/blog.js"></script>
+  </body>
+</html>
