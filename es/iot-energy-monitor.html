@@ -172,6 +172,9 @@
                 <li>
                   <a href="#using-data">Usando los datos del sensor</a>
                 </li>
+                <li>
+                  <a href="#future-improvements">Mejoras futuras</a>
+                </li>
                 <li><a href="#resources">Más recursos</a></li>
                 <li><a href="#code">Código Completo</a></li>
               </ul>
@@ -974,6 +977,61 @@ const unsigned long event_interval = 300000; // Intervalo de 5 minutos, 300 segu
                   class="blog-link"
                   >solargis</a
                 > para la Ciudad de México), o 1,350 Watts por día, necesitaríamos aproximadamente 11 paneles solares para compensar completamente todos los costos de electricidad con energía renovable.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Future improvements -->
+            <div class="blog-section" id="future-improvements">
+              <h3>Mejoras futuras</h3>
+              <p>
+                Si bien este monitor de energía eléctrica ha demostrado ser una herramienta valiosa para comprender los patrones de consumo de electricidad, hay varias formas en que podría mejorarse para obtener mediciones más precisas y mejores insights.
+              </p>
+
+              <h4>Mayor frecuencia de medición</h4>
+              <p>
+                Actualmente, el sistema toma mediciones cada 5 minutos. Esto funciona bien para entender los patrones generales de consumo, pero puede perder eventos de corta duración. Por ejemplo, si un compresor de refrigerador se enciende durante solo 2 minutos dentro de un intervalo de 5 minutos, es posible que no capturemos su consumo total de energía con precisión.
+              </p>
+
+              <p>
+                Un mejor enfoque sería aumentar drásticamente la frecuencia de medición. El ESP32 puede manejar fácilmente tomar 10 o más mediciones por segundo. Esto nos permitiría capturar incluso ráfagas cortas de consumo de energía que de otro modo podrían perderse.
+              </p>
+
+              <p>
+                Para evitar saturar la base de datos con datos, podríamos continuar transmitiendo al servidor cada 5 minutos, pero en lugar de enviar una sola lectura instantánea, enviaríamos el promedio (o suma) de todas las mediciones tomadas durante ese período. Esto nos daría una imagen mucho más precisa del consumo real de energía.
+              </p>
+
+              <h4>Enfoque de implementación</h4>
+              <p>
+                Los cambios en el código implicarían:
+              </p>
+              <ul>
+                <li>Tomar mediciones varias veces por segundo (por ejemplo, cada 100-200ms)</li>
+                <li>Almacenar estas mediciones en un array o suma acumulada</li>
+                <li>Cada 5 minutos, calcular el consumo promedio para ese período</li>
+                <li>Transmitir solo el valor promediado para reducir el tráfico de red y el almacenamiento en la base de datos</li>
+              </ul>
+
+              <p>
+                Esta mejora sería particularmente valiosa para detectar y medir:
+              </p>
+              <ul>
+                <li>Ciclos de refrigeradores y aires acondicionados que pueden funcionar solo unos pocos minutos</li>
+                <li>Aparatos de alta potencia de corta duración como microondas o cafeteras</li>
+                <li>Picos o caídas repentinas en el consumo que indican posibles problemas eléctricos</li>
+                <li>Cálculos más precisos del consumo total de energía</li>
+              </ul>
+
+              <p>
+                Esta mejora haría que el monitor de energía sea significativamente más preciso mientras mantiene el mismo enfoque eficiente de transmisión y almacenamiento de datos.
               </p>
               <div style="text-align: center">
                 <a

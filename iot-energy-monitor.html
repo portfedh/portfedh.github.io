@@ -172,6 +172,9 @@
                 <li>
                   <a href="#using-data">Using the sensor data</a>
                 </li>
+                <li>
+                  <a href="#future-improvements">Future improvements</a>
+                </li>
                 <li><a href="#resources">More resources</a></li>
                 <li><a href="#code">Full Code</a></li>
               </ul>
@@ -974,6 +977,61 @@ const unsigned long event_interval = 300000; // 5 minute interval, 300 second</c
                   class="blog-link"
                   >solargis</a
                 >'s estimate for Mexico City), or 1,350 Watts per day, we would need approximately 11 solar panels to fully offset all electricity costs with renewable energy.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Future improvements -->
+            <div class="blog-section" id="future-improvements">
+              <h3>Future improvements</h3>
+              <p>
+                While this energy monitor has proven to be a valuable tool for understanding electricity consumption patterns, there are several ways it could be improved for more accurate measurements and better insights.
+              </p>
+
+              <h4>Higher measurement frequency</h4>
+              <p>
+                Currently, the system takes measurements every 5 minutes. This works well for understanding general consumption patterns, but it can miss short-duration events. For example, if a refrigerator compressor turns on for only 2 minutes within a 5-minute interval, we might not capture its full energy consumption accurately.
+              </p>
+
+              <p>
+                A better approach would be to increase the measurement frequency dramatically. The ESP32 can easily handle taking 10 or more measurements per second. This would allow us to capture even short bursts of energy consumption that might otherwise be missed.
+              </p>
+
+              <p>
+                To avoid overwhelming the database with data, we could continue transmitting to the server every 5 minutes, but instead of sending a single instantaneous reading, we would send the average (or sum) of all measurements taken during that period. This would give us a much more accurate picture of actual energy consumption.
+              </p>
+
+              <h4>Implementation approach</h4>
+              <p>
+                The code changes would involve:
+              </p>
+              <ul>
+                <li>Taking measurements multiple times per second (e.g., every 100-200ms)</li>
+                <li>Storing these measurements in an array or running sum</li>
+                <li>Every 5 minutes, calculating the mean consumption for that period</li>
+                <li>Transmitting only the averaged value to reduce network traffic and database storage</li>
+              </ul>
+
+              <p>
+                This improvement would be particularly valuable for detecting and measuring:
+              </p>
+              <ul>
+                <li>Refrigerator and air conditioner cycles that may run for just a few minutes</li>
+                <li>Short-duration high-power appliances like microwaves or coffee makers</li>
+                <li>Sudden spikes or drops in consumption that indicate potential electrical issues</li>
+                <li>More accurate total energy consumption calculations</li>
+              </ul>
+
+              <p>
+                This enhancement would make the energy monitor significantly more accurate while maintaining the same efficient data transmission and storage approach.
               </p>
               <div style="text-align: center">
                 <a
