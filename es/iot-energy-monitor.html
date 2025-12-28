@@ -585,20 +585,20 @@
                   <span>C++ (Arduino)</span>
                   <button class="copy-button" onclick="copyCode(this)">Copiar</button>
                 </div>
-                <code class="language-cpp">// Code to measure current using three SCT-013 and one ESP32
-// Board used: NODEMCU-32S
+                <code class="language-cpp">// Código para medir corriente usando tres SCT-013 y un ESP32
+// Placa utilizada: NODEMCU-32S
 
-// Import Emon Library from the open energy monitor project
+// Importar librería Emon del proyecto open energy monitor
 #include "EmonLib.h"
 
-// Mills Function
-const unsigned long event_interval = 300000; // 5 minute interval, 300 second
+// Función Mills
+const unsigned long event_interval = 300000; // Intervalo de 5 minutos, 300 segundos
 unsigned long previous_time = 0;
 
-// Include MQTT Connection
+// Incluir conexión MQTT
 #include "EspMQTTClient.h"
 
-// Define input pins
+// Definir pines de entrada
 #define ADC_INPUT_1 34 // Sensor 1
 #define ADC_INPUT_2 32 // Sensor 2
 #define ADC_INPUT_3 35 // Sensor 3
@@ -612,7 +612,7 @@ unsigned long previous_time = 0;
 #define CLIENT_NAME      "&lt;MQTT_name_to_identify_device&gt;"
 #define BROKER_PORT      1883
 #define lastwill_topic   "&lt;last_will_topic&gt;"
-#define lastwill_text    "Current sensor has gone offline unexpextedly."
+#define lastwill_text    "El sensor de corriente se ha desconectado inesperadamente."
 
 String  client_name                = CLIENT_NAME;
 String  startup_topic              = "&lt;startup_topic&gt;";
@@ -620,22 +620,22 @@ String  medidor_corriente1_topic   = "&lt;topic_to_report_sensor_1&gt;";
 String  medidor_corriente2_topic   = "&lt;topic_to_report_sensor_2&gt;";
 String  medidor_corriente3_topic   = "&lt;topic_to_report_sensor_3&gt;";
 
-// Assumed Voltage
+// Voltaje asumido
 float voltajeRed = 120.0;
 
-// Create 3 instances of EnergyMonitor
+// Crear 3 instancias de EnergyMonitor
 EnergyMonitor energyMonitor1;
 EnergyMonitor energyMonitor2;
 EnergyMonitor energyMonitor3;
 
-// Function to connect to MQTT
+// Función para conectar a MQTT
 EspMQTTClient client(
                   WIFI_SSID,
                   WIFI_PASS,
                   BROKER_IP,
                   BROKER_USERNAME,
                   BROKER_PASSWORD,
-                  CLIENT_NAME,      // Client name to uniquely identify your device
+                  CLIENT_NAME,      // Nombre del cliente para identificar tu dispositivo de forma única
                   BROKER_PORT
 );
 
@@ -643,67 +643,67 @@ void setup()
 {
   Serial.begin(115200);
 
-  // Enable debugging messages sent to serial output
+  // Habilitar mensajes de depuración enviados a la salida serial
   client.enableDebuggingMessages();
 
-  // Enable the web updater.
+  // Habilitar el actualizador web.
   client.enableHTTPWebUpdater();
 
-  // MQTT Last Will &amp; Testament
+  // MQTT Último Testamento
   client.enableLastWillMessage( lastwill_topic , lastwill_text);
 
-  // Pin where sensors are connected
-  // Calibration value: Modify when calibrating
+  // Pin donde los sensores están conectados
+  // Valor de calibración: Modificar al calibrar
   energyMonitor1.current(ADC_INPUT_1, 0.145);
   energyMonitor2.current(ADC_INPUT_2, 0.145);
   energyMonitor3.current(ADC_INPUT_3, 0.145);
 }
 
-//MQTT Innitial Connection
+//Conexión inicial MQTT
 void onConnectionEstablished()
 {
-  client.publish(startup_topic, String(client_name + " is now online."));
+  client.publish(startup_topic, String(client_name + " está ahora en línea."));
 }
 
 void loop()
 {
-  // MQTT Loop: Must be called once per loop.
+  // Bucle MQTT: Debe llamarse una vez por bucle.
   client.loop();
 
-  // Mills Loop
+  // Bucle Mills
   unsigned long current_time = millis();
 
-  // Mills If Statment
+  // Declaración If de Mills
   if(current_time - previous_time &gt;= event_interval) {
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms1 = energyMonitor1.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia1 =  Irms1 * voltajeRed;
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms2 = energyMonitor2.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia2 =  Irms2 * voltajeRed;
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms3 = energyMonitor3.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia3 =  Irms3 * voltajeRed;
 
-      // Display info to serial monitor
+      // Mostrar información en el monitor serial
       Serial.print("Potencia 1 = ");
       Serial.print(potencia1);
       Serial.print("    Irms 1 = ");
       Serial.println(Irms1);
 
-      // Display info to serial monitor
+      // Mostrar información en el monitor serial
       Serial.print("Potencia 2 = ");
       Serial.print(potencia2);
       Serial.print("    Irms 2 = ");
       Serial.println(Irms2);
 
-     // Display info to serial monitor
+     // Mostrar información en el monitor serial
       Serial.print("Potencia 3 = ");
       Serial.print(potencia3);
       Serial.print("    Irms 3 = ");
@@ -711,13 +711,13 @@ void loop()
       Serial.print('\n');
       Serial.print('\n');
 
-      // MQTT Client Publisher
+      // Publicador cliente MQTT
       client.publish(medidor_corriente1_topic, String(potencia1));
       client.publish(medidor_corriente2_topic, String(potencia2));
       client.publish(medidor_corriente3_topic, String(potencia3));
       Serial.print('\n');
 
-      // Update timing for next time
+      // Actualizar tiempo para la próxima vez
       previous_time = current_time;
   }
 }</code></pre>
@@ -750,8 +750,8 @@ void loop()
                   <span>C++ (Arduino)</span>
                   <button class="copy-button" onclick="copyCode(this)">Copiar</button>
                 </div>
-                <code class="language-cpp">// Mills Function
-const unsigned long event_interval = 300000; // 5 minute interval, 300 second</code></pre>
+                <code class="language-cpp">// Función Mills
+const unsigned long event_interval = 300000; // Intervalo de 5 minutos, 300 segundos</code></pre>
 
               <p>
                 Puedes modificar esta línea para hacer que el sensor reporte valores cada 5 segundos en lugar de cada 5 minutos para la prueba de calibración:
@@ -1075,20 +1075,20 @@ const unsigned long event_interval = 300000; // 5 minute interval, 300 second</c
                   <span>C++ (Arduino)</span>
                   <button class="copy-button" onclick="copyCode(this)">Copiar</button>
                 </div>
-                <code class="language-cpp">// Code to measure current using three SCT-013 and one ESP32
-// Board used: NODEMCU-32S
+                <code class="language-cpp">// Código para medir corriente usando tres SCT-013 y un ESP32
+// Placa utilizada: NODEMCU-32S
 
-// Import Emon Library from the open energy monitor project
+// Importar librería Emon del proyecto open energy monitor
 #include "EmonLib.h"
 
-// Mills Function
-const unsigned long event_interval = 300000; // 5 minute interval, 300 second
+// Función Mills
+const unsigned long event_interval = 300000; // Intervalo de 5 minutos, 300 segundos
 unsigned long previous_time = 0;
 
-// Include MQTT Connection
+// Incluir conexión MQTT
 #include "EspMQTTClient.h"
 
-// Define input pins
+// Definir pines de entrada
 #define ADC_INPUT_1 34 // Sensor 1
 #define ADC_INPUT_2 32 // Sensor 2
 #define ADC_INPUT_3 35 // Sensor 3
@@ -1102,7 +1102,7 @@ unsigned long previous_time = 0;
 #define CLIENT_NAME      "&lt;MQTT_name_to_identify_device&gt;"
 #define BROKER_PORT      1883
 #define lastwill_topic   "&lt;last_will_topic&gt;"
-#define lastwill_text    "Current sensor has gone offline unexpextedly."
+#define lastwill_text    "El sensor de corriente se ha desconectado inesperadamente."
 
 String  client_name                = CLIENT_NAME;
 String  startup_topic              = "&lt;startup_topic&gt;";
@@ -1110,22 +1110,22 @@ String  medidor_corriente1_topic   = "&lt;topic_to_report_sensor_1&gt;";
 String  medidor_corriente2_topic   = "&lt;topic_to_report_sensor_2&gt;";
 String  medidor_corriente3_topic   = "&lt;topic_to_report_sensor_3&gt;";
 
-// Assumed Voltage
+// Voltaje asumido
 float voltajeRed = 120.0;
 
-// Create 3 instances of EnergyMonitor
+// Crear 3 instancias de EnergyMonitor
 EnergyMonitor energyMonitor1;
 EnergyMonitor energyMonitor2;
 EnergyMonitor energyMonitor3;
 
-// Function to connect to MQTT
+// Función para conectar a MQTT
 EspMQTTClient client(
                   WIFI_SSID,
                   WIFI_PASS,
                   BROKER_IP,
                   BROKER_USERNAME,
                   BROKER_PASSWORD,
-                  CLIENT_NAME,      // Client name to uniquely identify your device
+                  CLIENT_NAME,      // Nombre del cliente para identificar tu dispositivo de forma única
                   BROKER_PORT
 );
 
@@ -1133,67 +1133,67 @@ void setup()
 {
   Serial.begin(115200);
 
-  // Enable debugging messages sent to serial output
+  // Habilitar mensajes de depuración enviados a la salida serial
   client.enableDebuggingMessages();
 
-  // Enable the web updater.
+  // Habilitar el actualizador web.
   client.enableHTTPWebUpdater();
 
-  // MQTT Last Will &amp; Testament
+  // MQTT Último Testamento
   client.enableLastWillMessage( lastwill_topic , lastwill_text);
 
-  // Pin where sensors are connected
-  // Calibration value: Modify when calibrating
+  // Pin donde los sensores están conectados
+  // Valor de calibración: Modificar al calibrar
   energyMonitor1.current(ADC_INPUT_1, 0.145);
   energyMonitor2.current(ADC_INPUT_2, 0.145);
   energyMonitor3.current(ADC_INPUT_3, 0.145);
 }
 
-//MQTT Innitial Connection
+//Conexión inicial MQTT
 void onConnectionEstablished()
 {
-  client.publish(startup_topic, String(client_name + " is now online."));
+  client.publish(startup_topic, String(client_name + " está ahora en línea."));
 }
 
 void loop()
 {
-  // MQTT Loop: Must be called once per loop.
+  // Bucle MQTT: Debe llamarse una vez por bucle.
   client.loop();
 
-  // Mills Loop
+  // Bucle Mills
   unsigned long current_time = millis();
 
-  // Mills If Statment
+  // Declaración If de Mills
   if(current_time - previous_time &gt;= event_interval) {
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms1 = energyMonitor1.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia1 =  Irms1 * voltajeRed;
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms2 = energyMonitor2.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia2 =  Irms2 * voltajeRed;
 
-      // Number of samples to take
+      // Número de muestras a tomar
       double Irms3 = energyMonitor3.calcIrms(1484);
-      // Calculate current
+      // Calcular corriente
       double potencia3 =  Irms3 * voltajeRed;
 
-      // Display info to serial monitor
+      // Mostrar información en el monitor serial
       Serial.print("Potencia 1 = ");
       Serial.print(potencia1);
       Serial.print("    Irms 1 = ");
       Serial.println(Irms1);
 
-      // Display info to serial monitor
+      // Mostrar información en el monitor serial
       Serial.print("Potencia 2 = ");
       Serial.print(potencia2);
       Serial.print("    Irms 2 = ");
       Serial.println(Irms2);
 
-     // Display info to serial monitor
+     // Mostrar información en el monitor serial
       Serial.print("Potencia 3 = ");
       Serial.print(potencia3);
       Serial.print("    Irms 3 = ");
@@ -1201,13 +1201,13 @@ void loop()
       Serial.print('\n');
       Serial.print('\n');
 
-      // MQTT Client Publisher
+      // Publicador cliente MQTT
       client.publish(medidor_corriente1_topic, String(potencia1));
       client.publish(medidor_corriente2_topic, String(potencia2));
       client.publish(medidor_corriente3_topic, String(potencia3));
       Serial.print('\n');
 
-      // Update timing for next time
+      // Actualizar tiempo para la próxima vez
       previous_time = current_time;
   }
 }</code></pre>
