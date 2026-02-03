@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Salsa Candela Bar: Drink Ordering WebApp | Pablo Cruz</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Salsa Candela Bar: Drink Ordering WebApp"
+    />
+    <meta
+      property="og:description"
+      content="Building a self-service mobile ordering system for a bar with automated promotions, Stripe payments, and QR code pickup."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/bar-salsa-candela-cover.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/salsa-candela-bar.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Salsa Candela Bar: Drink Ordering WebApp"
+    />
+    <meta
+      name="twitter:description"
+      content="Building a self-service mobile ordering system for a bar with automated promotions, Stripe payments, and QR code pickup."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/bar-salsa-candela-cover.png"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link rel="preload" as="image" href="/images/bar-salsa-candela-cover.png" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Hreflang tags for SEO -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pablocruz.io/salsa-candela-bar.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pablocruz.io/salsa-candela-bar.html"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">&larr; Back to Portfolio</a>
+        </div>
+        <div class="blog-title-container">
+          <img
+            src="images/salsa-candela/salsa-candela-logo.png"
+            alt="Salsa Candela Logo"
+            class="codi-logo"
+            style="max-width: 300px"
+          />
+          <h1>Salsa Candela Bar: Drink Ordering WebApp</h1>
+          <p class="blog-meta">Published: January 2026</p>
+          <p class="blog-description">
+            Building a self-service mobile ordering system for a bar with
+            automated promotions, Stripe payments, and QR code pickup.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <div class="image-container">
+              <img
+                src="images/salsa-candela-bar/cover.png"
+                alt="Salsa Candela Bar mobile ordering app showing drink menu and ordering interface"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Table of Contents</h2>
+              <ul class="toc">
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#business-problem">The Business Challenge</a></li>
+                <li><a href="#solution">The Solution</a></li>
+                <li>
+                  <a href="#key-features">Key Features</a>
+                  <ul>
+                    <li><a href="#digital-menu">Digital Menu</a></li>
+                    <li><a href="#promotions">Automated Promotions</a></li>
+                    <li><a href="#payments">Stripe Payments</a></li>
+                    <li><a href="#qr-pickup">QR Code Pickup</a></li>
+                  </ul>
+                </li>
+                <li><a href="#design-ux">Design & User Experience</a></li>
+                <li><a href="#technology">Technology Approach</a></li>
+                <li><a href="#challenges">Challenges & Solutions</a></li>
+                <li><a href="#future">Future Enhancements</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                Salsa Candela hosts monthly dance parties that attract 500+
+                attendees. During these events, bar service becomes a
+                bottleneck: long lines, missed orders, and slow cash
+                transactions reduce revenue and customer satisfaction.
+              </p>
+              <p>
+                This web application improves the bar experience by letting
+                customers browse the menu, place orders, and pay from their
+                phones.
+              </p>
+              <p>
+                When their drink is ready, they receive a QR code to pick it up
+                at the bar, no waiting in line.
+              </p>
+              <p>
+                If you want to explore the live application, visit
+                <a
+                  href="https://bar.salsa-candela.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >bar.salsa-candela.com</a
+                >.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Project Overview -->
+            <div class="blog-section" id="overview">
+              <h3>Project Overview</h3>
+              <p>
+                This project created a mobile-first ordering system for a bar
+                operating inside dance party events, enabling self-service
+                ordering with integrated payments and pickup coordination.
+              </p>
+
+              <h4>Project Scope</h4>
+              <ul>
+                <li>
+                  <strong>Digital Menu:</strong> Categorized drink list with
+                  images, descriptions, and real-time pricing
+                </li>
+                <li>
+                  <strong>Mobile Ordering:</strong> Customers order from their
+                  phones without making a line
+                </li>
+                <li>
+                  <strong>Automated Promotions:</strong> Time-based and
+                  combo-based deals applied automatically at checkout
+                </li>
+                <li>
+                  <strong>Stripe Payments:</strong> Secure card payments
+                  processed through Stripe
+                </li>
+                <li>
+                  <strong>QR Code Pickup:</strong> Unique QR code generated per
+                  order for fast, verified pickup at the bar
+                </li>
+                <li>
+                  <strong>Admin Dashboard:</strong> Real-time order management
+                  for bartenders
+                </li>
+              </ul>
+
+              <h4>Business Impact</h4>
+              <ul>
+                <li>
+                  <strong>Cash-Free Operation:</strong> No cash handling reduces
+                  theft risk and speeds up transactions
+                </li>
+                <li>
+                  <strong>Faster Service:</strong> Eliminates waiting in line to
+                  order and pay
+                </li>
+                <li>
+                  <strong>Reduced Errors:</strong> Digital orders eliminate
+                  miscommunication in a loud venue
+                </li>
+                <li>
+                  <strong>Promotion Automation:</strong> Happy hour deals and
+                  combos applied without bartender involvement
+                </li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Business Problem -->
+            <div class="blog-section" id="business-problem">
+              <h3>The Business Problem</h3>
+              <p>
+                Running a bar inside a dance event has many challenges that
+                Salsa Candela struggles with:
+              </p>
+
+              <h4>1. Long Wait Times</h4>
+              <p>
+                During peak hours, customers wait 10-15 minutes to place an
+                order. Many give up and don't buy, reducing revenue.
+              </p>
+
+              <h4>2. Handling Cash</h4>
+              <p>
+                Cash-only payments slow down every transaction. Making change in
+                party venue leads to errors and its difficult to track sales and
+                reconcile revenue at the end of the night.
+              </p>
+
+              <h4>3. Missed Promotions</h4>
+              <p>
+                Happy hour deals and combo promotions require bartenders to
+                remember rules and calculate discounts manually. In practice,
+                promotions are inconsistently applied or skipped entirely during
+                rush periods.
+              </p>
+
+              <h4>4. Order Miscommunication</h4>
+              <p>
+                Shouting drink orders over loud music leads to mistakes. Wrong
+                orders waste inventory and create customer frustration.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Solution -->
+            <div class="blog-section" id="solution">
+              <h3>The Solution</h3>
+              <p>
+                A mobile web application that customers access by scanning a QR
+                code at their table or at the bar entrance.
+              </p>
+              <p>
+                No app download required and it works in any mobile browser.
+              </p>
+
+              <h4>How It Works</h4>
+              <ol>
+                <li>Customer scans a QR code to open the menu</li>
+                <li>Browses drinks by category, adds items to cart</li>
+                <li>Promotions are applied automatically at checkout</li>
+                <li>Pays securely via Stripe (card payment)</li>
+                <li>Receives a unique QR code for their order</li>
+                <li>Shows QR code at the bar to pick up drinks</li>
+              </ol>
+
+              <h4>Why a Web App?</h4>
+              <p>
+                A native app would require customers to download and install
+                before ordering. A progressive web app accessible via URL means
+                zero friction: scan, browse, order.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/order-flow.png"
+                  alt="Order flow showing cart with selected drinks and applied promotions before checkout"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Order summary with automatic promotion applied before payment
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Key Features -->
+            <div class="blog-section" id="key-features">
+              <h3>Key Features</h3>
+              <p>
+                The application includes several features designed to maximize
+                bar revenue, reduce wait times, and create a seamless customer
+                experience.
+              </p>
+
+              <!-- Feature 1 -->
+              <h4 id="digital-menu">Digital Menu</h4>
+              <p>
+                The menu is organized by category (cocktails, beer, shots,
+                non-alcoholic) with images, descriptions, and prices. Items can
+                be added to a cart with quantity selection.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/digital-menu.png"
+                  alt="Mobile drink menu showing categorized beverages with images and prices"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Categorized drink menu optimized for quick browsing on mobile
+                </p>
+              </div>
+
+              <p><strong>Business Value:</strong></p>
+              <ul>
+                <li>
+                  <strong>Visual Selling:</strong> Photos of cocktails increase
+                  average order value compared to text-only menus
+                </li>
+                <li>
+                  <strong>Easy Updates:</strong> Menu items, prices, and
+                  availability managed through configuration
+                </li>
+                <li>
+                  <strong>Upselling:</strong> Suggested pairings and popular
+                  items highlighted automatically
+                </li>
+              </ul>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 2 -->
+              <h4 id="promotions">Automated Promotions</h4>
+              <p>
+                Promotions are defined as rules in a configuration file and
+                applied automatically when conditions are met. No bartender
+                intervention needed.
+              </p>
+
+              <p><strong>Promotion Types:</strong></p>
+              <ul>
+                <li>
+                  <strong>Time-Based:</strong> Happy hour pricing active during
+                  specific windows (e.g., 9:00-10:00 PM)
+                </li>
+                <li>
+                  <strong>Combo Deals:</strong> Buy 2 cocktails, get a shot free
+                </li>
+                <li>
+                  <strong>Volume Discounts:</strong> Bucket pricing for beer
+                  orders
+                </li>
+              </ul>
+
+              <pre><code class="language-javascript">// Promotion rules configuration
+const promotions = [
+  {
+    name: "Happy Hour",
+    type: "time-based",
+    startTime: "21:00",
+    endTime: "22:00",
+    discount: { type: "percentage", value: 20 },
+    appliesTo: "cocktails",
+  },
+  {
+    name: "Combo Deal",
+    type: "combo",
+    requirements: { category: "cocktails", quantity: 2 },
+    bonus: { category: "shots", quantity: 1, price: 0 },
+  },
+];</code></pre>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/promotions-banner.png"
+                  alt="Active promotion displayed in the app showing happy hour discount details"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Promotions displayed prominently and applied automatically at
+                  checkout
+                </p>
+              </div>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 3 -->
+              <h4 id="payments">Stripe Payments</h4>
+              <p>
+                All payments are processed through Stripe, providing secure card
+                payments with instant confirmation. No cash handling required.
+              </p>
+
+              <p><strong>Payment Flow:</strong></p>
+              <ol>
+                <li>Customer reviews order total with applied promotions</li>
+                <li>Enters card details in Stripe's secure payment form</li>
+                <li>Payment is processed and confirmed instantly</li>
+                <li>Order is sent to the bartender's dashboard</li>
+              </ol>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/stripe-checkout.png"
+                  alt="Stripe payment form integrated into the ordering flow"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Secure Stripe checkout integrated directly into the ordering
+                  experience
+                </p>
+              </div>
+
+              <p><strong>Business Value:</strong></p>
+              <ul>
+                <li>
+                  <strong>Instant Reconciliation:</strong> Every transaction
+                  recorded automatically with Stripe dashboard access
+                </li>
+                <li>
+                  <strong>No Cash Risk:</strong> Eliminates theft, counting
+                  errors, and change-making delays
+                </li>
+                <li>
+                  <strong>Higher Spend:</strong> Card payments typically
+                  increase average order value vs. cash
+                </li>
+              </ul>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 4 -->
+              <h4 id="qr-pickup">QR Code Pickup</h4>
+              <p>
+                After payment, customers receive a unique QR code on their
+                phone. They then show the QR code at the bar for instant
+                verification and pickup.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/qr-pickup.png"
+                  alt="QR code displayed on customer's phone for order pickup verification"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Unique QR code per order enables fast, verified pickup without
+                  receipts
+                </p>
+              </div>
+
+              <p><strong>How It Works:</strong></p>
+              <ol>
+                <li>Order is paid and confirmed</li>
+                <li>
+                  Unique QR code generated and displayed on customer's phone
+                </li>
+                <li>
+                  Bartender prepares the order (visible on admin dashboard)
+                </li>
+                <li>Customer shows QR code at bar</li>
+                <li>Bartender scans QR to verify and mark as picked up</li>
+              </ol>
+
+              <p><strong>Business Value:</strong></p>
+              <ul>
+                <li>
+                  <strong>No Double-Serving:</strong> Each QR code can only be
+                  redeemed once
+                </li>
+                <li>
+                  <strong>Order Tracking:</strong> Full visibility into pending,
+                  ready, and picked-up orders
+                </li>
+                <li>
+                  <strong>Faster Pickup:</strong> No verbal confirmation
+                  needed&mdash;scan and go
+                </li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Design & UX -->
+            <div class="blog-section" id="design-ux">
+              <h3>Design & User Experience</h3>
+              <p>
+                The app was designed for a specific environment: a dark, loud
+                venue where users are standing, holding a phone in one hand, and
+                want to order quickly.
+              </p>
+
+              <h4>Design Decisions</h4>
+              <ul>
+                <!-- <li>
+                  <strong>Dark Theme:</strong> Reduces eye strain in a dimly lit
+                  venue and saves battery on OLED screens
+                </li> -->
+                <li>
+                  <strong>Large Touch Targets:</strong> Buttons and menu items
+                  sized for one-handed, standing use
+                </li>
+                <li>
+                  <strong>Minimal Steps:</strong> Three taps from menu to
+                  payment (add to cart, review, pay)
+                </li>
+                <li>
+                  <strong>High Contrast:</strong> Text and prices clearly
+                  readable in any lighting condition
+                </li>
+                <li>
+                  <strong>No Account Required:</strong> Customers order as
+                  guests to eliminate sign-up friction
+                </li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/mobile-responsive.png"
+                  alt="Full mobile app layout showing dark theme with high contrast elements"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Dark theme with high contrast optimized for use in a dimly lit
+                  bar environment
+                </p>
+              </div>
+
+              <h4>User Flow Optimization</h4>
+              <p><strong>Ordering Path:</strong></p>
+              <ol>
+                <li>
+                  <strong>Scan QR:</strong> Opens menu instantly in browser
+                </li>
+                <li>
+                  <strong>Browse & Add:</strong> Tap items to add, adjust
+                  quantities
+                </li>
+                <li>
+                  <strong>Review Cart:</strong> See items, promotions applied,
+                  total
+                </li>
+                <li><strong>Pay:</strong> Stripe secure checkout</li>
+                <li>
+                  <strong>Get QR:</strong> Pickup code displayed immediately
+                </li>
+              </ol>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Technology -->
+            <div class="blog-section" id="technology">
+              <h3>Technology Approach</h3>
+              <p>
+                The stack was chosen for real-time responsiveness, mobile
+                performance, and integration with Stripe's payment
+                infrastructure.
+              </p>
+
+              <h4>Technology Stack</h4>
+              <ul>
+                <li><strong>Frontend:</strong> React (mobile-first SPA)</li>
+                <li><strong>Backend:</strong> Node.js + Express.js</li>
+                <li><strong>Payments:</strong> Stripe API</li>
+                <li>
+                  <strong>QR Generation:</strong> Server-side QR code generation
+                  per order
+                </li>
+                <li>
+                  <strong>Admin Dashboard:</strong> Real-time order management
+                  interface for bartenders
+                </li>
+              </ul>
+
+              <h4>Why React?</h4>
+              <p>
+                Unlike the main Salsa Candela website (which uses
+                server-rendered EJS templates), the bar app needs real-time
+                interactivity: cart management, live promotion calculations, and
+                instant payment feedback. React's component model and state
+                management make this straightforward.
+              </p>
+
+              <h4>Order Data Structure</h4>
+              <pre><code class="language-javascript">// Order creation structure
+const order = {
+  items: [
+    { id: "mojito-classic", name: "Mojito", quantity: 2, price: 120 },
+    { id: "shot-tequila", name: "Tequila Shot", quantity: 1, price: 0 },
+  ],
+  promotions: [
+    { name: "Combo Deal", discount: 80 },
+  ],
+  subtotal: 320,
+  discount: 80,
+  total: 240,
+  paymentMethod: "stripe",
+  status: "pending", // pending, ready, picked-up
+  qrCode: null, // Generated after payment confirmation
+};</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Challenges & Solutions -->
+            <div class="blog-section" id="challenges">
+              <h3>Challenges & Solutions</h3>
+              <p>
+                Building for a live event environment introduced challenges that
+                typical e-commerce apps don't face.
+              </p>
+
+              <h4>Challenge 1: Unreliable Connectivity</h4>
+              <p>
+                <strong>Problem:</strong> Crowded venues with 500+ phones
+                competing for bandwidth. Dropped connections mid-order would
+                lose sales.
+              </p>
+              <p>
+                <strong>Solution:</strong> Optimized payload sizes and
+                implemented local state persistence. If connectivity drops, the
+                cart is preserved and payment retries automatically when
+                connection restores.
+              </p>
+
+              <h4>Challenge 2: Concurrent Orders During Peak</h4>
+              <p>
+                <strong>Problem:</strong> Peak hours generate dozens of
+                simultaneous orders. Bartenders need clear prioritization
+                without confusion.
+              </p>
+              <p>
+                <strong>Solution:</strong> Admin dashboard displays orders in
+                real-time with status indicators (pending, preparing, ready).
+                Bartenders update status with one tap, and customers see their
+                order progress.
+              </p>
+
+              <h4>Challenge 3: Promotion Edge Cases</h4>
+              <p>
+                <strong>Problem:</strong> What happens when happy hour ends
+                mid-order? Or when a combo promotion partially applies?
+              </p>
+              <p>
+                <strong>Solution:</strong> Promotions are locked at cart review
+                time. Once a customer sees their discounted total, that price is
+                honored even if the promotion window closes before they complete
+                payment.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Future Enhancements -->
+            <div class="blog-section" id="future">
+              <h3>Future Enhancements</h3>
+              <p>
+                The application is designed to grow with the business. Planned
+                enhancements include:
+              </p>
+
+              <h4>Prepaid Credit Wallet</h4>
+              <p>
+                Customers purchase credit in advance with a single Stripe
+                transaction&mdash;similar to buying tickets at a fair&mdash;and
+                then spend from their wallet for each drink. This reduces
+                per-order transaction fees, speeds up service, and encourages
+                higher spending throughout the event.
+              </p>
+
+              <h4>Inventory Tracking</h4>
+              <p>
+                Real-time stock levels that automatically mark items as
+                unavailable when inventory runs low, preventing orders that
+                can't be fulfilled.
+              </p>
+
+              <h4>Analytics Dashboard</h4>
+              <p>
+                Post-event reports showing peak ordering times, most popular
+                drinks, promotion effectiveness, and revenue per hour to inform
+                future event planning.
+              </p>
+
+              <h4>Multi-Event Support</h4>
+              <p>
+                Configurable menus and promotions per event type, allowing
+                different setups for dance parties, private events, and special
+                occasions.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button white-text"
+                    >&larr; Back to Portfolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://bar.salsa-candela.com"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Visit Live Site
+                  </a>
+                  <a
+                    href="https://github.com/portfedh/Salsa-Candela-Bar"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>Get in touch!</h2>
+            </header>
+            <p class="fade-out">
+              I'm currently open to work and I'd be happy to chat.
+              <br />
+              <br />
+              Feel free to reach out if you are interested in what I can bring
+              to your project or team.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Email me</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter Profile"
+            ><i class="fa-brands fa-twitter"></i
+            ><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            ><i class="fa-brands fa-linkedin"></i
+            ><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            ><i class="fa-brands fa-github"></i
+            ><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a href="mailto:pablo.cruz.lemini@gmail.com" aria-label="Email link"
+            ><i class="fa-solid fa-envelope"></i
+            ><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Blog functionality -->
+    <script src="assets/js/blog.js"></script>
+  </body>
+</html>

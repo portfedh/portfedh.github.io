@@ -752,6 +752,33 @@
   font-size: 0.75rem;
 }
 
+/* Inline pre/code blocks (without .code-block wrapper) */
+.blog-section pre {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-radius: 8px;
+  padding: 1.2rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-section pre code {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Mobile: smaller font for inline code blocks */
+@media screen and (max-width: 768px) {
+  .blog-section pre code {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blog-section pre code {
+    font-size: 0.65rem;
+  }
+}
+
 /* Syntax highlighting styles */
 .code-block .comment {
   color: #68d391;
@@ -984,6 +1011,11 @@
     font-size: 1.1rem;
   }
 
+  /* Featured image full width on mobile */
+  .blog-featured-image .image.fit {
+    max-width: 100%;
+  }
+
   .image-container {
     max-width: 100%;
   }
@@ -1093,6 +1125,11 @@
     padding: 0.5rem;
   }
 
+  /* Salsa Candela Bar cover - full width on mobile */
+  .blog-featured-image .image.fit {
+    max-width: 100%;
+  }
+
   /* Make script index image container full width on mobile */
   .image-container[style*="max-width: 40%"] {
     max-width: 100% !important;
@@ -1135,6 +1172,29 @@
   .comparison-table td {
     padding: 0.8rem 1rem;
     font-size: 0.9rem;
+  }
+}
+
+/* Salsa Candela Bar Blog - Image size constraints */
+.blog-post .image-container img[src*="salsa-candela-bar/"],
+.image-container img[src*="salsa-candela-bar/"] {
+  max-width: 900px;
+  max-height: 750px;
+  width: 100%;
+  height: auto;
+}
+
+/* Salsa Candela Bar featured/cover image - full width on mobile */
+@media screen and (max-width: 768px) {
+  .blog-featured-image img[src*="bar-salsa-candela-cover"] {
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .blog-featured-image .image.fit[src*="bar-salsa-candela-cover"] {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
