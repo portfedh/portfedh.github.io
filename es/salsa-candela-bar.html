@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>
+      Salsa Candela Bar: Aplicación Web para Comprar Bebidas | Pablo Cruz
+    </title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Salsa Candela Bar: Aplicación Web para Comprar Bebidas"
+    />
+    <meta
+      property="og:description"
+      content="Sistema de pedidos para un bar con promociones automatizadas, pagos con Stripe y entrega con código QR."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/bar-salsa-candela-cover.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/es/salsa-candela-bar.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Salsa Candela Bar: Aplicación Web para Comprar Bebidas"
+    />
+    <meta
+      name="twitter:description"
+      content="Sistema de pedidos para un bar con promociones automatizadas, pagos con Stripe y entrega con código QR."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/bar-salsa-candela-cover.png"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="../assets/css/custom.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/blog.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="../images/bar-salsa-candela-cover.png"
+    />
+    <noscript
+      ><link rel="stylesheet" href="../assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Hreflang tags for SEO -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pablocruz.io/salsa-candela-bar.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="es"
+      href="https://pablocruz.io/es/salsa-candela-bar.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pablocruz.io/salsa-candela-bar.html"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <a
+          href="../salsa-candela-bar.html"
+          class="lang-btn"
+          aria-label="Switch to English"
+          >EN</a
+        >
+        <span class="lang-separator">|</span>
+        <a
+          href="salsa-candela-bar.html"
+          class="lang-btn active"
+          aria-label="Cambiar a Español"
+          >ES</a
+        >
+      </div>
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">← Volver al Portafolio</a>
+        </div>
+        <div class="blog-title-container">
+          <img
+            src="../images/salsa-candela/salsa-candela-logo.png"
+            alt="Logo de Salsa Candela"
+            class="codi-logo"
+            style="max-width: 300px"
+          />
+          <h1>Salsa Candela Bar: Aplicación Web para Comprar Bebidas</h1>
+          <p class="blog-meta">Publicado: Enero 2026</p>
+          <p class="blog-description">
+            Sistema de pedidos para un bar con promociones automatizadas, pagos
+            con Stripe y entrega con código QR.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <div class="image-container">
+              <img
+                src="../images/salsa-candela-bar/cover.png"
+                alt="Aplicación móvil de pedidos de Salsa Candela Bar mostrando el menú de bebidas e interfaz de pedidos"
+                class="image fit"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Tabla de Contenidos</h2>
+              <ul class="toc">
+                <li><a href="#overview">Resumen del Proyecto</a></li>
+                <li><a href="#business-problem">El Problema</a></li>
+                <li><a href="#solution">La Solución</a></li>
+                <li>
+                  <a href="#key-features">Características Principales</a>
+                  <ul>
+                    <li><a href="#digital-menu">Menú Digital</a></li>
+                    <li><a href="#promotions">Promociones Automatizadas</a></li>
+                    <li><a href="#payments">Pagos con Stripe</a></li>
+                    <li><a href="#qr-pickup">Recogida con Código QR</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#design-ux">Diseño y Experiencia de Usuario</a>
+                </li>
+                <li><a href="#technology">Enfoque Tecnológico</a></li>
+                <li><a href="#challenges">Desafíos y Soluciones</a></li>
+                <li><a href="#future">Mejoras Futuras</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                Salsa Candela organiza fiestas de baile mensuales que atraen a
+                más de 500 asistentes. Durante estos eventos, el servicio del
+                bar se convierte en un cuello de botella: largas filas, pedidos
+                perdidos y transacciones en efectivo reducen los ingresos del
+                negocio y la satisfacción del cliente.
+              </p>
+              <p>
+                Esta aplicación web mejora la experiencia en el bar, permitiendo
+                a los clientes explorar el menú, hacer pedidos y pagar desde sus
+                teléfonos.
+              </p>
+              <p>
+                Al finalizar reciben un código QR para recogerla en la barra,
+                sin esperar en la fila.
+              </p>
+              <p>
+                Si quieres explorar la aplicación en vivo, visita
+                <a
+                  href="https://bar.salsa-candela.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="blog-link"
+                  >bar.salsa-candela.com</a
+                >.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Project Overview -->
+            <div class="blog-section" id="overview">
+              <h3>Resumen del Proyecto</h3>
+              <p>
+                En este proyecto desarrollé un sistema que permite a los
+                clientes ordenar y pagar bebidas desde su celular durante las
+                fiestas de baile.
+              </p>
+
+              <h4>Alcance del Proyecto</h4>
+              <ul>
+                <li>
+                  <strong>Menú digital:</strong> Lista de bebidas categorizada
+                  con imágenes, descripciones y precios
+                </li>
+                <li>
+                  <strong>Pedidos móviles:</strong> Los clientes compran desde
+                  sus teléfonos sin hacer fila
+                </li>
+                <li>
+                  <strong>Promociones automatizadas:</strong> Ofertas por tiempo
+                  limitado y combos aplicados automáticamente
+                </li>
+                <li>
+                  <strong>Pagos con Stripe:</strong> Pagos seguros con tarjeta
+                  procesados a través de Stripe
+                </li>
+                <li>
+                  <strong>Recogida con código QR:</strong> Código QR por pedido
+                  que permite recoger de forma rápida y verificada en la barra
+                </li>
+                <li>
+                  <strong>Panel de administración:</strong> Gestión de pedidos
+                  en tiempo real para los bartenders
+                </li>
+              </ul>
+
+              <h4>Impacto en el Negocio</h4>
+              <ul>
+                <li>
+                  <strong>Operación Sin Efectivo:</strong> Reduce el riesgo de
+                  robo y acelera las transacciones
+                </li>
+                <li>
+                  <strong>Servicio Más Rápido:</strong> Elimina las filas para
+                  pedir y pagar
+                </li>
+                <li>
+                  <strong>Reducción de Errores:</strong> Los pedidos digitales
+                  eliminan la mala comunicación en un lugar ruidoso
+                </li>
+                <li>
+                  <strong>Automatización de promociones:</strong> Las ofertas de
+                  happy hour y combos se aplican sin intervención del bartender
+                </li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Business Problem -->
+            <div class="blog-section" id="business-problem">
+              <h3>El Problema</h3>
+              <p>
+                Operar un bar dentro de un evento de baile tiene muchos
+                desafíos:
+              </p>
+
+              <h4>1. Largos Tiempos de Espera</h4>
+              <p>
+                Los clientes esperan 10-15 minutos para hacer un pedido. Muchos
+                se rinden y no compran, reduciendo los ingresos.
+              </p>
+
+              <h4>2. Pagos en Efectivo</h4>
+              <p>
+                Los pagos en efectivo hacen más lenta cada transacción. Dar
+                cambio genera errores y es difícil trazar las ventas y conciliar
+                ingresos al final de la noche.
+              </p>
+
+              <h4>3. Promociones Perdidas</h4>
+              <p>
+                Las ofertas de hora feliz y promociones de combos requieren que
+                en la barra recuerden reglas y calculen descuentos manualmente.
+                En la práctica, las promociones se aplican de forma
+                inconsistente o se omiten por completo durante los períodos de
+                mayor demanda.
+              </p>
+
+              <h4>4. Mala Comunicación de Pedidos</h4>
+              <p>
+                Gritar pedidos de bebidas sobre música fuerte lleva a errores.
+                Los pedidos incorrectos crean frustración en el cliente.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Solution -->
+            <div class="blog-section" id="solution">
+              <h3>La Solución</h3>
+              <p>
+                Una aplicación web a la que los clientes acceden escaneando un
+                código QR en su mesa o en la entrada del bar.
+              </p>
+              <p>
+                No requiere descarga de app y funciona en cualquier navegador
+                móvil.
+              </p>
+
+              <h4>Cómo Funciona</h4>
+              <ol>
+                <li>El cliente escanea un código QR para abrir el menú</li>
+                <li>
+                  Navega las bebidas por categoría, agrega artículos al carrito
+                </li>
+                <li>Las promociones se aplican automáticamente al pagar</li>
+                <li>Paga de forma segura vía Stripe (pago con tarjeta)</li>
+                <li>Recibe un código QR único para su pedido</li>
+                <li>
+                  Muestra el código QR en la barra para recoger sus bebidas
+                </li>
+              </ol>
+
+              <h4>¿Por Qué una Web App?</h4>
+              <p>
+                Una app nativa requeriría que los clientes descarguen e instalen
+                antes de pedir. Una aplicación web progresiva accesible vía URL
+                significa cero fricción: escanea, navega, pide.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/mobile-responsive.png"
+                  alt="Diseño completo de la app móvil mostrando tema claro con elementos de alto contraste"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Tema claro con alto contraste para visibilidad en el lugar
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Key Features -->
+            <div class="blog-section" id="key-features">
+              <h3>Características Principales</h3>
+              <p>
+                La aplicación incluye varias características diseñadas para
+                maximizar los ingresos del bar, reducir tiempos de espera y
+                crear una experiencia fluida para el cliente.
+              </p>
+
+              <!-- Feature 1 -->
+              <h4 id="digital-menu">Menú Digital</h4>
+              <p>
+                El menú está organizado por categoría (cócteles, cerveza, jugos,
+                bebidas sin alcohol) con imágenes, descripciones y precios. Los
+                artículos se pueden agregar a un carrito con selección de
+                cantidad.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/digital-menu.png"
+                  alt="Menú de bebidas móvil mostrando bebidas categorizadas con imágenes y precios"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Menú de bebidas categorizado optimizado para navegación rápida
+                  en móvil
+                </p>
+              </div>
+
+              <p><strong>Valor para el Negocio:</strong></p>
+              <ul>
+                <li>
+                  <strong>Venta visual:</strong> Las fotos de cócteles aumentan
+                  el valor promedio del pedido comparado con menús solo de texto
+                </li>
+                <li>
+                  <strong>Actualizaciones fáciles:</strong> Artículos del menú,
+                  precios y disponibilidad gestionados a través de configuración
+                </li>
+                <li>
+                  <strong>Venta adicional:</strong> Combinaciones sugeridas y
+                  artículos populares destacados automáticamente
+                </li>
+              </ul>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 2 -->
+              <h4 id="promotions">Promociones Automatizadas</h4>
+              <p>
+                Las promociones se definen en un archivo de configuración y se
+                aplican automáticamente cuando se cumplen las condiciones. No se
+                necesita intervención del bartender. Cualquier promoción puede
+                activarse o desactivarse según el evento.
+              </p>
+
+              <p><strong>Tipos de Promociones:</strong></p>
+              <ul>
+                <li>
+                  <strong>Basadas en Tiempo:</strong> Precios de hora feliz
+                  activos durante tiempos específicos (ej. 9:00-10:00 PM)
+                </li>
+                <li>
+                  <strong>Ofertas combo:</strong> Compra 2 cócteles, llévate un
+                  shot gratis
+                </li>
+                <li>
+                  <strong>Descuentos por volumen:</strong> Precios de cubeta
+                  para pedidos de cerveza
+                </li>
+              </ul>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/promotions-banner.png"
+                  alt="Promoción activa mostrada en la app mostrando detalles del descuento de happy hour"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Promociones mostradas prominentemente y aplicadas
+                  automáticamente al pagar
+                </p>
+              </div>
+
+              <pre><code class="language-javascript">// Configuración de reglas de promoción
+const promotions = [
+  {
+    name: "Happy Hour",
+    type: "time-based",
+    startTime: "21:00",
+    endTime: "22:00",
+    discount: { type: "percentage", value: 20 },
+    appliesTo: "cocktails",
+  },
+  {
+    name: "Oferta Combo",
+    type: "combo",
+    requirements: { category: "cocktails", quantity: 2 },
+    bonus: { category: "shots", quantity: 1, price: 0 },
+  },
+];</code></pre>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/order-flow.png"
+                  alt="Flujo de pedido mostrando carrito con bebidas seleccionadas y promociones aplicadas antes del pago"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Resumen del pedido con promoción automática aplicada antes del
+                  pago
+                </p>
+              </div>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 3 -->
+              <h4 id="payments">Pagos con Stripe</h4>
+              <p>
+                Todos los pagos se procesan a través de Stripe, proporcionando
+                pagos seguros con tarjeta con confirmación instantánea. No se
+                requiere manejo de efectivo.
+              </p>
+
+              <p><strong>Flujo de Pago:</strong></p>
+              <ol>
+                <li>
+                  El cliente revisa el total del pedido con promociones
+                  aplicadas
+                </li>
+                <li>
+                  Ingresa los datos de la tarjeta en el formulario seguro de
+                  pago de Stripe
+                </li>
+                <li>El pago se procesa y confirma instantáneamente</li>
+                <li>El pedido se envía al panel del bartender</li>
+              </ol>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/stripe-checkout.png"
+                  alt="Formulario de pago de Stripe integrado en el flujo de pedidos"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Pago seguro de Stripe integrado directamente en la experiencia
+                  de pedido
+                </p>
+              </div>
+
+              <p><strong>Valor para el Negocio:</strong></p>
+              <ul>
+                <li>
+                  <strong>Conciliación instantánea:</strong> Cada transacción
+                  registrada automáticamente con acceso al panel de Stripe
+                </li>
+                <li>
+                  <strong>Sin riesgo de efectivo:</strong> Elimina robo, errores
+                  de conteo y demoras por dar cambio
+                </li>
+                <li>
+                  <strong>Mayor gasto:</strong> Los pagos con tarjeta
+                  típicamente aumentan el ticket promedio vs. efectivo
+                </li>
+              </ul>
+
+              <div class="section-separator"></div>
+
+              <!-- Feature 4 -->
+              <h4 id="qr-pickup">Recogida con Código QR</h4>
+              <p>
+                Después del pago, los clientes reciben un código QR único en su
+                teléfono. Luego muestran el código QR en la barra para
+                verificación y recogida instantánea.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="../images/salsa-candela-bar/qr-pickup.png"
+                  alt="Código QR mostrado en el teléfono del cliente para verificación de recogida del pedido"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Código QR único por pedido permite recogida rápida y
+                  verificada sin recibos
+                </p>
+              </div>
+
+              <p><strong>Cómo Funciona:</strong></p>
+              <ol>
+                <li>El pedido se paga y confirma</li>
+                <li>
+                  Se genera un código QR único y se muestra en el teléfono del
+                  cliente
+                </li>
+                <li>
+                  El bartender prepara el pedido (visible en el panel de
+                  administración)
+                </li>
+                <li>El cliente muestra el código QR en la barra</li>
+                <li>
+                  El bartender escanea el QR para verificar y marcar como
+                  recogido
+                </li>
+              </ol>
+
+              <p><strong>Valor para el Negocio:</strong></p>
+              <ul>
+                <li>
+                  <strong>Sin doble servicio:</strong> Cada código QR solo puede
+                  canjearse una vez
+                </li>
+                <li>
+                  <strong>Seguimiento de pedidos:</strong> Visibilidad completa
+                  de pedidos pendientes, listos y recogidos
+                </li>
+                <li>
+                  <strong>Recogida más rápida:</strong> Sin confirmación
+                  verbal—escanea y listo
+                </li>
+              </ul>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Design & UX -->
+            <div class="blog-section" id="design-ux">
+              <h3>Diseño y Experiencia de Usuario</h3>
+              <p>
+                La app fue diseñada para un entorno específico: un lugar oscuro
+                y ruidoso donde los usuarios están de pie, sosteniendo un
+                teléfono con una mano, y quieren pedir rápidamente.
+              </p>
+
+              <h4>Decisiones de Diseño</h4>
+              <ul>
+                <li>
+                  <strong>Objetivos táctiles grandes:</strong> Botones y
+                  artículos del menú dimensionados para uso con una mano
+                </li>
+                <li>
+                  <strong>Pasos mínimos:</strong> Tres toques desde el menú
+                  hasta el pago (agregar al carrito, revisar, pagar)
+                </li>
+                <li>
+                  <strong>Alto contraste:</strong> Texto y precios claramente
+                  legibles en cualquier condición de iluminación
+                </li>
+                <li>
+                  <strong>Sin cuenta requerida:</strong> Los clientes piden como
+                  invitados para eliminar fricción de registro
+                </li>
+              </ul>
+
+              <h4>Optimización del Flujo de Usuario</h4>
+              <p><strong>Ruta de pedido:</strong></p>
+              <ol>
+                <li>
+                  <strong>Escanear QR:</strong> Abre el menú instantáneamente en
+                  el navegador
+                </li>
+                <li>
+                  <strong>Navegar y Agregar:</strong> Toca artículos para
+                  agregar, ajusta cantidades
+                </li>
+                <li>
+                  <strong>Revisar Carrito:</strong> Ve artículos, promociones
+                  aplicadas, total
+                </li>
+                <li><strong>Pagar:</strong> Pago seguro con Stripe</li>
+                <li>
+                  <strong>Obtener QR:</strong> Código de recogida mostrado
+                  inmediatamente
+                </li>
+              </ol>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Technology -->
+            <div class="blog-section" id="technology">
+              <h3>Enfoque Tecnológico</h3>
+              <p>
+                El stack fue elegido por capacidad de respuesta en tiempo real,
+                rendimiento móvil e integración con la infraestructura de pagos
+                de Stripe.
+              </p>
+
+              <h4>Stack Tecnológico</h4>
+              <ul>
+                <li><strong>Frontend:</strong> React (SPA móvil-primero)</li>
+                <li><strong>Backend:</strong> Node.js + Express.js</li>
+                <li><strong>Pagos:</strong> API de Stripe</li>
+                <li>
+                  <strong>Generación de QR:</strong> Generación de código QR del
+                  lado del servidor por pedido
+                </li>
+                <li>
+                  <strong>Panel de Administración:</strong> Interfaz de gestión
+                  de pedidos en tiempo real para bartenders
+                </li>
+              </ul>
+
+              <h4>¿Por Qué React?</h4>
+              <p>
+                A diferencia del sitio web principal de Salsa Candela (que usa
+                plantillas EJS renderizadas en el servidor), la app del bar
+                necesita interactividad en tiempo real: gestión del carrito,
+                cálculos de promociones en vivo y retroalimentación instantánea
+                de pagos. El modelo de componentes de React y la gestión de
+                estado lo hacen directo.
+              </p>
+
+              <h4>Estructura de Datos del Pedido</h4>
+              <pre><code class="language-javascript">// Estructura de creación de pedido
+const order = {
+  items: [
+    { id: "mojito-classic", name: "Mojito", quantity: 2, price: 120 },
+    { id: "shot-tequila", name: "Shot de Tequila", quantity: 1, price: 0 },
+  ],
+  promotions: [
+    { name: "Oferta Combo", discount: 80 },
+  ],
+  subtotal: 320,
+  discount: 80,
+  total: 240,
+  paymentMethod: "stripe",
+  status: "pending", // pending, ready, picked-up
+  qrCode: null, // Generado después de confirmación de pago
+};</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Challenges & Solutions -->
+            <div class="blog-section" id="challenges">
+              <h3>Desafíos y Soluciones</h3>
+              <p>
+                Construir para un entorno de evento en vivo introdujo desafíos
+                que las apps típicas de e-commerce no enfrentan.
+              </p>
+
+              <h4>Desafío 1: Conectividad No Confiable</h4>
+              <p>
+                <strong>Problema:</strong> Lugares concurridos con más de 500
+                teléfonos compitiendo por ancho de banda. Conexiones caídas a
+                mitad del pedido perderían ventas.
+              </p>
+              <p>
+                <strong>Solución:</strong> Tamaños de carga optimizados e
+                implementación de persistencia de estado local. Si la
+                conectividad cae, el carrito se preserva y el pago reintenta
+                automáticamente cuando se restaura la conexión.
+              </p>
+
+              <h4>Desafío 2: Pedidos Concurrentes Durante Horas Pico</h4>
+              <p>
+                <strong>Problema:</strong> Las horas pico generan docenas de
+                pedidos simultáneos. Los bartenders necesitan priorización clara
+                sin confusión.
+              </p>
+              <p>
+                <strong>Solución:</strong> El panel de administración muestra
+                pedidos en tiempo real con indicadores de estado (pendiente,
+                preparando, listo). Los bartenders actualizan el estado con un
+                toque, y los clientes ven el progreso de su pedido.
+              </p>
+
+              <h4>Desafío 3: Casos Límite de Promociones</h4>
+              <p>
+                <strong>Problema:</strong> ¿Qué pasa cuando el happy hour
+                termina a mitad del pedido? ¿O cuando una promoción de combo
+                aplica parcialmente?
+              </p>
+              <p>
+                <strong>Solución:</strong> Las promociones se bloquean en el
+                momento de revisión del carrito. Una vez que un cliente ve su
+                total con descuento, ese precio se respeta incluso si la ventana
+                de promoción cierra antes de que complete el pago.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Future Enhancements -->
+            <div class="blog-section" id="future">
+              <h3>Mejoras Futuras</h3>
+              <p>
+                La aplicación está diseñada para crecer con el negocio. Las
+                mejoras planificadas incluyen:
+              </p>
+
+              <h4>Billetera de Crédito Prepago</h4>
+              <p>
+                Los clientes compran crédito por adelantado con una sola
+                transacción de Stripe—similar a comprar boletos en una feria—y
+                luego gastan de su billetera por cada bebida. Esto reduce las
+                comisiones de transacción por pedido, acelera el servicio y
+                fomenta mayor gasto durante el evento.
+              </p>
+
+              <h4>Seguimiento de Inventario</h4>
+              <p>
+                Niveles de stock en tiempo real que automáticamente marcan
+                artículos como no disponibles cuando el inventario está bajo,
+                previniendo pedidos que no pueden cumplirse.
+              </p>
+
+              <h4>Panel de Análisis</h4>
+              <p>
+                Reportes post-evento mostrando horas pico de pedidos, bebidas
+                más populares, efectividad de promociones e ingresos por hora
+                para informar la planificación de eventos futuros.
+              </p>
+
+              <h4>Soporte Multi-Evento</h4>
+              <p>
+                Menús y promociones configurables por tipo de evento,
+                permitiendo diferentes configuraciones para fiestas de baile,
+                eventos privados y ocasiones especiales.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Volver a la tabla de contenidos"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button white-text"
+                    >← Volver al Portafolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://bar.salsa-candela.com"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Visitar Sitio en
+                    Vivo
+                  </a>
+                  <a
+                    href="https://github.com/portfedh/Salsa-Candela-Bar"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> Ver en GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>¡Ponte en contacto!</h2>
+            </header>
+            <p class="fade-out">
+              Actualmente estoy abierto a oportunidades laborales y estaré
+              encantado de conversar.
+              <br />
+              <br />
+              No dudes en contactarme si te interesa lo que puedo aportar a tu
+              proyecto o equipo.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Envíame un correo</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de Twitter"
+            ><i class="fa-brands fa-twitter"></i
+            ><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+            ><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de GitHub"
+            ><i class="fa-brands fa-github"></i
+            ><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            aria-label="Enlace de correo"
+            ><i class="fa-solid fa-envelope"></i
+            ><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Blog functionality -->
+    <script src="../assets/js/blog.js"></script>
+  </body>
+</html>

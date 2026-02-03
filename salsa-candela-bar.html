@@ -68,6 +68,11 @@
     />
     <link
       rel="alternate"
+      hreflang="es"
+      href="https://pablocruz.io/es/salsa-candela-bar.html"
+    />
+    <link
+      rel="alternate"
       hreflang="x-default"
       href="https://pablocruz.io/salsa-candela-bar.html"
     />
@@ -91,9 +96,25 @@
   <body class="is-preload">
     <!-- Header Start-->
     <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <a
+          href="salsa-candela-bar.html"
+          class="lang-btn active"
+          aria-label="Switch to English"
+          >EN</a
+        >
+        <span class="lang-separator">|</span>
+        <a
+          href="es/salsa-candela-bar.html"
+          class="lang-btn"
+          aria-label="Cambiar a Español"
+          >ES</a
+        >
+      </div>
       <div class="inner">
         <div class="blog-nav">
-          <a href="index.html" class="button">&larr; Back to Portfolio</a>
+          <a href="index.html" class="button">← Back to Portfolio</a>
         </div>
         <div class="blog-title-container">
           <img
@@ -139,7 +160,7 @@
               <h2>Table of Contents</h2>
               <ul class="toc">
                 <li><a href="#overview">Project Overview</a></li>
-                <li><a href="#business-problem">The Business Challenge</a></li>
+                <li><a href="#business-problem">The Business Problem</a></li>
                 <li><a href="#solution">The Solution</a></li>
                 <li>
                   <a href="#key-features">Key Features</a>
@@ -332,12 +353,12 @@
 
               <div class="image-container">
                 <img
-                  src="images/salsa-candela-bar/order-flow.png"
-                  alt="Order flow showing cart with selected drinks and applied promotions before checkout"
+                  src="images/salsa-candela-bar/mobile-responsive.png"
+                  alt="Full mobile app layout showing dark theme with high contrast elements"
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Order summary with automatic promotion applied before payment
+                  Light theme with high contrast for visibility at the venue
                 </p>
               </div>
 
@@ -421,6 +442,18 @@
                 </li>
               </ul>
 
+              <div class="image-container">
+                <img
+                  src="images/salsa-candela-bar/promotions-banner.png"
+                  alt="Active promotion displayed in the app showing happy hour discount details"
+                  class="image fit"
+                />
+                <p class="image-caption">
+                  Promotions displayed prominently and applied automatically at
+                  checkout
+                </p>
+              </div>
+
               <pre><code class="language-javascript">// Promotion rules configuration
 const promotions = [
   {
@@ -441,13 +474,12 @@ const promotions = [
 
               <div class="image-container">
                 <img
-                  src="images/salsa-candela-bar/promotions-banner.png"
-                  alt="Active promotion displayed in the app showing happy hour discount details"
+                  src="images/salsa-candela-bar/order-flow.png"
+                  alt="Order flow showing cart with selected drinks and applied promotions before checkout"
                   class="image fit"
                 />
                 <p class="image-caption">
-                  Promotions displayed prominently and applied automatically at
-                  checkout
+                  Order summary with automatic promotion applied before payment
                 </p>
               </div>
 
@@ -590,18 +622,6 @@ const promotions = [
                   guests to eliminate sign-up friction
                 </li>
               </ul>
-
-              <div class="image-container">
-                <img
-                  src="images/salsa-candela-bar/mobile-responsive.png"
-                  alt="Full mobile app layout showing dark theme with high contrast elements"
-                  class="image fit"
-                />
-                <p class="image-caption">
-                  Dark theme with high contrast optimized for use in a dimly lit
-                  bar environment
-                </p>
-              </div>
 
               <h4>User Flow Optimization</h4>
               <p><strong>Ordering Path:</strong></p>
