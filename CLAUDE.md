@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-*Last updated: December 26, 2025*
+*Last updated: June 8, 2026*
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -42,7 +42,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `assets/js/blog.js` - Blog-specific functionality (code copying, back-to-top navigation)
 - `CNAME` - GitHub Pages custom domain configuration
 - `robots.txt` - SEO configuration
-- `Pablo_Cruz_Resume_Portfolio_2024.pdf` / `Pablo_Cruz_Resume_Portfolio_2025.pdf` - Resume files
+- `Pablo_Cruz_Resume.pdf` - Resume file (linked from the Resume button on both language homepages)
 - `PORTFOLIO_IMPROVEMENT_SUGGESTIONS.md` - Project planning and improvement ideas
 - `.claude/` - Claude Code configuration directory
 
@@ -55,8 +55,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ├── financial-report-pdf.html         # Blog: Financial reports (English)
 ├── water-level-monitor.html          # Blog: Water monitoring (English)
 ├── extras.html                       # Component reference
-├── Pablo_Cruz_Resume_Portfolio_2024.pdf
-├── Pablo_Cruz_Resume_Portfolio_2025.pdf
+├── Pablo_Cruz_Resume.pdf
 ├── PORTFOLIO_IMPROVEMENT_SUGGESTIONS.md
 ├── CNAME                             # Custom domain configuration
 ├── robots.txt                        # SEO configuration
@@ -90,6 +89,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 │   │       └── _vendor.scss
 │   └── webfonts/                     # FontAwesome fonts (local backup)
 ├── images/                           # All project and personal images
+│   └── logos/                        # Brand logo SVGs for skills (Snowflake, GCP, Azure DevOps)
 ├── temp/                             # Cached HTML files
 └── tests/                            # Testing directory
 ```
@@ -134,6 +134,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - Animated GIFs with hover states for project demonstrations
 - Responsive image sizing with lazy loading
 - Background images for hero sections
+- Brand logos in `/images/logos/` (e.g. Snowflake, GCP, Azure DevOps) are inline SVGs used in the Skills "Tools & Platforms" list via `<img class="skill-logo">`; the `.skill-logo` rule in `custom.css` sizes them to match the FontAwesome icons and applies `filter: brightness(0) invert(1)` so the colored SVGs render white like the other icons
 
 ### CSS Architecture
 
@@ -179,7 +180,7 @@ npx http-server
 ### Main Sections (index.html)
 
 1. **Header** (`#header`) - Hero section with name, title, and CTA buttons
-2. **About Me** (`#one`) - Personal introduction and video introduction
+2. **About Me** (`#one`) - Personal introduction and current role (VP of Data Engineering, BlackRock PMG)
 3. **Skills** (`#two`) - Technical skills in three columns
 4. **Projects** (`#projects-section`) - Portfolio project showcase with hover animations
 5. **Contact** (`#contact-section`) - Contact information and email CTA
@@ -271,18 +272,20 @@ gtag('event', 'click', {
 ```
 
 **Event Categories:**
-- `Header` - Top navigation actions (Resume button at `index.html:112`)
-- `About Me` - About section interactions (Intro video at `index.html:161`)
+- `Header` - Top navigation actions (Resume button at `index.html:123`)
 - `Project` - All project-related clicks:
-  - CoDi API: Blog, Docs, GitHub (`index.html:407,416,425`)
-  - Salsa-Candela Admin: Visit, Video (`index.html:470,480`)
-  - Salsa-Candela Business: Visit, GitHub (`index.html:527,536`)
-  - Salsa-Candela Bar: Visit, Video (`index.html:581,590`)
-  - Portfolio Dashboard: Video, GitHub (`index.html:637,647`)
-  - IoT Energy Monitor: Blog, GitHub (`index.html:695,704`)
-  - Financial Report PDF: Blog, GitHub (`index.html:752,761`)
-  - Water Monitoring System: Blog, GitHub (`index.html:810,819`)
-- `Contact` - Contact form/email interactions (Email button at `index.html:852`)
+  - CoDi API: Blog, Docs, GitHub (`index.html:422,430,438`)
+  - Salsa-Candela Admin: Visit, Video, Blog (`index.html:482,491,500`)
+  - Salsa-Candela Business: Blog, Visit, GitHub (`index.html:546,554,562`)
+  - Salsa-Candela Bar: Visit, Video, Blog (`index.html:606,614,620`)
+  - Portfolio Dashboard: Video, GitHub (`index.html:666,675`)
+  - IoT Energy Monitor: Blog, GitHub (`index.html:720,728`)
+  - Financial Report PDF: Blog, GitHub (`index.html:775,783`)
+  - Water Monitoring System: Blog, GitHub (`index.html:831,839`)
+- `Contact` - Contact form/email interactions (Email button at `index.html:873`)
+- `Social` - Footer social links: Twitter, LinkedIn, GitHub, Email (`index.html:893,904,915,924`)
+
+**Note:** The About Me section no longer has a custom event (the intro video was removed).
 
 **Note:** Blog posts only track page views, not custom events.
 
