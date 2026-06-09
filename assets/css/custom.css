@@ -126,6 +126,16 @@ ul.icons li .label {
   display: inline-block;
 }
 
+/* Brand logos inside skills lists (sized to match FontAwesome icons) */
+.skill-logo {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  margin-right: 0.25em;
+  /* Render colored brand SVGs as white to match the FontAwesome icons */
+  filter: brightness(0) invert(1);
+}
+
 /* Animations */
 /* ********** */
 
