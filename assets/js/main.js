@@ -61,9 +61,29 @@
     });
   }
 
+  // Hover videos for project cards (play on hover, reset when the pointer leaves)
+  function initHoverVideos() {
+    const cards = document.querySelectorAll('.gif-container');
+
+    cards.forEach(card => {
+      const video = card.querySelector('video.animated-gif');
+      if (!video) return;
+
+      card.addEventListener('mouseenter', function() {
+        video.play().catch(function() {});
+      });
+
+      card.addEventListener('mouseleave', function() {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+  }
+
   // Initialize everything when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initSkeletonLoading();
+    initHoverVideos();
   });
 })();

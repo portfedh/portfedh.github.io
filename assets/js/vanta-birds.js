@@ -1,5 +1,13 @@
 // Vanta.js Birds Effect for Get in Touch section
 document.addEventListener("DOMContentLoaded", function () {
+  // Skip the animated background on small screens and for users who prefer reduced motion
+  if (
+    typeof VANTA === "undefined" ||
+    window.innerWidth < 737 ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
   // Initialize Vanta Birds effect
   VANTA.BIRDS({
     // DOM element selector where the effect will be applied

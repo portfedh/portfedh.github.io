@@ -43,7 +43,6 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `CNAME` - GitHub Pages custom domain configuration
 - `robots.txt` - SEO configuration
 - `Pablo_Cruz_Resume.pdf` - Resume file (linked from the Resume button on both language homepages)
-- `PORTFOLIO_IMPROVEMENT_SUGGESTIONS.md` - Project planning and improvement ideas
 - `.claude/` - Claude Code configuration directory
 
 ### Directory Structure
@@ -56,7 +55,6 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ├── water-level-monitor.html          # Blog: Water monitoring (English)
 ├── extras.html                       # Component reference
 ├── Pablo_Cruz_Resume.pdf
-├── PORTFOLIO_IMPROVEMENT_SUGGESTIONS.md
 ├── CNAME                             # Custom domain configuration
 ├── robots.txt                        # SEO configuration
 ├── .claude/                          # Claude Code configuration
@@ -138,12 +136,15 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 
 ### CSS Architecture
 
+- **Design tokens**: CSS custom properties defined in a `:root` block at the top of `assets/css/custom.css` — brand colors (`--brand: #2b797e`, `--brand-dark`, `--brand-light`, `--accent`), a neutral gray ramp (`--gray-50` … `--gray-900`), code-block colors, spacing scale (`--space-1` … `--space-7`), fluid type scale (`--text-sm` … `--text-3xl` using `clamp()`), radii, shadows, and `--transition`. Always use these tokens instead of hardcoded hex values in `custom.css` and `blog.css` (blog.css relies on the tokens because every blog page loads custom.css first)
 - SCSS with modular approach using `@import`
 - Variables and mixins defined in `assets/sass/libs/` directory
 - Custom CSS overrides in `assets/css/custom.css`
 - Blog-specific styles in `assets/css/blog.css`
 - No-JavaScript fallback styles in `assets/css/noscript.css`
 - FontAwesome icons loaded via CDN with local webfont backup in `assets/webfonts/`
+- **Breakpoints in custom/blog CSS**: use 980 / 736 / 480 px to match the compiled template scale
+- **Reduced motion**: a `@media (prefers-reduced-motion: reduce)` block lives at the END of custom.css so it wins the cascade — keep it last. Scroll-driven fades are wrapped in `@supports (animation-timeline: view())` for Safari/Firefox fallback
 
 ## Development Commands
 
@@ -434,6 +435,8 @@ When creating or updating multilingual pages:
 - **No Build Process**: This is intentionally a simple static site
 - **Direct File Editing**: Make changes directly to HTML, CSS, and JS files
 - **Image Optimization**: Ensure images are web-optimized before adding
+  - Screenshots and photos use **WebP** (`cwebp -q 80`, max ~1600px wide); animated project previews use **MP4** `<video muted loop playsinline preload="none">` played on hover via `initHoverVideos()` in `assets/js/main.js` (not GIFs)
+  - Every `<img>` carries `width`/`height` attributes (intrinsic pixel size) to prevent layout shift; `custom.css` pairs this with a global `img { height: auto }`
 - **Mobile-First**: Always test responsive design on mobile devices
 - **SEO Friendly**: Maintain semantic HTML and meta tags when making changes
 - **Multilingual Pages**:

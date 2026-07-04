@@ -1,3 +1,57 @@
+/* Design Tokens */
+/* ************* */
+
+:root {
+  /* Brand colors */
+  --brand: #2b797e;
+  --brand-dark: #1a5b5f;
+  --brand-light: #3a8a8f;
+  --brand-tint: rgba(43, 121, 126, 0.1);
+  --accent: #f39c12;
+
+  /* Neutral ramp */
+  --gray-50: #f8f9fa;
+  --gray-100: #e9ecef;
+  --gray-200: #dee2e6;
+  --gray-300: #c7c7c7;
+  --gray-500: #6c757d;
+  --gray-700: #495057;
+  --gray-900: #212529;
+
+  /* Code block (dark) */
+  --code-bg: #1a202c;
+  --code-bg-light: #2d3748;
+  --code-border: #4a5568;
+  --code-text: #e2e8f0;
+  --code-muted: #a0a9c1;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+
+  /* Fluid type scale */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --text-2xl: clamp(1.6rem, 1.35rem + 1vw, 2.2rem);
+  --text-3xl: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+
+  /* Radii, shadows, motion */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 25px;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --transition: 0.3s ease;
+}
+
 /* General Styles */
 /* ************** */
 
@@ -7,9 +61,24 @@
 }
 
 .technologies {
-  font-size: 0.9rem;
-  color: #2b797e;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+  justify-content: center;
+  font-size: var(--text-sm);
+  color: var(--brand);
   font-weight: 400;
+}
+
+.tech-chip {
+  display: inline-block;
+  background: var(--brand-tint);
+  color: var(--brand-dark);
+  padding: 0.1rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Header styles */
@@ -25,7 +94,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../../images/tobias-reich-Onn5cCtX5xo-unsplash.jpg")
+  background: url("../../images/tobias-reich-Onn5cCtX5xo-unsplash.webp")
     center/cover no-repeat;
   z-index: -1;
 }
@@ -36,7 +105,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35);
+  /* Darker toward the center/bottom where the hero text sits, to guarantee contrast */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* Hero type hierarchy */
+#header h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.25;
+}
+
+#header h1 strong {
+  color: #ffffff;
 }
 
 /* Footer styles */
@@ -57,9 +142,16 @@ ul.icons li .label {
 /* Image Styles */
 /* ************ */
 
-/* Hero image */
+/* Images carry width/height attributes for layout stability; keep them
+   undistorted when CSS overrides only the width */
+img {
+  height: auto;
+}
+
+/* Hero image: sensible size at every viewport width */
 #hero-me {
-  max-width: 15%;
+  width: clamp(96px, 12vw, 160px);
+  height: auto;
 }
 
 /* Secondary images */
@@ -67,15 +159,14 @@ ul.icons li .label {
 .project1-image,
 .project2-image,
 .project3-image {
-  border: solid 1px #c7c7c7;
+  border: solid 1px var(--gray-300);
   box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
   width: 90%;
   margin: 0 auto;
 }
 
-/* Fix for GIF transparency overlay issues */
-.project2-image.animated-gif[src*="energy-monitor-gif"],
-.project3-image.animated-gif[src*="water-level-gif"] {
+/* Hover videos with light content sit on a white backdrop */
+video.animated-gif {
   background-color: #ffffff;
 }
 
@@ -103,14 +194,10 @@ ul.icons li .label {
   margin: 5px;
 }
 
-.video-intro {
-  width: 94%;
-  margin-left: 1.1rem;
-}
-
 .professional-summary {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   color: aliceblue;
+  font-size: var(--text-lg);
 }
 
 /* About Me Section */
@@ -119,10 +206,11 @@ ul.icons li .label {
   text-align: justify;
 }
 
+/* Lists center under their headings via the parent .center-text column;
+   expertise paragraphs align flush with their column heading */
 .skills,
 .skills-other {
-  text-align: justify;
-  margin-left: 10%;
+  text-align: left;
   display: inline-block;
 }
 
@@ -136,16 +224,40 @@ ul.icons li .label {
   filter: brightness(0) invert(1);
 }
 
+/* Accessibility */
+/* ************* */
+
+/* Visible keyboard focus for all interactive elements */
+a:focus-visible,
+.button:focus-visible,
+#header .lang-btn:focus-visible,
+.copy-button:focus-visible,
+.back-to-top:focus-visible {
+  outline: 3px solid var(--brand-light);
+  outline-offset: 2px;
+}
+
 /* Animations */
 /* ********** */
 
-/* Fade in on scroll */
-.fade-in-scroll {
-  scale: 1;
-  opacity: 0;
-  animation: fade-in linear forwards;
-  animation-timeline: view();
-  animation-range: entry;
+/* Scroll-driven fades only where animation-timeline is supported
+   (Safari/Firefox fall back to fully visible content) */
+@supports (animation-timeline: view()) {
+  /* Fade in on scroll */
+  .fade-in-scroll {
+    scale: 1;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+  }
+
+  /* Fade out on scroll */
+  .fade-out {
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -100px;
+  }
 }
 
 @keyframes fade-in {
@@ -169,13 +281,6 @@ ul.icons li .label {
   100% {
     opacity: 1;
   }
-}
-
-/* Fade out on scroll */
-.fade-out {
-  animation: fade-out linear;
-  animation-timeline: view();
-  animation-range: exit -100px;
 }
 
 @keyframes fade-out {
@@ -207,6 +312,59 @@ ul.icons li .label {
   transform: translateY(-0.1rem);
 }
 
+/* Project Cards */
+/* ************* */
+
+/* Equal-height cards: flex column with actions pinned to the bottom */
+#projects-section .row > article {
+  display: flex;
+  flex-direction: column;
+}
+
+#projects-section .actions.special {
+  margin-top: auto;
+}
+
+#projects-section .actions.special li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+#projects-section .actions.special .button-margin {
+  margin: 0;
+}
+
+/* Uniform image frame for all project cards */
+#projects-section .gif-container .image-wrapper {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: solid 1px var(--gray-300);
+  box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
+}
+
+#projects-section .gif-container .image-wrapper img.static-gif,
+#projects-section .gif-container .image-wrapper img.animated-gif,
+#projects-section .gif-container .image-wrapper video.animated-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#projects-section .gif-container .image-wrapper .codi-api-placeholder {
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
 /* Animated project images */
 .animated-gif {
   position: absolute;
@@ -231,7 +389,12 @@ ul.icons li .label {
 /* **************************** */
 
 #github-contributions {
-  background-color: #f8f9fa;
+  background-color: var(--gray-50);
+}
+
+/* Center the section header to match Projects/Contact */
+#github-contributions article {
+  text-align: center;
 }
 
 .github-chart-container {
@@ -242,8 +405,8 @@ ul.icons li .label {
 .github-contributions-chart {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
   background: white;
   padding: 1rem;
 }
@@ -256,8 +419,8 @@ ul.icons li .label {
 .github-stat-card {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
   background: white;
   margin-bottom: 1rem;
   display: block;
@@ -302,6 +465,18 @@ ul.icons li .label {
     margin-left: 0;
     padding-left: 2rem;
   }
+
+  /* Two-column skill lists on mobile to shorten the page */
+  #two ul.skills,
+  #two ul.skills-other {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1.5rem;
+    width: 100%;
+    padding-left: 0;
+    list-style: none;
+    text-align: left;
+  }
 }
 
 /* GitHub responsive adjustments */
@@ -327,7 +502,7 @@ ul.icons li .label {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 @keyframes skeleton-loading {
@@ -355,9 +530,9 @@ ul.icons li .label {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition);
 }
 
 .image-skeleton.hidden {
@@ -367,8 +542,8 @@ ul.icons li .label {
 
 /* Specific skeleton styles for different image types */
 .hero-skeleton {
-  width: 15%;
-  height: 120px;
+  width: clamp(96px, 12vw, 160px);
+  height: clamp(96px, 12vw, 160px);
   margin: 0 auto;
   border-radius: 50%;
 }
@@ -377,35 +552,35 @@ ul.icons li .label {
   width: 90%;
   height: 400px;
   margin: 0 auto;
-  border: solid 1px #c7c7c7;
+  border: solid 1px var(--gray-300);
   box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
 }
 
 .project-skeleton {
   width: 100%;
   height: 200px;
-  border: solid 1px #c7c7c7;
+  border: solid 1px var(--gray-300);
   box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
 }
 
 .github-skeleton {
   width: 100%;
   height: 150px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   margin: 2rem auto;
 }
 
 .github-stats-skeleton {
   width: 100%;
   height: 200px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   margin: 1rem auto;
 }
 
 /* Hide images initially */
 .lazy-image {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition);
 }
 
 .lazy-image.loaded {
@@ -435,18 +610,7 @@ ul.icons li .label {
   z-index: 2;
 }
 
-/* Responsive adjustments for particles */
-@media screen and (max-width: 480px) {
-  .particles-canvas {
-    opacity: 0.7;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .particles-canvas {
-    opacity: 0.5;
-  }
-}
+/* Particles are not initialized below 737px (see particles.js) */
 
 /* Vanta Birds Background Styles */
 /* *************************** */
@@ -471,18 +635,7 @@ ul.icons li .label {
   z-index: 2;
 }
 
-/* Responsive adjustments for Vanta birds */
-@media screen and (max-width: 736px) {
-  .vanta-background {
-    opacity: 0.8;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .vanta-background {
-    opacity: 0.6;
-  }
-}
+/* Vanta birds are not initialized below 737px (see vanta-birds.js) */
 
 /* Language Switcher Styles */
 /* ********************** */
@@ -509,13 +662,15 @@ ul.icons li .label {
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 15px;
-  transition: all 0.3s ease;
+  border-radius: 22px;
+  transition: all var(--transition);
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
+  /* Minimum 44px touch target */
+  min-height: 44px;
+  min-width: 44px;
   box-shadow: none;
 }
 
@@ -536,19 +691,16 @@ ul.icons li .label {
   display: none;
 }
 
-/* Responsive language switcher */
+/* Responsive language switcher (touch targets stay at 44px minimum) */
 @media screen and (max-width: 736px) {
   .language-switcher {
     top: 1rem;
     right: 1rem;
-    border-radius: 18px;
   }
 
   #header .lang-btn {
     padding: 0.3rem 0.65rem;
     font-size: 0.813rem;
-    border-radius: 14px;
-    min-height: 30px;
   }
 }
 
@@ -557,14 +709,11 @@ ul.icons li .label {
     top: 0.75rem;
     right: 0.75rem;
     padding: 0.2rem;
-    border-radius: 16px;
   }
 
   #header .lang-btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    border-radius: 12px;
-    min-height: 28px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -575,14 +724,14 @@ ul.icons li .label {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, #0089D1 0%, #0066a1 50%, #004d7a 100%);
-  border: solid 1px #c7c7c7;
+  border: solid 1px var(--gray-300);
   box-shadow: 0 0 30px rgba(119, 117, 117, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .codi-api-placeholder::before {
@@ -703,5 +852,27 @@ ul.icons li .label {
 
   .placeholder-content p {
     font-size: 0.8rem;
+  }
+}
+
+/* Reduced Motion */
+/* ************** */
+/* Respect the user's reduced-motion preference: disable decorative animation.
+   Kept last in the file so it wins the cascade over animation rules above. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+
+  .fade-in-scroll,
+  .fade-out,
+  .fade-in {
+    animation: none;
+    opacity: 1;
   }
 }

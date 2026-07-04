@@ -20,7 +20,7 @@
     />
     <meta
       property="og:image"
-      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.png"
+      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.webp"
     />
     <meta
       property="og:url"
@@ -40,7 +40,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.png"
+      content="https://pablocruz.io/images/water-level-monitor/water_level_featured.webp"
     />
 
     <!-- Stylesheets-->
@@ -58,7 +58,7 @@
     <link
       rel="preload"
       as="image"
-      href="../images/water-level-monitor/water_level_featured.png"
+      href="../images/water-level-monitor/water_level_featured.webp"
     />
     <noscript
       ><link rel="stylesheet" href="../assets/css/noscript.css"
@@ -109,10 +109,12 @@
           <article>
             <div class="blog-featured-image">
               <img
-                src="../images/water-level-monitor/water_level_featured.png"
+                src="../images/water-level-monitor/water_level_featured.webp"
                 alt="Summary of the water IoT water level monitor setup"
                 class="image fit"
-              />
+              width="1600"
+                  height="759"
+                />
             </div>
           </article>
         </div>
@@ -137,10 +139,12 @@
                 </li>
                 <li>
                   <a href="#build-sensor" 
-                    >Cómo construir el sensor de nivel de agua</li>
+                    >Cómo construir el sensor de nivel de agua</a>
+                </li>
                 <li>
                   <a href="#reading-data" 
-                    >Leyendo los datos del sensor de nivel de agua</li>
+                    >Leyendo los datos del sensor de nivel de agua</a>
+                </li>
                 <li>
                   <a href="#saving-data" >Guardando los valores en una base de datos</a>
                 </li>
@@ -162,7 +166,7 @@
                   rel="noopener noreferrer"
                   class="blog-link"
                   
-                  >haz clic aquí</span>
+                  >haz clic aquí</a>
                 <a href="#code" class="blog-link" >código</a> <span >al final del artículo.</span>
               </p>
             </div>
@@ -181,7 +185,8 @@
                   src="../images/water-level-monitor/water_level_tank_diagram2.jpg"
                   alt="Diagram showing a typical setup for a house in Mexico City"
                   class="image fit"
-                  style="width: 100%"
+                width="710"
+                  height="911"
                 />
                 <p class="image-caption" >Diagrama que muestra una configuración típica para una casa en la Ciudad de México</p>
               </div>
@@ -209,6 +214,8 @@
                   src="../images/water-level-monitor/water_level_JSN-SR04T.png"
                   alt="The JSN-SR4T Waterproof ultrasonic sensor"
                   class="image fit"
+                width="415"
+                  height="426"
                 />
                 <p class="image-caption" >Sensor ultrasónico impermeable JSN-SR04T</p>
               </div>
@@ -219,6 +226,8 @@
                   src="../images/water-level-monitor/water_level_ESP3222_002.png"
                   alt="An ESP32 micro controller"
                   class="image fit"
+                width="500"
+                  height="258"
                 />
                 <p class="image-caption" >Microcontrolador ESP32. También puedes usar un ESP8266.</p>
               </div>
@@ -226,9 +235,11 @@
 
               <div class="image-container">
                 <img
-                  src="../images/water-level-monitor/water_level_raspbery_pi_002.png"
+                  src="../images/water-level-monitor/water_level_raspbery_pi_002.webp"
                   alt="A Raspberry Pi computer"
                   class="image fit"
+                width="934"
+                  height="566"
                 />
                 <p class="image-caption" >Computadora Raspberry Pi</p>
               </div>
@@ -240,6 +251,8 @@
                   src="../images/water-level-monitor/Water_level_sensor_setup_002.png"
                   alt="Flow diagram of the water level monitor"
                   class="image fit"
+                width="712"
+                  height="62"
                 />
                 <p class="image-caption" >Diagrama de flujo del monitor de nivel de agua</p>
               </div>
@@ -281,7 +294,8 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >Adaptador de sensor impreso en 3D (opcional)</li>
+                    >Adaptador de sensor impreso en 3D (opcional)</a>
+                </li>
               </ul>
 
               <div class="image-container">
@@ -289,6 +303,8 @@
                   src="../images/water-level-monitor/water_level_3D_printed_sensor_fitting.png"
                   alt="3D Printed sensor fitting"
                   class="image fit"
+                width="652"
+                  height="644"
                 />
                 <p class="image-caption" >Adaptador de sensor impreso en 3D</p>
               </div>
@@ -302,35 +318,40 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >Placa ESP8266</li>
+                    >Placa ESP8266</a>
+                </li>
                 <li>
                   <a
                     href="https://www.arduino.cc/reference/en/libraries/espmqttclient/"
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >Biblioteca Arduino EspMQTTClient.h</li>
+                    >Biblioteca Arduino EspMQTTClient.h</a>
+                </li>
                 <li>
                   <a
                     href="https://nodered.org/"
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >Node-RED</li>
+                    >Node-RED</a>
+                </li>
                 <li>
                   <a
                     href="https://mosquitto.org/"
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >Mosquitto MQTT</li>
+                    >Mosquitto MQTT</a>
+                </li>
                 <li>
                   <a
                     href="https://www.influxdata.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     
-                    >InfluxDB</li>
+                    >InfluxDB</a>
+                </li>
               </ul>
 
               <p >Elegí el sensor JSN-SR04T porque es impermeable y puede proporcionar un rango preciso de hasta 4 metros. Requiere 3V para funcionar, por lo que puede ser alimentado directamente por el microcontrolador ESP32.</p>
@@ -360,6 +381,8 @@
                   alt="Electrical connections diagram"
                   class="image fit"
                   style="padding: 1rem"
+                width="351"
+                  height="492"
                 />
                 <p class="image-caption" >Diagrama de conexiones eléctricas</p>
               </div>
@@ -371,9 +394,11 @@
 
               <div class="image-container">
                 <img
-                  src="../images/water-level-monitor/water_level_electrical_box_label.png"
+                  src="../images/water-level-monitor/water_level_electrical_box_label.webp"
                   alt="Waterproof electrical box"
                   class="image fit"
+                width="562"
+                  height="673"
                 />
                 <p class="image-caption" >Configuración de caja eléctrica impermeable</p>
               </div>
@@ -386,7 +411,8 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   
-                  >aquí</p>
+                  >aquí</a>
+              </p>
               <p >Para configurar el sensor, perfora un agujero en la parte superior del tanque de agua. El sensor tiene accesorios de presión de silicona que deberían mantenerlo fijo en su lugar.</p>
               <p>
                 <span >Puedes hacer un</span>
@@ -395,7 +421,7 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   
-                  >adaptador de tanque de agua impreso en 3D</span>
+                  >adaptador de tanque de agua impreso en 3D</a>
               </p>
 
               <div class="image-container">
@@ -403,6 +429,8 @@
                   src="../images/water-level-monitor/water_level_detail.png"
                   alt="Sensor attached to lid with 3D printed fitting"
                   class="image fit"
+                width="848"
+                  height="655"
                 />
                 <p class="image-caption" >Detalle de instalación del sensor</p>
               </div>
@@ -416,6 +444,8 @@
                   src="../images/water-level-monitor/water_level_tank_measurements.png"
                   alt="Water tank measurements"
                   class="image fit"
+                width="399"
+                  height="387"
                 />
                 <p class="image-caption" >Medidas del tanque de agua</p>
               </div>
@@ -429,7 +459,9 @@
                       src="../images/water-level-monitor/water_level_cylinder_formula.png"
                       alt="Formula for calculating cylinder volume"
                       class="image fit"
-                    />
+                    width="357"
+                  height="175"
+                />
                     <p class="image-caption" >Fórmula del volumen del cilindro</p>
                   </div>
                 </div>
@@ -439,7 +471,9 @@
                       src="../images/water-level-monitor/water_level_frustum_formula-e1668063602234.jpg"
                       alt="Formula for calculating frustum volume"
                       class="image fit"
-                    />
+                    width="1600"
+                  height="1392"
+                />
                     <p class="image-caption" >Fórmula del volumen del cono truncado</p>
                   </div>
                 </div>
@@ -447,7 +481,8 @@
 
               <p >Usando ambas fórmulas, podemos calcular el volumen del tanque de agua de la siguiente manera:</p>
               <ul>
-                <li >Volumen del cilindro: 998 Litros</li>
+                <li >Volumen del cilindro: 998 Litros
+                </li>
                 <li >Volumen del cono truncado: 119 Litros</li>
                 <li >Volumen total: 1,117 Litros</li>
               </ul>
@@ -479,6 +514,8 @@
                   src="../images/water-level-monitor/water_level_setup3.png"
                   alt="Image of the water level monitor"
                   class="image fit"
+                width="564"
+                  height="554"
                 />
                 <p class="image-caption" >Configuración completa del monitor de nivel de agua</p>
               </div>
@@ -503,6 +540,8 @@
                   src="../images/water-level-monitor/water_level_NodeRed.png"
                   alt="Node-RED setup in Raspberry Pi"
                   class="image fit"
+                width="824"
+                  height="283"
                 />
                 <p class="image-caption" >Configuración de Node-RED en Raspberry Pi</p>
               </div>
@@ -524,6 +563,8 @@
                   src="../images/water-level-monitor/water_level_influxdb.png"
                   alt="InfluxDB database display"
                   class="image fit"
+                width="471"
+                  height="224"
                 />
                 <p class="image-caption" >Base de datos InfluxDB mostrando datos almacenados</p>
               </div>
@@ -552,7 +593,9 @@
                       src="../images/water-level-monitor/water_level_gauge_002.png"
                       alt="Gauge to display current water amount"
                       class="image fit"
-                    />
+                    width="451"
+                  height="180"
+                />
                     <p class="image-caption" >Medidor de nivel de agua actual</p>
                   </div>
                 </div>
@@ -562,7 +605,9 @@
                       src="../images/water-level-monitor/water_level_time_series_002.png"
                       alt="Time series showing water tank level"
                       class="image fit"
-                    />
+                    width="825"
+                  height="292"
+                />
                     <p class="image-caption" >Serie temporal de nivel de agua de 24 horas</p>
                   </div>
                 </div>
@@ -612,7 +657,8 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   
-                  >aquí</p>
+                  >aquí</a>
+              </p>
 
               <p >Finalmente, aquí hay algunos recursos adicionales que usé para hacer posible este proyecto:</p>
 

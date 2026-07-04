@@ -123,6 +123,13 @@ class ParticleSystem {
 
 // Initialize particle systems when page loads
 document.addEventListener('DOMContentLoaded', function() {
+  // Skip the animated background on small screens and for users who prefer reduced motion
+  if (
+    window.innerWidth < 737 ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    return;
+  }
   // Initialize particles for GitHub section only
   new ParticleSystem('particles-canvas-github', {
     particleCount: window.innerWidth < 768 ? 20 : 35,

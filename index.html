@@ -19,7 +19,7 @@
     />
     <meta
       property="og:image"
-      content="https://portfedh.github.io/images/pablo-portrait.jpeg"
+      content="https://portfedh.github.io/images/pablo-portrait.webp"
     />
     <meta property="og:url" content="https://portfedh.github.io/" />
     <meta property="og:type" content="website" />
@@ -34,7 +34,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://portfedh.github.io/images/pablo-portrait.jpeg"
+      content="https://portfedh.github.io/images/pablo-portrait.webp"
     />
 
     <!-- Stylesheets-->
@@ -46,7 +46,7 @@
     <link
       rel="preload"
       as="image"
-      href="/images/tobias-reich-Onn5cCtX5xo-unsplash.jpg"
+      href="/images/tobias-reich-Onn5cCtX5xo-unsplash.webp"
     />
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
@@ -96,11 +96,13 @@
             <div class="image-skeleton hero-skeleton"></div>
             <img
               id="hero-me"
-              src="images/pablo-headshot.png"
+              src="images/pablo-headshot.webp"
               alt="Portrait of Pablo Cruz"
               loading="lazy"
               class="lazy-image"
-            />
+            width="320"
+                  height="320"
+                />
           </div>
         </div>
         <div>
@@ -170,10 +172,12 @@
                     <div class="image-skeleton about-skeleton"></div>
                     <img
                       class="aboutMe-image fade-in lazy-image"
-                      src="images/pablo-portrait.jpeg"
+                      src="images/pablo-portrait.webp"
                       alt="Pablo Cruz"
                       loading="lazy"
-                    />
+                    width="1600"
+                  height="992"
+                />
                   </div>
                 </span>
               </div>
@@ -382,7 +386,9 @@
                           src="images/codi-api/codi-celulares.png"
                           alt="CoDi Logo"
                           class="codi-logo"
-                        />
+                        width="1164"
+                  height="1062"
+                />
                       </div>
                     </div>
                     <!-- Uncomment these when you have the actual images:
@@ -392,12 +398,15 @@
                       class="project-image static-gif lazy-image"
                       loading="lazy"
                     />
-                    <img
-                      src="images/codi-api-gif.gif"
-                      alt="CoDi API - RESTful API for Digital Payments in Mexico"
-                      class="project-image animated-gif lazy-image"
-                      loading="lazy"
-                    />
+                    <video
+                      class="project-image animated-gif"
+                      src="images/codi-api-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                     -->
                   </div>
                 </span>
@@ -409,7 +418,12 @@
                   CoDi system.
                 </p>
                 <p class="technologies fade-out">
-                  Node.js, Express, PostgresSQL, Jest, PM2, OpenAPI
+                  <span class="tech-chip">Node.js</span>
+                  <span class="tech-chip">Express</span>
+                  <span class="tech-chip">PostgresSQL</span>
+                  <span class="tech-chip">Jest</span>
+                  <span class="tech-chip">PM2</span>
+                  <span class="tech-chip">OpenAPI</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -455,13 +469,18 @@
                       src="images/admin-salsa-candela-cover.png"
                       alt="Dance Studio Online Store Project"
                       loading="lazy"
-                    />
-                    <img
-                      class="project1-image animated-gif lazy-image"
-                      src="images/admin-salsa-candela-gif.gif"
-                      alt="Dance Studio Online Store Project"
-                      loading="lazy"
-                    />
+                    width="368"
+                  height="243"
+                />
+                    <video
+                      class="project1-image animated-gif"
+                      src="images/admin-salsa-candela-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -469,7 +488,13 @@
                 </h3>
                 <p class="fade-out">Access control, and reporting system.</p>
                 <p class="technologies fade-out">
-                  HTML, CSS, JS, NodeJs, ExpressJs, MongoDB, Stripe API
+                  <span class="tech-chip">HTML</span>
+                  <span class="tech-chip">CSS</span>
+                  <span class="tech-chip">JS</span>
+                  <span class="tech-chip">NodeJs</span>
+                  <span class="tech-chip">ExpressJs</span>
+                  <span class="tech-chip">MongoDB</span>
+                  <span class="tech-chip">Stripe API</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -517,13 +542,18 @@
                       src="images/salsa-candela-cover.png"
                       alt="Dance Studio Online Store Project"
                       loading="lazy"
-                    />
-                    <img
-                      class="project1-image animated-gif lazy-image"
-                      src="images/salsa-candela-gif.gif"
-                      alt="Dance Studio Online Store Project"
-                      loading="lazy"
-                    />
+                    width="368"
+                  height="240"
+                />
+                    <video
+                      class="project1-image animated-gif"
+                      src="images/salsa-candela-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -533,19 +563,16 @@
                   Static website & online store for a dance academy.
                 </p>
                 <p class="technologies fade-out">
-                  HTML, CSS, JS, NodeJs, ExpressJs, Stripe API
+                  <span class="tech-chip">HTML</span>
+                  <span class="tech-chip">CSS</span>
+                  <span class="tech-chip">JS</span>
+                  <span class="tech-chip">NodeJs</span>
+                  <span class="tech-chip">ExpressJs</span>
+                  <span class="tech-chip">Stripe API</span>
                 </p>
                 <ul class="actions special small">
                   <li>
                     <a
-                      href="salsa-candela-website.html"
-                      class="button button-margin fade-out"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Read blog post about Salsa-Candela Business Website project"
-                      onclick="gtag('event', 'click', {'event_category': 'Project', 'event_label': 'Salsa-Candela Business - Blog'});"
-                      >Blog</a
-                    ><a
                       href="https://salsa-candela.com"
                       class="button button-margin fade-out"
                       target="_blank"
@@ -553,6 +580,14 @@
                       aria-label="Visit Salsa-Candela Business Website"
                       onclick="gtag('event', 'click', {'event_category': 'Project', 'event_label': 'Salsa-Candela Business - Visit'});"
                       >Visit</a
+                    ><a
+                      href="salsa-candela-website.html"
+                      class="button button-margin fade-out"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Read blog post about Salsa-Candela Business Website project"
+                      onclick="gtag('event', 'click', {'event_category': 'Project', 'event_label': 'Salsa-Candela Business - Blog'});"
+                      >Blog</a
                     ><a
                       href="https://github.com/portfedh/SalsaCandela"
                       class="button button-margin fade-out"
@@ -579,13 +614,18 @@
                       src="images/bar-salsa-candela-cover.png"
                       alt="Dance Studio Online Store Project"
                       loading="lazy"
-                    />
-                    <img
-                      class="project1-image animated-gif lazy-image"
-                      src="images/bar-salsa-candela-gif.gif"
-                      alt="Dance Studio Online Store Project"
-                      loading="lazy"
-                    />
+                    width="1034"
+                  height="690"
+                />
+                    <video
+                      class="project1-image animated-gif"
+                      src="images/bar-salsa-candela-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -593,7 +633,10 @@
                 </h3>
                 <p class="fade-out">Mobile Drink Ordering with QR Pickup.</p>
                 <p class="technologies fade-out">
-                  React, NodeJs, ExpressJs, Stripe API
+                  <span class="tech-chip">React</span>
+                  <span class="tech-chip">NodeJs</span>
+                  <span class="tech-chip">ExpressJs</span>
+                  <span class="tech-chip">Stripe API</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -637,13 +680,18 @@
                       src="images/financial-dashboad.png"
                       alt="Portfolio Financial Dashboard"
                       loading="lazy"
-                    />
-                    <img
-                      class="project1-image animated-gif lazy-image"
-                      src="images/financial-dashboad-gif.gif"
-                      alt="Portfolio Financial Dashboard"
-                      loading="lazy"
-                    />
+                    width="1266"
+                  height="835"
+                />
+                    <video
+                      class="project1-image animated-gif"
+                      src="images/financial-dashboad-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -653,7 +701,11 @@
                   Portfolio visualizer to track an investment portfolio.
                 </p>
                 <p class="technologies fade-out">
-                  Python, Pandas, Grafana, MySQL, Docker
+                  <span class="tech-chip">Python</span>
+                  <span class="tech-chip">Pandas</span>
+                  <span class="tech-chip">Grafana</span>
+                  <span class="tech-chip">MySQL</span>
+                  <span class="tech-chip">Docker</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -692,13 +744,18 @@
                       alt="IoT Energy Monitor Project"
                       class="project2-image static-gif lazy-image"
                       loading="lazy"
-                    />
-                    <img
-                      src="images/energy-monitor-gif.gif"
-                      alt="IoT Energy Monitor Project"
-                      class="project2-image animated-gif lazy-image"
-                      loading="lazy"
-                    />
+                    width="368"
+                  height="240"
+                />
+                    <video
+                      class="project2-image animated-gif"
+                      src="images/energy-monitor-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -709,7 +766,12 @@
                   home.
                 </p>
                 <p class="technologies fade-out">
-                  Esp32, RaspberryPi, MQTT, Node-Red, Grafana, InfluxDB
+                  <span class="tech-chip">Esp32</span>
+                  <span class="tech-chip">RaspberryPi</span>
+                  <span class="tech-chip">MQTT</span>
+                  <span class="tech-chip">Node-Red</span>
+                  <span class="tech-chip">Grafana</span>
+                  <span class="tech-chip">InfluxDB</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -741,17 +803,22 @@
                   <div class="image-wrapper">
                     <div class="image-skeleton project-skeleton"></div>
                     <img
-                      src="images/financial-report.jpg"
+                      src="images/financial-report.webp"
                       alt="Automated Financial Report PDF Project"
                       class="project3-image static-gif lazy-image"
                       loading="lazy"
-                    />
-                    <img
-                      src="images/financial_report_script.gif"
-                      alt="Automated Financial Report PDF Project"
-                      class="project3-image animated-gif lazy-image"
-                      loading="lazy"
-                    />
+                    width="1600"
+                  height="1067"
+                />
+                    <video
+                      class="project3-image animated-gif"
+                      src="images/financial_report_script.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -762,7 +829,11 @@
                   important financial metrics for the company.
                 </p>
                 <p class="technologies fade-out">
-                  Python, Pandas, Plotly, FMP, FPDF2
+                  <span class="tech-chip">Python</span>
+                  <span class="tech-chip">Pandas</span>
+                  <span class="tech-chip">Plotly</span>
+                  <span class="tech-chip">FMP</span>
+                  <span class="tech-chip">FPDF2</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -800,13 +871,18 @@
                       alt="Smart Water Monitoring System"
                       class="project3-image static-gif lazy-image"
                       loading="lazy"
-                    />
-                    <img
-                      src="images/water-level-gif.gif"
-                      alt="Smart Water Monitoring System"
-                      class="project3-image animated-gif lazy-image"
-                      loading="lazy"
-                    />
+                    width="368"
+                  height="241"
+                />
+                    <video
+                      class="project3-image animated-gif"
+                      src="images/water-level-gif.mp4"
+                      muted
+                      loop
+                      playsinline
+                      preload="none"
+                      aria-hidden="true"
+                    ></video>
                   </div>
                 </span>
                 <h3 class="bold project-heading fade-out">
@@ -817,8 +893,13 @@
                   Grafana.
                 </p>
                 <p class="technologies fade-out">
-                  JSN-SR04T ultrasonic sensor, Esp32, RaspberryPi, MQTT,
-                  Node-Red, Grafana, InfluxDB
+                  <span class="tech-chip">JSN-SR04T ultrasonic sensor</span>
+                  <span class="tech-chip">Esp32</span>
+                  <span class="tech-chip">RaspberryPi</span>
+                  <span class="tech-chip">MQTT</span>
+                  <span class="tech-chip">Node-Red</span>
+                  <span class="tech-chip">Grafana</span>
+                  <span class="tech-chip">InfluxDB</span>
                 </p>
                 <ul class="actions special small">
                   <li>
@@ -948,7 +1029,7 @@
 
     <!-- Vanta.js Birds Effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
     <script src="assets/js/vanta-birds.js"></script>
   </body>
 </html>
