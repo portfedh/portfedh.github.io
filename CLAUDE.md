@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-*Last updated: June 8, 2026*
+*Last updated: July 7, 2026*
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -26,6 +26,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `index.html` - Main portfolio page (single-page application)
 - `codi-api.html` - Blog post about CoDi API integration
 - `financial-report-pdf.html` - Blog post about creating financial reports with Python
+- `stock-fundamentals.html` - Blog post about the Stock Fundamentals web app (Yahoo Finance, Next.js)
 - `water-level-monitor.html` - Blog post about IoT water level monitoring
 - `extras.html` - Style guide and component reference
 
@@ -33,6 +34,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 - `es/index.html` - Spanish portfolio page
 - `es/codi-api.html` - CoDi API blog (Spanish)
 - `es/financial-report-pdf.html` - Financial reports blog (Spanish)
+- `es/stock-fundamentals.html` - Stock Fundamentals blog (Spanish)
 - `es/water-level-monitor.html` - Water monitoring blog (Spanish)
 
 **Assets & Configuration:**
@@ -52,6 +54,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 ├── index.html                        # Main portfolio page (English)
 ├── codi-api.html                     # Blog: CoDi API (English)
 ├── financial-report-pdf.html         # Blog: Financial reports (English)
+├── stock-fundamentals.html           # Blog: Stock Fundamentals web app (English)
 ├── water-level-monitor.html          # Blog: Water monitoring (English)
 ├── extras.html                       # Component reference
 ├── Pablo_Cruz_Resume.pdf
@@ -63,6 +66,7 @@ This is a **static portfolio website** for Pablo Cruz, a full-stack developer. T
 │   ├── index.html                    # Portfolio (Spanish)
 │   ├── codi-api.html                 # Blog: CoDi API (Spanish)
 │   ├── financial-report-pdf.html     # Blog: Financial reports (Spanish)
+│   ├── stock-fundamentals.html       # Blog: Stock Fundamentals web app (Spanish)
 │   └── water-level-monitor.html      # Blog: Water monitoring (Spanish)
 ├── assets/
 │   ├── css/
@@ -246,10 +250,12 @@ The tracking code is placed in the `<head>` section of all HTML pages:
 - `index.html` - Main portfolio page (English)
 - `codi-api.html` - Blog post (English)
 - `financial-report-pdf.html` - Blog post (English)
+- `stock-fundamentals.html` - Blog post (English)
 - `water-level-monitor.html` - Blog post (English)
 - `es/index.html` - Main portfolio page (Spanish)
 - `es/codi-api.html` - Blog post (Spanish)
 - `es/financial-report-pdf.html` - Blog post (Spanish)
+- `es/stock-fundamentals.html` - Blog post (Spanish)
 - `es/water-level-monitor.html` - Blog post (Spanish)
 
 ### What's Tracked
@@ -283,6 +289,7 @@ gtag('event', 'click', {
   - IoT Energy Monitor: Blog, GitHub (`index.html:720,728`)
   - Financial Report PDF: Blog, GitHub (`index.html:775,783`)
   - Water Monitoring System: Blog, GitHub (`index.html:831,839`)
+  - Stock Fundamentals: Blog, Visit, GitHub (Project 9 card, after the Water Monitoring card)
 - `Contact` - Contact form/email interactions (Email button at `index.html:873`)
 - `Social` - Footer social links: Twitter, LinkedIn, GitHub, Email (`index.html:893,904,915,924`)
 

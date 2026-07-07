@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A Stock Fundamentals Web App with Yahoo Finance | Pablo Cruz</title>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/terminal-solid.png" type="image/png" />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="A Stock Fundamentals Web App with Yahoo Finance"
+    />
+    <meta
+      property="og:description"
+      content="How I turned a Python PDF script into a web app that builds full fundamental analysis reports from free Yahoo Finance data: financial statements, ratios, valuation, analyst estimates, insider activity and a matching PDF download."
+    />
+    <meta
+      property="og:image"
+      content="https://pablocruz.io/images/stock-fundamentals/stock-fundamentals-og.jpg"
+    />
+    <meta
+      property="og:url"
+      content="https://pablocruz.io/stock-fundamentals.html"
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="A Stock Fundamentals Web App with Yahoo Finance"
+    />
+    <meta
+      name="twitter:description"
+      content="How I turned a Python PDF script into a web app that builds full fundamental analysis reports from free Yahoo Finance data: financial statements, ratios, valuation, analyst estimates, insider activity and a matching PDF download."
+    />
+    <meta
+      name="twitter:image"
+      content="https://pablocruz.io/images/stock-fundamentals/stock-fundamentals-og.jpg"
+    />
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="assets/css/custom.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Hero Background Image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/stock-fundamentals/stock-fundamentals-featured.webp"
+    />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+
+    <!-- Hreflang tags for SEO -->
+    <link rel="alternate" hreflang="en" href="https://pablocruz.io/stock-fundamentals.html" />
+    <link rel="alternate" hreflang="es" href="https://pablocruz.io/es/stock-fundamentals.html" />
+    <link rel="alternate" hreflang="x-default" href="https://pablocruz.io/stock-fundamentals.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LDNFBEYMLD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LDNFBEYMLD");
+    </script>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header Start-->
+    <header id="header" class="blog-header">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <a href="stock-fundamentals.html" class="lang-btn active" aria-label="Switch to English">EN</a>
+        <span class="lang-separator">|</span>
+        <a href="es/stock-fundamentals.html" class="lang-btn" aria-label="Cambiar a Español">ES</a>
+      </div>
+      <div class="inner">
+        <div class="blog-nav">
+          <a href="index.html" class="button">← Back to Portfolio</a>
+        </div>
+        <div class="blog-title-container">
+          <h1>A Stock Fundamentals Web App with Yahoo Finance</h1>
+          <p class="blog-meta">
+            Published: June 7, 2026 | Last updated: July 7, 2026
+          </p>
+          <p class="blog-description">
+            How I turned my Python PDF report into a web app: enter any ticker and get an 11-section fundamental analysis report built from free Yahoo Finance data, with a matching PDF one click away.
+          </p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End-->
+
+    <!-- Main Content Start -->
+    <main>
+      <!-- Featured Image Section -->
+      <section id="featured-image" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-featured-image">
+              <img
+                src="images/stock-fundamentals/stock-fundamentals-featured.webp"
+                alt="Fundamental analysis report for Apple showing the company summary section"
+                class="image fit"
+                width="1600"
+                height="1091"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Content Start -->
+      <section id="blog-content" class="main style2">
+        <div class="container">
+          <article class="blog-post">
+            <!-- Table of Contents -->
+            <div class="toc-container">
+              <h2>Table of Contents</h2>
+              <ul class="toc">
+                <li><a href="#from-script-to-web-app">From PDF script to web app</a></li>
+                <li><a href="#report-contents">What the report includes</a></li>
+                <li><a href="#architecture">One source of truth for web and PDF</a></li>
+                <li><a href="#fetching-data">Fetching data from Yahoo Finance</a></li>
+                <li><a href="#computing-ratios">Computing the ratios</a></li>
+                <li><a href="#charts-twice">Writing charts once, rendering them twice</a></li>
+                <li><a href="#caching">Caching and rate limits</a></li>
+                <li><a href="#pdf-generation">Generating the PDF</a></li>
+                <li><a href="#try-it">Try it yourself</a></li>
+                <li><a href="#final-thoughts">Final thoughts</a></li>
+              </ul>
+            </div>
+
+            <!-- Introduction -->
+            <div class="blog-section">
+              <p>
+                This post covers how I rebuilt my automated financial report as a web application. You enter a ticker, the app builds an 11-section fundamental analysis report in the browser, and you can download the same report as a PDF.
+              </p>
+              <p>
+                The app is live <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">here</a>, and the source code is on <a href="https://github.com/portfedh/stock-fundamentals" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub</a>.
+              </p>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- From PDF script to web app -->
+            <div class="blog-section" id="from-script-to-web-app">
+              <h3>From PDF script to web app</h3>
+              <p>
+                A while ago I wrote a <a href="financial-report-pdf.html" class="blog-link">Python script that generates a PDF fundamental analysis report</a> for any public company. I still used it regularly, but it had two limitations.
+              </p>
+              <p>
+                First, the data came from a paid API. The free tier was capped at 250 requests per day and only covered US companies. Second, the output was a local PDF: to analyze a company you had to have Python installed, clone the repository and run the script yourself.
+              </p>
+              <p>
+                I fixed the data problem first by switching the source to Yahoo Finance. It is free, needs no API key, and covers international tickers. It also exposes data the paid API did not give me on the free plan: analyst recommendations, price targets, earnings surprises, forward estimates, ownership and insider transactions.
+              </p>
+              <p>
+                Then I removed the "you need Python" problem by rewriting the whole pipeline as a web app in TypeScript with Next.js. The report now renders in the browser for anyone with the URL, and the PDF is still one click away.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- What the report includes -->
+            <div class="blog-section" id="report-contents">
+              <h3>What the report includes</h3>
+              <p>
+                Each report covers the last three or four fiscal years and is organized in 11 sections:
+              </p>
+              <ul>
+                <li>Company summary: profile, business description, CEO, sector, next earnings date.</li>
+                <li>Financial statements: income, balance sheet and cash flow, in nominal and common-size form.</li>
+                <li>Risk and return ratios: debt, profitability and efficiency.</li>
+                <li>Valuation: market ratios and key metrics, including the Graham Number and Net-Net value.</li>
+                <li>Statement graphs for income, balance sheet and cash flow.</li>
+                <li>Common-size graphs and equity uses.</li>
+                <li>Dividend history, analyst recommendations and price targets.</li>
+                <li>EPS estimates vs actuals and earnings surprises.</li>
+                <li>Forward earnings and revenue estimates.</li>
+                <li>Ownership breakdown: major and institutional holders.</li>
+                <li>Insider purchases and recent insider transactions.</li>
+              </ul>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/stock-fundamentals/financial-statements.webp"
+                      alt="Income statement table in nominal and common-size form"
+                      class="image fit"
+                      width="1600"
+                      height="1091"
+                    />
+                    <p class="image-caption">Financial statements, shown side by side in millions and as a percentage of revenue</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/stock-fundamentals/valuation-metrics.webp"
+                      alt="Valuation section showing market ratios and key metrics"
+                      class="image fit"
+                      width="1600"
+                      height="1091"
+                    />
+                    <p class="image-caption">Market ratios and key metrics, including the Graham Number</p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                The last five sections are new: the Python version only covered statements, ratios and charts. Analyst consensus, estimates, ownership and insider activity all come from Yahoo Finance modules that were not available to me before.
+              </p>
+
+              <div class="row gtr-150">
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/stock-fundamentals/analyst-recommendations.webp"
+                      alt="Analyst recommendations chart showing buy, hold and sell counts by month"
+                      class="image fit"
+                      width="1600"
+                      height="1091"
+                    />
+                    <p class="image-caption">Analyst recommendations over the last months</p>
+                  </div>
+                </div>
+                <div class="col-6 col-12-medium">
+                  <div class="image-container">
+                    <img
+                      src="images/stock-fundamentals/insider-transactions.webp"
+                      alt="Insider transactions table showing recent purchases and sales by insiders"
+                      class="image fit"
+                      width="1600"
+                      height="1091"
+                    />
+                    <p class="image-caption">Insider purchases summary and recent insider transactions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- One source of truth -->
+            <div class="blog-section" id="architecture">
+              <h3>One source of truth for web and PDF</h3>
+              <p>
+                The most important design decision was to make the web page and the PDF consume the exact same data. A single function, <code>buildReport(ticker, years)</code>, orchestrates the whole pipeline: fetch the raw data, compute the ratios, trim to the requested years, and build every table and chart definition.
+              </p>
+              <p>
+                The interactive page calls it through a JSON endpoint and the PDF route calls the same function. There is no separate "PDF pipeline" that could drift out of sync: if a number appears on screen, the identical number appears in the PDF.
+              </p>
+              <p>
+                Every request is also stateless. Nothing is written to disk between requests, so the app can serve concurrent users without any coordination, which keeps hosting simple.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Fetching data -->
+            <div class="blog-section" id="fetching-data">
+              <h3>Fetching data from Yahoo Finance</h3>
+              <p>
+                The data layer uses <a href="https://github.com/gadicc/node-yahoo-finance2" target="_blank" rel="noopener noreferrer" class="blog-link">yahoo-finance2</a>, an open source Node.js client for the same endpoints the yfinance Python library uses. One report needs five requests: annual financial statements, a batch of quote-summary modules, daily price history, dividend history and an ISIN lookup. They all run in parallel.
+              </p>
+              <p>
+                Yahoo's data is unofficial, so individual pieces fail from time to time. Every request carries its own fallback: if the batched quote-summary call fails, the app retries the modules one by one so a single bad module does not sink the other twelve.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>TypeScript</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-typescript">async function safeQuoteSummary(symbol: string, modules: string[]): Promise&lt;Row&gt; {
+  try {
+    return await yf.quoteSummary(symbol, { modules });
+  } catch {
+    // Fetch modules individually so one bad module doesn't sink the rest.
+    const out: Row = {};
+    for (const m of modules) {
+      try {
+        const r = await yf.quoteSummary(symbol, { modules: [m] });
+        Object.assign(out, r);
+      } catch {
+        /* tolerate missing module */
+      }
+    }
+    return out;
+  }
+}</code></pre>
+
+              <p>
+                The same philosophy applies at render time. A company with no dividends, no analyst coverage or no insider records simply shows a dash or skips the chart. Missing data never turns into a failed report.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Computing ratios -->
+            <div class="blog-section" id="computing-ratios">
+              <h3>Computing the ratios</h3>
+              <p>
+                The report computes around 30 ratios across four groups: debt (current ratio, interest coverage, cash flow to debt), profitability (margins, ROE, ROIC, ROCE), efficiency (cash conversion cycle, turnover ratios) and market ratios (P/E, P/B, EV multiple, dividend yield).
+              </p>
+              <p>
+                This module is a line-for-line port of the Python version, so I could verify every value against reports the old script had already produced. Divisions go through a <code>safeDiv()</code> helper that returns null instead of infinity when a denominator is zero or missing, and derived values have fallback chains: free cash flow uses the reported figure when Yahoo provides it, otherwise operating cash flow minus capital expenditures.
+              </p>
+              <p>
+                My favorite metrics in the valuation section are the two Benjamin Graham numbers:
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>TypeScript</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-typescript">const eps = safeDiv(r.netIncome, sharesYear[i]);
+const bvps = safeDiv(b.totalStockholdersEquity, sharesYear[i]);
+
+// Graham Number: fair value estimate for a defensive investor.
+let grahamNumber: Num = null;
+if (eps != null &amp;&amp; bvps != null &amp;&amp; eps &gt; 0 &amp;&amp; bvps &gt; 0) {
+  grahamNumber = Math.sqrt(22.5 * eps * bvps);
+}
+
+// Net-Net: current assets minus all liabilities, per share.
+const netNetNum =
+  b.totalCurrentAssets == null || b.totalLiabilities == null
+    ? null
+    : b.totalCurrentAssets - b.totalLiabilities;
+const grahamNetNet = safeDiv(netNetNum, sharesYear[i]);</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Charts -->
+            <div class="blog-section" id="charts-twice">
+              <h3>Writing charts once, rendering them twice</h3>
+              <p>
+                The charts are built with <a href="https://echarts.apache.org/" target="_blank" rel="noopener noreferrer" class="blog-link">Apache ECharts</a>. Each chart builder is a pure function that returns a plain option object; it knows nothing about where the chart will be drawn.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/stock-fundamentals/statement-charts.webp"
+                  alt="Bar charts showing income statement trends across four years"
+                  class="image fit"
+                  width="1600"
+                  height="1091"
+                />
+                <p class="image-caption">
+                  Statement graphs: the same option objects power the browser and the PDF
+                </p>
+              </div>
+
+              <p>
+                In the browser, the option objects go straight into echarts-for-react. For the PDF the interesting part is rendering them <em>without a browser</em>: ECharts can run headless on the server and emit an SVG string, and resvg rasterizes that SVG into a PNG. No Puppeteer, no Chromium in the deployment image.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>TypeScript</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-typescript">export async function chartToPng(option: ChartOption, width = 800, height = 400) {
+  // 1. ECharts headless SSR -&gt; SVG string
+  const chart = echarts.init(null, null, { renderer: "svg", ssr: true, width, height });
+  chart.setOption(option);
+  const svg = chart.renderToSVGString();
+  chart.dispose();
+
+  // 2. resvg rasterizes the SVG with bundled fonts -&gt; PNG
+  const resvg = new Resvg(svg, {
+    font: {
+      fontFiles: FONT_FILES,       // Arimo Regular + Bold, shipped with the app
+      loadSystemFonts: false,      // deterministic across environments
+      defaultFontFamily: "Arimo",
+      sansSerifFamily: "Arimo",
+    },
+    fitTo: { mode: "width", value: width * 2 }, // 2x raster for crisp PDF text
+  });
+  const png = resvg.render().asPng();
+  return `data:image/png;base64,${Buffer.from(png).toString("base64")}`;
+}</code></pre>
+
+              <p>
+                The font settings matter more than they look. Loading system fonts made chart labels render as empty "tofu" boxes on the server, so the app ships its own copy of Arimo and never falls back to the system path. Arimo is metric-compatible with Helvetica, which is what the PDF body uses, so chart text and document text match.
+              </p>
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Caching -->
+            <div class="blog-section" id="caching">
+              <h3>Caching and rate limits</h3>
+              <p>
+                Yahoo Finance has no official API, so being polite about request volume is part of the design. Reports are cached for ten minutes, keyed by ticker, years and calendar day. A page load followed by a PDF download hits Yahoo once, not twice.
+              </p>
+              <p>
+                One detail worth copying: the cache stores the <em>promise</em>, not the finished result. If two users request the same ticker at the same time, the second request joins the first fetch instead of firing a duplicate. Failures delete the cache entry so an error is never served for ten minutes.
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>TypeScript</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-typescript">const TTL_MS = 10 * 60 * 1000;
+const cache = new Map&lt;string, { at: number; promise: Promise&lt;Report&gt; }&gt;();
+
+export function buildReport(ticker: string, years: number): Promise&lt;Report&gt; {
+  const key = `${ticker.toUpperCase()}:${years}:${new Date().toISOString().slice(0, 10)}`;
+  const hit = cache.get(key);
+  if (hit &amp;&amp; Date.now() - hit.at &lt; TTL_MS) return hit.promise;
+  const promise = build(ticker, years).catch((e) =&gt; {
+    cache.delete(key); // don't cache failures
+    throw e;
+  });
+  cache.set(key, { at: Date.now(), promise });
+  return promise;
+}</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- PDF -->
+            <div class="blog-section" id="pdf-generation">
+              <h3>Generating the PDF</h3>
+              <p>
+                The PDF layout is built with <a href="https://react-pdf.org/" target="_blank" rel="noopener noreferrer" class="blog-link">react-pdf</a>, which lets me describe the document as React components: the same mental model as the web page, with pages instead of sections. The document mirrors all 11 sections and comes out at around 12 pages.
+              </p>
+              <p>
+                Since the tables and chart images come from the shared report object, the PDF is a faithful print version of what is on screen: same values, same charts, same fonts.
+              </p>
+
+              <div class="image-container medium">
+                <img
+                  src="images/stock-fundamentals/pdf-report.webp"
+                  alt="First page of the generated PDF report showing the company summary for Apple"
+                  class="image fit"
+                  width="1200"
+                  height="1553"
+                />
+                <p class="image-caption">
+                  First page of the PDF report for Apple
+                </p>
+              </div>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Try it -->
+            <div class="blog-section" id="try-it">
+              <h3>Try it yourself</h3>
+              <p>
+                The app is deployed at <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">stock-fundamentals-production.up.railway.app</a>. Type a ticker or pick one of the examples, choose three or four years, and press Analyze. Yahoo's annual statements only reliably go back about four years, which is why the selector stops there.
+              </p>
+
+              <div class="image-container">
+                <img
+                  src="images/stock-fundamentals/landing-page.webp"
+                  alt="Landing page of the app with a ticker input, year selector and example tickers"
+                  class="image fit"
+                  width="1600"
+                  height="1091"
+                />
+                <p class="image-caption">
+                  The landing page: enter a ticker or ISIN and press Analyze
+                </p>
+              </div>
+
+              <p>
+                The report is also available directly through the API:
+              </p>
+
+              <pre class="code-block">
+                <div class="code-header">
+                  <span>Bash</span>
+                  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                </div>
+                <code class="language-bash"># Full report as JSON
+curl "https://stock-fundamentals-production.up.railway.app/api/report?ticker=AAPL&amp;years=4"
+
+# Same report as a PDF
+curl -o aapl.pdf "https://stock-fundamentals-production.up.railway.app/api/report/pdf?ticker=AAPL&amp;years=4"</code></pre>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+
+            <div class="section-separator"></div>
+
+            <!-- Final thoughts -->
+            <div class="blog-section" id="final-thoughts">
+              <h3>Final thoughts</h3>
+              <p>
+                Porting a working Python pipeline to TypeScript was less risky than it sounds: the old script served as an executable specification, and I could compare every table against reports it had already generated.
+              </p>
+              <p>
+                There is still room to grow: quarterly analysis, peer comparison against sector averages, and a proper job queue if traffic ever gets heavy for Yahoo's unofficial endpoints.
+              </p>
+              <p>
+                As with the original project, remember that fundamental analysis is only one part of a stock selection process. Use the report to understand a company, not as a buy signal.
+              </p>
+              <p>
+                You can check out my other projects <a href="index.html" class="blog-link">here</a>.
+              </p>
+              <p>
+                Pablo.
+              </p>
+
+              <div style="text-align: center">
+                <a
+                  href="#blog-content"
+                  class="back-to-top"
+                  title="Back to table of contents"
+                ></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Blog Content End -->
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="main style1">
+        <div class="container">
+          <article>
+            <div class="blog-navigation">
+              <div class="nav-links">
+                <div class="nav-left">
+                  <a href="index.html" class="button white-text"
+                    >← Back to Portfolio</a
+                  >
+                </div>
+                <div class="nav-right">
+                  <a
+                    href="https://stock-fundamentals-production.up.railway.app"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
+                  </a>
+                  <a
+                    href="https://github.com/portfedh/stock-fundamentals"
+                    class="button white-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Start-->
+      <section id="contact-section" class="main style2 special">
+        <div id="contact-birds" class="vanta-background"></div>
+        <div class="container">
+          <article>
+            <header class="major fade-out">
+              <h2>Get in touch!</h2>
+            </header>
+            <p class="fade-out">
+              I'm currently open to work and I'd be happy to chat.
+              <br />
+              <br />
+              Feel free to reach out if you are interested in what I can bring
+              to your project or team.
+            </p>
+            <ul class="actions special">
+              <li>
+                <a
+                  href="mailto:pablo.cruz.lemini@gmail.com"
+                  class="button wide primary fade-out"
+                  >Email me</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <!-- Contact End-->
+    </main>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a
+            href="https://twitter.com/Portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter Profile"
+            ><i class="fa-brands fa-twitter"></i><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/pablo-cruz-cdmx/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            ><i class="fa-brands fa-linkedin"></i><span class="label">LinkedIn</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="https://github.com/portfedh"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            ><i class="fa-brands fa-github"></i><span class="label">GitHub</span></a
+          >
+        </li>
+        <li>
+          <a
+            href="mailto:pablo.cruz.lemini@gmail.com"
+            aria-label="Email link"
+            ><i class="fa-solid fa-envelope"></i><span class="label">Email</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>
+          &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Pablo Cruz.
+        </li>
+      </ul>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1450436a40.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <!-- Blog functionality -->
+    <script src="assets/js/blog.js"></script>
+
+    <!-- Vanta.js Birds Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="assets/js/vanta-birds.js"></script>
+  </body>
+</html>
