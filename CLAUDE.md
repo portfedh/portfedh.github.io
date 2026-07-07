@@ -289,7 +289,7 @@ gtag('event', 'click', {
   - IoT Energy Monitor: Blog, GitHub (`index.html:720,728`)
   - Financial Report PDF: Blog, GitHub (`index.html:775,783`)
   - Water Monitoring System: Blog, GitHub (`index.html:831,839`)
-  - Stock Fundamentals: Blog, Visit, GitHub (Project 9 card, after the Water Monitoring card)
+  - Stock Fundamentals: Blog, Visit, GitHub (Project 1, the first card in the projects grid)
 - `Contact` - Contact form/email interactions (Email button at `index.html:873`)
 - `Social` - Footer social links: Twitter, LinkedIn, GitHub, Email (`index.html:893,904,915,924`)
 
