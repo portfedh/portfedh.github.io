@@ -157,7 +157,7 @@
                 Este post explica cómo reconstruí mi reporte financiero automatizado como una aplicación web. Escribes un ticker, la app construye un reporte de análisis fundamental de 11 secciones en el navegador, y puedes descargar el mismo reporte en PDF.
               </p>
               <p>
-                La app está en línea <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">aquí</a>, y el código fuente está en <a href="https://github.com/portfedh/stock-fundamentals" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub</a>.
+                La app está en línea <a href="https://stock-fundamentals.pablocruz.io" target="_blank" rel="noopener noreferrer" class="blog-link">aquí</a>, y el código fuente está en <a href="https://github.com/portfedh/stock-fundamentals" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub</a>.
               </p>
             </div>
 
@@ -536,7 +536,7 @@ export function buildReport(ticker: string, years: number): Promise&lt;Report&gt
             <div class="blog-section" id="try-it">
               <h3>Pruébalo tú mismo</h3>
               <p>
-                La app está desplegada en <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">stock-fundamentals-production.up.railway.app</a>. Escribe un ticker o escoge uno de los ejemplos, elige tres o cuatro años y presiona Analyze. Los estados anuales de Yahoo solo llegan de manera confiable a unos cuatro años atrás, por eso el selector se detiene ahí.
+                La app está desplegada en <a href="https://stock-fundamentals.pablocruz.io" target="_blank" rel="noopener noreferrer" class="blog-link">stock-fundamentals.pablocruz.io</a>. Escribe un ticker o escoge uno de los ejemplos, elige tres o cuatro años y presiona Analyze. Los estados anuales de Yahoo solo llegan de manera confiable a unos cuatro años atrás, por eso el selector se detiene ahí.
               </p>
 
               <div class="image-container">
@@ -562,10 +562,10 @@ export function buildReport(ticker: string, years: number): Promise&lt;Report&gt
                   <button class="copy-button" onclick="copyCode(this)">Copy</button>
                 </div>
                 <code class="language-bash"># Full report as JSON
-curl "https://stock-fundamentals-production.up.railway.app/api/report?ticker=AAPL&amp;years=4"
+curl "https://stock-fundamentals.pablocruz.io/api/report?ticker=AAPL&amp;years=4"
 
 # Same report as a PDF
-curl -o aapl.pdf "https://stock-fundamentals-production.up.railway.app/api/report/pdf?ticker=AAPL&amp;years=4"</code></pre>
+curl -o aapl.pdf "https://stock-fundamentals.pablocruz.io/api/report/pdf?ticker=AAPL&amp;years=4"</code></pre>
 
               <div style="text-align: center">
                 <a
@@ -623,7 +623,7 @@ curl -o aapl.pdf "https://stock-fundamentals-production.up.railway.app/api/repor
                 </div>
                 <div class="nav-right">
                   <a
-                    href="https://stock-fundamentals-production.up.railway.app"
+                    href="https://stock-fundamentals.pablocruz.io"
                     class="button white-text"
                     target="_blank"
                     rel="noopener noreferrer"

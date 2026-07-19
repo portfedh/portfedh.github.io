@@ -157,7 +157,7 @@
                 This post covers how I rebuilt my automated financial report as a web application. You enter a ticker, the app builds an 11-section fundamental analysis report in the browser, and you can download the same report as a PDF.
               </p>
               <p>
-                The app is live <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">here</a>, and the source code is on <a href="https://github.com/portfedh/stock-fundamentals" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub</a>.
+                The app is live <a href="https://stock-fundamentals.pablocruz.io" target="_blank" rel="noopener noreferrer" class="blog-link">here</a>, and the source code is on <a href="https://github.com/portfedh/stock-fundamentals" target="_blank" rel="noopener noreferrer" class="blog-link">GitHub</a>.
               </p>
             </div>
 
@@ -536,7 +536,7 @@ export function buildReport(ticker: string, years: number): Promise&lt;Report&gt
             <div class="blog-section" id="try-it">
               <h3>Try it yourself</h3>
               <p>
-                The app is deployed at <a href="https://stock-fundamentals-production.up.railway.app" target="_blank" rel="noopener noreferrer" class="blog-link">stock-fundamentals-production.up.railway.app</a>. Type a ticker or pick one of the examples, choose three or four years, and press Analyze. Yahoo's annual statements only reliably go back about four years, which is why the selector stops there.
+                The app is deployed at <a href="https://stock-fundamentals.pablocruz.io" target="_blank" rel="noopener noreferrer" class="blog-link">stock-fundamentals.pablocruz.io</a>. Type a ticker or pick one of the examples, choose three or four years, and press Analyze. Yahoo's annual statements only reliably go back about four years, which is why the selector stops there.
               </p>
 
               <div class="image-container">
@@ -562,10 +562,10 @@ export function buildReport(ticker: string, years: number): Promise&lt;Report&gt
                   <button class="copy-button" onclick="copyCode(this)">Copy</button>
                 </div>
                 <code class="language-bash"># Full report as JSON
-curl "https://stock-fundamentals-production.up.railway.app/api/report?ticker=AAPL&amp;years=4"
+curl "https://stock-fundamentals.pablocruz.io/api/report?ticker=AAPL&amp;years=4"
 
 # Same report as a PDF
-curl -o aapl.pdf "https://stock-fundamentals-production.up.railway.app/api/report/pdf?ticker=AAPL&amp;years=4"</code></pre>
+curl -o aapl.pdf "https://stock-fundamentals.pablocruz.io/api/report/pdf?ticker=AAPL&amp;years=4"</code></pre>
 
               <div style="text-align: center">
                 <a
@@ -623,7 +623,7 @@ curl -o aapl.pdf "https://stock-fundamentals-production.up.railway.app/api/repor
                 </div>
                 <div class="nav-right">
                   <a
-                    href="https://stock-fundamentals-production.up.railway.app"
+                    href="https://stock-fundamentals.pablocruz.io"
                     class="button white-text"
                     target="_blank"
                     rel="noopener noreferrer"
